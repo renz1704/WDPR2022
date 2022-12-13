@@ -1,0 +1,29 @@
+:root{
+    --dark_color: black;
+    --middle_color: #587cf1;
+    --light_color: white;
+}
+  /*
+@font-face {
+    font-family: myFont;
+    src: url(other/font.ttf);
+}
+
+*{
+    font-family: myFont;
+}
+
+*/
+
+.flex-container-horizontal{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+  
+.flex-container-vertical{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+  
