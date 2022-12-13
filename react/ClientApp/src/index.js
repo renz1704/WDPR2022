@@ -3,9 +3,13 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
-import Header from './components/Header'
-import HomePage from './components/HomePage';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+
+//pagina imports
+import Header from './components/Header'
+import Page_Startpagina from './components/Page_Startpagina';
+import Page_Voorstellingen from './components/Page_Voorstellingen';
+
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
@@ -18,10 +22,10 @@ root.render(
       <Header/>
 
       <Routes>
-        <Route path='/' element={<HomePage/>}/>
+        <Route path='/' element={<Page_Startpagina/>}/>
         <Route path='/toegankelijkheid' element={<p/>}/>
         <Route path='/contactgegevens' element={<p/>}/>
-        <Route path='/voorstellingen' element={<p/>}/>
+        <Route path='/voorstellingen' element={<Page_Voorstellingen/>}/>
       </Routes>
 
       

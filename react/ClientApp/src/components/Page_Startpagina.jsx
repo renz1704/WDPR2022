@@ -2,10 +2,11 @@ import React from 'react';
 import Seats from '../pictures/seats.png';
 
 
-function HomePage(props){
+function Page_Startpagina(){
     return(
-        <div>
-            <div>
+        <div className="flex-container-horizontal">
+            
+            <div >
                 <h1>Over het Theater Laak</h1>
                 <p>
                     Het theater is heel cool
@@ -14,17 +15,16 @@ function HomePage(props){
                     mauris pharetra et ultrices neque ornare aenean 
                     euismod elementum nisi quis eleifend quam adipiscing 
                     vitae proin sagittis nisl rhoncus mattis rhoncus urna neque 
-                    viverra justo nec ultrices dui sapien eget mi proin 
-                    sed
+                    viverra justo nec ultrices dui sapien eget mi proin sed
                 </p>
             </div>
 
-            <div>
+            <div >
                 <img src={Seats} alt=""/>
             </div>
         </div>
     )
 }
 
-export default HomePage;
+export default Page_Startpagina;
 

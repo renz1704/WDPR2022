@@ -18,6 +18,7 @@ li {
   
 li a:hover {
     background-color: var(--middle_color);
+    color: var(--dark_color)
 }
   
 ul {
@@ -31,6 +32,6 @@ ul {
 }
 
 img{
-    margin: 10%;
-    width: 50%;
+    margin: 5%;
+    width: 30%;
 }

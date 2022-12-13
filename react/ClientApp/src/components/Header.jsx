@@ -7,8 +7,7 @@ import Logo from '../pictures/logo.png';
 function Header (props) {
   return (
   <header>
-
-    <div class="flex-container-horizontal">
+    <div className="flex-container-horizontal">
       <div>
         <img src={Logo} alt="Theater Laak"/>
       </div>
@@ -21,7 +20,6 @@ function Header (props) {
           <li><a><Link to="/contactgegevens">Contactgegevens</Link></a></li>
         </ul>
       </div>
-
     </div>
   </header>
   );
