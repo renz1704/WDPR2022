@@ -6,3 +6,8 @@ th, td {
 .topRow {
     background-color: var(--middle_color)
 }
+
+.timeButton{
+    text-decoration: none;
+    color: var(--dark_color);
+}

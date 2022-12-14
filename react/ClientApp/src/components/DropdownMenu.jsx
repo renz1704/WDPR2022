@@ -7,9 +7,9 @@ function DropdownMenu(props) {
 
     return (
         <div>
-            <button onClick={toggleMenu}>{props.type}</button>
+            <button onMouseLeave={toggleMenu} onMouseEnter={toggleMenu}>{props.type}</button>
             {isOpen && (
-                <ul>
+                <ul style={{position:"absolute"}}>
                     {/*dit maakt een item aan in de dropdown 
                     voor elk item in options (een lijst van de parent)*/}
                     {props.options.map((item, index) => {

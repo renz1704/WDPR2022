@@ -10,6 +10,7 @@ import Header from './components/Header'
 import Page_Startpagina from './components/Page_Startpagina';
 import Page_Voorstellingen from './components/Page_Voorstellingen';
 import Page_VoorstellingInfo from './components/Page_VoorstellingInfo';
+import Page_StoelKeuze from "./components/Page_StoelKeuze";
 
 
 const rootElement = document.getElementById('root');
@@ -28,6 +29,7 @@ root.render(
         <Route path='/contactgegevens' element={<p/>}/>
         <Route path='/voorstellingen' element={<Page_Voorstellingen/>}/>
         <Route path='/voorstellingInfo' element={<Page_VoorstellingInfo/>}/>
+        <Route path='/stoelKeuze' element={<Page_StoelKeuze/>}/>
       </Routes>
 
       

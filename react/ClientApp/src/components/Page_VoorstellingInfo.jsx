@@ -1,6 +1,6 @@
 import React from 'react';
 import "../styles/tableStyle.css";
-
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 function Page_VoorstellingInfo() {
 
@@ -48,7 +48,7 @@ return (
                         {/*TODO datums worden ook knoppen */}
                         {/*vult de rij met cellen met daarin de waardes van de arrays in dateArrays */}
                         {row.map((cell, cellIndex) => (
-                            <td key={cellIndex}><button>{cell}</button></td>
+                            <td key={cellIndex}><Link className="timeButton" to="/stoelKeuze">{cell}</Link></td>
                         ))}
 
                     </tr>
