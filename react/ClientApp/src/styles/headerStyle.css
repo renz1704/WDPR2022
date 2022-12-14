@@ -1,0 +1,37 @@
+header{
+    background-color: black;
+    color: white;
+}
+  
+li a {
+    display:flex;
+    color: var(--light_color);
+    background-color: var(--black_color);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+  
+li {
+    display: inline-block;
+}
+  
+li a:hover {
+    background-color: var(--middle_color);
+    color: var(--dark_color)
+}
+  
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.currentpage{
+    background-color: var(--middle_color);
+}
+
+img{
+    margin: 5%;
+    width: 30%;
+}
