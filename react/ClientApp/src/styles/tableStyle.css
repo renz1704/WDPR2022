@@ -1,0 +1,8 @@
+th, td {
+    border: 1px solid var(--dark_color);
+    padding: 8px;
+}
+
+.topRow {
+    background-color: var(--middle_color)
+}
