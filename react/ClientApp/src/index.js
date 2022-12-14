@@ -9,7 +9,8 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Header from './components/Header'
 import Page_Startpagina from './components/Page_Startpagina';
 import Page_Voorstellingen from './components/Page_Voorstellingen';
-import Login from './components/Page_Login';
+import Login from './components/Login-and-Register/Page_Login_Visitors';
+import Register from './components/Login-and-Register/Page_Register_Visitors';
 
 
 const rootElement = document.getElementById('root');
@@ -28,6 +29,7 @@ root.render(
         <Route path='/contactgegevens' element={<p/>}/>
         <Route path='/voorstellingen' element={<Page_Voorstellingen/>}/>
         <Route path='/inloggen' element={<Login/>}/>
+        <Route path='/registreren' element={<Register/>}/>
       </Routes>
 
       
