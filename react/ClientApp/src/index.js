@@ -1,19 +1,39 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
-const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');
+//pagina imports
+import Header from './components/Header'
+import Page_Startpagina from './components/Page_Startpagina';
+import Page_Voorstellingen from './components/Page_Voorstellingen';
+
+
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
 
 root.render(
-  <BrowserRouter basename={baseUrl}>
-    <App />
-  </BrowserRouter>);
+  <React.StrictMode>
+    
+    <Router>
+      
+      <Header/>
+
+      <Routes>
+        <Route path='/' element={<Page_Startpagina/>}/>
+        <Route path='/toegankelijkheid' element={<p/>}/>
+        <Route path='/contactgegevens' element={<p/>}/>
+        <Route path='/voorstellingen' element={<Page_Voorstellingen/>}/>
+      </Routes>
+
+      
+      
+    </Router>
+
+  </React.StrictMode>
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
