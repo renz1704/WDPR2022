@@ -7,15 +7,15 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 //pagina imports
 import Header from './components/Header'
-import Page_Startpagina from './components/Page_Startpagina';
-import Page_Voorstellingen from './components/Page_Voorstellingen';
-import Page_VoorstellingInfo from './components/Page_VoorstellingInfo';
-import Page_StoelKeuze from "./components/Page_StoelKeuze";
+import Page_Startpagina from './components/Pages/Page_Startpagina';
+import Page_Voorstellingen from './components/Pages/Page_Voorstellingen';
+import Page_VoorstellingInfo from './components/Pages/Page_VoorstellingInfo';
+import Page_StoelKeuze from "./components/Pages/Page_StoelKeuze";
 import Login from './components/Login-and-Register/Page_Login_Visitors';
 import Register from './components/Login-and-Register/Page_Register_Visitors';
-import Page_ContactGegevens from './components/Page_ContactGegevens';
-import Page_Toegankelijkheid from './components/Page_Toegankelijkheid';
-import Page_Begunstigersportaal from './components/Page_Begunstigersportaal';
+import Page_ContactGegevens from './components/Pages/Page_ContactGegevens';
+import Page_Toegankelijkheid from './components/Pages/Page_Toegankelijkheid';
+import Page_Begunstigersportaal from './components/Pages/Page_Begunstigersportaal';
 
 
 const rootElement = document.getElementById('root');

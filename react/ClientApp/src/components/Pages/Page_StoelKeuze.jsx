@@ -1,5 +1,5 @@
 ﻿import React, { useState }  from 'react';
-import ShowOrder from "./ShowOrder";
+import ShowOrder from "../ShowOrder";
 function Page_StoelKeuze(){
 
     {/*deze gegevens moeten gefetched worden*/}

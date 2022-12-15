@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from './Header';
-import "./ContactgegevensStyle.css"
-import picture from "../pictures/TheaterContactPagina.jpg"
+import Header from '../Header';
+import "../../styles/ContactgegevensStyle.css"
+import picture from "../../pictures/TheaterContactPagina.jpg"
 
 
 function Page_ContactGegevens() {
