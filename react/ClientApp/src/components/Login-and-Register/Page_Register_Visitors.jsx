@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Header from "../Header";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -16,6 +17,7 @@ const Register = () => {
 
   return (
     <div>
+      <Header/>
       <form className="loginForm" onSubmit={processRegistration}>
         <h1 className="Title">Registreren</h1>
         <p>Email</p>

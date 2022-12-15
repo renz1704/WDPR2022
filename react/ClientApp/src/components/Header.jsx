@@ -19,6 +19,7 @@ function Header (props) {
             <li><a><Link to="/voorstellingen">Voorstellingen</Link></a></li>
             <li><a><Link to="/toegankelijkheid">Toegankelijkheid</Link></a></li>
             <li><a><Link to="/contactgegevens">Contactgegevens</Link></a></li>
+            <li><a><Link to="/inloggen">Log in</Link></a></li>
           </ul>
         </div>
       </div>
