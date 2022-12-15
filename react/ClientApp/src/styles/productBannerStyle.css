@@ -1,0 +1,16 @@
+.bannerImg {
+    margin: 0%;
+    height: 220px;
+    width: auto;
+}
+
+.bannerLink {
+    margin: 5%;
+    margin-top: 0px;
+    width: 90%;
+    text-decoration: none;
+}
+
+.bannerButton{
+    border-color: var(--middle_color);
+}

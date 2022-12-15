@@ -17,7 +17,7 @@ li {
 }
 
 li a:hover {
-    background-color: var(--middle_color);
+    background-color: var(--light_color);
     color: var(--dark_color)
 }
 
