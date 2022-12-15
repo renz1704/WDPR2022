@@ -1,5 +1,5 @@
 import React from 'react';
-import BegunstigersHeader from './BegunstigersPortaalHeader';
+import BegunstigersHeader from '../BegunstigersPortaalHeader';
 
 function Page_Begunstigersportaal() {
 

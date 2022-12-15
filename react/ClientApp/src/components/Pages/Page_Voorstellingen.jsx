@@ -1,7 +1,7 @@
 import React from 'react';
-import DropdownMenu from './DropdownMenu';
-import ProductBanner from './ProductBanner';
-import Header from './Header';
+import DropdownMenu from '../DropdownMenu';
+import ProductBanner from '../ProductBanner';
+import Header from '../Header';
 
 function Page_Voorstellingen() {
 

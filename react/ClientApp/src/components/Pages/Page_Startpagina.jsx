@@ -1,6 +1,6 @@
 import React from 'react';
-import Seats from '../pictures/seats.png';
-import Header from './Header';
+import Seats from '../../pictures/seats.png';
+import Header from '../Header';
 
 
 function Page_Startpagina() {

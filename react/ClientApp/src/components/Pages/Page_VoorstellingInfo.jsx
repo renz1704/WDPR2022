@@ -1,5 +1,5 @@
 import React from 'react';
-import "../styles/tableStyle.css";
+import "../../styles/tableStyle.css";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 function Page_VoorstellingInfo() {
