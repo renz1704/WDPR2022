@@ -4,6 +4,7 @@ import AppRoutes from './AppRoutes';
 import AuthorizeRoute from './components/api-authorization/AuthorizeRoute';
 import { Layout } from './components/Layout';
 import './custom.css';
+import Header from './components/Header';
 
 export default class App extends Component {
   static displayName = App.name;
