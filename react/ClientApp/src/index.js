@@ -11,6 +11,7 @@ import Page_Startpagina from './components/Page_Startpagina';
 import Page_Voorstellingen from './components/Page_Voorstellingen';
 import Login from './components/Login-and-Register/Page_Login_Visitors';
 import Register from './components/Login-and-Register/Page_Register_Visitors';
+import Dashboard from './components/Dashboard/Page_VisitorDashboard';
 
 
 const rootElement = document.getElementById('root');
@@ -30,6 +31,7 @@ root.render(
         <Route path='/voorstellingen' element={<Page_Voorstellingen/>}/>
         <Route path='/inloggen' element={<Login/>}/>
         <Route path='/registreren' element={<Register/>}/>
+        <Route path='/dashboard' element={<Dashboard/>}/>
       </Routes>
 
       

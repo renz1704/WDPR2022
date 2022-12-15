@@ -1,0 +1,20 @@
+.dashboard-content{
+    display: flex;
+}
+
+.dashboard-content .side-bar{
+    text-align: left;
+    padding: 30px;
+    height: 100%;
+    
+    background-color: aqua;
+}
+
+.dashboard-content .side-bar .Link{
+    text-decoration: none;
+    color:black;   
+}
+
+.dashboard-content .main-content{
+    
+}

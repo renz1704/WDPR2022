@@ -1,16 +1,23 @@
 import { useState } from "react";
 import "./login-register.css"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () =>{
-
+    const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
     const processLogin = (e) =>
     {
-        e.preventDefault();
         const loginDetails = {username, password}
+        e.preventDefault();
+        //Check if given details are valid
+        //If valid navigate to the dashboard
+        //Else do nothing
+        if(true){
+            navigate('/dashboard', {state: username});
+        }
+    
     }
 
     return(
