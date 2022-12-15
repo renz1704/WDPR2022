@@ -5,6 +5,8 @@ import "../styles/headerStyle.css";
 import Logo from '../pictures/logo.png';
 
 function Header (props) {
+
+
   return (
   <header>
     <div className="flex-container-horizontal">
@@ -18,6 +20,7 @@ function Header (props) {
           <li><a><Link to="/voorstellingen">Voorstellingen</Link></a></li>
           <li><a><Link to="/toegankelijkheid">Toegankelijkheid</Link></a></li>
           <li><a><Link to="/contactgegevens">Contactgegevens</Link></a></li>
+       
         </ul>
       </div>
     </div>
