@@ -4,22 +4,6 @@
     --light_color: white;
 }
 
-*{
-    font-family: 'Poppins';
-}
-
-/*
-@font-face {
-    font-family: myFont;
-    src: url(other/font.ttf);
-}
-
-*{
-    font-family: myFont;
-}
-
-*/
-
 .flex-container-horizontal {
     display: flex;
     align-items: center;
