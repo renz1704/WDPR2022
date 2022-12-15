@@ -5,7 +5,7 @@ import Header from './Header';
 
 function Page_Voorstellingen() {
 
-    {/*deze lijsten zijn de opties die in de dropdownmenus worden getoonds*/ }
+    {/*deze lijsten zijn de opties die in de dropdownmenus worden getoond*/ }
     const sortOptions = ["Datum", "Kosten", "Populariteit"]
     const filterOptions = ["geen", "idee"]
 
