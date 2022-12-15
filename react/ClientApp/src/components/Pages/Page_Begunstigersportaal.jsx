@@ -1,6 +1,6 @@
 import React from 'react';
-HEAD:react/ClientApp/src/components/Pages/Page_Begunstigersportaal.jsx
 import BegunstigersHeader from '../BegunstigersPortaalHeader';
+import ProductBanner from '../ProductBanner';
 
 
 function Page_Begunstigersportaal() {
