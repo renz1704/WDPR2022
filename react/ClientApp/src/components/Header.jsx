@@ -4,14 +4,15 @@ import "../styles/headerStyle.css";
 
 import Logo from '../pictures/logo.png';
 
-function Header(props) {
+
+function Header (props) {
   return (
     <header>
       <div className="flex-container-horizontal">
         <div>
           <img src={Logo} alt="Theater Laak" />
         </div>
-
+        
         <div>
           <ul>
             <li><a><Link to="/">Startpagina</Link></a></li>
