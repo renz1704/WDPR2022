@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import "../styles/generalStyle.css";
 import "../styles/headerStyle.css";
+import { LoginMenu } from './api-authorization/LoginMenu';
 
 import Logo from '../pictures/logo.png';
 
@@ -19,7 +20,8 @@ function Header (props) {
             <li><a><Link to="/voorstellingen">Voorstellingen</Link></a></li>
             <li><a><Link to="/toegankelijkheid">Toegankelijkheid</Link></a></li>
             <li><a><Link to="/contactgegevens">Contactgegevens</Link></a></li>
-            <li><a><Link to="/inloggen">Log in</Link></a></li>
+
+            <LoginMenu></LoginMenu>
           </ul>
         </div>
       </div>
