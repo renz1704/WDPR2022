@@ -11,29 +11,28 @@ import Page_Startpagina from './components/Page_Startpagina';
 import Page_Voorstellingen from './components/Page_Voorstellingen';
 import Login from './components/Login-and-Register/Page_Login_Visitors';
 import Register from './components/Login-and-Register/Page_Register_Visitors';
-
+import Page_ContactGegevens from './components/Page_ContactGegevens';
+import Page_Toegankelijkheid from './components/Page_Toegankelijkheid';
+import Page_Begunstigersportaal from './components/Page_Begunstigersportaal';
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
 
 root.render(
   <React.StrictMode>
-    
+
     <Router>
-      
-      <Header/>
 
       <Routes>
-        <Route path='/' element={<Page_Startpagina/>}/>
-        <Route path='/toegankelijkheid' element={<p/>}/>
-        <Route path='/contactgegevens' element={<p/>}/>
-        <Route path='/voorstellingen' element={<Page_Voorstellingen/>}/>
+        <Route path='/' element={<Page_Startpagina />} />
+        <Route path='/toegankelijkheid' element={<Page_Toegankelijkheid />} />
+        <Route path='/contactgegevens' element={<Page_ContactGegevens />} />
+        <Route path='/voorstellingen' element={<Page_Voorstellingen />} />
         <Route path='/inloggen' element={<Login/>}/>
         <Route path='/registreren' element={<Register/>}/>
+        {<Route path='/begunstigersportaal' element={<Page_Begunstigersportaal />} /> /*dit moet nog weggehaald worden, het begunstigersportaal moet alleen voor donateurs zijn*/}
       </Routes>
 
-      
-      
     </Router>
 
   </React.StrictMode>

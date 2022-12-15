@@ -1,4 +1,4 @@
-:root{
+:root {
     --dark_color: black;
     --middle_color: #587cf1;
     --light_color: white;
@@ -20,15 +20,14 @@
 
 */
 
-.flex-container-horizontal{
+.flex-container-horizontal {
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
-  
-.flex-container-vertical{
+
+.flex-container-vertical {
     display: flex;
     align-items: center;
     flex-direction: column;
 }
-  

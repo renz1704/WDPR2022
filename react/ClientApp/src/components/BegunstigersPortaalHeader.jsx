@@ -4,21 +4,21 @@ import "../styles/headerStyle.css";
 
 import Logo from '../pictures/logo.png';
 
+// Deze header zou eventueel als we autorisatie hebben weggehaald kunnen worden, dan kunnen we de normale header aanpassen dat alleen donateurs bepaalde knoppen zien.
 
-function Header (props) {
+function BegunstigersPortaalHeader(props) {
   return (
     <header>
       <div className="flex-container-horizontal">
         <div>
           <img src={Logo} alt="Theater Laak" />
         </div>
-        
+
         <div>
           <ul>
             <li><a><Link to="/">Startpagina</Link></a></li>
-            <li><a><Link to="/voorstellingen">Voorstellingen</Link></a></li>
-            <li><a><Link to="/toegankelijkheid">Toegankelijkheid</Link></a></li>
-            <li><a><Link to="/contactgegevens">Contactgegevens</Link></a></li>
+            <li><a><Link to="/begunstigersportaal">Begunstigersportaal</Link></a></li>
+            <li><a><Link to="/planning">Planning</Link></a></li>
           </ul>
         </div>
       </div>
@@ -26,4 +26,4 @@ function Header (props) {
   );
 }
 
-export default Header;
+export default BegunstigersPortaalHeader;
