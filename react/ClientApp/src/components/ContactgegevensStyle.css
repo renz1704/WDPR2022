@@ -1,0 +1,16 @@
+.image {
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    height: auto;
+}
+
+.text {
+    color: white;
+    line-height: 3;
+    text-align: center;
+}
+
+.full {
+    background-color: black;
+}
