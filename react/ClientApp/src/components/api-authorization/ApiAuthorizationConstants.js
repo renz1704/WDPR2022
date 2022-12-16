@@ -1,3 +1,4 @@
+
 export const ApplicationName = 'react';
 
 export const QueryParameterNames = {

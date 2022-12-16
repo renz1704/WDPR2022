@@ -4,9 +4,7 @@
     --light_color: white;
 }
 
-*{
-    font-family: 'Poppins';
-}
+
 
 /*
 @font-face {
@@ -33,3 +31,6 @@
 
 }
 
+*{
+    font-family: 'sans-serif';
+}
