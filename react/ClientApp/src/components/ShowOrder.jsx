@@ -12,28 +12,37 @@ function ShowOrder(props){
            if (option == choice)
            {setPrice(ticketPrices[index])}
        })
-        
     }
-       
     
     
     return(
+        <div style={{margin:"1%"}}>
         <tbody>
-            <tr>
+            <tr style={{backgroundColor:"black", color:"white"}}>
                 <td>show naam</td>
-                <td></td>
+                <td>Datum/tijd</td>
                 <td>totaal bedrag hier</td>
-                <td></td>
+                {props.canEdit && (<td></td>)}
             </tr>
             {props.seats.map((seatNumber, cellIndex) => (
                 <tr key={cellIndex}>
                     <td>Stoel: {seatNumber}</td>
-                    <td><DropdownMenu type="ticket" options={ticketOptions} optionClicked={updatePrice}/></td>
+                    <td>
+                        {props.canEdit && (<DropdownMenu
+                            type="ticket"
+                            options={ticketOptions}
+                            optionClicked={updatePrice}/>)}
+                    </td>
+                    
                     <td>{price}</td>
-                    <td><button onClick={() => props.toggleSeat(seatNumber)}>X</button></td>
+                    
+                    {props.canEdit &&(<td>
+                        <button onClick={() => props.toggleSeat(seatNumber)}>X</button>
+                    </td>)}
                 </tr>
             ))} 
         </tbody>
+        </div>
     )
 } 
 

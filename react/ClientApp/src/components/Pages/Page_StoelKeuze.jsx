@@ -2,8 +2,9 @@
 import ShowOrder from "../ShowOrder";
 import Header from "../Header";
 import SeatButton from "../SeatButton";
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import {Routes, Route, useNavigate} from 'react-router-dom';
 import PopUp from "../PopUp";
+
 
 function Page_StoelKeuze(){
 
@@ -28,16 +29,20 @@ function Page_StoelKeuze(){
         }
     }
 
-    
+    {/*showPopUp wordt gebruikt om de popup te tonen
+    popupmessage is de inhoud ervan*/}
     const [showPopUp, setShowPopUp] = useState(false);
-    const [popUpMessage, setpopUpMessage] = useState(false);
+    const [popUpMessage, setpopUpMessage] = useState("");
+
+
+    {/*navigate wordt gebruikt om naar de volgende pagina te gaan wanneer er tussen
+     de 1tm25 stoelen zijn gekozen*/}
+    const navigate = useNavigate();
     
-   
     const onNextButtonClick = () => {
         if (selectedSeats.length < 1){
             setpopUpMessage("Kies minstens 1 stoel om een bestelling te plaatsen.")
             setShowPopUp(true)
-            
         }
         else if (selectedSeats.length > 25)
         {
@@ -46,14 +51,14 @@ function Page_StoelKeuze(){
         }
         else
         {
-            //next page
+            navigate('/winkelmand');
         }
     }
-    
     
     return(
         <>
             <Header/>
+            
             {showPopUp && (<PopUp message={popUpMessage} onClose={() => setShowPopUp(false)}/>)}
             
             <div className="flex-container-vertical" style={{margin:"5%"}}>
@@ -86,15 +91,15 @@ function Page_StoelKeuze(){
 
                 <div className="flex-container-horizontal" style={{width:"100%", height:"100%"}}>
                     <div>
-                        <ShowOrder toggleSeat={toggleSeat} seats={selectedSeats}/>
+                        <ShowOrder toggleSeat={toggleSeat} seats={selectedSeats} canEdit={true}/>
                     </div>
                     <div>
                         <button
                             style={{
-                                width:"100px", 
+                                width:"300px", 
                                 height:"50px"}}
                             onClick={() => onNextButtonClick()}>
-                            Verder
+                            Voeg toe aan winkelmand
                         </button>
                     </div>
                 </div>

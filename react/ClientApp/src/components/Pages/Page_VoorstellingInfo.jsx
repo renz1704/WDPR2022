@@ -1,6 +1,7 @@
 import React from 'react';
 import "../../styles/tableStyle.css";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Header from "../Header";
 
 function Page_VoorstellingInfo() {
 
@@ -26,6 +27,8 @@ function Page_VoorstellingInfo() {
 
 
 return (
+    <>
+        <Header/>
     <body style={{ margin: "1%" }}>
         <h1>{showName}</h1>
         <p>{showDescription}</p>
@@ -56,6 +59,7 @@ return (
             </tbody>
         </table>
     </body>
+    </>
 )
 }
 export default Page_VoorstellingInfo;
