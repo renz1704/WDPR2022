@@ -2,7 +2,6 @@
 import Header from "../Header";
 import ShowOrder from "../ShowOrder";
 import {Routes, Route, useNavigate} from 'react-router-dom';
-import {Nav} from "reactstrap";
 
 
 function Page_Winkelmand(){
