@@ -17,7 +17,7 @@ function DropdownMenu(props) {
         <div>
             <button onClick={toggleMenu}>{props.type}: {optionPicked}</button>
             {isOpen && (
-                <ul style={{position:"absolute"}}>
+                <ul style={{position:"absolute", display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center"}}>
                     {/*dit maakt een item aan in de dropdown 
                     voor elk item in options (een lijst van de parent)*/}
                     {props.options.map((item, index) => {
