@@ -16,6 +16,7 @@ import Page_StoelKeuze from "./components/Pages/Page_StoelKeuze";
 import Page_ContactGegevens from './components/Pages/Page_ContactGegevens';
 import Page_Toegankelijkheid from './components/Pages/Page_Toegankelijkheid';
 import Page_Begunstigersportaal from './components/Pages/Page_Begunstigersportaal';
+import GroepManagement from './components/Pages/Page_GroepManagement';
 
 
 const rootElement = document.getElementById('root');
@@ -37,6 +38,7 @@ root.render(
         <Route path='/voorstellingen' element={<Page_Voorstellingen />} />
         <Route path='/voorstellingInfo' element={<Page_VoorstellingInfo/>}/>
         <Route path='/stoelKeuze' element={<Page_StoelKeuze/>}/>
+        <Route path='/groepen' element={<GroepManagement/>}/>
         {<Route path='/begunstigersportaal' element={<Page_Begunstigersportaal />} /> /*dit moet nog weggehaald/geautoriseerd worden, het begunstigersportaal moet alleen voor donateurs zijn*/}
       </Routes>
 

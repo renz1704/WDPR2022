@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace react.Data.Migrations
+namespace react.Migrations
 {
     /// <inheritdoc />
     public partial class _1 : Migration
@@ -11,41 +11,41 @@ namespace react.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "groups",
+                name: "Groepen",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<int>(type: "INTEGER", nullable: false)
+                    Name = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_groups", x => x.Id);
+                    table.PrimaryKey("PK_Groepen", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Artists",
+                name: "Artiesten",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    FirstName = table.Column<int>(type: "INTEGER", nullable: false),
-                    LastName = table.Column<int>(type: "INTEGER", nullable: false),
+                    FirstName = table.Column<string>(type: "TEXT", nullable: false),
+                    LastName = table.Column<string>(type: "TEXT", nullable: false),
                     GroupId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Artists", x => x.id);
+                    table.PrimaryKey("PK_Artiesten", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Artists_groups_GroupId",
+                        name: "FK_Artiesten_Groepen_GroupId",
                         column: x => x.GroupId,
-                        principalTable: "groups",
+                        principalTable: "Groepen",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Artists_GroupId",
-                table: "Artists",
+                name: "IX_Artiesten_GroupId",
+                table: "Artiesten",
                 column: "GroupId");
         }
 
@@ -53,10 +53,10 @@ namespace react.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Artists");
+                name: "Artiesten");
 
             migrationBuilder.DropTable(
-                name: "groups");
+                name: "Groepen");
         }
     }
 }
