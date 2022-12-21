@@ -1,23 +1,30 @@
 import React from "react";
-import { userRef, useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import Header from "../../Header";
 
 const Register = () => {
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
+  const [lastName, setlastName] = useState("");
   const [password, setPassword] = useState("");
 
   const processRegistration = (e) => {
-    const account = { email, username, password };
-    //Method that sends JSON to API with the userInfo
     e.preventDefault();
-    console.log("checkOfLoginKlopt, maak API call");
-  };
+    fetch('https://localhost:7293/api/User/registreer',
+    {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-type' : 'application/json'
+
+        },
+        body: JSON.stringify({email: email, password: password, name: name, lastName: lastName, donatedAmount : 0})
+    }).then(response => response.json())
+    .then(response => console.log(response))
+}
 
   return (
     <div>
-      <Header/>
       <form className="loginForm" onSubmit={processRegistration}>
         <h1 className="Title">Registreren</h1>
         <p>Email</p>
@@ -26,12 +33,19 @@ const Register = () => {
           type="email"
           onChange={(e) => setEmail(e.target.value)}
         ></input>
-        <p>Gebruikersnaam</p>
+        <p>Voornaam</p>
         <input
           required
           type="name"
           className="input-name"
-          onChange={(event) => setUsername(event.target.value)}
+          onChange={(event) => setName(event.target.value)}
+        ></input>
+        <p>Achternaam</p>
+        <input
+          required
+          type="lastName"
+          className="input-name"
+          onChange={(event) => setlastName(event.target.value)}
         ></input>
         <p>Wachtwoord</p>
         <input
@@ -42,7 +56,7 @@ const Register = () => {
         ></input>
         <button
           type="onSubmit"
-          disabled={username == "" || password == ""}
+          disabled={email == "" || password == ""}
           className="login-btn-submit"
         >
           Registreren
@@ -56,6 +70,5 @@ const Register = () => {
       </form>
     </div>
   );
-};
-
+  };
 export default Register;

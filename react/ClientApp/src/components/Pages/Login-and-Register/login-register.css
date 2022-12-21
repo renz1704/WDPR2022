@@ -1,12 +1,12 @@
 .loginField{
     width: fit-content;
     height: fit-content;
-    background: green;  
+    background: green;
 }
 
 .loginForm{
     display: flex;
-    flex-direction: column;   
+    flex-direction: column;
     align-items: center;
     width: max-content;
     margin: 0 auto;
@@ -22,7 +22,7 @@
     text-align: center;
     border: solid rgb(229, 229, 229);
     border-radius: 10px;
-    
+
 }
 
 .loginForm p {
@@ -39,7 +39,7 @@
     border-radius: 40px;
     cursor: pointer;
     padding: 10px 20px;
-    
+
 }
 
 

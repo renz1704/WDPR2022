@@ -10,9 +10,8 @@ namespace react.Data;
 
 public class ApplicationDbContext : IdentityDbContext<IdentityUser>
 {
-    public ApplicationDbContext(DbContextOptions<UserDbContext> options)
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
     { }
 
-    public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 }
