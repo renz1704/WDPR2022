@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TicketManager.Data;
 
@@ -10,9 +11,11 @@ using TicketManager.Data;
 namespace TicketManager.Migrations
 {
     [DbContext(typeof(TicketContext))]
-    partial class TicketContextModelSnapshot : ModelSnapshot
+    [Migration("20221221122229_8")]
+    partial class _8
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.1");
