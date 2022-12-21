@@ -16,6 +16,10 @@ import Page_StoelKeuze from "./components/Pages/Page_StoelKeuze";
 import Page_ContactGegevens from './components/Pages/Page_ContactGegevens';
 import Page_Toegankelijkheid from './components/Pages/Page_Toegankelijkheid';
 import Page_Begunstigersportaal from './components/Pages/Page_Begunstigersportaal';
+import LoginPage from './components/Pages/Login-and-Register/Login';
+import RegisterPage from './components/Pages/Login-and-Register/Register';
+
+
 
 import GroepManagement from './components/Pages/Page_GroepManagement';
 
@@ -51,6 +55,8 @@ root.render(
         <Route path='/betaald' element={<Page_Betaald/>}/>
 
         {<Route path='/begunstigersportaal' element={<Page_Begunstigersportaal />} /> /*dit moet nog weggehaald/geautoriseerd worden, het begunstigersportaal moet alleen voor donateurs zijn*/}
+        <Route path='/inloggen' element={<LoginPage/>}/>
+        <Route path='/registreren' element={<RegisterPage/>}/>
       </Routes>
 
     </Router>
