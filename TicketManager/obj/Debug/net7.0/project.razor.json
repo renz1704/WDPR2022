@@ -1,0 +1,19 @@
+{
+  "FilePath": "c:\\Users\\Remco van der Voort\\Documents\\GitHub\\WDPR2022\\TicketManager\\TicketManager.csproj",
+  "Configuration": {
+    "ConfigurationName": "MVC-3.0",
+    "LanguageVersion": "6.0",
+    "Extensions": [
+      {
+        "ExtensionName": "MVC-3.0"
+      }
+    ]
+  },
+  "ProjectWorkspaceState": {
+    "TagHelpers": [],
+    "CSharpLanguageVersion": 1100
+  },
+  "RootNamespace": "TicketManager",
+  "Documents": [],
+  "SerializationFormat": "0.2"
+}

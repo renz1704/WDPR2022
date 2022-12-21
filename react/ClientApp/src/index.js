@@ -16,10 +16,19 @@ import Page_StoelKeuze from "./components/Pages/Page_StoelKeuze";
 import Page_ContactGegevens from './components/Pages/Page_ContactGegevens';
 import Page_Toegankelijkheid from './components/Pages/Page_Toegankelijkheid';
 import Page_Begunstigersportaal from './components/Pages/Page_Begunstigersportaal';
+
 import Page_Winkelmand from "./components/Pages/Page_Winkelmand";
 import Page_Betaling from "./components/Pages/Page_Betaling";
 import Page_Betaald from "./components/Pages/Page_Betaald";
 import Page_ZaalMaken from "./components/Pages/Page_ZaalMaken";
+
+import LoginPage from './components/Pages/Login-and-Register/Login';
+import RegisterPage from './components/Pages/Login-and-Register/Register';
+
+
+import GroepManagement from './components/Pages/Page_GroepManagement';
+
+
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
@@ -40,11 +49,22 @@ root.render(
         <Route path='/voorstellingen' element={<Page_Voorstellingen />} />
         <Route path='/voorstellingInfo' element={<Page_VoorstellingInfo/>}/>
         <Route path='/stoelKeuze' element={<Page_StoelKeuze/>}/>
+
         <Route path='/winkelmand' element={<Page_Winkelmand/>}/>
         <Route path='/betaling' element={<Page_Betaling/>}/>
         <Route path='/betaald' element={<Page_Betaald/>}/>
         <Route path='/zaalmaken' element={<Page_ZaalMaken/>}/>
+
+
+        <Route path='/groepen' element={<GroepManagement/>}/>
+
+        <Route path='/winkelmand' element={<Page_Winkelmand/>}/>
+        <Route path='/betaling' element={<Page_Betaling/>}/>
+        <Route path='/betaald' element={<Page_Betaald/>}/>
+
         {<Route path='/begunstigersportaal' element={<Page_Begunstigersportaal />} /> /*dit moet nog weggehaald/geautoriseerd worden, het begunstigersportaal moet alleen voor donateurs zijn*/}
+        <Route path='/inloggen' element={<LoginPage/>}/>
+        <Route path='/registreren' element={<RegisterPage/>}/>
       </Routes>
 
     </Router>
