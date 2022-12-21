@@ -24,7 +24,7 @@ const handleSubmit = (e) => {
     .then((res) => {
       if(res.status !== 200)
       {
-          console.log("Hoi")
+          console.log(res)
       }
       else{
           navigate("/");

@@ -1,12 +1,13 @@
 import React from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [lastName, setlastName] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const processRegistration = (e) => {
     e.preventDefault();
@@ -19,9 +20,18 @@ const Register = () => {
 
         },
         body: JSON.stringify({email: email, password: password, name: name, lastName: lastName, donatedAmount : 0})
-    }).then(response => response.json())
-    .then(response => console.log(response))
-}
+    })
+    .then((res) => {
+      if(res.status !== 201)
+      {
+          console.log(res)
+      }
+      else{
+          navigate("/login");
+      }
+  })
+  };
+
 
   return (
     <div>
