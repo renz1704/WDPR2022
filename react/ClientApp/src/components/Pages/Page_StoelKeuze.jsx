@@ -1,4 +1,4 @@
-﻿import React, { useState }  from 'react';
+﻿import React, { useState, useEffect }  from 'react';
 import ShowOrder from "../ShowOrder";
 import Header from "../Header";
 import SeatButton from "../SeatButton";
@@ -9,11 +9,37 @@ import PopUp from "../PopUp";
 function Page_StoelKeuze(){
 
     {/*deze gegevens moeten gefetched worden*/}
+    const [data, setData] = useState(null);
+    
+    useEffect(() => {
+        fetch('http://localhost:5152/api/Room/1', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((response) => response.json())
+            .then((responseJson) => {
+                setData(responseJson)
+                
+                for (let i = 0; i < responseJson.rows.length; i++){
+                    setRows(oldArray => [...oldArray, responseJson.rows[i]])
+                    console.log(responseJson.rows[i])
+                }
+                console.log(rows)
+                
+                console.log(responseJson)})
+            .catch((error) => {
+                console.error(error);
+            });
+    },[]);
+    
     let row1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     let row2 = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
     let row3 = [21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
-    let rows =[row1, row2, row3]
-
+        let rows = [row1,row2]
+    const [radadows, setRows] = useState([row1, row2])
+    
     const [selectedSeats, setSeat] = useState([]);
     
     const toggleSeat = (seatNumber) => {
@@ -71,19 +97,25 @@ function Page_StoelKeuze(){
                   ishighlighted = een boolean om de kleur van de stoel te bepalen*/}
                 <div>
                     <tbody>
-                    {rows.map((row, rowIndex) => (
-                        <tr key={rowIndex}>
-                            {row.map((seatNumber, cellIndex) => (
-                                <td key={cellIndex}>
-                                    <SeatButton 
-                                        seatNumber={seatNumber}
-                                        toggleSeat={toggleSeat}
-                                        isHighlighted={selectedSeats.includes(seatNumber)}
-                                    />
-                                </td>
+
+                   
+                        <>
+                            {rows.map((row, rowIndex) => (
+                                <tr key={rowIndex}>
+                                    {row.map((id, cellIndex) => (
+                                        <td key={cellIndex}>
+                                            <SeatButton
+                                                seatNumber={id}
+                                                toggleSeat={toggleSeat}
+                                                isHighlighted={selectedSeats.includes(id)}
+                                            />
+                                        </td>
+                                    ))}
+                                </tr>
                             ))}
-                        </tr>
-                    ))}
+                            <div>hoi</div>
+                        </>
+                    
                     </tbody>
                 </div>
                 
@@ -105,6 +137,7 @@ function Page_StoelKeuze(){
                 </div>
                 
             </div>
+            
         </>
     )
 }
