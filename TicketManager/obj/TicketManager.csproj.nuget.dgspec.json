@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Remco van der Voort\\Documents\\GitHub\\WDPR2022\\TicketManager\\TicketManager.csproj": {}
+    "c:\\Users\\Remco van der Voort\\Documents\\GitHub\\WDPR2022\\TicketManager\\TicketManager.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Remco van der Voort\\Documents\\GitHub\\WDPR2022\\TicketManager\\TicketManager.csproj": {
+    "c:\\Users\\Remco van der Voort\\Documents\\GitHub\\WDPR2022\\TicketManager\\TicketManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Remco van der Voort\\Documents\\GitHub\\WDPR2022\\TicketManager\\TicketManager.csproj",
+        "projectUniqueName": "c:\\Users\\Remco van der Voort\\Documents\\GitHub\\WDPR2022\\TicketManager\\TicketManager.csproj",
         "projectName": "TicketManager",
-        "projectPath": "C:\\Users\\Remco van der Voort\\Documents\\GitHub\\WDPR2022\\TicketManager\\TicketManager.csproj",
+        "projectPath": "c:\\Users\\Remco van der Voort\\Documents\\GitHub\\WDPR2022\\TicketManager\\TicketManager.csproj",
         "packagesPath": "C:\\Users\\Remco van der Voort\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Remco van der Voort\\Documents\\GitHub\\WDPR2022\\TicketManager\\obj\\",
+        "outputPath": "c:\\Users\\Remco van der Voort\\Documents\\GitHub\\WDPR2022\\TicketManager\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

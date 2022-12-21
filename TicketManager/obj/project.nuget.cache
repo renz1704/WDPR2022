@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "S+nggmTVmc3Pg82BAIpTA/LI2+RXwKAJgDU7kxDIRA/RCQ0kF1GsGqK5/EHW3I/eeJxnsY7V8xX5Y3zBjXX2zA==",
+  "dgSpecHash": "V4zqFU+3V9zu4KfZ7IkEmgIprqK6imFBV36qpMIbVW8PUWyEkfBaeI7XVMNIAooI/uZIY0TvKBDAV6JjOvV/oA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Remco van der Voort\\Documents\\GitHub\\WDPR2022\\TicketManager\\TicketManager.csproj",
+  "projectFilePath": "c:\\Users\\Remco van der Voort\\Documents\\GitHub\\WDPR2022\\TicketManager\\TicketManager.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Remco van der Voort\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Remco van der Voort\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
