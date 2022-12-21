@@ -1,4 +1,4 @@
-﻿import React, { useState }  from 'react';
+﻿import React, { useState, useEffect }  from 'react';
 import ShowOrder from "../ShowOrder";
 import Header from "../Header";
 import SeatButton from "../SeatButton";
@@ -9,6 +9,17 @@ import PopUp from "../PopUp";
 function Page_StoelKeuze(){
 
     {/*deze gegevens moeten gefetched worden*/}
+    const [data, setData] = useState(null);
+
+    useEffect(() => {
+        async function fetchData() {
+            const response = await fetch('http://localhost:5152/api/Room/1');
+            const json = await response.json();
+            setData(json);
+        }
+        console.log(fetchData());
+    }, []);
+    
     let row1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     let row2 = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
     let row3 = [21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
@@ -105,6 +116,7 @@ function Page_StoelKeuze(){
                 </div>
                 
             </div>
+            
         </>
     )
 }

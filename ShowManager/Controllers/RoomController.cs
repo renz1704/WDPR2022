@@ -2,19 +2,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace ShowManager.Controllers;
-/*
- c# web api code. It uses a sqllite database and models. The models are Room, Row, Seats.
- The user can make Rooms which have a list of Rows in them. Rows have a list of seats.
-
-
- */
 
 [ApiController]
 [Route("api/[controller]")]
 public class RoomController : Controller
 {
     private readonly RoomContext _context;
-
     public RoomController(RoomContext context)
     {
         _context = context;
@@ -46,8 +39,9 @@ public class RoomController : Controller
         return Ok(room);
     }
 
-    // POST api/theater
+    // POST 
     [HttpPost]
+    [Route ("createRoom")]
     public IActionResult Post([FromBody]Room room)
     {
         if (!ModelState.IsValid)
@@ -75,5 +69,7 @@ public class RoomController : Controller
 
         _context.Entry(room).State = EntityState.Modified;
         _context.SaveChanges();
+        return BadRequest();
+
     }
 }

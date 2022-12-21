@@ -19,7 +19,7 @@ import Page_Begunstigersportaal from './components/Pages/Page_Begunstigersportaa
 import Page_Winkelmand from "./components/Pages/Page_Winkelmand";
 import Page_Betaling from "./components/Pages/Page_Betaling";
 import Page_Betaald from "./components/Pages/Page_Betaald";
-
+import Page_ZaalMaken from "./components/Pages/Page_ZaalMaken";
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
@@ -43,6 +43,7 @@ root.render(
         <Route path='/winkelmand' element={<Page_Winkelmand/>}/>
         <Route path='/betaling' element={<Page_Betaling/>}/>
         <Route path='/betaald' element={<Page_Betaald/>}/>
+        <Route path='/zaalmaken' element={<Page_ZaalMaken/>}/>
         {<Route path='/begunstigersportaal' element={<Page_Begunstigersportaal />} /> /*dit moet nog weggehaald/geautoriseerd worden, het begunstigersportaal moet alleen voor donateurs zijn*/}
       </Routes>
 

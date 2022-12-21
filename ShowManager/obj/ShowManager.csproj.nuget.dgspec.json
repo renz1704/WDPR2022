@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ajoeb\\Desktop\\WDPR\\WDPR2022\\Showmanager\\ShowManager.csproj": {}
+    "C:\\Users\\Ajoeb\\Desktop\\WDPR\\WDPR2022\\showmanager\\ShowManager.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ajoeb\\Desktop\\WDPR\\WDPR2022\\Showmanager\\ShowManager.csproj": {
+    "C:\\Users\\Ajoeb\\Desktop\\WDPR\\WDPR2022\\showmanager\\ShowManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ajoeb\\Desktop\\WDPR\\WDPR2022\\Showmanager\\ShowManager.csproj",
+        "projectUniqueName": "C:\\Users\\Ajoeb\\Desktop\\WDPR\\WDPR2022\\showmanager\\ShowManager.csproj",
         "projectName": "ShowManager",
-        "projectPath": "C:\\Users\\Ajoeb\\Desktop\\WDPR\\WDPR2022\\Showmanager\\ShowManager.csproj",
+        "projectPath": "C:\\Users\\Ajoeb\\Desktop\\WDPR\\WDPR2022\\showmanager\\ShowManager.csproj",
         "packagesPath": "C:\\Users\\Ajoeb\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ajoeb\\Desktop\\WDPR\\WDPR2022\\Showmanager\\obj\\",
+        "outputPath": "C:\\Users\\Ajoeb\\Desktop\\WDPR\\WDPR2022\\showmanager\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Ajoeb\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -43,6 +43,20 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[7.0.1, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
