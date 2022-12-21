@@ -1,7 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using TicketManager.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddDbContext<TicketContext>(options =>
+    options.UseSqlite("Data Source=Tickets.db"));
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

@@ -1,33 +1,24 @@
 using Microsoft.AspNetCore.Mvc;
+using TicketManager.Data;
 
 namespace TicketManager.Controllers;
 
 [ApiController]
 [Route("[controller]")]
 
-public class TicketController : ControllerBase
+public class TicketController : Controller
 {
-    private readonly ILogger<TicketController> _logger;
+    private readonly TicketContext _context;
 
-    public TicketController(ILogger<TicketController> logger)
+    public TicketController(TicketContext context)
     {
-        _logger = logger;
+        _context = context;
     }
 
-    // CreatRoom
-    [HttpPost]
-    public IActionResult CreateRoom([FromBody] Room room)
-    {
-        return Ok();
-    }
-
-    // GetRoom
+    // GetTicket    
     [HttpGet]
-    public IActionResult GetRoom()
+    public IActionResult GetTicket()
     {
         return Ok();
     }
-
-    
-
 }
