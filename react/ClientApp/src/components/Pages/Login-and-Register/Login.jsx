@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./login-register.css";
 import { Link , useNavigate} from "react-router-dom";
+import Header from "../../Header";
 
 
 const Login = () => {
@@ -9,7 +10,6 @@ const Login = () => {
   const navigate = useNavigate();
 
 const handleSubmit = (e) => {
-  debugger;
     e.preventDefault();
    
     fetch('https://localhost:7293/api/User/login', {
@@ -36,7 +36,10 @@ const handleSubmit = (e) => {
     };
 
   return (
+    <div>
+      <Header/>
     <form className="loginForm" onSubmit={handleSubmit}>
+      
       <h1>Login</h1>
       <p>Email</p>
       <input
@@ -66,6 +69,7 @@ const handleSubmit = (e) => {
         </Link>
       </p>
     </form>
+    </div>
   );
 };
 
