@@ -6,48 +6,48 @@ using Microsoft.AspNetCore.Mvc;
 public class GroupController : ControllerBase
 {
 
-    GroupDbContext _groupContext;
+    TheaterDbContext _context;
 
-    public GroupController(GroupDbContext groupContext)
+    public GroupController(TheaterDbContext groupContext)
     {
-        _groupContext = groupContext;
+        _context = groupContext;
     }
     
     [HttpPost]
     [Route("creategroup")]
     public async Task<ActionResult<Group>> createGroup ([FromBody] Group g){
-        await _groupContext.Groepen.AddAsync(g);
-        await _groupContext.SaveChangesAsync();
+        await _context.Groups.AddAsync(g);
+        await _context.SaveChangesAsync();
         return g;
     }
 
     [HttpGet]
     [Route("test")]
-    public async Task<ActionResult<Artist>> returnArtists ()
+    public async Task<ActionResult<Actor>> returnArtists ()
     {
-        return new Artist {FirstName = "Rashid", LastName = "Meda"};
+        return new Actor {Name = "Rashid", LastName = "Meda"};
     }
 
 
     [HttpPost]
     [Route("createartist")]
-    public async Task<ActionResult<Artist>> createArtist ([FromBody] Artist a)
+    public async Task<ActionResult<Actor>> createArtist ([FromBody] Actor a)
     {
-        await _groupContext.Artiesten.AddAsync(a);
-        await _groupContext.SaveChangesAsync();
-        Console.WriteLine(a.FirstName + " " + a.LastName + ": is created ");
+        await _context.Actors.AddAsync(a);
+        await _context.SaveChangesAsync();
+        Console.WriteLine(a.Name + " " + a.LastName + ": is created ");
         return a;
     }
 
 
-    private async Task<Artist> findArtist(int id)
+    private async Task<Actor> findArtist(int id)
     {
-        return await _groupContext.Artiesten.FindAsync(id);        
+        return await _context.Actors.FindAsync(id);        
     }
 
     private async Task<Group> findGroup(int id)
     {
-        return await _groupContext.Groepen.FindAsync(id);
+        return await _context.Groups.FindAsync(id);
     }
 
 
@@ -56,7 +56,7 @@ public class GroupController : ControllerBase
     public async Task addToGroup (int artistId, int groupId)
     {
         Group g = await findGroup(groupId);
-        g.Artists.Add(await findArtist(artistId));
-        await _groupContext.SaveChangesAsync();
+        g.Actors.Add(await findArtist(artistId));
+        await _context.SaveChangesAsync();
     }
 }
