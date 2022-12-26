@@ -27,7 +27,7 @@ namespace react.Controllers
         }
         [HttpPost]
         [Route("login")]
-        public async Task<IActionResult> Login([FromBody] Login model)
+        public async Task<IActionResult> Login([FromBody] LoginDTO model)
         {
             var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
 
@@ -41,7 +41,7 @@ namespace react.Controllers
 
         [HttpPost]
         [Route("registreer")]
-        public async Task<ActionResult> Registreer([FromBody] Register model)
+        public async Task<ActionResult> Registreer([FromBody] RegisterDTO model)
         {
             var user = new IdentityUser { UserName = model.Email, Email = model.Email };
 
@@ -51,5 +51,17 @@ namespace react.Controllers
 
         }
 
+    }
+
+    public class LoginDTO
+    {
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
+    public class RegisterDTO
+    {
+        public string Email { get; set; }
+        public string Password { get; set; }
     }
 }
