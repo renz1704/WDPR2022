@@ -1,16 +1,15 @@
 using Microsoft.AspNetCore.Mvc;
-using TicketManager.Data;
 
-namespace TicketManager.Controllers;
+
 
 [ApiController]
 [Route("[controller]")]
 
 public class TicketController : Controller
 {
-    private readonly TicketContext _context;
+    private readonly TheaterDbContext _context;
 
-    public TicketController(TicketContext context)
+    public TicketController(TheaterDbContext context)
     {
         _context = context;
     }

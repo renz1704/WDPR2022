@@ -1,13 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Authentication;
-using react.Models;
+using Microsoft.AspNetCore.Mvc;
 
 //De userManager kan gebruikt worden om de rollen toe te kennen.
 
