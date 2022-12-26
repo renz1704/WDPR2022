@@ -14,12 +14,15 @@ var  MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 builder.Services.AddDbContext<TheaterDbContext>(options => options.UseLazyLoadingProxies()
 .UseSqlite("Data source=Laak.db"));
 
+
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 {
     //Insert Registration and Login requirements(example: min password length)
 })
     .AddEntityFrameworkStores<TheaterDbContext>();
 
+
+builder.Services.AddSwaggerGen();
 
 
 

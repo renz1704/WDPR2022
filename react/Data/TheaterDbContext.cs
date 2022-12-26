@@ -5,7 +5,7 @@ using react.Models;
 public class TheaterDbContext : IdentityDbContext {
 	public TheaterDbContext(DbContextOptions<TheaterDbContext> options) : base(options)
 	{
-
+        Database.EnsureCreated();
 	}
 
     public DbSet<Donation> Donations { get; set; }
