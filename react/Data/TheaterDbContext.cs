@@ -2,11 +2,12 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using react.Models;
 
-public class TheaterDbContext : IdentityDbContext {
-	public TheaterDbContext(DbContextOptions<TheaterDbContext> options) : base(options)
-	{
+public class TheaterDbContext : IdentityDbContext
+{
+    public TheaterDbContext(DbContextOptions<TheaterDbContext> options) : base(options)
+    {
         Database.EnsureCreated();
-	}
+    }
 
     public DbSet<Donation> Donations { get; set; }
     public DbSet<Genre> Genres { get; set; }
@@ -21,7 +22,7 @@ public class TheaterDbContext : IdentityDbContext {
     public DbSet<Show> Shows { get; set; }
     public DbSet<Ticket> Tickets { get; set; }
     public DbSet<Actor> Actors { get; set; }
-	public DbSet<Employee> Employees { get; set; }	
+    public DbSet<Employee> Employees { get; set; }
     public DbSet<Visitor> Visitors { get; set; }
 
 }

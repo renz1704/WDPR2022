@@ -1,6 +1,4 @@
-﻿using System.Linq.Expressions;
-
-namespace react.Models
+﻿namespace react.Models
 {
     public class Donation : Payment
     {

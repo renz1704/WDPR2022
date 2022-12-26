@@ -12,10 +12,11 @@ public class GroupController : ControllerBase
     {
         _context = groupContext;
     }
-    
+
     [HttpPost]
     [Route("creategroup")]
-    public async Task<ActionResult<Group>> createGroup ([FromBody] Group g){
+    public async Task<ActionResult<Group>> createGroup([FromBody] Group g)
+    {
         await _context.Groups.AddAsync(g);
         await _context.SaveChangesAsync();
         return g;
@@ -23,15 +24,15 @@ public class GroupController : ControllerBase
 
     [HttpGet]
     [Route("test")]
-    public async Task<ActionResult<Actor>> returnArtists ()
+    public async Task<ActionResult<Actor>> returnArtists()
     {
-        return new Actor {Name = "Rashid", LastName = "Meda"};
+        return new Actor { Name = "Rashid", LastName = "Meda" };
     }
 
 
     [HttpPost]
     [Route("createartist")]
-    public async Task<ActionResult<Actor>> createArtist ([FromBody] Actor a)
+    public async Task<ActionResult<Actor>> createArtist([FromBody] Actor a)
     {
         await _context.Actors.AddAsync(a);
         await _context.SaveChangesAsync();
@@ -42,7 +43,7 @@ public class GroupController : ControllerBase
 
     private async Task<Actor> findArtist(int id)
     {
-        return await _context.Actors.FindAsync(id);        
+        return await _context.Actors.FindAsync(id);
     }
 
     private async Task<Group> findGroup(int id)
@@ -53,7 +54,7 @@ public class GroupController : ControllerBase
 
     [HttpPost]
     [Route("addtogroup")]
-    public async Task addToGroup (int artistId, int groupId)
+    public async Task addToGroup(int artistId, int groupId)
     {
         Group g = await findGroup(groupId);
         g.Actors.Add(await findArtist(artistId));
