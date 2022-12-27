@@ -2,8 +2,14 @@
   "ExpandedNodes": [
     "",
     "\\react",
-    "\\react\\Models"
+    "\\react\\ClientApp",
+    "\\react\\ClientApp\\src",
+    "\\react\\ClientApp\\src\\components",
+    "\\react\\Controllers",
+    "\\react\\Data",
+    "\\react\\Models",
+    "\\react\\Models\\Models"
   ],
-  "SelectedNode": "\\react\\Models\\Actor.cs",
+  "SelectedNode": "\\react\\ClientApp\\src\\components",
   "PreviewInSolutionExplorer": false
 }
