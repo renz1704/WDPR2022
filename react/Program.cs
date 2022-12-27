@@ -1,31 +1,35 @@
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
-using react.Data;
-using react.Models;
 
 var builder = WebApplication.CreateBuilder(args);
-var  MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+//New DbContext With Services
+
+builder.Services.AddDbContext<TheaterDbContext>(options => options.UseLazyLoadingProxies()
+.UseSqlite("Data source=Laak.db"));
+
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
+{
+    //Insert Registration and Login requirements(example: min password length)
+})
+    .AddEntityFrameworkStores<TheaterDbContext>();
+
+
+builder.Services.AddSwaggerGen();
+
+
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite(connectionString));
-    builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-builder.Services.AddSwaggerGen();
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+
 
 builder.Services.AddAuthentication()
     .AddIdentityServerJwt();
 
-builder.Services.AddDbContext<GroupDbContext>(options =>
-    options.UseSqlite("Data Source=Groepen.db"));
 
- 
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddCors(options =>
@@ -72,6 +76,6 @@ app.MapControllerRoute(
     pattern: "{controller}/{action=Index}/{id?}");
 app.MapRazorPages();
 
-app.MapFallbackToFile("index.html");;
+app.MapFallbackToFile("index.html"); ;
 
 app.Run();
