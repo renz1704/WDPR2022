@@ -1,14 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace ShowManager.Controllers;
+
 
 [ApiController]
 [Route("api/[controller]")]
 public class RoomController : Controller
 {
-    private readonly RoomContext _context;
-    public RoomController(RoomContext context)
+    private readonly TheaterDbContext _context;
+    public RoomController(TheaterDbContext context)
     {
         _context = context;
     }
