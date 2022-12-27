@@ -42,7 +42,6 @@ namespace react.Controllers
             return !resultaat.Succeeded ? new BadRequestObjectResult(resultaat) : StatusCode(201);
 
         }
-
     }
 
     public class LoginDTO
