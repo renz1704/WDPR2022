@@ -56,6 +56,19 @@ public class GroupController : ControllerBase
 
     }
 
+    [HttpGet]
+    [Route("getallgroups")]
+    public async Task<ActionResult<List<Group>>> GetAllGroups()
+    {
+        return await _context.Groups.Include(g => g.Actors).ToListAsync();
+    }
+
+    [HttpGet]
+    [Route("getallactors")]
+    public async Task<ActionResult<List<Actor>>> GetAllActors(){
+        return await _context.Actors.Include(a => a.Groups).ToListAsync();
+    }
+
     private async Task<Actor> findArtist(int id)
     {
         return await _context.Actors.FindAsync(id);
@@ -75,6 +88,4 @@ public class GroupController : ControllerBase
         g.Actors.Add(await findArtist(artistId));
         await _context.SaveChangesAsync();
     }
-
-   
 }
