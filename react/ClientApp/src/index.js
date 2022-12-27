@@ -27,6 +27,8 @@ import RegisterPage from './components/Pages/Login-and-Register/Register';
 
 
 import GroepManagement from './components/Pages/Page_GroepManagement';
+import Page_GroepOverview from './components/Pages/Page_GroepOverview'
+import Page_ActorOverview from './components/Pages/Page_ActorOverview';
 
 
 
@@ -57,6 +59,8 @@ root.render(
 
 
         <Route path='/groepen' element={<GroepManagement/>}/>
+        <Route path='/groepoverzicht' element={<Page_GroepOverview/>}/>
+        <Route path='/acteursoverzicht' element={<Page_ActorOverview></Page_ActorOverview>}/>
 
         <Route path='/winkelmand' element={<Page_Winkelmand/>}/>
         <Route path='/betaling' element={<Page_Betaling/>}/>

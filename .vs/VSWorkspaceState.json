@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\react",
+    "\\react\\Models"
   ],
-  "SelectedNode": "\\C:\\Users\\rmeda\\Desktop\\Project",
+  "SelectedNode": "\\react\\Models\\Actor.cs",
   "PreviewInSolutionExplorer": false
 }
