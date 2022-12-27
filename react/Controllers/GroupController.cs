@@ -1,5 +1,6 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.EntityFrameworkCore;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -15,20 +16,12 @@ public class GroupController : ControllerBase
 
     [HttpPost]
     [Route("creategroup")]
-    public async Task<ActionResult<Group>> createGroup([FromBody] Group g)
+    public async Task<ActionResult<Group>> createGroup(Group g)
     {
         await _context.Groups.AddAsync(g);
         await _context.SaveChangesAsync();
         return g;
     }
-
-    [HttpGet]
-    [Route("test")]
-    public async Task<ActionResult<Actor>> returnArtists()
-    {
-        return new Actor { Name = "Rashid", LastName = "Meda" };
-    }
-
 
     [HttpPost]
     [Route("createartist")]
@@ -40,6 +33,28 @@ public class GroupController : ControllerBase
         return a;
     }
 
+    [HttpGet]
+    [Route("test")]
+    public async Task<ActionResult<Actor>> returnArtists()
+    {
+        return new Actor { Name = "Rashid", LastName = "Meda" };
+    }
+
+    [HttpGet]
+    [Route("getactor")]
+    public async Task<ActionResult<Actor>> GetActor(int id)
+    {
+        return await _context.Actors.Include(a => a.Groups).Where(a => a.Id == id).FirstAsync();
+
+    }
+
+    [HttpGet]
+    [Route("getgroup")]
+    public async Task<ActionResult<Group>> GetGroup(int id)
+    {
+        return await _context.Groups.Include(g => g.Actors).Where(g => g.Id == id).FirstAsync();
+
+    }
 
     private async Task<Actor> findArtist(int id)
     {
@@ -60,4 +75,25 @@ public class GroupController : ControllerBase
         g.Actors.Add(await findArtist(artistId));
         await _context.SaveChangesAsync();
     }
+
+   
+}
+
+public class ActorDTO
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string LastName { get; set; }
+    public string? StageName { get; set; }
+    public virtual List<GroupDTO> Groups { get; private set; }
+}
+
+public class GroupDTO
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Description { get; set; }
+    public string? ImageUrl { get; set; }
+    public string? WebsiteUrl { get; set; }
+    public virtual List<Show> Shows { get; private set; }
 }

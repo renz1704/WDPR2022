@@ -7,8 +7,8 @@ var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 //New DbContext With Services
 
-builder.Services.AddDbContext<TheaterDbContext>(options => options.UseLazyLoadingProxies()
-.UseSqlite("Data source=Laak.db"));
+
+builder.Services.AddDbContext<TheaterDbContext>(options => options.UseSqlite("Data source=Laak.db"));
 
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
@@ -41,8 +41,10 @@ builder.Services.AddCors(options =>
                       });
 });
 
-builder.Services.AddControllersWithViews();
-builder.Services.AddRazorPages();
+builder.Services.AddControllersWithViews().AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+); ;
+
 
 var app = builder.Build();
 app.UseCors(MyAllowSpecificOrigins);
@@ -74,7 +76,6 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
-app.MapRazorPages();
 
 app.MapFallbackToFile("index.html"); ;
 
