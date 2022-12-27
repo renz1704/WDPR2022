@@ -78,22 +78,3 @@ public class GroupController : ControllerBase
 
    
 }
-
-public class ActorDTO
-{
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public string LastName { get; set; }
-    public string? StageName { get; set; }
-    public virtual List<GroupDTO> Groups { get; private set; }
-}
-
-public class GroupDTO
-{
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public string Description { get; set; }
-    public string? ImageUrl { get; set; }
-    public string? WebsiteUrl { get; set; }
-    public virtual List<Show> Shows { get; private set; }
-}
