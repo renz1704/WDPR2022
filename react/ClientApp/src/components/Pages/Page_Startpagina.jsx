@@ -4,7 +4,7 @@ import Header from '../Header';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 
-import Banner from '.../src/pictures/banner'
+import Banner from '../../pictures/banner.png'
 
 import Button from '@mui/material/Button';
 import axios from 'axios';
@@ -35,6 +35,144 @@ function Page_Startpagina() {
                 <img src={Banner}></img>
                 </div>
 
+            <div className='filter-content'>
+                <div className='filter-content-title'>
+                    <h1>Ik ben op zoek naar</h1>
+                </div>
+                
+                <div className='filter-content-filters'>
+                     <Autocomplete
+                    disablePortal
+                    id="combo-box-demo"
+                    options={[]}
+                    sx={{ width: 300 }}
+                    renderInput={(params) => <TextField {...params} label="Genre" />}
+                    />
+                                    <Autocomplete
+                    disablePortal
+                    id="combo-box-demo"
+                    options={[]}
+                    sx={{ width: 300 }}
+                    renderInput={(params) => <TextField {...params} label="Maand" />}
+                    />
+                    
+
+                    <Autocomplete
+                    disablePortal
+                    id="combo-box-demo"
+                    options={[]}
+                    sx={{ width: 300}}
+                    renderInput={(params) => <TextField {...params} label="Datum" />}
+                    />
+
+                    <Button variant="outlined">Zoeken</Button>
+                    </div>
+            </div>
+            <div className='show-content-top'>
+                <h1>Voorstellingen</h1>
+                <p>Bekijk hier het complete aanbod aan theatervoorstelling van het theater Laak</p>
+                </div>
+
+            <div className='show-content'>
+                
+
+                <div className='show-content-rows'>
+                    <div className='show-content-image'>
+                        
+                    </div>
+
+                    <div className='show-content-date-time'>
+                        <p>woensdag 20 november 2023</p>
+                        <p>Aanvang: 09:00 uur</p>
+                    </div>
+
+                    <div className='show-content-show-info'>
+                        <h2>Moord of Zelfmoord</h2>
+                        <p className='show-content-show-info-bold'>Jaap, Klaas, Steven, Piet</p>
+                        <p>Een hele spannende voorstelling </p>
+                        <p className='show-content-show-info-bold'>€19.25</p>
+                    </div>
+
+                    <Button variant="contained" className='button-tickets-kopen'>Tickets kopen</Button>
+                </div>
+
+            </div>
+
+            <div className='show-content'>
+                
+
+                <div className='show-content-rows'>
+                    <div className='show-content-image'>
+                        
+                    </div>
+
+                    <div className='show-content-date-time'>
+                        <p>woensdag 20 november 2023</p>
+                        <p>Aanvang: 09:00 uur</p>
+                    </div>
+
+                    <div className='show-content-show-info'>
+                        <h2>Moord of Zelfmoord</h2>
+                        <p className='show-content-show-info-bold'>Jaap, Klaas, Steven, Piet</p>
+                        <p>Een hele spannende voorstelling </p>
+                        <p className='show-content-show-info-bold'>€19.25</p>
+                    </div>
+
+                    <Button variant="contained" className='button-tickets-kopen'>Tickets kopen</Button>
+                </div>
+
+            </div>
+
+            <div className='show-content'>
+                
+
+                <div className='show-content-rows'>
+                    <div className='show-content-image'>
+                        
+                    </div>
+
+                    <div className='show-content-date-time'>
+                        <p>woensdag 20 november 2023</p>
+                        <p>Aanvang: 09:00 uur</p>
+                    </div>
+
+                    <div className='show-content-show-info'>
+                        <h2>Moord of Zelfmoord</h2>
+                        <p className='show-content-show-info-bold'>Jaap, Klaas, Steven, Piet</p>
+                        <p>Een hele spannende voorstelling </p>
+                        <p className='show-content-show-info-bold'>€19.25</p>
+                    </div>
+
+                    <Button  variant="contained" className='button-tickets-kopen'>Tickets kopen</Button>
+                </div>
+
+            </div>
+
+            <div className='show-content'>
+                
+
+                <div className='show-content-rows'>
+                    <div className='show-content-image'>
+                        
+                    </div>
+
+                    <div className='show-content-date-time'>
+                        <p>woensdag 20 november 2023</p>
+                        <p>Aanvang: 09:00 uur</p>
+                    </div>
+
+                    <div className='show-content-show-info'>
+                        <h2>Moord of Zelfmoord</h2>
+                        <p className='show-content-show-info-bold'>Jaap, Klaas, Steven, Piet</p>
+                        <p>Een hele spannende voorstelling </p>
+                        <p className='show-content-show-info-bold'>€19.25</p>
+                    </div>
+
+                    <Button  variant="contained" className='button-tickets-kopen'>Tickets kopen</Button>
+                </div>
+
+            </div>
+
 
             <div className="flex-container-horizontal">
 
@@ -55,43 +193,6 @@ function Page_Startpagina() {
                 <div >
                     <img src={Seats} alt="" />
                 </div>
-            </div>
-
-
-
-            <div className='main-content'>
-                <div className='filter-content'>
-                <Autocomplete
-                    disablePortal
-                    id="combo-box-demo"
-                    options={[]}
-                    sx={{ width: 300 }}
-                    renderInput={(params) => <TextField {...params} label="Genre" />}
-                    />
-                                    <Autocomplete
-                    disablePortal
-                    id="combo-box-demo"
-                    options={[]}
-                    sx={{ width: 300 }}
-                    renderInput={(params) => <TextField {...params} label="Genre" />}
-                    />
-                    
-
-                    <Autocomplete
-                    disablePortal
-                    id="combo-box-demo"
-                    options={[]}
-                    sx={{ width: 300}}
-                    renderInput={(params) => <TextField {...params} label="Maand" />}
-                    />
-
-                    <Button variant="contained">Zoeken</Button>
-
-
-                </div>
-
-
-
             </div>
         </>)
 }

@@ -11,7 +11,7 @@ function Header (props) {
     <header>
       <div className="flex-container-horizontal">
         <div>
-          <img src={Logo} alt="Theater Laak" />
+          <h1>Theater Laak</h1>
         </div>
         
         <div>
