@@ -1,7 +1,13 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\react",
+    "\\react\\ClientApp\\src",
+    "\\react\\ClientApp\\src\\components",
+    "\\react\\Controllers",
+    "\\react\\Properties",
+    "\\ShowManager"
   ],
-  "SelectedNode": "\\C:\\Users\\rmeda\\Desktop\\Proj",
+  "SelectedNode": "\\react.sln",
   "PreviewInSolutionExplorer": false
 }

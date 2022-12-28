@@ -16,6 +16,11 @@ namespace react.Controllers
             _context = context;
         }
 
+        [HttpGet]
+        [Route("genres")]
+        public async Task<ActionResult<List<Genre>>> GetAll(){
+            return _context.Genres.ToList();
+        }
 
         
         [HttpGet]

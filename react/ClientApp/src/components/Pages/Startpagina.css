@@ -1,0 +1,9 @@
+.banner{
+    width: auto;
+    height: 500px;
+    background-color: red;
+}
+
+.filter-content {
+    display:flex;
+}
