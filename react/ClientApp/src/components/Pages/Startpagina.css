@@ -51,6 +51,10 @@ body *{
     margin-bottom: 50px;
 }
 
+.show-content-image{
+    min-width: 300px;
+}
+
 .show-content-rows{
     display: flex;
     align-items: center;

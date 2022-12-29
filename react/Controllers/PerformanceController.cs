@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.EntityFrameworkCore;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -15,7 +15,7 @@ public class PerformanceController : ControllerBase
     [HttpGet]
     [Route("performances")]
     public async Task<ActionResult<List<Performance>>> GetAllAsync() {
-        return await Task.Run( () => {return _context.Performances.ToList();});
+        return await Task.Run( () => {return _context.Performances.Include(p => p.Show).Include(p => p.Show.Genres).ToList();});
     }
 
     [HttpPost]
@@ -27,6 +27,12 @@ public class PerformanceController : ControllerBase
         await _context.SaveChangesAsync();
         return p;
         
+    }
+
+    [HttpGet]
+    [Route("getPerformancesFilteredGenres")]
+    public async Task<ActionResult<List<Performance>>> getPerformancesFilteredGenre(string genre){
+        return _context.Performances.Where(p => p.Show.Genres.Any(g => g.GenreName == genre)).Include(p => p.Show).Include(p => p.Show.Genres).ToList();
     }
 
 

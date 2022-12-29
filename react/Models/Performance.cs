@@ -11,7 +11,7 @@ public class Performance
     public int Id { get; private set; }
     public DateTime StartTime { get; set; }
     public DateTime EndTime { get; set; }
-    public int Price {get;set;}
+
     public virtual Show Show { get; private set; }
     public virtual Room Room { get; private set; }
 
