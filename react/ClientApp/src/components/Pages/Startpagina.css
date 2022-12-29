@@ -54,6 +54,7 @@ body *{
 .show-content-rows{
     display: flex;
     align-items: center;
+    gap:2rem;
     height:200px;
     width:100%;
     
@@ -82,7 +83,7 @@ body *{
 
 .show-content-show-info
 {
-    margin-right: 200px;
+    min-width:600px;
 }
 
 

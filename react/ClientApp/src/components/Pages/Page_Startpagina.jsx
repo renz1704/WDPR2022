@@ -90,7 +90,8 @@ function Page_Startpagina() {
                                         </div>
 
                                         <div className='show-content-date-time'>
-                                            <p>Aanvang: {performance.startTime}</p>
+                                            <p>Aanvang: <br></br></p>
+                                            <p>{performance.startTime}</p>
                                     
                                         </div>
 
