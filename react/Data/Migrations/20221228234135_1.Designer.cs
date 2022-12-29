@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace react.Data.Migrations
 {
     [DbContext(typeof(TheaterDbContext))]
-    [Migration("20221227210324_3")]
-    partial class _3
+    [Migration("20221228234135_1")]
+    partial class _1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -380,8 +380,8 @@ namespace react.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("EndTime")
-                        .HasColumnType("INTEGER");
+                    b.Property<DateTime>("EndTime")
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("RoomId")
                         .HasColumnType("INTEGER");
@@ -389,8 +389,8 @@ namespace react.Data.Migrations
                     b.Property<int>("ShowId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("StartTime")
-                        .HasColumnType("INTEGER");
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 

@@ -377,8 +377,8 @@ namespace react.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("EndTime")
-                        .HasColumnType("INTEGER");
+                    b.Property<DateTime>("EndTime")
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("RoomId")
                         .HasColumnType("INTEGER");
@@ -386,8 +386,8 @@ namespace react.Data.Migrations
                     b.Property<int>("ShowId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("StartTime")
-                        .HasColumnType("INTEGER");
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
