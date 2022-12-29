@@ -61,8 +61,6 @@ body *{
 
 .show-content-date-time{
     text-align: right;
-    margin-left: 50px;
-    margin-right: 90px;
     color:rgb(223, 36, 36);
     font-weight: bold;
 }

@@ -14,8 +14,7 @@ builder.Services.AddDbContext<TheaterDbContext>(options => options
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 {
     //Insert Registration and Login requirements(example: min password length)
-})
-    .AddEntityFrameworkStores<TheaterDbContext>();
+}).AddEntityFrameworkStores<TheaterDbContext>();
 
 
 builder.Services.AddSwaggerGen();

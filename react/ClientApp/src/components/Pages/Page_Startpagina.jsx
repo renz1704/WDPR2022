@@ -14,18 +14,22 @@ import "./Startpagina.css"
 
 function Page_Startpagina() {
 
-    const [genreOptions] = [];
+    const [performances, SetPerformances] = useState([]);
     const [genres, SetGenres] = useState([]);
     const [datum, SetDatum] = useState([]);
     
 
 
     useEffect( () => {
-        axios.get(`https://localhost:7293/api/Genre/genres
-        `).then(response => SetGenres(response))
-
-        genres.map( (genre) => { genreOptions.push(genre.genreName)})
+        fetchPerformances();
+        console.log(performances);
+        //axios.get(`https://localhost:7293/api/Genre/genres
+        //`).then(response => SetGenres(response))
     }, [] )
+
+    const fetchPerformances = () => {
+        axios.get(`https://localhost:7293/api/Performance/performances`).then(res => SetPerformances(res.data));
+    }
 
     return (
         <>
@@ -73,105 +77,37 @@ function Page_Startpagina() {
                 <p>Bekijk hier het complete aanbod aan theatervoorstelling van het theater Laak</p>
                 </div>
 
-            <div className='show-content'>
+
+                {
+                    performances.map(performance => {
+                        return (
+                            <div className='show-content' key={performance.id}>
                 
 
-                <div className='show-content-rows'>
-                    <div className='show-content-image'>
-                        
-                    </div>
+                                    <div className='show-content-rows'>
+                                        <div className='show-content-image'>
+                                            
+                                        </div>
 
-                    <div className='show-content-date-time'>
-                        <p>woensdag 20 november 2023</p>
-                        <p>Aanvang: 09:00 uur</p>
-                    </div>
+                                        <div className='show-content-date-time'>
+                                            <p>Aanvang: {performance.startTime}</p>
+                                    
+                                        </div>
 
-                    <div className='show-content-show-info'>
-                        <h2>Moord of Zelfmoord</h2>
-                        <p className='show-content-show-info-bold'>Jaap, Klaas, Steven, Piet</p>
-                        <p>Een hele spannende voorstelling </p>
-                        <p className='show-content-show-info-bold'>€19.25</p>
-                    </div>
+                                        <div className='show-content-show-info'>
+                                            <h2>{performance.show.name}</h2>
+                                            <p className='show-content-show-info-bold'>Jaap, Klaas, Steven, Piet</p>
+                                            <p>{performance.show.description} </p>
+                                            <p className='show-content-show-info-bold'>€{performance.show.price}</p>
+                                        </div>
 
-                    <Button variant="contained" className='button-tickets-kopen'>Tickets kopen</Button>
-                </div>
+                                        <Button variant="contained" className='button-tickets-kopen'>Tickets kopen</Button>
+                                    </div>
 
-            </div>
-
-            <div className='show-content'>
-                
-
-                <div className='show-content-rows'>
-                    <div className='show-content-image'>
-                        
-                    </div>
-
-                    <div className='show-content-date-time'>
-                        <p>woensdag 20 november 2023</p>
-                        <p>Aanvang: 09:00 uur</p>
-                    </div>
-
-                    <div className='show-content-show-info'>
-                        <h2>Moord of Zelfmoord</h2>
-                        <p className='show-content-show-info-bold'>Jaap, Klaas, Steven, Piet</p>
-                        <p>Een hele spannende voorstelling </p>
-                        <p className='show-content-show-info-bold'>€19.25</p>
-                    </div>
-
-                    <Button variant="contained" className='button-tickets-kopen'>Tickets kopen</Button>
-                </div>
-
-            </div>
-
-            <div className='show-content'>
-                
-
-                <div className='show-content-rows'>
-                    <div className='show-content-image'>
-                        
-                    </div>
-
-                    <div className='show-content-date-time'>
-                        <p>woensdag 20 november 2023</p>
-                        <p>Aanvang: 09:00 uur</p>
-                    </div>
-
-                    <div className='show-content-show-info'>
-                        <h2>Moord of Zelfmoord</h2>
-                        <p className='show-content-show-info-bold'>Jaap, Klaas, Steven, Piet</p>
-                        <p>Een hele spannende voorstelling </p>
-                        <p className='show-content-show-info-bold'>€19.25</p>
-                    </div>
-
-                    <Button  variant="contained" className='button-tickets-kopen'>Tickets kopen</Button>
-                </div>
-
-            </div>
-
-            <div className='show-content'>
-                
-
-                <div className='show-content-rows'>
-                    <div className='show-content-image'>
-                        
-                    </div>
-
-                    <div className='show-content-date-time'>
-                        <p>woensdag 20 november 2023</p>
-                        <p>Aanvang: 09:00 uur</p>
-                    </div>
-
-                    <div className='show-content-show-info'>
-                        <h2>Moord of Zelfmoord</h2>
-                        <p className='show-content-show-info-bold'>Jaap, Klaas, Steven, Piet</p>
-                        <p>Een hele spannende voorstelling </p>
-                        <p className='show-content-show-info-bold'>€19.25</p>
-                    </div>
-
-                    <Button  variant="contained" className='button-tickets-kopen'>Tickets kopen</Button>
-                </div>
-
-            </div>
+                             </div>
+                        )
+                    })
+                }
 
 
             <div className="flex-container-horizontal">
