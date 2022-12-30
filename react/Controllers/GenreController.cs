@@ -38,5 +38,19 @@ namespace react.Controllers
             await _context.SaveChangesAsync();
             return genre;
         }
+
+
+        [HttpGet]
+        [Route("GetGenresString")]
+        public async Task<ActionResult<List<string>>> GetGenreStringsAsync()
+        {
+            List<string> Genres = new List<string>();
+            foreach (Genre g in _context.Genres)
+            {
+                Genres.Add(g.GenreName);
+            }
+
+            return Genres;
+        }
     }
 }

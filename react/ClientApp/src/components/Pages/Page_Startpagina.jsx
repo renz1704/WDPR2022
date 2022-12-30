@@ -15,6 +15,7 @@ import "./Startpagina.css"
 function Page_Startpagina() {
 
     const [performances, SetPerformances] = useState([]);
+    const [genre, SetGenre] = useState("Horror");
     const [genres, SetGenres] = useState([]);
     const [datum, SetDatum] = useState([]);
     
@@ -22,6 +23,7 @@ function Page_Startpagina() {
 
     useEffect( () => {
         fetchPerformances();
+        fetchGenres();
         console.log(performances);
         //axios.get(`https://localhost:7293/api/Genre/genres
         //`).then(response => SetGenres(response))
@@ -29,6 +31,17 @@ function Page_Startpagina() {
 
     const fetchPerformances = () => {
         axios.get(`https://localhost:7293/api/Performance/performances`).then(res => SetPerformances(res.data));
+        console.log(performances);
+    }
+
+    const fetchGenres = () => {
+        axios.get(`https://localhost:7293/api/Genre/GetGenresString`).then(res => SetGenres(res.data));
+    }
+
+    const filterPerformances = () => {
+        console.log(genre);
+        axios.get(`https://localhost:7293/api/Performance/getPerformancesFilteredGenres?genre=${genre}
+        `).then(res => SetPerformances(res.data))
     }
 
     return (
@@ -48,7 +61,9 @@ function Page_Startpagina() {
                      <Autocomplete
                     disablePortal
                     id="combo-box-demo"
-                    options={[]}
+                    options={genres}
+                    onChange={(event, newValue) => SetGenre(newValue)}
+
                     sx={{ width: 300 }}
                     renderInput={(params) => <TextField {...params} label="Genre" />}
                     />
@@ -69,12 +84,12 @@ function Page_Startpagina() {
                     renderInput={(params) => <TextField {...params} label="Datum" />}
                     />
 
-                    <Button variant="outlined">Zoeken</Button>
+                    <Button variant="outlined" onClick={filterPerformances}>Zoeken</Button>
                     </div>
             </div>
             <div className='show-content-top'>
                 <h1>Voorstellingen</h1>
-                <p>Bekijk hier het complete aanbod aan theatervoorstelling van het theater Laak</p>
+                <p>Bekijk hier het complete aanbod aan theatervoorstellingen van het theater Laak</p>
                 </div>
 
 
@@ -92,13 +107,15 @@ function Page_Startpagina() {
                                         <div className='show-content-date-time'>
                                             <p>Aanvang: <br></br></p>
                                             <p>{performance.startTime}</p>
+                                            <p>Zaal: {performance.room.roomNumber}</p>
+                                            
                                     
                                         </div>
 
                                         <div className='show-content-show-info'>
                                             <h2>{performance.show.name}</h2>
-                                            <p className='show-content-show-info-bold'>Jaap, Klaas, Steven, Piet</p>
                                             <p>{performance.show.description} </p>
+                                            <p>Genre moet hier komen te staan</p>
                                             <p className='show-content-show-info-bold'>€{performance.show.price}</p>
                                         </div>
 
