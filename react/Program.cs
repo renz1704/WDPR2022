@@ -1,31 +1,34 @@
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
-using react.Data;
-using react.Models;
 
 var builder = WebApplication.CreateBuilder(args);
-var  MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+//New DbContext With Services
+
+builder.Services.AddDbContext<TheaterDbContext>(options => options
+.UseSqlite("Data source=Laak.db"));
+
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
+{
+    //Insert Registration and Login requirements(example: min password length)
+}).AddEntityFrameworkStores<TheaterDbContext>();
+
+
+builder.Services.AddSwaggerGen();
+
+
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite(connectionString));
-    builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-builder.Services.AddSwaggerGen();
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+
 
 builder.Services.AddAuthentication()
     .AddIdentityServerJwt();
 
-builder.Services.AddDbContext<GroupDbContext>(options =>
-    options.UseSqlite("Data Source=Groepen.db"));
 
- 
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddCors(options =>
@@ -37,8 +40,10 @@ builder.Services.AddCors(options =>
                       });
 });
 
-builder.Services.AddControllersWithViews();
-builder.Services.AddRazorPages();
+builder.Services.AddControllersWithViews().AddNewtonsoftJson(options =>
+      options.SerializerSettings.ReferenceLoopHandling =
+        Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
 
 var app = builder.Build();
 app.UseCors(MyAllowSpecificOrigins);
@@ -70,8 +75,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
-app.MapRazorPages();
 
-app.MapFallbackToFile("index.html");;
+app.MapFallbackToFile("index.html"); ;
 
 app.Run();

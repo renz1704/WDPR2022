@@ -1,0 +1,96 @@
+body *{ 
+    margin:0;
+    padding:0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.banner{
+    width: auto;
+    
+}
+
+.banner img{
+    width: 100%;
+    height: auto;
+}
+
+.filter-content {
+    padding-top: 30px;
+    padding-left: 100px;
+    padding-right: 200px;
+    padding-bottom: 50px;
+    width: 100%;
+    border-color: 20px solid red;
+    
+}
+
+.filter-content-title{
+    font-size: 30px;
+}
+
+
+.filter-content-filters{
+    margin-top: 35px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.show-content-top{
+    margin-left:100px;
+    margin-right:100px;
+}
+
+.show-content{
+    margin-left:100px;
+    margin-right:100px;
+    margin-top: 30px;
+}
+
+.show-content-top{
+    margin-bottom: 50px;
+}
+
+.show-content-image{
+    min-width: 300px;
+}
+
+.show-content-rows{
+    display: flex;
+    align-items: center;
+    gap:2rem;
+    height:200px;
+    width:100%;
+    
+}
+
+.show-content-date-time{
+    text-align: right;
+    color:rgb(223, 36, 36);
+    font-weight: bold;
+}
+
+.show-content-show-info h2{
+    color:rgb(223, 36, 36);
+    font-weight: bold;
+}
+
+.show-content-show-info-bold{
+    font-weight: bold;
+}
+
+.show-content-image{
+    width: 400px;
+    height: 200px;
+    background-color: rgb(207, 255, 207);
+}
+
+.show-content-show-info
+{
+    min-width:600px;
+}
+
+
+.button-tickets-kopen{
+    size: 100px;
+}

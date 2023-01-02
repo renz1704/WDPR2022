@@ -1,13 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication;
-using react.Models;
 
 //De userManager kan gebruikt worden om de rollen toe te kennen.
 
@@ -27,7 +23,7 @@ namespace react.Controllers
         }
         [HttpPost]
         [Route("login")]
-        public async Task<IActionResult> Login([FromBody] Login model)
+        public async Task<IActionResult> Login([FromBody] LoginDTO model)
         {
             var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
 
@@ -41,7 +37,7 @@ namespace react.Controllers
 
         [HttpPost]
         [Route("registreer")]
-        public async Task<ActionResult> Registreer([FromBody] Register model)
+        public async Task<ActionResult> Registreer([FromBody] RegisterDTO model)
         {
             var user = new IdentityUser { UserName = model.Email, Email = model.Email };
 
@@ -51,5 +47,40 @@ namespace react.Controllers
 
         }
 
+        [HttpGet]
+        [Route("getUser/{id}")]
+        public async Task<ActionResult<string>> GetUserId(String id)
+        {
+            // Check if the user exists in the database
+            var user = await _userManager.Users.SingleOrDefaultAsync(x => x.Id == id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            // Return the user ID
+            return user.Id;
+        }
+
+
+
+        //     [HttpGet]
+        // public async Task<string> GetCurrentUserId()
+        // {
+        // 	ApplicationUser usr = await GetCurrentUserAsync();
+        // 	return usr?.Id;
+        // }
+    }
+
+    public class LoginDTO
+    {
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
+    public class RegisterDTO
+    {
+        public string Email { get; set; }
+        public string Password { get; set; }
     }
 }

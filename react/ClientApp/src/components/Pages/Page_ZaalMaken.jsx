@@ -27,7 +27,7 @@ function Page_ZaalMaken(){
     const incrementRow = () => {setRowCount(rowCount+1)}
     
     const makeNewRoom = () => {
-        fetch("http://localhost:5152/api/Room/createRoom",{
+        fetch("http://localhost:7293/api/Room/createRoom",{
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
