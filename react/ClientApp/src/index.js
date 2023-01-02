@@ -65,6 +65,7 @@ root.render(
         {<Route path='/begunstigersportaal' element={<Page_Begunstigersportaal />} /> /*dit moet nog weggehaald/geautoriseerd worden, het begunstigersportaal moet alleen voor donateurs zijn*/}
         <Route path='/inloggen' element={<LoginPage/>}/>
         <Route path='/registreren' element={<RegisterPage/>}/>
+
       </Routes>
 
     </Router>

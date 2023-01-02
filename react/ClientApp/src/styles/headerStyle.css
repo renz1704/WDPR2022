@@ -1,25 +1,43 @@
 header {
     background-color: black;
     color: white;
+
 }
 
 li a {
     display: flex;
-    color: var(--light_color);
+    color: var(--black_color);
     background-color: var(--black_color);
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    /* dikte van de font */
+    font-size: 1.2em;
 }
+
+
 
 li {
     display: inline-block;
 }
 
 li a:hover {
-    background-color: var(--light_color);
-    color: var(--dark_color)
+    color: var(--blue_color);
 }
+
+a:hover{
+    color: white;
+}
+
+.User{
+    color: var(--light_color);
+    background-color: var(--black_color);
+    text-align: center;
+    padding: 12px 14px;
+    text-decoration: none;
+    display: inline-block;
+}
+
 
 ul {
     list-style-type: none;
@@ -33,5 +51,27 @@ ul {
 
 img {
     margin: 5%;
-    width: 30%;
+    width: 40%;
 }
+
+
+
+#menu-appbar{
+    color: grey;
+}
+
+.nav{
+    text-decoration: none;
+}
+
+.nav:hover{
+    color: rgb(1, 1, 124);
+    opacity: 4.0;
+}
+
+/* xs beeldscherm */
+/* @media (max-width: 800px) {
+    img{
+       margin: 5% auto;
+    }
+} */
