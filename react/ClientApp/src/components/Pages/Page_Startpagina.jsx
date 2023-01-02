@@ -47,14 +47,13 @@ function Page_Startpagina() {
     return (
         <>
             <Header />
-
             <div className='banner'>
-                <img src={Banner}></img>
+                <h1>Welkom bij het Theater Laak</h1>
                 </div>
 
             <div className='filter-content'>
                 <div className='filter-content-title'>
-                    <h1>Ik ben op zoek naar</h1>
+                    <h2 >Ik ben op zoek naar</h2>
                 </div>
                 
                 <div className='filter-content-filters'>
@@ -126,8 +125,8 @@ function Page_Startpagina() {
                         )
                     })
                 }
-
-
+                <hr></hr>  
+                
             <div className="flex-container-horizontal">
 
                 <div >
