@@ -9,7 +9,8 @@ const Login = () => {
   const [password, setPassword] = useState("");
   // const navigate = useNavigate();
 
-  const handleSubmit = (email, password) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
      //reqres registered sample user
      const loginPayload = {
        email: email,

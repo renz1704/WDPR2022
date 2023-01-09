@@ -46,20 +46,6 @@ const Register = () => {
           type="email"
           onChange={(e) => setEmail(e.target.value)}
         ></input>
-        <p>Voornaam</p>
-        <input
-          required
-          type="name"
-          className="input-name"
-          onChange={(event) => setName(event.target.value)}
-        ></input>
-        <p>Achternaam</p>
-        <input
-          required
-          type="lastName"
-          className="input-name"
-          onChange={(event) => setlastName(event.target.value)}
-        ></input>
         <p>Wachtwoord</p>
         <input
           required
