@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Link , useNavigate} from "react-router-dom";
+import Header from "../../Header";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -16,7 +17,7 @@ const Register = () => {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
-            'Content-type' : 'application/json'
+            'Content-Type' : 'application/json'
 
         },
         body: JSON.stringify({email: email, password: password, name: name, lastName: lastName, donatedAmount : 0})
@@ -27,7 +28,7 @@ const Register = () => {
           console.log(res)
       }
       else{
-          navigate("/login");
+          navigate("/inloggen");
       }
   })
   };
@@ -35,11 +36,13 @@ const Register = () => {
 
   return (
     <div>
+      <Header/>
+      <div className="bg">
       <form className="loginForm" onSubmit={processRegistration}>
         <h1 className="Title">Registreren</h1>
         <p>Email</p>
         <input
-          required
+          required="Email is verplicht."
           type="email"
           onChange={(e) => setEmail(e.target.value)}
         ></input>
@@ -78,6 +81,7 @@ const Register = () => {
           </Link>
         </p>
       </form>
+      </div>
     </div>
   );
   };

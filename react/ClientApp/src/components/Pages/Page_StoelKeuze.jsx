@@ -8,40 +8,20 @@ import PopUp from "../PopUp";
 
 function Page_StoelKeuze(){
 
-    {/*deze gegevens moeten gefetched worden*/}
-    const [data, setData] = useState(null);
-    
+    {/*seats is een lijst van stoelen per rij*/}
+    const [seats, setSeats] = useState([]);
+
     useEffect(() => {
-        fetch('http://localhost:5152/api/Room/1', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-            .then((response) => response.json())
-            .then((responseJson) => {
-                setData(responseJson)
-                
-                for (let i = 0; i < responseJson.rows.length; i++){
-                    setRows(oldArray => [...oldArray, responseJson.rows[i]])
-                    console.log(responseJson.rows[i])
-                }
-                console.log(rows)
-                
-                console.log(responseJson)})
-            .catch((error) => {
-                console.error(error);
-            });
-    },[]);
-    
-    let row1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    let row2 = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-    let row3 = [21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
-        let rows = [row1,row2]
-    const [radadows, setRows] = useState([row1, row2])
-    
+        fetch('http://localhost:5152/api/Room/1')
+            .then(response => response.json())
+            .then(data => {
+                const seats = data.rows.map(row => row.seats.map(seat => seat.number));
+                setSeats(seats);
+            }).then(console.log(seats));
+    }, []);
+
+    {/*selectedSeats zijn de stoelen die de gebruiker kiest om te kopen*/}
     const [selectedSeats, setSeat] = useState([]);
-    
     const toggleSeat = (seatNumber) => {
         
         {/*dit checkt of het nummer van de stoel al geselecteerd is
@@ -81,6 +61,8 @@ function Page_StoelKeuze(){
         }
     }
     
+    
+    
     return(
         <>
             <Header/>
@@ -90,37 +72,33 @@ function Page_StoelKeuze(){
             <div className="flex-container-vertical" style={{margin:"5%"}}>
 
                 <h1 style={{marginBottom:"2%"}}>Kies uw stoel(en) om een bestelling te plaatsen.</h1>
-                
+
+                <div>podiumfoto</div>
                 {/*seatbuttons worden per row aangemaakt ze krijgen mee:
                  seatnumber = nummer van de stoel
                  toggleseat = een methode om de stoel in/uit de lijst selectedSeats te zetten
                   ishighlighted = een boolean om de kleur van de stoel te bepalen*/}
                 <div>
-                    <tbody>
 
-                   
-                        <>
-                            {rows.map((row, rowIndex) => (
-                                <tr key={rowIndex}>
-                                    {row.map((id, cellIndex) => (
-                                        <td key={cellIndex}>
-                                            <SeatButton
-                                                seatNumber={id}
-                                                toggleSeat={toggleSeat}
-                                                isHighlighted={selectedSeats.includes(id)}
-                                            />
-                                        </td>
-                                    ))}
-                                </tr>
-                            ))}
-                            <div>hoi</div>
-                        </>
-                    
+                    <tbody>
+                    {seats.map((row, i) => (
+                        <tr  className="flex-container-horizontal" key={i}>
+                            <td style={{border:"0px"}}>
+                                {row.map((seatNumber, j) => (
+                                    <td key={j} style={{display: 'inline-block', textAlign: 'center'}}>
+                                        <SeatButton
+                                            seatNumber={seatNumber}
+                                            toggleSeat={toggleSeat}
+                                            isHighlighted={selectedSeats.includes(seatNumber)}
+                                        />
+                                    </td>
+                                ))}
+                            </td>
+                        </tr>
+                    ))}
                     </tbody>
                 </div>
                 
-                <div>podiumfoto</div>
-
                 <div className="flex-container-horizontal" style={{width:"100%", height:"100%"}}>
                     <div>
                         <ShowOrder toggleSeat={toggleSeat} seats={selectedSeats} canEdit={true}/>
