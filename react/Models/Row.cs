@@ -6,6 +6,7 @@ public class Row
         Seats = new List<Seat>();
     }
     public int Id { get; set; }
-    public virtual List<Seat> Seats { get; private set; }
-    public virtual Rank Rank { get; set; }
+    public List<Seat> Seats { get; private set; }
+
+    public int Rank { get; set; }
 }

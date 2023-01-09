@@ -10,20 +10,21 @@ function Page_StoelKeuze(){
 
     {/*seats is een lijst van stoelen per rij*/}
     const [seats, setSeats] = useState([]);
-
+    {/*ipv room/1 moet hier bijv props.room worden gebruikt*/}
     useEffect(() => {
-        fetch('http://localhost:5152/api/Room/1')
+        fetch('https://localhost:7293/api/Room/3')
             .then(response => response.json())
             .then(data => {
-                const seats = data.rows.map(row => row.seats.map(seat => seat.number));
+                console.log(data)
+                const seats = data.rows.map(row => row.seats.map(seat => seat.id));
                 setSeats(seats);
-            }).then(console.log(seats));
+            });
     }, []);
 
     {/*selectedSeats zijn de stoelen die de gebruiker kiest om te kopen*/}
     const [selectedSeats, setSeat] = useState([]);
     const toggleSeat = (seatNumber) => {
-        
+
         {/*dit checkt of het nummer van de stoel al geselecteerd is
         als dit niet zo is wordt de stoel toegevoegd aan de lijst*/}
         if (!selectedSeats.includes(seatNumber)) {
@@ -44,7 +45,7 @@ function Page_StoelKeuze(){
     {/*navigate wordt gebruikt om naar de volgende pagina te gaan wanneer er tussen
      de 1tm25 stoelen zijn gekozen*/}
     const navigate = useNavigate();
-    
+
     const onNextButtonClick = () => {
         if (selectedSeats.length < 1){
             setpopUpMessage("Kies minstens 1 stoel om een bestelling te plaatsen.")
@@ -60,15 +61,13 @@ function Page_StoelKeuze(){
             navigate('/winkelmand');
         }
     }
-    
-    
-    
+
     return(
         <>
             <Header/>
-            
+
             {showPopUp && (<PopUp message={popUpMessage} onClose={() => setShowPopUp(false)}/>)}
-            
+
             <div className="flex-container-vertical" style={{margin:"5%"}}>
 
                 <h1 style={{marginBottom:"2%"}}>Kies uw stoel(en) om een bestelling te plaatsen.</h1>
@@ -84,12 +83,12 @@ function Page_StoelKeuze(){
                     {seats.map((row, i) => (
                         <tr  className="flex-container-horizontal" key={i}>
                             <td style={{border:"0px"}}>
-                                {row.map((seatNumber, j) => (
+                                {row.map((seatId, j) => (
                                     <td key={j} style={{display: 'inline-block', textAlign: 'center'}}>
                                         <SeatButton
-                                            seatNumber={seatNumber}
+                                            seatId={seatId}
                                             toggleSeat={toggleSeat}
-                                            isHighlighted={selectedSeats.includes(seatNumber)}
+                                            isHighlighted={selectedSeats.includes(seatId)}
                                         />
                                     </td>
                                 ))}
@@ -98,7 +97,7 @@ function Page_StoelKeuze(){
                     ))}
                     </tbody>
                 </div>
-                
+
                 <div className="flex-container-horizontal" style={{width:"100%", height:"100%"}}>
                     <div>
                         <ShowOrder toggleSeat={toggleSeat} seats={selectedSeats} canEdit={true}/>
@@ -106,16 +105,16 @@ function Page_StoelKeuze(){
                     <div>
                         <button
                             style={{
-                                width:"300px", 
+                                width:"300px",
                                 height:"50px"}}
                             onClick={() => onNextButtonClick()}>
                             Voeg toe aan winkelmand
                         </button>
                     </div>
                 </div>
-                
+
             </div>
-            
+
         </>
     )
 }
