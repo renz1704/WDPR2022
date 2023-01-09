@@ -17,6 +17,11 @@ import Page_ContactGegevens from './components/Pages/Page_ContactGegevens';
 import Page_Toegankelijkheid from './components/Pages/Page_Toegankelijkheid';
 import Page_Begunstigersportaal from './components/Pages/Page_Begunstigersportaal';
 
+import Page_BezoekersPortaal from './components/Pages/BezoekersPortaal/Page_BezoekersPortaal';
+import Page_Gegevens from './components/Pages/BezoekersPortaal/Page_Gegevens';
+import Page_Tickets from './components/Pages/BezoekersPortaal/Page_Tickets';
+import Page_Doneren from './components/Pages/BezoekersPortaal/Page_Doneren';
+
 import Page_Winkelmand from "./components/Pages/Page_Winkelmand";
 import Page_Betaling from "./components/Pages/Page_Betaling";
 import Page_Betaald from "./components/Pages/Page_Betaald";
@@ -61,6 +66,12 @@ root.render(
         <Route path='/winkelmand' element={<Page_Winkelmand/>}/>
         <Route path='/betaling' element={<Page_Betaling/>}/>
         <Route path='/betaald' element={<Page_Betaald/>}/>
+
+          {/* Bezoekersportaal: */}
+        <Route path='/bezoekersportaal' element={<Page_BezoekersPortaal/>}/>
+        <Route path='/gegevens' element={<Page_Gegevens/>}/>
+        <Route path='/tickets' element={<Page_Tickets/>}/>
+        <Route path='/doneren' element={<Page_Doneren/>}/>
 
         {<Route path='/begunstigersportaal' element={<Page_Begunstigersportaal />} /> /*dit moet nog weggehaald/geautoriseerd worden, het begunstigersportaal moet alleen voor donateurs zijn*/}
         <Route path='/inloggen' element={<LoginPage/>}/>

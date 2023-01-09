@@ -79,10 +79,9 @@ function ResponsiveAppBar() {
             >
               <div className="flex-container-vertical" id='menu'>
               <Button size='large' variant="text"><Link  className='nav' to="/">Startpagina</Link></Button>
-              <Button size='large' variant="text"><Link  className='nav' to="/voorstellingen">Voorstellingen</Link></Button>
-              <Button size='large' variant="text"><Link  className='nav' to="/toegankelijkheid">Toegankelijkheid</Link></Button>
-              <Button size='large' variant="text"><Link  className='nav' to="/contactgegevens">Contactgegevens</Link></Button>
-              <Button size='large' variant="text"><Link  className='nav' to="/bezoekersportaal">Mijn Theater Laak</Link></Button>
+              <Button size='large' variant="text"><Link  className='nav' to="/gegevens">Gegevens</Link></Button>
+              <Button size='large' variant="text"><Link  className='nav' to="/tickets">Tickets</Link></Button>
+              <Button size='large' variant="text"><Link  className='nav' to="/doneren">Doneren</Link></Button>
               </div>
             </Menu>
           </Box>
@@ -128,46 +127,17 @@ function ResponsiveAppBar() {
             >
               <AccountCircleIcon />
             </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'flex', lg: 'none', },textDecoration: 'none' }
-              }
-            >
-              <div className="flex-container-vertical" id='menu'>
-                <li className="User"><Button size='small' variant='outlined' disableElevation><Link to="/inloggen">Inloggen</Link></Button></li>
-                <li className="User"><Button size='small' variant='contained' disableElevation><Link to="/registreren">Registreren</Link></Button></li>
-              </div>
-            </Menu>
           </Box>
          
 
           <Box sx={{flexGrow: 1, display: { xs: 'none', lg: 'flex' } }}>
        
                <li><a><Button variant="text"><Link to="/">Startpagina</Link></Button></a></li>
-              <li><a><Button variant="text"><Link to="/voorstellingen">Voorstellingen</Link></Button></a></li>
-              <li><a><Button variant="text"><Link to="/toegankelijkheid">Toegankelijkheid</Link></Button></a></li>
-              <li><a><Button variant="text"><Link to="/contactgegevens">Contactgegevens</Link></Button></a></li>
-              <li><a><Button variant="text"><Link to="/bezoekersportaal">Mijn Theater Laak</Link></Button></a></li>
+              <li><a><Button variant="text"><Link to="/gegevens">Gegevens</Link></Button></a></li>
+              <li><a><Button variant="text"><Link to="/tickets">Tickets</Link></Button></a></li>
+              <li><a><Button variant="text"><Link to="/doneren">Doneren</Link></Button></a></li>
+              
           </Box>
-            <Box sx={{ display: {xs: 'none', lg: 'flex'} }}>
-  
-            <li className="User"><Button variant='outlined' disableElevation><Link to="/inloggen">Inloggen</Link></Button></li>
-            <li className="User"><Button variant='contained' disableElevation><Link to="/registreren">Registreren</Link></Button></li>
-
-            </Box>
 
 
         {/* ALS GEBRUIKER IS INGELOGD DIT LATEN ZIEN ---------------------------------------------------------------------------------------------------------------------------------------- */}
