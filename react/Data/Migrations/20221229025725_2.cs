@@ -5,25 +5,25 @@
 namespace react.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class _3 : Migration
+    public partial class _2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "AccountNumber",
-                table: "Payment",
-                type: "TEXT",
+            migrationBuilder.AddColumn<int>(
+                name: "Price",
+                table: "Performances",
+                type: "INTEGER",
                 nullable: false,
-                defaultValue: "");
+                defaultValue: 0);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "AccountNumber",
-                table: "Payment");
+                name: "Price",
+                table: "Performances");
         }
     }
 }

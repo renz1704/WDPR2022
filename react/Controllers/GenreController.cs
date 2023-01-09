@@ -16,6 +16,11 @@ namespace react.Controllers
             _context = context;
         }
 
+        [HttpGet]
+        [Route("genres")]
+        public async Task<ActionResult<List<Genre>>> GetAll(){
+            return _context.Genres.ToList();
+        }
 
         
         [HttpGet]
@@ -32,6 +37,20 @@ namespace react.Controllers
             await _context.Genres.AddAsync(genre);
             await _context.SaveChangesAsync();
             return genre;
+        }
+
+
+        [HttpGet]
+        [Route("GetGenresString")]
+        public async Task<ActionResult<List<string>>> GetGenreStringsAsync()
+        {
+            List<string> Genres = new List<string>();
+            foreach (Genre g in _context.Genres)
+            {
+                Genres.Add(g.GenreName);
+            }
+
+            return Genres;
         }
     }
 }

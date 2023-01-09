@@ -10,18 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace react.Data.Migrations
 {
     [DbContext(typeof(TheaterDbContext))]
-    [Migration("20221226214229_1")]
+    [Migration("20221228234135_1")]
     partial class _1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.1")
-                .HasAnnotation("Proxies:ChangeTracking", false)
-                .HasAnnotation("Proxies:CheckEquality", false)
-                .HasAnnotation("Proxies:LazyLoading", true);
+            modelBuilder.HasAnnotation("ProductVersion", "7.0.1");
 
             modelBuilder.Entity("Actor", b =>
                 {
@@ -355,6 +351,10 @@ namespace react.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("AccountNumber")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<double>("Amount")
                         .HasColumnType("REAL");
 
@@ -380,8 +380,8 @@ namespace react.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("EndTime")
-                        .HasColumnType("INTEGER");
+                    b.Property<DateTime>("EndTime")
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("RoomId")
                         .HasColumnType("INTEGER");
@@ -389,8 +389,8 @@ namespace react.Data.Migrations
                     b.Property<int>("ShowId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("StartTime")
-                        .HasColumnType("INTEGER");
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 

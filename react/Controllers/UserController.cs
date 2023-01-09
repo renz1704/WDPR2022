@@ -1,5 +1,9 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication;
 
 //De userManager kan gebruikt worden om de rollen toe te kennen.
 
@@ -42,6 +46,30 @@ namespace react.Controllers
             return !resultaat.Succeeded ? new BadRequestObjectResult(resultaat) : StatusCode(201);
 
         }
+
+        [HttpGet]
+        [Route("getUser/{id}")]
+        public async Task<ActionResult<string>> GetUserId(String id)
+        {
+            // Check if the user exists in the database
+            var user = await _userManager.Users.SingleOrDefaultAsync(x => x.Id == id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            // Return the user ID
+            return user.Id;
+        }
+
+
+
+        //     [HttpGet]
+        // public async Task<string> GetCurrentUserId()
+        // {
+        // 	ApplicationUser usr = await GetCurrentUserAsync();
+        // 	return usr?.Id;
+        // }
     }
 
     public class LoginDTO

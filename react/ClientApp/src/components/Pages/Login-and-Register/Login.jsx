@@ -38,6 +38,7 @@ const handleSubmit = (e) => {
   return (
     <div>
       <Header/>
+      <div className="bg">
     <form className="loginForm" onSubmit={handleSubmit}>
       
       <h1>Login</h1>
@@ -69,6 +70,7 @@ const handleSubmit = (e) => {
         </Link>
       </p>
     </form>
+    </div>
     </div>
   );
 };

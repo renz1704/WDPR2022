@@ -37,6 +37,7 @@ const Register = () => {
   return (
     <div>
       <Header/>
+      <div className="bg">
       <form className="loginForm" onSubmit={processRegistration}>
         <h1 className="Title">Registreren</h1>
         <p>Email</p>
@@ -80,6 +81,7 @@ const Register = () => {
           </Link>
         </p>
       </form>
+      </div>
     </div>
   );
   };

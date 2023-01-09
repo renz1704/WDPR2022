@@ -56,5 +56,7 @@ public class ShowController
         return await _context.Shows.Include(s => s.Groups).Include(s => s.Genres).FirstOrDefaultAsync(s => s.Id == id);
     }
 
+
+
 }
 
