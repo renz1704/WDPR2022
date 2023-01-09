@@ -3,11 +3,11 @@ import "./login-register.css";
 import { Link , useNavigate} from "react-router-dom";
 import Header from "../../Header";
 
-
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
 
 const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,7 +30,10 @@ const handleSubmit = (e) => {
           navigate("/");
       }
 
-  })
+  });
+
+  
+
     const loginDetails = { email, password };
     console.log(loginDetails);
     };
@@ -56,6 +59,7 @@ const handleSubmit = (e) => {
         className="input-password"
         onChange={(event) => setPassword(event.target.value)}
       ></input>
+     
       <button
         type="onSubmit"
         disabled={email == "" || password == ""}

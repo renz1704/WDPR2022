@@ -109,8 +109,7 @@ function ResponsiveAppBar() {
             sx={{
               display: {xs:'flex', lg: 'none' }    ,
               width: '35%',  
-              // zet hem in het midden zonder absolute positioning
-              transform: 'translateX(100%)',
+              transform: 'translateX(110%)',    
 
             }}
           >

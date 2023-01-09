@@ -13,7 +13,11 @@ builder.Services.AddDbContext<TheaterDbContext>(options => options
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 {
-    //Insert Registration and Login requirements(example: min password length)
+    options.Password.RequireLowercase = true;
+    options.Password.RequireNonAlphanumeric = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequiredLength = 7;
+    options.Password.RequiredUniqueChars = 1;
 }).AddEntityFrameworkStores<TheaterDbContext>();
 
 
