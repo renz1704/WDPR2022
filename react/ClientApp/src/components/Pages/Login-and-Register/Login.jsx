@@ -7,67 +7,29 @@ import axios from "axios";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-     //reqres registered sample user
+     
      const loginPayload = {
        email: email,
        password: password
      }
      return axios.post('https://localhost:7293/api/User/login', { email, password })
      .then(res => {
-       // Als de aanmelding succesvol was, sla de JWT token op in de opslag van de browser
-       localStorage.setItem('token', res.data.token);
-       // Stel de autorisatiekop in op de token
-       axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.token}`;
+
+      if(res.status !== 200)
+      {
+        localStorage.setItem('token', res.data.token);
+        axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.token}`;    
+       }
+       else{
+           navigate("/");
+       }
      });
+   }
 
-    //  axios.post("https://localhost:7293/api/User/login", loginPayload)
-    //    .then(response => {
-    //      //get token from response
-    //      const token  =  response.data.token;
-    //      console.log(response);
-   
-    //      //set JWT token to local
-    //      localStorage.setItem("token", token);
-   
-        //  set token to axios common header
-        //  setAuthToken(token);
-   
-  //redirect user to home page
-         //window.location.href = '/'
-  //      })
-  //      .catch(err => console.log(err));
-  //  };
-
-    }
-// const handleSubmit = (e) => {
-//     e.preventDefault();
-   
-//     fetch('https://localhost:7293/api/User/login', {
-//         method: 'POST',
-//         headers: {
-//             'Accept': 'application/json',
-//             'Content-Type' : 'application/json'
-
-//         },
-//         body: JSON.stringify({email: email, password: password})
-//     })
-//     .then((res) => {
-//       if(res.status !== 200)
-//       {
-//           console.log(res)
-//       }
-//       else{
-//           navigate("/");
-//       }
-
-//   })
-//     const loginDetails = { email, password };
-//     console.log(loginDetails);
-//     };
 
   return (
     <div>
