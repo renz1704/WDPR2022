@@ -14,7 +14,6 @@ public class TheaterDbContext : IdentityDbContext
     public DbSet<Group> Groups { get; set; }
     public DbSet<Payment> Payment { get; set; }
     public DbSet<Performance> Performances { get; set; }
-    public DbSet<Rank> Ranks { get; set; }
     public DbSet<Reservation> Reservations { get; set; }
     public DbSet<Room> Rooms { get; set; }
     public DbSet<Row> Rows { get; set; }
