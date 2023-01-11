@@ -12,7 +12,7 @@ function Page_StoelKeuze(){
     const [seats, setSeats] = useState([]);
     {/*ipv room/1 moet hier bijv props.room worden gebruikt*/}
     useEffect(() => {
-        fetch('https://localhost:7293/api/Room/3')
+        fetch('https://localhost:7293/api/Room/51')
             .then(response => response.json())
             .then(data => {
                 console.log(data)
@@ -74,9 +74,9 @@ function Page_StoelKeuze(){
 
                 <div>podiumfoto</div>
                 {/*seatbuttons worden per row aangemaakt ze krijgen mee:
-                 seatnumber = nummer van de stoel
-                 toggleseat = een methode om de stoel in/uit de lijst selectedSeats te zetten
-                  ishighlighted = een boolean om de kleur van de stoel te bepalen*/}
+                 seatid,
+                 toggleseat = een methode om de stoel in/uit de lijst selectedSeats te zetten,
+                 ishighlighted = een boolean om de kleur van de stoel te bepalen*/}
                 <div>
 
                     <tbody>
