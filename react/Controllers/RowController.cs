@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore;
 
 [ApiController]
 [Route("api/[controller]")]
-public class SeatController : Controller
+public class RowController : Controller
 {
     private readonly TheaterDbContext _context;
-    public SeatController(TheaterDbContext context)
+    public RowController(TheaterDbContext context)
     {
         _context = context;
     }
@@ -14,25 +14,25 @@ public class SeatController : Controller
     [HttpGet("{id}")]   
     public IActionResult Get(int id)
     {
-        var seat = _context.Seats
+        var row = _context.Rows
             .SingleOrDefault(s => s.Id == id);
-        if (seat == null)
+        if (row == null)
         {
             return NotFound();
         }
-        return Ok(seat);
+        return Ok(row);
     }
     
     [HttpPost]
-    [Route ("createSeat")]
-    public IActionResult Post([FromBody]Seat seat)
+    [Route ("createRow")]
+    public IActionResult Post([FromBody]Row row)
     {
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
         }
-        _context.Seats.Add(seat);
+        _context.Rows.Add(row);
         _context.SaveChanges();
-        return CreatedAtAction("Get", new { id = seat.Id }, seat);
+        return CreatedAtAction("Get", new { id = row.Id }, row);
     }
 }

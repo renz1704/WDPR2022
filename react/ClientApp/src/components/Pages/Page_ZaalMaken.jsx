@@ -2,14 +2,6 @@
 import ButtonCounter from "../ButtonCounter";
 import RowMaker from "../RowMaker";
 
-/*rows: [
-                    {
-                        seats: [
-                            {
-                                number: 'string'
-                            }]
-                    }]*/
-
 function Page_ZaalMaken(){
     const [roomName, setRoomName] = useState("");
     const [rowCount, setRowCount] = useState(1)
@@ -21,13 +13,13 @@ function Page_ZaalMaken(){
     };
     
     const decrementRow = () => {
-        if (rowCount > 0)
+        if (rowCount > 1)
             setRowCount(rowCount-1)
     }
     const incrementRow = () => {setRowCount(rowCount+1)}
     
     const makeNewRoom = () => {
-        fetch("http://localhost:7293/api/Room/createRoom",{
+        fetch("http://localhost:5001/api/Room/createRoom",{
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -39,14 +31,19 @@ function Page_ZaalMaken(){
                     {
                         seats: [
                             {
-                                number: '1',
-                                type: 'default'
+                                seatNumber: "test",
+                                isDisabled: true
                             }]
                     }]
             })
         })
             .then(response => response.json())
             .then(response => console.log(response))
+    }
+
+    JSONObject obj = new JSONObject();
+    const makeRoomFile = () => {
+        room.Add(new string[] {roomName})
     }
     
     let rowsComponents = [];

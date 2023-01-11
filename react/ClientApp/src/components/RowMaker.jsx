@@ -10,7 +10,6 @@ function RowMaker(){
         for (let i = 1; i < seatCount+1; i++){
             list.push(i)}
         setSeats(list);
-        
         }
         ,seatCount)  
     
