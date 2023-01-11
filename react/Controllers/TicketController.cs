@@ -83,5 +83,4 @@ public class TicketController : Controller
         _context.SaveChanges();
         return Ok(ticket);
     }
-
 }
