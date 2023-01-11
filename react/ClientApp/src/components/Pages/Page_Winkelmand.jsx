@@ -6,29 +6,34 @@ import {Routes, Route, useNavigate} from 'react-router-dom';
 
 function Page_Winkelmand(){
     const [totalPrice, setTotalPrice] = useState("1");
-    const [html, setHtml] = useState('');
+    const [amount, setAmount] = useState("1");
     const [selectedSeats, setSeat] = useState([1, 2, 3]);
     const removeSeat = (seatNumber) => {
         setSeat(selectedSeats.filter(item => item!== seatNumber));
     }
-    
-    const navigate = useNavigate()
-    const payButtonClicked = async () => {
-    const data = new URLSearchParams();
-    data.append('amount', {totalPrice});
-    data.append('reference', 'Juiste payment id NOG toevoegen');
-    data.append('url', 'https://localhost:44419/betaald');
 
-    const response = await fetch('https://fakepay.azurewebsites.net/', {
+    const navigate = useNavigate()
+    const payButtonClicked  = async () => {
+    const totalPrice = 100;
+    setTotalPrice(totalPrice);
+    const data = new URLSearchParams();
+    data.append('amount', {totalPrice})
+    data.append('succes', true)
+    fetch('https://localhost:7293/api/payment/createpayment',
+    {
         method: 'POST',
-        body: data,
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      });
-      const html = await response.text();
-      setHtml();
-    }
+            'Accept': 'application/json',
+            'Content-Type' : 'application/json'
+
+        },
+        body: JSON.stringify({amount: amount, succes: false})
+    })
+    .then((res) => {
+          navigate("/betaling");
+    });
+}
+   
     
     return(
         <>
@@ -41,7 +46,6 @@ function Page_Winkelmand(){
                 <div className="flex-container-vertical">
                     <p>{totalPrice}</p>
                     <button onClick={payButtonClicked}>Naar betalen</button>
-                    <div dangerouslySetInnerHTML={{__html: html}} />
                 </div>
             </div>
         </>
