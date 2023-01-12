@@ -23,12 +23,21 @@ function RoomInfo(props){
     useEffect(()=>{
         let url = 'http://localhost:5001/api/Room/name/' + props.id
         fetch(url)
-            .then(response =>{ console.log(response)})
+            .then(response => response.text())
+            .then(data => {
+                setName(data)
+            })
+            .catch(error => {
+                console.log(error)
+            });
     }, []);
     
     return(
         <div className="flex-container-horizontal">
-        <div style={{margin:"15%"}}>Zaal {props.id} Naam: {name}</div>
+        <div style={{margin:"15%"}}>
+            Zaal {props.id} 
+            <br/>Naam: {name}
+        </div>
         <button onClick={() => (deleteRoom())}>Verwijder</button>
         </div>
     )

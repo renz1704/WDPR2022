@@ -21,6 +21,7 @@ function Page_Zaalbeheer(){
     }
     
     return(
+        
         <div className="flex-container-horizontal">
             
             <div className="flex-container-vertical">
@@ -34,7 +35,8 @@ function Page_Zaalbeheer(){
             <div>overzicht</div>
             </div>
         
-        </div>)
+        </div>
+        )
 }
 
 export default Page_Zaalbeheer

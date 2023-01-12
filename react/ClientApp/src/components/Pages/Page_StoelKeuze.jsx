@@ -16,7 +16,7 @@ function Page_StoelKeuze(){
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     {/*ipv room/1 moet hier bijv props.room worden gebruikt*/}
     useEffect(() => {
-        fetch('https://localhost:7293/api/Room/110')
+        fetch('https://localhost:7293/api/Room/19')
             .then(response => response.json())
             .then(data => {
                 console.log(data)
@@ -39,30 +39,8 @@ function Page_StoelKeuze(){
             setSeat(selectedSeats.filter(item => item!== seatNumber));
         }
         console.log(seatNumber)
+    }
 
-    }
-    if (!selectedSeats.includes(seatNumber)) {
-      setSeat((oldArray) => [...oldArray, seatNumber]);
-    } else {
-      setSeat(selectedSeats.filter((item) => item !== seatNumber));
-      fetch("https://localhost:7293/api/Ticket/deleteticket?id=" + 6, {
-      method: "DELETE",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Error ${response.status} : ${response.statusText}`);
-        }
-        return response.json();
-      })
-      .catch((error) => {
-        console.log("An error occurred:", error);
-      });
-    }
   {
     /*showPopUp wordt gebruikt om de popup te tonen
     popupmessage is de inhoud ervan*/
@@ -149,5 +127,66 @@ function Page_StoelKeuze(){
       )
   };
 
+
+  return (
+    <>
+      <Header/>
+
+      {showPopUp && (
+        <PopUp message={popUpMessage} onClose={() => setShowPopUp(false)} />
+      )}
+
+      <div className="flex-container-vertical" style={{ margin: "5%" }}>
+        <h1 style={{ marginBottom: "2%" }}>
+          Kies uw stoel(en) om een bestelling te plaatsen.
+        </h1>
+
+          <div>podiumfoto</div>
+          {/*seatbuttons worden per row aangemaakt ze krijgen mee:
+                 seatid,
+                 toggleseat = een methode om de stoel in/uit de lijst selectedSeats te zetten,
+                 ishighlighted = een boolean om de kleur van de stoel te bepalen*/}
+          <div>
+
+                    <tbody>
+                    {seats.map((row, i) => (
+                        <tr  className="flex-container-horizontal" key={i}>
+                            <td style={{border:"0px"}}>
+                                {row.map((seatId, j) => (
+                                    <td key={j} style={{display: 'inline-block', textAlign: 'center'}}>
+                                        <SeatButton
+                                            seatId={seatId}
+                                            toggleSeat={toggleSeat}
+                                            isHighlighted={selectedSeats.includes(seatId)}
+                                        />
+                                    </td>
+                                ))}
+                            </td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </div>
+
+          <div className="flex-container-horizontal" style={{width:"100%", height:"100%"}}>
+                    <div>
+                        <ShowOrder toggleSeat={toggleSeat} seats={selectedSeats} canEdit={true}/>
+                    </div>
+                    <div>
+                        <button
+                            style={{
+                                width:"300px",
+                                height:"50px"}}
+                            onClick={() => onNextButtonClick()}>
+                            Voeg toe aan winkelmand
+                        </button>
+                    </div>
+                </div>
+
+      </div>
+
+    </>
+  )
+
+}
 
 export default Page_StoelKeuze;
