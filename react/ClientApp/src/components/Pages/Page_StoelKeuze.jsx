@@ -5,31 +5,38 @@ import SeatButton from "../SeatButton";
 import { useNavigate } from "react-router-dom";
 import PopUp from "../PopUp";
 
-function Page_StoelKeuze() {
-  {
-    /*seats is een lijst van stoelen per rij*/
-  }
-  const [seats, setSeats] = useState([]);
-  {
-    /*ipv room/1 moet hier bijv props.room worden gebruikt*/
-  }
-  useEffect(() => {
-    fetch("https://localhost:7293/api/Room/3")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        const seats = data.rows.map((row) => row.seats.map((seat) => seat.id));
-        setSeats(seats);
-      });
-  }, []);
 
-  {/*selectedSeats zijn de stoelen die de gebruiker kiest om te kopen*/}
-  const [selectedSeats, setSeat] = useState([]);
-  const toggleSeat = (seatNumber) => {
-    
-    {
-      /*dit checkt of het nummer van de stoel al geselecteerd is
-        als dit niet zo is wordt de stoel toegevoegd aan de lijst*/
+
+function Page_StoelKeuze(){
+
+    {/*seats is een lijst van stoelen per rij*/}
+    const [seats, setSeats] = useState([]);
+    {/*ipv room/1 moet hier bijv props.room worden gebruikt*/}
+    useEffect(() => {
+        fetch('https://localhost:7293/api/Room/110')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                const Seats = data.rows.map(row => row.seats.map(seat => seat.id));
+                setSeats(Seats);
+            });
+    }, []);
+
+    {/*selectedSeats zijn de stoelen die de gebruiker kiest om te kopen*/}
+    const [selectedSeats, setSeat] = useState([]);
+    const toggleSeat = (seatNumber) => {
+
+        {/*dit checkt of het nummer van de stoel al geselecteerd is
+        als dit niet zo is wordt de stoel toegevoegd aan de lijst*/}
+        if (!selectedSeats.includes(seatNumber)) {
+            setSeat(oldArray => [...oldArray, seatNumber])
+        }
+        else{
+            {/*als dit wel zo is wordt de stoel uit de lijst gehaald*/}
+            setSeat(selectedSeats.filter(item => item!== seatNumber));
+        }
+        console.log(seatNumber)
+
     }
     if (!selectedSeats.includes(seatNumber)) {
       setSeat((oldArray) => [...oldArray, seatNumber]);
@@ -98,65 +105,52 @@ function Page_StoelKeuze() {
           Kies uw stoel(en) om een bestelling te plaatsen.
         </h1>
 
-        <div>podiumfoto</div>
-        {/*seatbuttons worden per row aangemaakt ze krijgen mee:
-                 seatnumber = nummer van de stoel
-                 toggleseat = een methode om de stoel in/uit de lijst selectedSeats te zetten
-                  ishighlighted = een boolean om de kleur van de stoel te bepalen*/}
-        <div>
-          <tbody>
-            {seats.map((row, i) => (
-              <tr className="flex-container-horizontal" key={i}>
-                <td style={{ border: "0px" }}>
-                  {row.map((seatId, j) => (
-                    <td
-                      key={j}
-                      style={{ display: "inline-block", textAlign: "center" }}
-                    >
-                      <SeatButton
-                        seatId={seatId}
-                        toggleSeat={toggleSeat}
-                        isHighlighted={selectedSeats.includes(seatId)}
-                      />
-                    </td>
-                  ))}
-                </td>
-              </tr>
-            ))}
-            <SeatButton
-              seatId={1}
-              toggleSeat={toggleSeat}
-              isHighlighted={selectedSeats.includes(1)}
-            />
-          </tbody>
-        </div>
+                <div>podiumfoto</div>
+                {/*seatbuttons worden per row aangemaakt ze krijgen mee:
+                 seatid,
+                 toggleseat = een methode om de stoel in/uit de lijst selectedSeats te zetten,
+                 ishighlighted = een boolean om de kleur van de stoel te bepalen*/}
+                <div>
 
-        <div
-          className="flex-container-horizontal"
-          style={{ width: "100%", height: "100%" }}
-        >
-          <div>
-            <ShowOrder
-              toggleSeat={toggleSeat}
-              seats={selectedSeats}
-              canEdit={true}
-            />
-          </div>
-          <div>
-            <button
-              style={{
-                width: "300px",
-                height: "50px",
-              }}
-              onClick={() => onNextButtonClick()}
-            >
-              Voeg toe aan winkelmand
-            </button>
-          </div>
-        </div>
-      </div>
-    </>
-  );
+                    <tbody>
+                    {seats.map((row, i) => (
+                        <tr  className="flex-container-horizontal" key={i}>
+                            <td style={{border:"0px"}}>
+                                {row.map((seatId, j) => (
+                                    <td key={j} style={{display: 'inline-block', textAlign: 'center'}}>
+                                        <SeatButton
+                                            seatId={seatId}
+                                            toggleSeat={toggleSeat}
+                                            isHighlighted={selectedSeats.includes(seatId)}
+                                        />
+                                    </td>
+                                ))}
+                            </td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </div>
+
+                <div className="flex-container-horizontal" style={{width:"100%", height:"100%"}}>
+                    <div>
+                        <ShowOrder toggleSeat={toggleSeat} seats={selectedSeats} canEdit={true}/>
+                    </div>
+                    <div>
+                        <button
+                            style={{
+                                width:"300px",
+                                height:"50px"}}
+                            onClick={() => onNextButtonClick()}>
+                            Voeg toe aan winkelmand
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </>
+    )
+
 }
 
 export default Page_StoelKeuze;
