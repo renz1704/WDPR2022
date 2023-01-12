@@ -6,7 +6,5 @@ public class Ticket
     public double Price { get; set; }
     public virtual Seat Seat { get; set; }
     public virtual Performance Performance { get; set; }
-    public virtual Reservation Reservation { get; set; }
-
-
+    // public virtual Reservation Reservation { get; set; }
 }

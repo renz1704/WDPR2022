@@ -2,12 +2,13 @@ using Microsoft.AspNetCore.Mvc;
 
 
 
+[Route("api/[controller]")]
 [ApiController]
-[Route("[controller]")]
 
-public class TicketController : Controller
+
+public class TicketController : ControllerBase
 {
-    private readonly TheaterDbContext _context;
+    TheaterDbContext _context;
 
     public TicketController(TheaterDbContext context)
     {
@@ -51,26 +52,21 @@ public class TicketController : Controller
         return Ok(ticket);
     }
 
-    // maak een ticket aan
+    // maak een ticket aan en is available op false
     [HttpPost]
-    public IActionResult CreateTicket(Ticket ticket)
+    [Route("createticket")]
+    public async Task<ActionResult<Ticket>> createTicket([FromBody] TicketDTO t)
     {
-        _context.Tickets.Add(ticket);
-        _context.SaveChanges();
-        return Ok(ticket);
+        var tickets = new Ticket { Seat = _context.Seats.Where(s=> s.Id == t.SeatId).First(), Performance = _context.Performances.Where(p=> p.Id == t.PerformanceId).First(), isAvailable = true }; 
+        await _context.Tickets.AddAsync(tickets);
+        await _context.SaveChangesAsync();
+        return tickets;
     }
 
-    // maak meerdere tickets aan
-    [HttpPost("multiple")]
-    public IActionResult CreateMultipleTickets(List<Ticket> tickets)
-    {
-        _context.Tickets.AddRange(tickets);
-        _context.SaveChanges();
-        return Ok(tickets);
-    }
 
     // verwijder een ticket
     [HttpDelete]
+    [Route("deleteticket")]
     public IActionResult DeleteTicket(int id)
     {
         var ticket = _context.Tickets
@@ -84,4 +80,9 @@ public class TicketController : Controller
         return Ok(ticket);
     }
 
+    public class TicketDTO{
+        public int Id { get; set; }
+        public int SeatId { get; set; }
+        public int PerformanceId { get; set; }
+    }
 }

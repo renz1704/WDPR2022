@@ -1,9 +1,10 @@
-﻿import React, { useState, useEffect }  from 'react';
+﻿import React, { useState, useEffect } from "react";
 import ShowOrder from "../ShowOrder";
 import Header from "../Header";
 import SeatButton from "../SeatButton";
-import {Routes, Route, useNavigate} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import PopUp from "../PopUp";
+
 
 
 function Page_StoelKeuze(){
@@ -35,43 +36,74 @@ function Page_StoelKeuze(){
             setSeat(selectedSeats.filter(item => item!== seatNumber));
         }
         console.log(seatNumber)
+
     }
-
-    {/*showPopUp wordt gebruikt om de popup te tonen
-    popupmessage is de inhoud ervan*/}
-    const [showPopUp, setShowPopUp] = useState(false);
-    const [popUpMessage, setpopUpMessage] = useState("");
-
-
-    {/*navigate wordt gebruikt om naar de volgende pagina te gaan wanneer er tussen
-     de 1tm25 stoelen zijn gekozen*/}
-    const navigate = useNavigate();
-
-    const onNextButtonClick = () => {
-        if (selectedSeats.length < 1){
-            setpopUpMessage("Kies minstens 1 stoel om een bestelling te plaatsen.")
-            setShowPopUp(true)
+    if (!selectedSeats.includes(seatNumber)) {
+      setSeat((oldArray) => [...oldArray, seatNumber]);
+    } else {
+      {
+        /*als dit wel zo is wordt de stoel uit de lijst gehaald*/
+      }
+      setSeat(selectedSeats.filter((item) => item !== seatNumber));
+      fetch("https://localhost:7293/api/Ticket/deleteticket?id=" + 6, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Error ${response.status} : ${response.statusText}`);
         }
-        else if (selectedSeats.length > 25)
-        {
-            setpopUpMessage("Het is niet toegestaan om meer dan 25 stoelen te kiezen.")
-            setShowPopUp(true)
-        }
-        else
-        {
-            navigate('/winkelmand');
-        }
+        return response.json();
+      })
+      .catch((error) => {
+        console.log("An error occurred:", error);
+      });
     }
+  };
 
-    return(
-        <>
-            <Header/>
+  {
+    /*showPopUp wordt gebruikt om de popup te tonen
+    popupmessage is de inhoud ervan*/
+  }
+  const [showPopUp, setShowPopUp] = useState(false);
+  const [popUpMessage, setpopUpMessage] = useState("");
 
-            {showPopUp && (<PopUp message={popUpMessage} onClose={() => setShowPopUp(false)}/>)}
+  {
+    /*navigate wordt gebruikt om naar de volgende pagina te gaan wanneer er tussen
+     de 1tm25 stoelen zijn gekozen*/
+  }
+  const navigate = useNavigate();
 
-            <div className="flex-container-vertical" style={{margin:"5%"}}>
+  const onNextButtonClick = () => {
+    if (selectedSeats.length < 1) {
+      setpopUpMessage("Kies minstens 1 stoel om een bestelling te plaatsen.");
+      setShowPopUp(true);
+    } else if (selectedSeats.length > 25) {
+      setpopUpMessage(
+        "Het is niet toegestaan om meer dan 25 stoelen te kiezen."
+      );
+      setShowPopUp(true);
+    } else {
+      navigate("/winkelmand");
+    }
+  };
 
-                <h1 style={{marginBottom:"2%"}}>Kies uw stoel(en) om een bestelling te plaatsen.</h1>
+  return (
+    <>
+      <Header />
+
+      {showPopUp && (
+        <PopUp message={popUpMessage} onClose={() => setShowPopUp(false)} />
+      )}
+
+      <div className="flex-container-vertical" style={{ margin: "5%" }}>
+        <h1 style={{ marginBottom: "2%" }}>
+          Kies uw stoel(en) om een bestelling te plaatsen.
+        </h1>
 
                 <div>podiumfoto</div>
                 {/*seatbuttons worden per row aangemaakt ze krijgen mee:
@@ -118,6 +150,7 @@ function Page_StoelKeuze(){
 
         </>
     )
+
 }
 
 export default Page_StoelKeuze;

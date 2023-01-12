@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace react.Data.Migrations
+namespace react.Migrations
 {
     [DbContext(typeof(TheaterDbContext))]
     partial class TheaterDbContextModelSnapshot : ModelSnapshot
@@ -425,7 +425,7 @@ namespace react.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("RoomNumber")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -519,9 +519,6 @@ namespace react.Data.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("REAL");
 
-                    b.Property<int>("ReservationId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("SeatId")
                         .HasColumnType("INTEGER");
 
@@ -531,8 +528,6 @@ namespace react.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("PerformanceId");
-
-                    b.HasIndex("ReservationId");
 
                     b.HasIndex("SeatId");
 
@@ -754,12 +749,6 @@ namespace react.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Reservation", "Reservation")
-                        .WithMany()
-                        .HasForeignKey("ReservationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Seat", "Seat")
                         .WithMany()
                         .HasForeignKey("SeatId")
@@ -767,8 +756,6 @@ namespace react.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Performance");
-
-                    b.Navigation("Reservation");
 
                     b.Navigation("Seat");
                 });

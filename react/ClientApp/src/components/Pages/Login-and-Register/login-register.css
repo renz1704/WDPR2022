@@ -14,9 +14,24 @@
     background-color: rgb(239, 239, 239);
     box-shadow: 1px 1px 20px rgb(147, 147, 147);
     padding:30px 50px;
+    border-radius: 30px;
 }
 
-.loginForm input{
+.registerForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: max-content;
+    margin: 0 auto;
+    margin-top:150px;
+    background-color: rgb(239, 239, 239);
+    box-shadow: 1px 1px 20px rgb(147, 147, 147);
+    padding:30px 50px;
+    border-radius: 30px;
+}
+
+
+.loginForm input, .registerForm input {
     width: 20em;
     height:50px;
     text-align: center;
@@ -25,7 +40,7 @@
 
 }
 
-.loginForm p {
+.loginForm p, .registerForm p{
     font-size: 1.5rem;
 }
 
@@ -48,7 +63,7 @@
     text-decoration: none;
 }
 
-.loginForm h1{
+.loginForm h1, .registerForm h1{
     margin-bottom:30px;
     font-weight: bold;
 }
@@ -70,4 +85,17 @@
     top: 0;
     left: 0;
     z-index: -1;
+}
+
+.validated{
+  
+    color: rgb(148, 148, 148);
+}
+
+.not-validated{
+    color: rgb(236, 43, 43);
+}
+
+.list-icon.green{
+    color: #0f0;
 }

@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
@@ -13,7 +15,11 @@ builder.Services.AddDbContext<TheaterDbContext>(options => options
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 {
-    //Insert Registration and Login requirements(example: min password length)
+    options.Password.RequireLowercase = true;
+    options.Password.RequireNonAlphanumeric = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequiredLength = 7;
+    options.Password.RequiredUniqueChars = 1;
 }).AddEntityFrameworkStores<TheaterDbContext>();
 
 
@@ -24,8 +30,23 @@ builder.Services.AddSwaggerGen();
 // Add services to the container.
 
 
-builder.Services.AddAuthentication()
-    .AddIdentityServerJwt();
+builder.Services.AddAuthentication(opt =>
+{
+    opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(opt =>
+{
+    opt.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = "https://localhost:7293",
+        ValidAudience = "https://localhost:7293",
+        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("awef98awef978haweof8g7aw789efhh789awef8h9awh89efh89awe98f89uawef9j8aw89hefawef"))
+    };
+});
 
 
 
