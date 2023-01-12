@@ -1,7 +1,10 @@
 ﻿import React, { useState, useEffect }  from 'react';
 import RoomInfo from "../RoomInfo";
+import {Routes, Route, useNavigate} from 'react-router-dom';
+
 
 function Page_Zaalbeheer(){
+    const navigate = useNavigate();
     const [rooms, setRooms] = useState([])
 
     useEffect(() => {
@@ -12,8 +15,7 @@ function Page_Zaalbeheer(){
                 console.log(rooms)
             });
     }, []);
-
-
+    
     const removeRoom = (roomId) => {
         setRooms(rooms.filter(item => item!== roomId));
     }
@@ -28,7 +30,7 @@ function Page_Zaalbeheer(){
             </div>
 
             <div className="flex-container-vertical">
-            <div>knop</div>
+            <div><button onClick={()=>{navigate('/zaalmaken')}}>Nieuwe zaal maken</button></div>
             <div>overzicht</div>
             </div>
         

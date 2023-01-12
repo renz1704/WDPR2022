@@ -12,12 +12,12 @@ function Page_StoelKeuze(){
     const [seats, setSeats] = useState([]);
     {/*ipv room/1 moet hier bijv props.room worden gebruikt*/}
     useEffect(() => {
-        fetch('https://localhost:7293/api/Room/51')
+        fetch('https://localhost:7293/api/Room/110')
             .then(response => response.json())
             .then(data => {
                 console.log(data)
-                const seats = data.rows.map(row => row.seats.map(seat => seat.id));
-                setSeats(seats);
+                const Seats = data.rows.map(row => row.seats.map(seat => seat.id));
+                setSeats(Seats);
             });
     }, []);
 
@@ -34,6 +34,7 @@ function Page_StoelKeuze(){
             {/*als dit wel zo is wordt de stoel uit de lijst gehaald*/}
             setSeat(selectedSeats.filter(item => item!== seatNumber));
         }
+        console.log(seatNumber)
     }
 
     {/*showPopUp wordt gebruikt om de popup te tonen

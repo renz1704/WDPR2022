@@ -82,4 +82,16 @@ public class RoomController : Controller
         _context.SaveChanges();
         return Ok();
     }
+    
+    [HttpGet("name/{id}")]
+    public IActionResult GetName(int id)
+    {
+        var room = _context.Rooms
+            .SingleOrDefault(r => r.Id == id);
+        if (room == null)
+        {
+            return NotFound();
+        }
+        return Ok(room.Name);
+    }
 }
