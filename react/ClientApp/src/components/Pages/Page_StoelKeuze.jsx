@@ -36,34 +36,8 @@ function Page_StoelKeuze(){
             setSeat(selectedSeats.filter(item => item!== seatNumber));
         }
         console.log(seatNumber)
-
     }
-    if (!selectedSeats.includes(seatNumber)) {
-      setSeat((oldArray) => [...oldArray, seatNumber]);
-    } else {
-      {
-        /*als dit wel zo is wordt de stoel uit de lijst gehaald*/
-      }
-      setSeat(selectedSeats.filter((item) => item !== seatNumber));
-      fetch("https://localhost:7293/api/Ticket/deleteticket?id=" + 6, {
-      method: "DELETE",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Error ${response.status} : ${response.statusText}`);
-        }
-        return response.json();
-      })
-      .catch((error) => {
-        console.log("An error occurred:", error);
-      });
-    }
-  };
+  
 
   {
     /*showPopUp wordt gebruikt om de popup te tonen
@@ -94,7 +68,7 @@ function Page_StoelKeuze(){
 
   return (
     <>
-      <Header />
+      <Header/>
 
       {showPopUp && (
         <PopUp message={popUpMessage} onClose={() => setShowPopUp(false)} />
@@ -105,12 +79,12 @@ function Page_StoelKeuze(){
           Kies uw stoel(en) om een bestelling te plaatsen.
         </h1>
 
-                <div>podiumfoto</div>
-                {/*seatbuttons worden per row aangemaakt ze krijgen mee:
+          <div>podiumfoto</div>
+          {/*seatbuttons worden per row aangemaakt ze krijgen mee:
                  seatid,
                  toggleseat = een methode om de stoel in/uit de lijst selectedSeats te zetten,
                  ishighlighted = een boolean om de kleur van de stoel te bepalen*/}
-                <div>
+          <div>
 
                     <tbody>
                     {seats.map((row, i) => (
@@ -131,7 +105,7 @@ function Page_StoelKeuze(){
                     </tbody>
                 </div>
 
-                <div className="flex-container-horizontal" style={{width:"100%", height:"100%"}}>
+          <div className="flex-container-horizontal" style={{width:"100%", height:"100%"}}>
                     <div>
                         <ShowOrder toggleSeat={toggleSeat} seats={selectedSeats} canEdit={true}/>
                     </div>
@@ -146,10 +120,10 @@ function Page_StoelKeuze(){
                     </div>
                 </div>
 
-            </div>
+      </div>
 
-        </>
-    )
+    </>
+  )
 
 }
 
