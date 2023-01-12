@@ -1,8 +1,10 @@
 ﻿import React, {useState} from "react";
 import ButtonCounter from "../ButtonCounter";
 import RowMaker from "../RowMaker";
+import PopUp from "../PopUp";
 
 function Page_ZaalMaken(){
+    const [showPopUp, setShowPopUp] = useState(false);
     const [roomName, setRoomName] = useState("");
 
     {/*rowcount is het aantal rijen, seatsperrow is een array met het aantal stoelen in elke rij
@@ -37,6 +39,11 @@ function Page_ZaalMaken(){
 
     {/*makeNewRoom zet de nieuwe kamer in de database*/}
     const makeNewRoom = () => {
+        if (roomName === "") {
+            setShowPopUp(true)
+            return
+        }
+        
         let roomData = createRoomDataJson()
         
         fetch("http://localhost:5001/api/Room/createRoom",{
@@ -77,8 +84,9 @@ function Page_ZaalMaken(){
     }
 
     const checkIfSeatIsDisabled = (i, j) => {
-        if (Array.isArray(disabledSeatsPerRow[i]) && disabledSeatsPerRow[i].includes(j))
-        {return true}
+        if (Array.isArray(disabledSeatsPerRow[i]) && disabledSeatsPerRow[i].includes(j+1))
+        {console.log(i + " / " + j)
+            return true}
         else 
         {return false}
     }
@@ -99,6 +107,7 @@ function Page_ZaalMaken(){
     }
     
     return(
+        <>{showPopUp && (<PopUp message={"Voeg een naam toe aan de zaal"} onClose={() => setShowPopUp(false)}/>)}
         <div className="flex-container-horizontal">
         <div className="flex-container-vertical">
             <div style={{margin:"5%"}} className="flex-container-horizontal">
@@ -110,7 +119,9 @@ function Page_ZaalMaken(){
             </tbody>
         </div>
             <button onClick={makeNewRoom}>Opslaan</button>
+            <div>Rolstoelplaatsen: {disabledSeatsPerRow}</div>
         </div>
+        </>
     )
 }
 export default Page_ZaalMaken;

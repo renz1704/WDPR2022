@@ -9,23 +9,20 @@ function RowMaker(props){
 
         {/*dit checkt of het nummer van de stoel al geselecteerd is
         als dit niet zo is wordt de stoel toegevoegd aan de lijst*/}
-        if (!disabledSeats.includes(seatNumber)) {
-            setDisabledSeats(oldArray => [...oldArray, seatNumber])
-            console.log("toevoegen")
-        }
-        else{
-            {/*als dit wel zo is wordt de stoel uit de lijst gehaald*/}
-            setDisabledSeats(disabledSeats.filter(item => item!== seatNumber));
-            console.log("verwijdert")
-        }
-        props.changeDisabledSeatsPerRow(props.id, disabledSeats)
-        console.log(disabledSeats)
+        setDisabledSeats(oldArray => {
+            if (!oldArray.includes(seatNumber)) {
+                return [...oldArray, seatNumber]
+            } else {
+                return oldArray.filter(item => item !== seatNumber)
+            }
+        })
     }
-    
+
+    useEffect(() => {
+        props.changeDisabledSeatsPerRow(props.id, disabledSeats);
+    }, [disabledSeats])
     
     useEffect(() => {
-        let list = [];
-        
         props.changeSeatsPerRow(props.id, seatCount)
         }
         ,[seatCount])  
@@ -59,6 +56,7 @@ function RowMaker(props){
                 increment={incrementSeat} 
                 decrement={decrementSeat}/>
             {seatsComponents}
+            <div>{disabledSeats}</div>
         </div>
     )
 }

@@ -12,7 +12,7 @@ function Page_StoelKeuze(){
     const [seats, setSeats] = useState([]);
     {/*ipv room/1 moet hier bijv props.room worden gebruikt*/}
     useEffect(() => {
-        fetch('https://localhost:7293/api/Room/110')
+        fetch('https://localhost:7293/api/Room/19')
             .then(response => response.json())
             .then(data => {
                 console.log(data)
