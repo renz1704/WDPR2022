@@ -2,38 +2,42 @@ import { useState } from "react";
 import "./login-register.css";
 import { Link , useNavigate} from "react-router-dom";
 import Header from "../../Header";
-
+import axios from "axios";
+import ReCAPTCHA from 'react-google-recaptcha'
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isVerified, setIsVerified] = useState(false);
   const navigate = useNavigate();
 
-const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-   
-    fetch('https://localhost:7293/api/User/login', {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type' : 'application/json'
+    if(!isVerified){
+      alert("Druk alstublieft op 'Ik ben geen robot'. Mocht u de reCAPTCHA niet kunnen zien, herlaad dan de pagina.") 
+    }else{
+     const loginPayload = {
+       email: email,
+       password: password
+     }
+     return axios.post('https://localhost:7293/api/User/login', { email, password })
+     .then(res => {
 
-        },
-        body: JSON.stringify({email: email, password: password})
-    })
-    .then((res) => {
       if(res.status !== 200)
       {
-          console.log(res)
-      }
-      else{
-          navigate("/");
-      }
+        localStorage.setItem('token', res.data.token);
+        axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.token}`;    
+       }
+       else{
+           navigate("/");
+       }
+     });
+    }
+   }
 
-  })
-    const loginDetails = { email, password };
-    console.log(loginDetails);
-    };
+   const handleRecaptcha = (value) => {
+    setIsVerified(value !== null);
+  };
 
   return (
     <div>
@@ -56,6 +60,7 @@ const handleSubmit = (e) => {
         className="input-password"
         onChange={(event) => setPassword(event.target.value)}
       ></input>
+     <ReCAPTCHA sitekey="6Ldmv-0jAAAAAOzZUjuueonJNyxg4RBpDiNgpbVO" onChange={handleRecaptcha} />
       <button
         type="onSubmit"
         disabled={email == "" || password == ""}
