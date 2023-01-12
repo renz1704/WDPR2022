@@ -20,6 +20,7 @@ import Page_BezoekersPortaal from './components/Pages/BezoekersPortaal/Page_Bezo
 import Page_Gegevens from './components/Pages/BezoekersPortaal/Page_Gegevens';
 import Page_Tickets from './components/Pages/BezoekersPortaal/Page_Tickets';
 import Page_Doneren from './components/Pages/BezoekersPortaal/Page_Doneren';
+import Page_DonatieGekoppeld from './components/Pages/BezoekersPortaal/Page_DonatieGekoppeld';
 
 import Page_Winkelmand from "./components/Pages/Page_Winkelmand";
 import Page_Betaling from "./components/Pages/Page_Betaling";
@@ -75,6 +76,7 @@ root.render(
         <Route path='/gegevens' element={<Page_Gegevens/>}/>
         <Route path='/tickets' element={<Page_Tickets/>}/>
         <Route path='/doneren' element={<Page_Doneren/>}/>
+        <Route path='/donatiegekoppeld' element={<Page_DonatieGekoppeld/>}/>
 
         {<Route path='/begunstigersportaal' element={<Page_Begunstigersportaal />} /> /*dit moet nog weggehaald/geautoriseerd worden, het begunstigersportaal moet alleen voor donateurs zijn*/}
         <Route path='/inloggen' element={<LoginPage/>}/>
