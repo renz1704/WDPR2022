@@ -22,7 +22,6 @@ const Login = () => {
      }
      return axios.post('https://localhost:7293/api/User/login', { email, password })
      .then(res => {
-
       if(res.status !== 200)
       {
         localStorage.setItem('token', res.data.token);

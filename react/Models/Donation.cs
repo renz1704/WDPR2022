@@ -1,8 +1,6 @@
-﻿namespace react.Models
-{
-    public class Donation : Payment
-    {
-        public string DonationMessage { get; set; }
-        public virtual Visitor Visitor { get; set; }
-    }
+
+public class Donation {
+
+    public int Id{get; set;}
+    public String token {get; set;}
 }
