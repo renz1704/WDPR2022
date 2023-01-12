@@ -27,6 +27,23 @@ function SeatButton(props){
     const buttonClick = () => {
         props.toggleSeat(props.seatId)
         console.log(seatData.isDisabled)
+            fetch('https://localhost:7293/api/Ticket/createticket', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({seatId: props.seatId, performanceId: 1})
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error ${response.status} : ${response.statusText}`);
+            }
+            return response.json();
+          })
+          .catch(error => {
+            console.log("An error occurred:", error);
+          });
     }
     
     {/*past de kleur van de stoelknop aan*/}
@@ -41,6 +58,9 @@ function SeatButton(props){
         else {
             setColor([colorAvailable, colorSelected])
         }
+
+
+        
     }
    
     return(
