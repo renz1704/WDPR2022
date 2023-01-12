@@ -2,19 +2,16 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace react.Data.Migrations
+namespace react.Migrations
 {
     [DbContext(typeof(TheaterDbContext))]
-    [Migration("20230109112922_11")]
-    partial class _11
+    partial class TheaterDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.1");
@@ -522,9 +519,6 @@ namespace react.Data.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("REAL");
 
-                    b.Property<int>("ReservationId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("SeatId")
                         .HasColumnType("INTEGER");
 
@@ -534,8 +528,6 @@ namespace react.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("PerformanceId");
-
-                    b.HasIndex("ReservationId");
 
                     b.HasIndex("SeatId");
 
@@ -757,12 +749,6 @@ namespace react.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Reservation", "Reservation")
-                        .WithMany()
-                        .HasForeignKey("ReservationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Seat", "Seat")
                         .WithMany()
                         .HasForeignKey("SeatId")
@@ -770,8 +756,6 @@ namespace react.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Performance");
-
-                    b.Navigation("Reservation");
 
                     b.Navigation("Seat");
                 });

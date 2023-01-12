@@ -6,7 +6,7 @@ public class TheaterDbContext : IdentityDbContext
 {
     public TheaterDbContext(DbContextOptions<TheaterDbContext> options) : base(options)
     {
-       Database.EnsureCreated();
+    //    Database.EnsureCreated();
     }
 
     public DbSet<Donation> Donations { get; set; }
