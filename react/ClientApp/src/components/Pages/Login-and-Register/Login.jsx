@@ -3,15 +3,19 @@ import "./login-register.css";
 import { Link , useNavigate} from "react-router-dom";
 import Header from "../../Header";
 import axios from "axios";
+import ReCAPTCHA from 'react-google-recaptcha'
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isVerified, setIsVerified] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-     
+    if(!isVerified){
+      alert("Druk alstublieft op 'Ik ben geen robot'. Mocht u de reCAPTCHA niet kunnen zien, herlaad dan de pagina.") 
+    }else{
      const loginPayload = {
        email: email,
        password: password
@@ -28,8 +32,12 @@ const Login = () => {
            navigate("/");
        }
      });
+    }
    }
 
+   const handleRecaptcha = (value) => {
+    setIsVerified(value !== null);
+  };
 
   return (
     <div>
@@ -52,7 +60,7 @@ const Login = () => {
         className="input-password"
         onChange={(event) => setPassword(event.target.value)}
       ></input>
-     
+     <ReCAPTCHA sitekey="6Ldmv-0jAAAAAOzZUjuueonJNyxg4RBpDiNgpbVO" onChange={handleRecaptcha} />
       <button
         type="onSubmit"
         disabled={email == "" || password == ""}
