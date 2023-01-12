@@ -82,7 +82,7 @@ function ResponsiveAppBar() {
               <Button size='large' variant="text"><Link  className='nav' to="/voorstellingen">Voorstellingen</Link></Button>
               <Button size='large' variant="text"><Link  className='nav' to="/toegankelijkheid">Toegankelijkheid</Link></Button>
               <Button size='large' variant="text"><Link  className='nav' to="/contactgegevens">Contactgegevens</Link></Button>
-              <Button size='large' variant="text"><Link  className='nav' to="/bezoekersportaal">Mijn Theater Laak</Link></Button>
+              {/* <Button size='large' variant="text"><Link  className='nav' to="/bezoekersportaal">Mijn Theater Laak</Link></Button> */}
               </div>
             </Menu>
           </Box>
@@ -159,7 +159,7 @@ function ResponsiveAppBar() {
               <li><a><Button variant="text"><Link to="/voorstellingen">Voorstellingen</Link></Button></a></li>
               <li><a><Button variant="text"><Link to="/toegankelijkheid">Toegankelijkheid</Link></Button></a></li>
               <li><a><Button variant="text"><Link to="/contactgegevens">Contactgegevens</Link></Button></a></li>
-              <li><a><Button variant="text"><Link to="/bezoekersportaal">Mijn Theater Laak</Link></Button></a></li>
+              {/* <li><a><Button variant="text"><Link to="/bezoekersportaal">Mijn Theater Laak</Link></Button></a></li> */}
           </Box>
             <Box sx={{ display: {xs: 'none', lg: 'flex'} }}>
   
