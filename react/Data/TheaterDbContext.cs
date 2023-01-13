@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using react.Models;
 
 public class TheaterDbContext : IdentityDbContext
 {

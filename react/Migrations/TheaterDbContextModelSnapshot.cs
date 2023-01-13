@@ -58,6 +58,21 @@ namespace react.Migrations
                     b.ToTable("ActorGroup");
                 });
 
+            modelBuilder.Entity("Donation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("token")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Donations");
+                });
+
             modelBuilder.Entity("Employee", b =>
                 {
                     b.Property<int>("Id")
@@ -348,27 +363,18 @@ namespace react.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("AccountNumber")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<double>("Amount")
                         .HasColumnType("REAL");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<bool>("succes")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
                     b.ToTable("Payment");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Payment");
-
-                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Performance", b =>
@@ -425,7 +431,7 @@ namespace react.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("RoomNumber")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -557,22 +563,6 @@ namespace react.Migrations
                     b.HasIndex("IdentityUserId");
 
                     b.ToTable("Visitors");
-                });
-
-            modelBuilder.Entity("react.Models.Donation", b =>
-                {
-                    b.HasBaseType("Payment");
-
-                    b.Property<string>("DonationMessage")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("VisitorId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasIndex("VisitorId");
-
-                    b.HasDiscriminator().HasValue("Donation");
                 });
 
             modelBuilder.Entity("Actor", b =>
@@ -769,17 +759,6 @@ namespace react.Migrations
                         .IsRequired();
 
                     b.Navigation("IdentityUser");
-                });
-
-            modelBuilder.Entity("react.Models.Donation", b =>
-                {
-                    b.HasOne("Visitor", "Visitor")
-                        .WithMany()
-                        .HasForeignKey("VisitorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Visitor");
                 });
 
             modelBuilder.Entity("Room", b =>

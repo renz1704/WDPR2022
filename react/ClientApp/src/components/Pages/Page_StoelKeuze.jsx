@@ -67,7 +67,7 @@ function Page_StoelKeuze(){
       navigate("/winkelmand");
     }
   };
-    return (
+  return (
       <>
         <Header />
   
@@ -125,67 +125,7 @@ function Page_StoelKeuze(){
   
           </>
       )
-  };
-
-
-  return (
-    <>
-      <Header/>
-
-      {showPopUp && (
-        <PopUp message={popUpMessage} onClose={() => setShowPopUp(false)} />
-      )}
-
-      <div className="flex-container-vertical" style={{ margin: "5%" }}>
-        <h1 style={{ marginBottom: "2%" }}>
-          Kies uw stoel(en) om een bestelling te plaatsen.
-        </h1>
-
-          <div>podiumfoto</div>
-          {/*seatbuttons worden per row aangemaakt ze krijgen mee:
-                 seatid,
-                 toggleseat = een methode om de stoel in/uit de lijst selectedSeats te zetten,
-                 ishighlighted = een boolean om de kleur van de stoel te bepalen*/}
-          <div>
-
-                    <tbody>
-                    {seats.map((row, i) => (
-                        <tr  className="flex-container-horizontal" key={i}>
-                            <td style={{border:"0px"}}>
-                                {row.map((seatId, j) => (
-                                    <td key={j} style={{display: 'inline-block', textAlign: 'center'}}>
-                                        <SeatButton
-                                            seatId={seatId}
-                                            toggleSeat={toggleSeat}
-                                            isHighlighted={selectedSeats.includes(seatId)}
-                                        />
-                                    </td>
-                                ))}
-                            </td>
-                        </tr>
-                    ))}
-                    </tbody>
-                </div>
-
-          <div className="flex-container-horizontal" style={{width:"100%", height:"100%"}}>
-                    <div>
-                        <ShowOrder toggleSeat={toggleSeat} seats={selectedSeats} canEdit={true}/>
-                    </div>
-                    <div>
-                        <button
-                            style={{
-                                width:"300px",
-                                height:"50px"}}
-                            onClick={() => onNextButtonClick()}>
-                            Voeg toe aan winkelmand
-                        </button>
-                    </div>
-                </div>
-
-      </div>
-
-    </>
-  )
+  
 
 }
 

@@ -85,8 +85,7 @@ function Page_ZaalMaken(){
 
     const checkIfSeatIsDisabled = (i, j) => {
         if (Array.isArray(disabledSeatsPerRow[i]) && disabledSeatsPerRow[i].includes(j+1))
-        {console.log(i + " / " + j)
-            return true}
+        {return true}
         else 
         {return false}
     }
