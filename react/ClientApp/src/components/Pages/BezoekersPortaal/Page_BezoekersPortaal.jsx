@@ -1,13 +1,23 @@
 import React from 'react';
 import BezoekersPortaalHeader from '../../BezoekersPortaalHeader';
+import UserService from '../../../services/UserService';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { getListSubheaderUtilityClass } from '@mui/material';
 
-
-function Page_BezoekersPortaal() {
-
+function Page_BezoekersPortaal(props) {  
     
+    const [user, setUser] = useState(undefined);
+
+    useEffect( () => {
+        UserService.getUser();
+    },[ ])
+
+
     return (
         <div>
             <BezoekersPortaalHeader />
+
             <h5>Mijn Theater Laak</h5>
             <div className="flex-container-vertical">
             <p>

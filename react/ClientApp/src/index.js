@@ -32,7 +32,7 @@ import RegisterPage from './components/Pages/Login-and-Register/Register';
 
 
 import GroepManagement from './components/Pages/Page_GroepManagement';
-
+import Page_UploadSchedule from './components/Pages/Page_UploadSchedule';
 
 
 const rootElement = document.getElementById('root');
@@ -76,6 +76,7 @@ root.render(
         {<Route path='/begunstigersportaal' element={<Page_Begunstigersportaal />} /> /*dit moet nog weggehaald/geautoriseerd worden, het begunstigersportaal moet alleen voor donateurs zijn*/}
         <Route path='/inloggen' element={<LoginPage/>}/>
         <Route path='/registreren' element={<RegisterPage/>}/>
+        <Route path='/programmeringUploaden' element= {<Page_UploadSchedule></Page_UploadSchedule>}/>
 
       </Routes>
 

@@ -5,6 +5,9 @@ import Header from "../../Header";
 import axios from "axios";
 import AuthenticationService from "../../../services/AuthenticationService";
 import { Button } from "@mui/material";
+import jwt from 'jwt-decode'
+import UserService from "../../../services/UserService";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,33 +15,10 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-     
-     const loginPayload = {
-       email: email,
-       password: password
-     }
-
-     return axios.post('https://localhost:7293/api/User/login', { email, password })
-     .then(res => {
-
-      if(res.data.token)
-      {
-        console.log('ingelogd')
-        localStorage.setItem('user', res.data.token);
-        axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.token}`;    
-        navigate("/");
-       }
-       else{
-        console.log('niet ingelogd')
-           
-       }
-     });
-   }
-
-   const Logout = () => {
-    localStorage.removeItem('user')
-   }
-
+    UserService.login(email, password)
+    
+    };
+   
 
   return (
     <div>
@@ -78,7 +58,8 @@ const Login = () => {
     </form>
 
     <p>Uitloggen</p>
-    <Button onClick={Logout}>Uitloggen</Button>
+    <p></p>
+    <Button onClick={UserService.logout}>Uitloggen</Button>
     </div>
     </div>
   );

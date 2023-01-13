@@ -59,6 +59,7 @@ function Page_ZaalMaken(){
     }
     
     return(
+        
         <div className="flex-container-horizontal">
         <div className="flex-container-vertical">
             <div style={{margin:"5%"}} className="flex-container-horizontal">

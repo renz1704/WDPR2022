@@ -7,10 +7,9 @@ import {arrows_circle_down} from 'react-icons-kit/linea/arrows_circle_down'
 import { basic_exclamation} from 'react-icons-kit/linea/basic_exclamation'
 import { Icon } from 'react-icons-kit'
 
+import UserService from '../../../services/UserService'
 const Register = () => {
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [lastName, setlastName] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
@@ -21,25 +20,8 @@ const Register = () => {
 
   const processRegistration = (e) => {
     e.preventDefault();
-    fetch('https://localhost:7293/api/User/registreer',
-    {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type' : 'application/json'
-
-        },
-        body: JSON.stringify({email: email, password: password, name: name, lastName: lastName, donatedAmount : 0})
-    })
-    .then((res) => {
-      if(res.status !== 201)
-      {
-          console.log(res)
-      }
-      else{
-          navigate("/inloggen");
-      }
-  })
+    UserService.register(email, password)
+    navigate("/inloggen")
   };
 
   const handleChange=(value)=>{
