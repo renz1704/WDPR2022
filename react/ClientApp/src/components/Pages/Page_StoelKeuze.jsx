@@ -66,7 +66,7 @@ function Page_StoelKeuze(){
     } else {
       navigate("/winkelmand");
     }
-  };
+  
     return (
       <>
         <Header />

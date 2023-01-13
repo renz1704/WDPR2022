@@ -3,6 +3,7 @@ import PopUp from "../PopUp";
 import {Routes, Route, useNavigate} from 'react-router-dom';
 
 
+
 function Page_Betaling(){
 
     const [totalPrice, setTotalPrice] = useState('');

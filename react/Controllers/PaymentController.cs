@@ -40,8 +40,8 @@ public class PaymentController : ControllerBase
 
     public class paymentFromApi{
 
-        public Boolean succes;
+        public Boolean succes {get; set;}
         
-        public int reference;
+        public int reference {get; set;}
     }
 }
