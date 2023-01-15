@@ -2,107 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eaf177ba-b666-4d1f-a160-da35910dadf1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Tests_API.dir/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Tests_API.dir/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Tests_API.dir/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Tests_API.dir/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Folder.DotSettings.user" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QueryableExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests_API.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UnitTest1.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Usings.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.AssemblyInfo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.AssemblyInfoInputs.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.GlobalUsings.g.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.assets.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.csproj.AssemblyReference.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/Tests_API.csproj.nuget.dgspec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/Tests_API.csproj.nuget.g.props" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/Tests_API.csproj.nuget.g.targets" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/project.assets.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/project.nuget.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/project.packagespec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/rider.project.restore.info" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/.signature.p7s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6.nupkg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/ThirdPartyNotices.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/1028/googletest.propertiesui.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/1029/googletest.propertiesui.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/1031/googletest.propertiesui.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/1033/googletest.propertiesui.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/1034/googletest.propertiesui.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/1036/googletest.propertiesui.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/1040/googletest.propertiesui.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/1041/googletest.propertiesui.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/1042/googletest.propertiesui.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/1045/googletest.propertiesui.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/1046/googletest.propertiesui.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/1049/googletest.propertiesui.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/1055/googletest.propertiesui.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/2052/googletest.propertiesui.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.targets" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/include/gtest/gtest-death-test.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/include/gtest/gtest-message.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/include/gtest/gtest-param-test.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/include/gtest/gtest-param-test.h.pump" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/include/gtest/gtest-printers.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/include/gtest/gtest-spi.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/include/gtest/gtest-test-part.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/include/gtest/gtest-typed-test.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/include/gtest/gtest.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/include/gtest/gtest_pred_impl.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/include/gtest/gtest_prod.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/include/gtest/internal/custom/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/include/gtest/internal/custom/gtest-port.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/include/gtest/internal/custom/gtest-printers.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/include/gtest/internal/custom/gtest.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/include/gtest/internal/gtest-death-test-internal.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/include/gtest/internal/gtest-filepath.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/include/gtest/internal/gtest-internal.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/include/gtest/internal/gtest-linked_ptr.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/include/gtest/internal/gtest-param-util-generated.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/include/gtest/internal/gtest-param-util-generated.h.pump" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/include/gtest/internal/gtest-param-util.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/include/gtest/internal/gtest-port-arch.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/include/gtest/internal/gtest-port.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/include/gtest/internal/gtest-string.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/include/gtest/internal/gtest-tuple.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/include/gtest/internal/gtest-tuple.h.pump" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/include/gtest/internal/gtest-type-util.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/build/native/include/gtest/internal/gtest-type-util.h.pump" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/lib/native/v140/windesktop/msvcstl/static/rt-dyn/arm64/Debug/gtest.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/lib/native/v140/windesktop/msvcstl/static/rt-dyn/arm64/Debug/gtest_main.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/lib/native/v140/windesktop/msvcstl/static/rt-dyn/arm64/Debug/gtest_maind.lib" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/lib/native/v140/windesktop/msvcstl/static/rt-dyn/arm64/Debug/gtestd.lib" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/lib/native/v140/windesktop/msvcstl/static/rt-dyn/arm64/Release/gtest.lib" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/lib/native/v140/windesktop/msvcstl/static/rt-dyn/arm64/Release/gtest.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/lib/native/v140/windesktop/msvcstl/static/rt-dyn/arm64/Release/gtest_main.lib" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/lib/native/v140/windesktop/msvcstl/static/rt-dyn/arm64/Release/gtest_main.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/lib/native/v140/windesktop/msvcstl/static/rt-dyn/x64/Debug/gtest.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/lib/native/v140/windesktop/msvcstl/static/rt-dyn/x64/Debug/gtest_main.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/lib/native/v140/windesktop/msvcstl/static/rt-dyn/x64/Debug/gtest_maind.lib" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/lib/native/v140/windesktop/msvcstl/static/rt-dyn/x64/Debug/gtestd.lib" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/lib/native/v140/windesktop/msvcstl/static/rt-dyn/x64/Release/gtest.lib" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/lib/native/v140/windesktop/msvcstl/static/rt-dyn/x64/Release/gtest.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/lib/native/v140/windesktop/msvcstl/static/rt-dyn/x64/Release/gtest_main.lib" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/lib/native/v140/windesktop/msvcstl/static/rt-dyn/x64/Release/gtest_main.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/lib/native/v140/windesktop/msvcstl/static/rt-dyn/x86/Debug/gtest.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/lib/native/v140/windesktop/msvcstl/static/rt-dyn/x86/Debug/gtest_main.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/lib/native/v140/windesktop/msvcstl/static/rt-dyn/x86/Debug/gtest_maind.lib" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/lib/native/v140/windesktop/msvcstl/static/rt-dyn/x86/Debug/gtestd.lib" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/lib/native/v140/windesktop/msvcstl/static/rt-dyn/x86/Release/gtest.lib" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/lib/native/v140/windesktop/msvcstl/static/rt-dyn/x86/Release/gtest.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/lib/native/v140/windesktop/msvcstl/static/rt-dyn/x86/Release/gtest_main.lib" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/lib/native/v140/windesktop/msvcstl/static/rt-dyn/x86/Release/gtest_main.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.6/license (MIT).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react/Data/IIdentityDbContext.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react/Data/ITheaterDbContext.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react/Migrations/20230115135001_2.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Tests_API.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tests_API.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests_API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Tests_API.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UnitTest1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/Page_StoelKeuze.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/Page_StoelKeuze.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/ClientApp/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react/ClientApp/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/DonationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/DonationController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/GenreController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/GenreController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/GroupController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/GroupController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/PaymentController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/PaymentController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/PerformanceController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/PerformanceController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/RoomController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/RoomController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/RowController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/RowController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/SeatController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/SeatController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/ShowController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/ShowController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/TicketController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/TicketController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../react/Data/TheaterDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Data/TheaterDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230112092705_214.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230112092705_214.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/TheaterDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Migrations/20230115135001_2.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Models/Performance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Models/Performance.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../react/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react/react.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../react/react.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../react/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,16 +43,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="6e9151cf-7170-4ff5-9d76-02da6c31f424" />
+}</component>
+  <component name="RunManager" selected="30af68de-3fe3-4744-928e-005937b63bc2" />
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -138,6 +63,9 @@
       <updated>1673709027568</updated>
       <workItem from="1673709033403" duration="64000" />
       <workItem from="1673709187458" duration="2050000" />
+      <workItem from="1673723123240" duration="121000" />
+      <workItem from="1673724428040" duration="3350000" />
+      <workItem from="1673789875963" duration="3171000" />
     </task>
     <servers />
   </component>

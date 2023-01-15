@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Gebruiker\\RiderProjects\\WDPR2022\\Tests_API\\Tests_API.csproj": {}
+    "C:\\Users\\Gebruiker\\RiderProjects\\WDPR2022\\tests_api\\Tests_API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Gebruiker\\RiderProjects\\WDPR2022\\Tests_API\\Tests_API.csproj": {
+    "C:\\Users\\Gebruiker\\RiderProjects\\WDPR2022\\tests_api\\Tests_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Gebruiker\\RiderProjects\\WDPR2022\\Tests_API\\Tests_API.csproj",
+        "projectUniqueName": "C:\\Users\\Gebruiker\\RiderProjects\\WDPR2022\\tests_api\\Tests_API.csproj",
         "projectName": "Tests_API",
-        "projectPath": "C:\\Users\\Gebruiker\\RiderProjects\\WDPR2022\\Tests_API\\Tests_API.csproj",
+        "projectPath": "C:\\Users\\Gebruiker\\RiderProjects\\WDPR2022\\tests_api\\Tests_API.csproj",
         "packagesPath": "C:\\Users\\Gebruiker\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Gebruiker\\RiderProjects\\WDPR2022\\Tests_API\\obj\\",
+        "outputPath": "C:\\Users\\Gebruiker\\RiderProjects\\WDPR2022\\tests_api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -14694,6 +14694,9 @@
       <Compile Include="..\react\Controllers\UserController.cs">
         <Link>Controllers\UserController.cs</Link>
       </Compile>
+      <Compile Include="..\react\Data\ITheaterDbContext.cs">
+        <Link>ITheaterDbContext.cs</Link>
+      </Compile>
       <Compile Include="..\react\Data\TheaterDbContext.cs">
         <Link>TheaterDbContext.cs</Link>
       </Compile>

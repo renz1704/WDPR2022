@@ -11,10 +11,10 @@ var builder = WebApplication.CreateBuilder(args);
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 //New DbContext With Services
+builder.Services.AddScoped<ITheaterDbContext, TheaterDbContext>();
 
 builder.Services.AddDbContext<TheaterDbContext>(options => options
 .UseSqlite("Data source=Laak.db"));
-
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 {

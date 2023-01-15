@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 public class DonationController : ControllerBase
 {
 
-    TheaterDbContext _context;
+    ITheaterDbContext _context;
 
-    public DonationController(TheaterDbContext context)
+    public DonationController(ITheaterDbContext context)
         {
             _context = context;
         }
