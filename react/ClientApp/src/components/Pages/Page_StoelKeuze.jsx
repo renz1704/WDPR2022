@@ -16,7 +16,7 @@ function Page_StoelKeuze(){
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     {/*ipv room/1 moet hier bijv props.room worden gebruikt*/}
     useEffect(() => {
-        fetch('https://localhost:7293/api/Room/19')
+        fetch('https://localhost:7293/api/Room/3')
             .then(response => response.json())
             .then(data => {
                 console.log(data)

@@ -7,8 +7,8 @@ using Microsoft.EntityFrameworkCore;
 [Route("api/[controller]")]
 public class RoomController : Controller
 {
-    private readonly TheaterDbContext _context;
-    public RoomController(TheaterDbContext context)
+    private readonly ITheaterDbContext _context;
+    public RoomController(ITheaterDbContext context)
     {
         _context = context;
     }
@@ -56,13 +56,11 @@ public class RoomController : Controller
         {
             return BadRequest(ModelState);
         }
-
         if (id != room.Id)
         {
             return BadRequest();
         }
-
-        _context.Entry(room).State = EntityState.Modified;
+        _context.Update(room);
         _context.SaveChanges();
         return BadRequest();
     }
