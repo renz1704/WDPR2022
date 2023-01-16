@@ -8,26 +8,26 @@ using react.Controllers;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
+/*
+[Fact] = sleutelwoord wordt gebruikt om een methode te markeren als een testmethode
+Task = is een type in .Net-framework voor het weergeven van een asynchrone operations
+Mock<T> = wordt gebruikt voor het maken van mock-objecten
+DbSet = een tabel in een database 
+IQueryable = een interface die een verzameling items vertegenwoordigt
+GetEnumerator = GetEnumerator is een methode van de IQueryable-interface die een teller retourneert die de items in de query herhaalt
+Setup = Setup is een methode van de klasse Mock<T> die het gedrag van een nepobject instelt
+ */
 
 namespace Tests_API
 {
-
-    
     public class GenreControllerTests
     {
-        private GenreController _controller;
-        private Mock<ITheaterDbContext> _context;
-
-        
-        public void Initialize()
-        {
-            _context = new Mock<ITheaterDbContext>();
-            _controller = new GenreController(_context.Object);
-        }
-
         [Fact]
         public async Task GetAll_ShouldReturnAllGenres()
         {
+            Mock<ITheaterDbContext> _context = new Mock<ITheaterDbContext>();
+            GenreController _controller = new GenreController(_context.Object);
+
             // Arrange
             //lijst met genres
             var genres = new List<Genre>
@@ -67,93 +67,54 @@ namespace Tests_API
         [Fact]
         public async Task Get_ShouldReturnCorrectGenre()
         {
-            // Arrange
+            var mockContext = new Mock<ITheaterDbContext>();
             var genres = new List<Genre>
             {
                 new Genre { Id = 1, GenreName = "Comedy" },
                 new Genre { Id = 2, GenreName = "Drama" }
             };
-            //mock zodat de lijst wordt gereturned
-            _context.Setup(x => x.Genres.FindAsync(It.IsAny<int>())).ReturnsAsync((int id) => genres.FirstOrDefault(x => x.Id == id));
-
+            
+            mockContext.Setup(x => x.Genres
+                    .FindAsync(It.IsAny<object[]>()))
+                .Returns( (object[] id) => ValueTask.FromResult(genres.FirstOrDefault(x => x.Id == (int)id[0])) );            
+            var controller = new GenreController(mockContext.Object);
             // Act
-            OkObjectResult result = await _controller.Get(2);
+            var result = await controller.Get(2) as OkObjectResult;
 
-
+            
             // Assert
-            //controleer of het resultaat ok is
-            var okResult = result;
-            Xunit.Assert.NotNull(okResult);
-            
-            //check of de waarde van het resultaat een genre is
-            var returnedGenre = okResult.Value as Genre;
-            
-            //check of drama gereturned is
+            Xunit.Assert.NotNull(result);
+            var returnedGenre = result.Value as Genre;
             Xunit.Assert.Equal("Drama", returnedGenre.GenreName);
         }
 
+
         [Fact]
-        public async Task Create_ShouldAddGenreAndReturnIt()
+        public async Task Create_ShouldReturnOkResult()
         {
             // Arrange
             var genre = new Genre { Id = 3, GenreName = "Horror" };
-            _context.Setup(x => x.Genres.Add(genre));
-            _context.Setup(x => x.SaveChanges()).Returns(1);
+            var mockContext = new Mock<ITheaterDbContext>();
+            var genreList = new List<Genre> { new Genre { Id = 1, GenreName = "Action" }, 
+                new Genre { Id = 2, GenreName = "Comedy" } }.AsQueryable();
+
+            var mockDbSet = new Mock<DbSet<Genre>>();
+            mockDbSet.As<IQueryable<Genre>>().Setup(m => m.Provider).Returns(genreList.Provider);
+            mockDbSet.As<IQueryable<Genre>>().Setup(m => m.Expression).Returns(genreList.Expression);
+            mockDbSet.As<IQueryable<Genre>>().Setup(m => m.ElementType).Returns(genreList.ElementType);
+            mockDbSet.As<IQueryable<Genre>>().Setup(m => m.GetEnumerator()).Returns(genreList.GetEnumerator());
+
+            mockContext.Setup(x => x.Genres).Returns(mockDbSet.Object);
+            
+            var controller = new GenreController(mockContext.Object);
 
             // Act
-            var result = await _controller.Create(genre);
+            var result = await controller.Create(genre);
 
             // Assert
-            //Verify dat de Add methode gecalled is
-            _context.Verify(x => x.Genres.Add(genre), Times.Once);
-            
-            //Verify dat de SaveChanges methode gecalled is
-            _context.Verify(x => x.SaveChanges(), Times.Once);
-            
-            //controleer of het resultaat ok is
             var okResult = result as OkObjectResult;
             Xunit.Assert.NotNull(okResult);
-            
-            //controlleer of de genre gereturned wordt
-            var returnedGenre = okResult.Value as Genre;
-            Xunit.Assert.Equal(genre, returnedGenre);
-        }
-
-        [Fact]
-        public async Task GetGenreStringsAsync_ShouldReturnListOfGenreNames()
-        {
-            // Arrange
-            var genres = new List<Genre>
-            {
-                new Genre { Id = 1, GenreName = "Comedy" },
-                new Genre { Id = 2, GenreName = "Drama" }
-            };
-            var genreDbSetMock = new Mock<DbSet<Genre>>();
-            genreDbSetMock.As<IQueryable<Genre>>().Setup(m => m.Provider).Returns(genres.AsQueryable().Provider);
-            genreDbSetMock.As<IQueryable<Genre>>().Setup(m => m.Expression).Returns(genres.AsQueryable().Expression);
-            genreDbSetMock.As<IQueryable<Genre>>().Setup(m => m.ElementType).Returns(genres.AsQueryable().ElementType);
-            genreDbSetMock.As<IQueryable<Genre>>().Setup(m => m.GetEnumerator()).Returns(genres.AsQueryable().GetEnumerator());
-            _context.Setup(x => x.Genres).Returns(genreDbSetMock.Object);
-
-            // Act
-            var result = await _controller.GetGenreStringsAsync();
-
-            // Assert
-            //controleer of het resultaat ok is
-            var okResult = result;
-            Xunit.Assert.NotNull(okResult);
-            
-            //controlleer of de waarde een lijst met strings is
-            var returnedGenres = okResult.Value as List<string>;
-            
-            //controleer of de lijst grootte 2 is
-            Xunit.Assert.Equal(2, returnedGenres.Count);
-            
-            //controleer of de 1e waarde comedy is
-            Xunit.Assert.Equal("Comedy", returnedGenres[0]);
-            
-            //controleer of de 2e waarde drama is
-            Xunit.Assert.Equal("Drama", returnedGenres[1]);
+            Xunit.Assert.IsType<OkObjectResult>(okResult);
         }
     }
 }

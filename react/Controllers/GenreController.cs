@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -34,12 +35,16 @@ namespace react.Controllers
         [Route("createGenre")]
         public async Task<OkObjectResult> Create (Genre genre)
         {
-            await _context.Genres.AddAsync(genre);
+            if (_context == null)
+            {
+                throw new ArgumentNullException(nameof(_context));
+            }
+            await _context.Genres.AddAsync(genre); //line 41 <-----
             _context.SaveChanges();
             return Ok(genre);
         }
 
-
+        
         [HttpGet]
         [Route("GetGenresString")]
         public async Task<ActionResult<List<string>>> GetGenreStringsAsync()

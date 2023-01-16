@@ -2,6 +2,8 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=30af68de_002D3fe3_002D4744_002D928e_002D005937b63bc2/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="RoomControllerTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;xUnit::BC672D09-5F30-13F5-E06C-8D07F3447862::net7.0::RoomControllerTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::BC672D09-5F30-13F5-E06C-8D07F3447862::net7.0::Tests_API.GenreControllerTests.Create_ShouldReturnOkResult&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::BC672D09-5F30-13F5-E06C-8D07F3447862::net7.0::Tests_API.GenreControllerTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=6e9151cf_002D7170_002D4ff5_002D9d76_002D02da6c31f424/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="RoomControllerTests #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
