@@ -7,24 +7,21 @@ using Microsoft.EntityFrameworkCore;
 [Route("api/[controller]")]
 public class RoomController : Controller
 {
-    private readonly TheaterDbContext _context;
-    public RoomController(TheaterDbContext context)
+    private readonly ITheaterDbContext _context;
+    public RoomController(ITheaterDbContext context)
     {
         _context = context;
     }
     
-    // GET api/theater
     [HttpGet]
     public IActionResult Get()
     {
-        var rooms = _context.Rooms
-            .Include(r => r.Rows)
-            .ThenInclude(row => row.Seats)
+        var roomIds = _context.Rooms
+            .Select(r => r.Id)
             .ToList();
-        return Ok(rooms);
+        return Ok(roomIds);
     }
     
-    // GET api/theater/5
     [HttpGet("{id}")]
     public IActionResult Get(int id)
     {
@@ -39,7 +36,6 @@ public class RoomController : Controller
         return Ok(room);
     }
 
-    // POST 
     [HttpPost]
     [Route ("createRoom")]
     public IActionResult Post([FromBody]Room room)
@@ -53,7 +49,6 @@ public class RoomController : Controller
         return CreatedAtAction("Get", new { id = room.Id }, room);
     }
 
-    // PUT api/theater/5
     [HttpPut("{id}")]
     public IActionResult Put(int id, [FromBody] Room room)
     {
@@ -61,15 +56,40 @@ public class RoomController : Controller
         {
             return BadRequest(ModelState);
         }
-
         if (id != room.Id)
         {
             return BadRequest();
         }
-
-        _context.Entry(room).State = EntityState.Modified;
+        _context.Update(room);
         _context.SaveChanges();
         return BadRequest();
-
+    }
+    
+    [HttpDelete("delete/{id}")]
+    public IActionResult Delete(int id)
+    {
+        var room = _context.Rooms
+            .Include(r => r.Rows)
+            .ThenInclude(row => row.Seats)
+            .SingleOrDefault(r => r.Id == id);
+        if (room == null)
+        {
+            return NotFound();
+        }
+        _context.Rooms.Remove(room);
+        _context.SaveChanges();
+        return Ok();
+    }
+    
+    [HttpGet("name/{id}")]
+    public IActionResult GetName(int id)
+    {
+        var room = _context.Rooms
+            .SingleOrDefault(r => r.Id == id);
+        if (room == null)
+        {
+            return NotFound();
+        }
+        return Ok(room.Name);
     }
 }

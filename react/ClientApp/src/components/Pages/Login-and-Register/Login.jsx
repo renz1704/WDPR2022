@@ -3,6 +3,7 @@ import "./login-register.css";
 import { Link , useNavigate} from "react-router-dom";
 import Header from "../../Header";
 import axios from "axios";
+import ReCAPTCHA from 'react-google-recaptcha'
 import AuthenticationService from "../../../services/AuthenticationService";
 import { Button } from "@mui/material";
 import jwt from 'jwt-decode'
@@ -11,6 +12,7 @@ import UserService from "../../../services/UserService";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isVerified, setIsVerified] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -27,8 +29,33 @@ const Login = () => {
     }
     
     
-    };
+    
    
+    if(!isVerified){
+      alert("Druk alstublieft op 'Ik ben geen robot'. Mocht u de reCAPTCHA niet kunnen zien, herlaad dan de pagina.") 
+    }else{
+     const loginPayload = {
+       email: email,
+       password: password
+     }
+     return axios.post('https://localhost:7293/api/User/login', { email, password })
+     .then(res => {
+      if(res.status !== 200)
+      {
+        localStorage.setItem('token', res.data.token);
+        axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.token}`;    
+       }
+       else{
+           navigate("/");
+       }
+     });
+    }
+   }
+   
+
+   const handleRecaptcha = (value) => {
+    setIsVerified(value !== null);
+  };
 
   return (
     <div>
@@ -51,7 +78,7 @@ const Login = () => {
         className="input-password"
         onChange={(event) => setPassword(event.target.value)}
       ></input>
-     
+     <ReCAPTCHA sitekey="6Ldmv-0jAAAAAOzZUjuueonJNyxg4RBpDiNgpbVO" onChange={handleRecaptcha} />
       <button
         type="onSubmit"
         disabled={email == "" || password == ""}

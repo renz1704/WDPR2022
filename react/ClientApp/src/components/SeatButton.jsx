@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 
 function SeatButton(props){
     const [seatData, setSeatData] = useState()
-    const [seatNumber, setSeatNumber] = useState()
+    const [seatName, setSeatName] = useState()
     const url = "https://localhost:7293/api/Seat/" + props.seatId
     
     useEffect(() => {
@@ -10,10 +10,9 @@ function SeatButton(props){
             .then(response => response.json())
             .then(data => {
                 setSeatData(data);
-                setSeatNumber(data.seatNumber)
+                setSeatName(data.seatName)
                 if (data.isDisabled === true){
-                    setBorder_color("blue")
-                }
+                    setBorder_color("blue")}
             })
     }, []);
     
@@ -41,13 +40,16 @@ function SeatButton(props){
         else {
             setColor([colorAvailable, colorSelected])
         }
+
+
+        
     }
    
     return(
         <button 
             style={{ backgroundColor: color[0], color: color[1], borderColor: border_color }}
             onClick={() => buttonClick()}>
-            {seatNumber}
+            {seatName}
         </button>
     )
 }

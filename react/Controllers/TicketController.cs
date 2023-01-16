@@ -1,15 +1,17 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
 
 
 
 [ApiController]
 [Route("api/[controller]")]
 
-public class TicketController : Controller
+public class TicketController : ControllerBase
 {
-    private readonly TheaterDbContext _context;
+    ITheaterDbContext _context;
 
-    public TicketController(TheaterDbContext context)
+    public TicketController(ITheaterDbContext context)
     {
         _context = context;
     }
@@ -51,39 +53,59 @@ public class TicketController : Controller
         return Ok(ticket);
     }
 
-    // maak een ticket aan
+
     [HttpPost]
-    public IActionResult CreateTicket(Ticket ticket)
+    [Route("createticketwithseatid")]
+    public IActionResult CreateTicketWithSeatId(int seatId, [FromBody] TicketDTO ticketDTO)
     {
+        var seat = _context.Seats.SingleOrDefault(s => s.Id == seatId);
+        if (seat == null)
+        {
+            return NotFound();
+        }
+
+        var ticket = new Ticket
+        {
+            Seat = _context.Seats.Where(s => s.Id == ticketDTO.SeatId).First(),
+            Performance = _context.Performances.Where(p => p.Id == ticketDTO.PerformanceId).First(),
+            isAvailable = true
+        };
+
         _context.Tickets.Add(ticket);
         _context.SaveChanges();
-        return Ok(ticket);
+        return CreatedAtAction("GetTicketById", new { id = ticket.Id }, ticket);
     }
 
-    // maak meerdere tickets aan
-    [HttpPost("multiple")]
-    public IActionResult CreateMultipleTickets(List<Ticket> tickets)
-    {
-        _context.Tickets.AddRange(tickets);
-        _context.SaveChanges();
-        return Ok(tickets);
-    }
-
-    // verwijder een ticket
     [HttpDelete]
-    public IActionResult DeleteTicket(int id)
+    [Route("deleteticketwithseatid")]
+    public IActionResult DeleteTicketWithSeatId(int seatId)
     {
-        var ticket = _context.Tickets
-        .FirstOrDefault(t => t.Id == id);
+        var seat = _context.Seats.SingleOrDefault(s => s.Id == seatId);
+        if (seat == null)
+        {
+            return NotFound();
+        }
+
+        var ticket = _context.Tickets.Where(t => t.Seat.Id == seatId).First();
+
         if (ticket == null)
         {
             return NotFound();
         }
+
         _context.Tickets.Remove(ticket);
         _context.SaveChanges();
-        return Ok(ticket);
+        return NoContent();
     }
 
+    public class TicketDTO
+    {
+        public int Id { get; set; }
+        public int SeatId { get; set; }
+        public int PerformanceId { get; set; }
+    }
+
+/*
     [HttpPost]
     [Route("/transferTicket")]
     public async Task<ActionResult<Ticket>> TransferTicket (TicketTransferDTO transfer) {
@@ -105,7 +127,7 @@ public class TicketController : Controller
 
     }
 
-
+*/
     public class TicketTransferDTO{
         public string emailOwner {get;set;}
         public string emailReceiver {get;set;}

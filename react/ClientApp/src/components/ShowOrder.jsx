@@ -20,13 +20,13 @@ function ShowOrder(props){
                 <td>{totalPrice}</td>
                 {props.canEdit && (<td></td>)}
             </tr>
-            {props.seats.map((seatNumber, cellIndex) => (
+            {props.seats.map((seatName, cellIndex) => (
                 <tr key={cellIndex}>
-                    <td>Stoel: {seatNumber}</td>
+                    <td>Stoel: {seatName}</td>
                     <td></td>
                     <td>{price}</td>
                     {props.canEdit &&(<td>
-                        <button onClick={() => props.toggleSeat(seatNumber)}>X</button>
+                        <button onClick={() => props.toggleSeat(seatName)}>X</button>
                     </td>)}
                 </tr>
             ))} 

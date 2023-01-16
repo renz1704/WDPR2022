@@ -8,7 +8,6 @@ import AppRoutes from './AppRoutes';
 import AuthorizeRoute from './components/api-authorization/AuthorizeRoute';
 
 //pagina imports
-import Header from './components/Header'
 import Page_Startpagina from './components/Pages/Page_Startpagina';
 import Page_Voorstellingen from './components/Pages/Page_Voorstellingen';
 import Page_VoorstellingInfo from './components/Pages/Page_VoorstellingInfo';
@@ -21,11 +20,14 @@ import Page_BezoekersPortaal from './components/Pages/BezoekersPortaal/Page_Bezo
 import Page_Gegevens from './components/Pages/BezoekersPortaal/Page_Gegevens';
 import Page_Tickets from './components/Pages/BezoekersPortaal/Page_Tickets';
 import Page_Doneren from './components/Pages/BezoekersPortaal/Page_Doneren';
+import Page_DonatieGekoppeld from './components/Pages/BezoekersPortaal/Page_DonatieGekoppeld';
 
 import Page_Winkelmand from "./components/Pages/Page_Winkelmand";
 import Page_Betaling from "./components/Pages/Page_Betaling";
 import Page_Betaald from "./components/Pages/Page_Betaald";
 import Page_ZaalMaken from "./components/Pages/Page_ZaalMaken";
+import Page_AdminPortaal from "./components/Pages/Page_AdminPortaal";
+import Page_Zaalbeheer from "./components/Pages/Page_Zaalbeheer";
 
 import LoginPage from './components/Pages/Login-and-Register/Login';
 import RegisterPage from './components/Pages/Login-and-Register/Register';
@@ -34,7 +36,6 @@ import RegisterPage from './components/Pages/Login-and-Register/Register';
 import GroepManagement from './components/Pages/Page_GroepManagement';
 import Page_UploadSchedule from './components/Pages/Page_UploadSchedule';
 import Page_AccountGegevens from './components/Pages/BezoekersPortaal/Page_AccountGegevens';
-
 
 
 const rootElement = document.getElementById('root');
@@ -61,6 +62,8 @@ root.render(
         <Route path='/betaling' element={<Page_Betaling/>}/>
         <Route path='/betaald' element={<Page_Betaald/>}/>
         <Route path='/zaalmaken' element={<Page_ZaalMaken/>}/>
+        <Route path='/admin' element={<Page_AdminPortaal/>}/>
+        <Route path='/zaalbeheer' element={<Page_Zaalbeheer/>}/>
 
 
         <Route path='/groepen' element={<GroepManagement/>}/>
@@ -74,6 +77,7 @@ root.render(
         <Route path='/gegevens' element={<Page_Gegevens/>}/>
         <Route path='/tickets' element={<Page_Tickets/>}/>
         <Route path='/doneren' element={<Page_Doneren/>}/>
+        <Route path='/donatiegekoppeld' element={<Page_DonatieGekoppeld/>}/>
 
         {<Route path='/begunstigersportaal' element={<Page_Begunstigersportaal />} /> /*dit moet nog weggehaald/geautoriseerd worden, het begunstigersportaal moet alleen voor donateurs zijn*/}
         <Route path='/inloggen' element={<LoginPage/>}/>
