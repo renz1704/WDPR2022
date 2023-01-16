@@ -3,11 +3,11 @@ import PopUp from "../PopUp";
 import {Routes, Route, useNavigate} from 'react-router-dom';
 
 
+
 function Page_Betaling(){
 
-    // const [totalPrice, setTotalPrice] = useState('');
+    const [totalPrice, setTotalPrice] = useState('');
     const [html, setHtml] = useState('');
-    const popUpMessage = "Betaling gefaald probeer het opnieuw."
     const navigate = useNavigate();
 
     const cancelRoute = () =>{  

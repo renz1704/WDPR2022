@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 public class PaymentController : ControllerBase
 {
 
-    TheaterDbContext _context;
+    ITheaterDbContext _context;
 
-    public PaymentController(TheaterDbContext context)
+    public PaymentController(ITheaterDbContext context)
         {
             _context = context;
         }
@@ -22,7 +22,7 @@ public class PaymentController : ControllerBase
     {
 
         _context.Payment.Where(x => x.Id == paymentFromApi.reference).Any(y => y.succes == paymentFromApi.succes);
-        await _context.SaveChangesAsync();
+        _context.SaveChanges();
         Console.WriteLine("The payment with id: " + paymentFromApi.reference + " is: " + paymentFromApi.succes);
         return paymentFromApi;
     }
@@ -33,15 +33,15 @@ public class PaymentController : ControllerBase
     {
 
         await _context.Payment.AddAsync(payment);
-        await _context.SaveChangesAsync();
+        _context.SaveChanges();
         Console.WriteLine("The payment with id: " + payment.Id + " and amount: " + payment.Amount + " is created.");
         return payment;
     }
 
     public class paymentFromApi{
 
-        public Boolean succes;
+        public Boolean succes {get; set;}
         
-        public int reference;
+        public int reference {get; set;}
     }
 }

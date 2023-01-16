@@ -12,8 +12,7 @@ function SeatButton(props){
                 setSeatData(data);
                 setSeatName(data.seatName)
                 if (data.isDisabled === true){
-                    setBorder_color("blue")
-                }
+                    setBorder_color("blue")}
             })
     }, []);
     

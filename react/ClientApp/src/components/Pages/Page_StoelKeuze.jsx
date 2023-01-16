@@ -5,23 +5,25 @@ import SeatButton from "../SeatButton";
 import { useNavigate } from "react-router-dom";
 import PopUp from "../PopUp";
 
-function Page_StoelKeuze() {
-  {
-    /*seats is een lijst van stoelen per rij*/
-  }
-  const [seats, setSeats] = useState([]);
-  {
-    /*ipv room/1 moet hier bijv props.room worden gebruikt*/
-  }
-  useEffect(() => {
-    fetch("https://localhost:7293/api/Room/3")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        const seats = data.rows.map((row) => row.seats.map((seat) => seat.id));
-        setSeats(seats);
-      });
-  }, []);
+
+
+function Page_StoelKeuze(){
+
+    {/*seats is een lijst van stoelen per rij*/}
+    const [seats, setSeats] = useState([]);
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    const [seatNumber, setSeatNumber] = useState([]); 
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    {/*ipv room/1 moet hier bijv props.room worden gebruikt*/}
+    useEffect(() => {
+        fetch('https://localhost:7293/api/Room/3')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                const Seats = data.rows.map(row => row.seats.map(seat => seat.id));
+                setSeats(Seats);
+            });
+    }, []);
 
   {
     /*selectedSeats zijn de stoelen die de gebruiker kiest om te kopen*/
@@ -117,8 +119,7 @@ function Page_StoelKeuze() {
     } else {
       navigate("/winkelmand");
     }
-  };
-
+  }
   return (
     <>
       <Header />

@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 [Route("api/[controller]")]
 public class PerformanceController : ControllerBase
 {
-    TheaterDbContext _context;
+    ITheaterDbContext _context;
 
-    public PerformanceController(TheaterDbContext context){
+    public PerformanceController(ITheaterDbContext context){
         _context = context;
     }
 
@@ -22,11 +22,12 @@ public class PerformanceController : ControllerBase
     [Route("createperformance")]
     public async Task<ActionResult<Performance>> CreatePerformanceAsync(PerformanceDTO performance)
     {
-        Performance p = new Performance(performance.showId, performance.roomId, _context);
+        Performance p = new Performance(performance.showId, performance.roomId);
+        p.StartTime = performance.StartTime;
+        p.EndTime = performance.EndTime;
         await _context.Performances.AddAsync(p);
-        await _context.SaveChangesAsync();
+        _context.SaveChanges();
         return p;
-        
     }
 
     [HttpGet]
