@@ -8,10 +8,9 @@ import { basic_exclamation } from 'react-icons-kit/linea/basic_exclamation'
 import { Icon } from 'react-icons-kit'
 import ReCAPTCHA from 'react-google-recaptcha'
 
+import UserService from '../../../services/UserService'
 const Register = () => {
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [lastName, setlastName] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
@@ -49,6 +48,8 @@ const Register = () => {
 
   const handleRecaptcha = (value) => {
     setIsVerified(value !== null);
+
+    navigate("/inloggen")
   };
 
   const handleChange = (value) => {

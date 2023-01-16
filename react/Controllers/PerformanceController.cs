@@ -19,6 +19,23 @@ public class PerformanceController : ControllerBase
     }
 
     [HttpPost]
+    [Route("AddPerformances")]
+    public async Task<ActionResult<List<Performance>>> AddPerformances (List<PerformanceDTO> performances) {
+        
+        List<Performance> per = new List<Performance>();
+        foreach (var p in performances)
+        {
+            Performance performance = new Performance (p.showId, p.roomId, _context);
+            per.Add(performance);
+            await _context.Performances.AddAsync(performance);
+            await _context.SaveChangesAsync();
+        }
+        
+        return per;
+        
+    }
+
+    [HttpPost]
     [Route("createperformance")]
     public async Task<ActionResult<Performance>> CreatePerformanceAsync(PerformanceDTO performance)
     {

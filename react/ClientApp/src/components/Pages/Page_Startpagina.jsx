@@ -9,8 +9,11 @@ import Banner from '../../pictures/banner.png'
 import Button from '@mui/material/Button';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { DatePicker } from '@mui/x-date-pickers';
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 
 import "./Startpagina.css"
+
 
 function Page_Startpagina() {
 
@@ -66,24 +69,10 @@ function Page_Startpagina() {
                     sx={{ width: 300 }}
                     renderInput={(params) => <TextField {...params} label="Genre" />}
                     />
-                                    <Autocomplete
-                    disablePortal
-                    id="combo-box-demo"
-                    options={[]}
-                    sx={{ width: 300 }}
-                    renderInput={(params) => <TextField {...params} label="Maand" />}
-                    />
-                    
 
-                    <Autocomplete
-                    disablePortal
-                    id="combo-box-demo"
-                    options={[]}
-                    sx={{ width: 300}}
-                    renderInput={(params) => <TextField {...params} label="Datum" />}
-                    />
 
                     <Button variant="outlined" onClick={filterPerformances}>Zoeken</Button>
+                    <Button variant="contained" onClick={fetchPerformances}>Reset</Button>
                     </div>
             </div>
             <div className='show-content-top'>

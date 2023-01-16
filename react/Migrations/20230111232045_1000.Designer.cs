@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace react.Migrations
+namespace react.Data.Migrations
 {
     [DbContext(typeof(TheaterDbContext))]
-    [Migration("20230112131143_218")]
-    partial class _218
+    [Migration("20230111232045_1000")]
+    partial class _1000
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -351,6 +351,10 @@ namespace react.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("AccountNumber")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<double>("Amount")
                         .HasColumnType("REAL");
 
@@ -360,9 +364,6 @@ namespace react.Migrations
                     b.Property<string>("Discriminator")
                         .IsRequired()
                         .HasColumnType("TEXT");
-
-                    b.Property<bool>("succes")
-                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -467,7 +468,7 @@ namespace react.Migrations
                     b.Property<int?>("RowId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("SeatName")
+                    b.Property<string>("SeatNumber")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -521,6 +522,9 @@ namespace react.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("REAL");
 
+                    b.Property<int>("ReservationId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("SeatId")
                         .HasColumnType("INTEGER");
 
@@ -530,6 +534,8 @@ namespace react.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("PerformanceId");
+
+                    b.HasIndex("ReservationId");
 
                     b.HasIndex("SeatId");
 
@@ -749,6 +755,12 @@ namespace react.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Reservation", "Reservation")
+                        .WithMany()
+                        .HasForeignKey("ReservationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Seat", "Seat")
                         .WithMany()
                         .HasForeignKey("SeatId")
@@ -756,6 +768,8 @@ namespace react.Migrations
                         .IsRequired();
 
                     b.Navigation("Performance");
+
+                    b.Navigation("Reservation");
 
                     b.Navigation("Seat");
                 });

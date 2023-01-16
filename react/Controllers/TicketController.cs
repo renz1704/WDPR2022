@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 
 
-[Route("api/[controller]")]
-[ApiController]
 
+[ApiController]
+[Route("api/[controller]")]
 
 public class TicketController : ControllerBase
 {
@@ -103,5 +103,34 @@ public class TicketController : ControllerBase
         public int Id { get; set; }
         public int SeatId { get; set; }
         public int PerformanceId { get; set; }
+    }
+
+/*
+    [HttpPost]
+    [Route("/transferTicket")]
+    public async Task<ActionResult<Ticket>> TransferTicket (TicketTransferDTO transfer) {
+
+        Visitor owner = await _context.Visitors.FindAsync(transfer.emailOwner);
+
+        Visitor reveiver = await _context.Visitors.FindAsync(transfer.emailReceiver);
+
+        if(!(owner == null || reveiver == null))
+        {
+            Ticket oldTicket = await _context.Tickets.FindAsync(transfer.ticketId);
+            if(oldTicket != null)
+            {
+                Ticket ticket = new Ticket {Seat = oldTicket.Seat, Performance = oldTicket.Performance, isTransfered=true, Reservation = oldTicket.Reservation};
+                
+            }
+            
+        }
+
+    }
+
+*/
+    public class TicketTransferDTO{
+        public string emailOwner {get;set;}
+        public string emailReceiver {get;set;}
+        public int ticketId {get;set;}
     }
 }

@@ -50,7 +50,7 @@ public class DonationController : ControllerBase
         var user = _context.Visitors.FirstOrDefault(x => x.IdentityUser.UserName == emailUser);
          if (user == null)
             return BadRequest(new { message = "Er is geen gebruiker gevonden met dit emailadres!" });
-        if (user.donationToken != null)
+        if (user.DonationToken != null)
         {
             return true;
         }
@@ -68,7 +68,7 @@ public class DonationController : ControllerBase
           if (user == null)
             return BadRequest(new { message = "Er is geen gebruiker gevonden met dit emailadres!" });
         
-        return user.donationToken;
+        return user.DonationToken;
     }
 
     [HttpPost]
@@ -82,11 +82,11 @@ public class DonationController : ControllerBase
         if (user == null)
             return BadRequest(new { message = "Er is geen gebruiker gevonden met dit emailadres!" });
 
-        user.donationToken = token;
+        user.DonationToken = token;
 
         Console.WriteLine(token);
 
-        Console.WriteLine("De token van de user " + user.Name + " = " + user.donationToken);
+        Console.WriteLine("De token van de user " + user.Name + " = " + user.DonationToken);
 
         return Ok(new { message = "Gelukt, u kunt dit venster nu sluiten." });
     }
