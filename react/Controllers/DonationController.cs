@@ -8,13 +8,13 @@ using Microsoft.EntityFrameworkCore;
 public class DonationController : ControllerBase
 {
 
-    TheaterDbContext _context;
+
+    ITheaterDbContext _context;
     string emailUser;
 
-    public DonationController(TheaterDbContext context)
-    {
-        _context = context;
-
+    public DonationController(ITheaterDbContext context)
+        {
+            _context = context;
     }
 
     [HttpGet]

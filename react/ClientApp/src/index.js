@@ -36,7 +36,6 @@ import RegisterPage from './components/Pages/Login-and-Register/Register';
 import GroepManagement from './components/Pages/Page_GroepManagement';
 
 
-
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
 

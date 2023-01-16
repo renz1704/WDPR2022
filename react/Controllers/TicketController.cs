@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 
 public class TicketController : ControllerBase
 {
-    TheaterDbContext _context;
+    ITheaterDbContext _context;
 
-    public TicketController(TheaterDbContext context)
+    public TicketController(ITheaterDbContext context)
     {
         _context = context;
     }
@@ -59,7 +59,7 @@ public class TicketController : ControllerBase
     {
         var tickets = new Ticket { Seat = _context.Seats.Where(s=> s.Id == t.SeatId).First(), Performance = _context.Performances.Where(p=> p.Id == t.PerformanceId).First(), isAvailable = true }; 
         await _context.Tickets.AddAsync(tickets);
-        await _context.SaveChangesAsync();
+        _context.SaveChanges();
         return tickets;
     }
 

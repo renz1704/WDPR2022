@@ -7,10 +7,10 @@ using System.Text.RegularExpressions;
 [Route("api/[controller]")]
 public class ShowController
 {
-    private readonly TheaterDbContext _context;
+    private readonly ITheaterDbContext _context;
 
 
-    public ShowController(TheaterDbContext context)
+    public ShowController(ITheaterDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public class ShowController
     {
 
         await _context.Shows.AddAsync(show);
-        await _context.SaveChangesAsync();
+        _context.SaveChanges();
         return show;
     }
 
@@ -33,7 +33,7 @@ public class ShowController
         Group group = await _context.Groups.FindAsync(groupId);
         Show show = await _context.Shows.FindAsync(showId);
         show.Groups.Add(group);
-        await _context.SaveChangesAsync();
+        _context.SaveChanges();
         return show;
     }
 

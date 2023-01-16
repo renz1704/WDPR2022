@@ -1,17 +1,20 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 //New DbContext With Services
+builder.Services.AddScoped<ITheaterDbContext, TheaterDbContext>();
 
 builder.Services.AddDbContext<TheaterDbContext>(options => options
 .UseSqlite("Data source=Laak.db"));
-
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 {
