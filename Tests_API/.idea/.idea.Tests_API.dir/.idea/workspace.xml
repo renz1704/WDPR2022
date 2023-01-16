@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eaf177ba-b666-4d1f-a160-da35910dadf1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../react/Migrations/20230116193259_3.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react/Migrations/20230116193259_3.cs" afterDir="false" />
+    <list default="true" id="eaf177ba-b666-4d1f-a160-da35910dadf1" name="Changes" comment="genrecontroller tests">
+      <change afterPath="$PROJECT_DIR$/GroupControllerTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Tests_API.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tests_API.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Folder.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Folder.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GenrecontrollerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GenrecontrollerTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react/Controllers/GenreController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/GenreController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react/Models/Genre.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Models/Genre.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.csproj.CoreCompileInputs.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +15,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/79fbf5ff554b611622a4207ff363d1c026ccac52f8ef8f6318a1cc5ab7e4/ObjectResult.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bd1d5c50194fea68ff3559c160230b0ab50f5acf4ce3061bffd6d62958e2182/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../react/Migrations/20230116193259_3.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -56,8 +54,16 @@
       <workItem from="1673789875963" duration="3171000" />
       <workItem from="1673826554485" duration="3577000" />
       <workItem from="1673880596737" duration="6629000" />
-      <workItem from="1673897639822" duration="1526000" />
+      <workItem from="1673897639822" duration="3063000" />
     </task>
+    <task id="LOCAL-00001" summary="genrecontroller tests">
+      <created>1673899417330</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1673899417330</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -79,6 +85,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="genrecontroller tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="genrecontroller tests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

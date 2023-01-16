@@ -15,5 +15,6 @@
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;xUnit::BC672D09-5F30-13F5-E06C-8D07F3447862::net7.0::RoomControllerTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::BC672D09-5F30-13F5-E06C-8D07F3447862::net7.0::Tests_API.GenreControllerTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::BC672D09-5F30-13F5-E06C-8D07F3447862::net7.0::Tests_API.GroupControllerTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
