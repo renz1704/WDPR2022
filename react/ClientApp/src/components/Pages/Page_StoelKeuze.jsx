@@ -27,20 +27,52 @@ function Page_StoelKeuze(){
 
     {/*selectedSeats zijn de stoelen die de gebruiker kiest om te kopen*/}
     const [selectedSeats, setSeat] = useState([]);
-    const toggleSeat = (seatNumber) => {
+    const toggleSeat = (seatId) => {
 
         {/*dit checkt of het nummer van de stoel al geselecteerd is
         als dit niet zo is wordt de stoel toegevoegd aan de lijst*/}
-        if (!selectedSeats.includes(seatNumber)) {
-            setSeat(oldArray => [...oldArray, seatNumber])
+        if (!selectedSeats.includes(seatId)) {
+            setSeat(oldArray => [...oldArray, seatId])
+            AddTicketToDatabaseBasedOnSeatIdAndPerformanceId(seatId)
         }
         else{
             {/*als dit wel zo is wordt de stoel uit de lijst gehaald*/}
-            setSeat(selectedSeats.filter(item => item!== seatNumber));
+            setSeat(selectedSeats.filter(item => item!== seatId));
+            removeTicketFromDatabaseBasedOnSeatId(seatId)
         }
-        console.log(seatNumber)
     }
 
+    const removeTicketFromDatabaseBasedOnSeatId = (seatId) => {
+        const url = 'http://localhost:5001/api/Ticket/deleteticket?id=' + seatId
+        fetch(url)
+            .then(response => response.json())
+            .then(response => console.log(response))
+    }
+    
+    const AddTicketToDatabaseBasedOnSeatIdAndPerformanceId = (seatId) => {
+        fetch("http://localhost:5001/api/Ticket/createticket",{
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-type' : 'application/json'
+            },
+            body: JSON.stringify(
+                {
+                    
+                    "isAvailable": true,
+                    "price": 0,
+                    "seatId": seatId,
+                    "performanceId": 1
+                }
+            )
+        })
+            .then(response => response.json())
+            .then(response => console.log(response))
+            .then(Response => console.log("id: " + seatId))
+    }
+    
+    
+    
   {
     /*showPopUp wordt gebruikt om de popup te tonen
     popupmessage is de inhoud ervan*/

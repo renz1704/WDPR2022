@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3pZGFRsChqnTGq9bjxhC1qBbSfarogPNskLhiDrRxc0OFgmC/Q4GZZnVJ+JW3fJySjv0fOrMPnhJ3+RqKEosHw==",
+  "dgSpecHash": "rtW6jXmlhNDnvDUXQ9A81qhpqNxIwbX2H2KREQ1kHiNDNc0Bcg0sXUglyoQjTY8YMeb8oWIlIek+jiYleLpy9g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Gebruiker\\RiderProjects\\WDPR2022\\tests_api\\Tests_API.csproj",
+  "projectFilePath": "C:\\Users\\Gebruiker\\RiderProjects\\WDPR2022\\Tests_API\\Tests_API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Gebruiker\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\Gebruiker\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
