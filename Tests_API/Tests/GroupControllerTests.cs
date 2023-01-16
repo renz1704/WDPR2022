@@ -1,8 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-
-namespace Tests_API;
-
 using Microsoft.AspNetCore.Mvc;
 using Xunit;
 using Moq;
@@ -23,8 +20,8 @@ public class GroupControllerTests
         var result = await controller.createGroup(group);
 
         // Assert
-        var returnGroup = Assert.IsType<Group>(result.Value);
-        Assert.Equal(group, returnGroup);
+        var returnGroup = Xunit.Assert.IsType<Group>(result.Value);
+        Xunit.Assert.Equal(group, returnGroup);
 
     }
 }
