@@ -12,16 +12,17 @@ public class DonationController : ControllerBase
     string emailUser;
 
     public DonationController(TheaterDbContext context)
-        {
-            _context = context;
+    {
+        _context = context;
 
-        }
+    }
 
     [HttpGet]
-     [Route("userEmailExists")]
+    [Route("userEmailExists")]
     public async Task<ActionResult<Boolean>> userEmailExists()
     {
-        if(emailUser == null){
+        if (emailUser == null)
+        {
             return false;
         }
         Console.WriteLine(emailUser);
@@ -30,27 +31,70 @@ public class DonationController : ControllerBase
 
     [HttpPost]
     [Route("userEmail")]
-    public async Task<ActionResult<string>> userEmail([FromBody] string emailuser)
+    public async Task<IActionResult> userEmail(string emailuser)
     {
+        Console.WriteLine("hier is ie er niet " + emailUser);
         emailUser = emailuser;
         Console.WriteLine(emailUser);
-        return emailuser;
+        return Ok();
+    }
+
+    [HttpPost]
+    [Route("tokenExists")]
+    public async Task<ActionResult<Boolean>> tokenExists(string emailuser)
+    {
+          if (string.IsNullOrEmpty(emailUser))
+            return BadRequest(new { message = "emailUser is null or empty" });
+        emailUser = emailuser;
+        Console.WriteLine(emailUser);
+        var user = _context.Visitors.FirstOrDefault(x => x.IdentityUser.UserName == emailUser);
+         if (user == null)
+            return BadRequest(new { message = "Er is geen gebruiker gevonden met dit emailadres!" });
+        if (user.donationToken != null)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    [HttpGet]
+    [Route("getToken")]
+    public async Task<ActionResult<String>> getToken(){
+        
+        if (string.IsNullOrEmpty(emailUser))
+            return BadRequest(new { message = "emailUser is null or empty" });
+             var user = _context.Visitors.FirstOrDefault(x => x.IdentityUser.UserName == emailUser);
+          if (user == null)
+            return BadRequest(new { message = "Er is geen gebruiker gevonden met dit emailadres!" });
+        
+        return user.donationToken;
     }
 
     [HttpPost]
     [Route("addtokenuser")]
-    public async Task<ActionResult<donationTokenModel>> addTokenUser([FromBody] donationTokenModel d)
+    public async Task<IActionResult> addTokenUser([FromBody] String token)
     {
-        var user = _context.Visitors.Where(x => x.IdentityUser.UserName == emailUser).First();
-        user.donationToken = d.token;
-        Console.WriteLine(d.token);
+        if (string.IsNullOrEmpty(emailUser))
+            return BadRequest(new { message = "emailUser is null or empty" });
+
+        var user = _context.Visitors.FirstOrDefault(x => x.IdentityUser.UserName == emailUser);
+        if (user == null)
+            return BadRequest(new { message = "Er is geen gebruiker gevonden met dit emailadres!" });
+
+        user.donationToken = token;
+
+        Console.WriteLine(token);
+
         Console.WriteLine("De token van de user " + user.Name + " = " + user.donationToken);
-        return d;
+
+        return Ok(new { message = "Gelukt, u kunt dit venster nu sluiten." });
     }
 
     [HttpPost]
     [Route("DonatieListener")]
-    public async Task<ActionResult<donationListener>> DonatieListener ([FromBody] donationListener donationListenerModel) {
+    public async Task<ActionResult<donationListener>> DonatieListener([FromBody] donationListener donationListenerModel)
+    {
 
         Console.WriteLine(donationListenerModel.email + donationListenerModel.amount + donationListenerModel.naam);
 
@@ -59,13 +103,15 @@ public class DonationController : ControllerBase
 
 }
 
-public class donationTokenModel{
-    public string token {get; set;}
+public class donationTokenModel
+{
+    public string token { get; set; }
 
 }
 
-public class donationListener{
-    public String email {get;set;}
-    public Double amount {get; set;}
-    public String naam {get; set;}
+public class donationListener
+{
+    public String email { get; set; }
+    public Double amount { get; set; }
+    public String naam { get; set; }
 }
