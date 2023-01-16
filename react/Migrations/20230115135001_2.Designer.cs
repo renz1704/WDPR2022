@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace react.Migrations
 {
     [DbContext(typeof(TheaterDbContext))]
-    partial class TheaterDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230115135001_2")]
+    partial class _2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.2");
@@ -389,6 +392,10 @@ namespace react.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("PerformanceId");
+
+                    b.HasIndex("SeatId");
+
                     b.ToTable("Tickets");
                 });
 
@@ -510,6 +517,25 @@ namespace react.Migrations
                     b.HasOne("Row", null)
                         .WithMany("Seats")
                         .HasForeignKey("RowId");
+                });
+
+            modelBuilder.Entity("Ticket", b =>
+                {
+                    b.HasOne("Performance", "Performance")
+                        .WithMany()
+                        .HasForeignKey("PerformanceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Seat", "Seat")
+                        .WithMany()
+                        .HasForeignKey("SeatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Performance");
+
+                    b.Navigation("Seat");
                 });
 
             modelBuilder.Entity("Visitor", b =>

@@ -2,17 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eaf177ba-b666-4d1f-a160-da35910dadf1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/GenrecontrollerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react/Data/IIdentityDbContext.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react/Data/ITheaterDbContext.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react/Migrations/20230115135001_2.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Tests_API.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tests_API.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Folder.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Folder.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RoomcontrollerTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests_API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Tests_API.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UnitTest1.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Tests_API.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Tests_API.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/Page_StoelKeuze.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/Page_StoelKeuze.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/ClientApp/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react/ClientApp/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/DonationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/DonationController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../react/Controllers/GenreController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/GenreController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/GroupController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/GroupController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/PaymentController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/PaymentController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/PerformanceController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/PerformanceController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/RoomController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/RoomController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/RowController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/RowController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/SeatController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/SeatController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/ShowController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/ShowController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/TicketController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/TicketController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Data/TheaterDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Data/TheaterDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230112092705_214.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230112092705_214.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/TheaterDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Migrations/20230115135001_2.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Models/Performance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Models/Performance.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../react/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +66,6 @@
       <workItem from="1673723123240" duration="121000" />
       <workItem from="1673724428040" duration="3350000" />
       <workItem from="1673789875963" duration="3171000" />
-      <workItem from="1673826554485" duration="3577000" />
     </task>
     <servers />
   </component>

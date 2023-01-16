@@ -18,25 +18,25 @@ namespace react.Controllers
 
         [HttpGet]
         [Route("genres")]
-        public async Task<OkObjectResult> GetAll(){
-            return Ok(_context.Genres.ToList());
+        public async Task<ActionResult<List<Genre>>> GetAll(){
+            return _context.Genres.ToList();
         }
 
         
         [HttpGet]
         [Route("getGenre")]
-        public async Task<OkObjectResult> Get(int id)
+        public async Task<ActionResult<Genre>> Get(int id)
         {
-            return Ok(await _context.Genres.FindAsync(id));
+            return await _context.Genres.FindAsync(id);
         }
 
         [HttpPost]
         [Route("createGenre")]
-        public async Task<OkObjectResult> Create (Genre genre)
+        public async Task<ActionResult<Genre>> Create (Genre genre)
         {
             await _context.Genres.AddAsync(genre);
             _context.SaveChanges();
-            return Ok(genre);
+            return genre;
         }
 
 
@@ -50,7 +50,7 @@ namespace react.Controllers
                 Genres.Add(g.GenreName);
             }
 
-            return Ok(Genres);
+            return Genres;
         }
     }
 }
