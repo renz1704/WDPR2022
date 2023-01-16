@@ -23,50 +23,40 @@ function Page_StoelKeuze() {
       });
   }, []);
 
-  {/*selectedSeats zijn de stoelen die de gebruiker kiest om te kopen*/}
+  {
+    /*selectedSeats zijn de stoelen die de gebruiker kiest om te kopen*/
+  }
   const [selectedSeats, setSeat] = useState([]);
 
-  const toggleSeat = (seatId) => { 
-    {/*dit checkt of het nummer van de stoel al geselecteerd is als dit niet zo is wordt de stoel toegevoegd aan de lijst*/}
+  const toggleSeat = (seatId) => {
+    {
+      /*dit checkt of het nummer van de stoel al geselecteerd is als dit niet zo is wordt de stoel toegevoegd aan de lijst*/
+    }
     if (!selectedSeats.includes(seatId)) {
       setSeat((oldArray) => [...oldArray, seatId]);
       addTicket(seatId);
     } else {
-      {/*als dit wel zo is wordt de stoel uit de lijst gehaald*/}
+      {
+        /*als dit wel zo is wordt de stoel uit de lijst gehaald*/
+      }
       setSeat(selectedSeats.filter((item) => item !== seatId));
       deleteTicket(seatId);
     }
   };
 
   const addTicket = (seatId) => {
-    fetch('https://localhost:7293/api/Ticket/createticketwithseatid?seatid=' + seatId,{
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({seatId: seatId, performanceId: 1})
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`Error ${response.status} : ${response.statusText}`);
-            }
-            return response.json();
-          })
-          .catch(error => {
-            console.log("An error occurred:", error);
-          });
-        }
-
-  const deleteTicket = (seatId) => {
-    fetch("https://localhost:7293/api/Ticket/deleteticketwithseatid?seatid=" + seatId, {
-      method: "DELETE",
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(),
-    })
+    fetch(
+      "https://localhost:7293/api/Ticket/createticketwithseatid?seatid=" +
+        seatId,
+      {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ seatId: seatId, performanceId: 1 }),
+      }
+    )
       .then((response) => {
         if (!response.ok) {
           throw new Error(`Error ${response.status} : ${response.statusText}`);
@@ -76,7 +66,31 @@ function Page_StoelKeuze() {
       .catch((error) => {
         console.log("An error occurred:", error);
       });
-    }
+  };
+
+  const deleteTicket = (seatId) => {
+    fetch(
+      "https://localhost:7293/api/Ticket/deleteticketwithseatid?seatid=" +
+        seatId,
+      {
+        method: "DELETE",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(),
+      }
+    )
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Error ${response.status} : ${response.statusText}`);
+        }
+        return response.json();
+      })
+      .catch((error) => {
+        console.log("An error occurred:", error);
+      });
+  };
 
   {
     /*showPopUp wordt gebruikt om de popup te tonen

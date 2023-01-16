@@ -54,26 +54,6 @@ public class TicketController : ControllerBase
     }
 
 
-
-
-    // verwijder een ticket
-    [HttpDelete]
-    [Route("deleteticket")]
-    public IActionResult DeleteTicket(int id)
-    {
-        var ticket = _context.Tickets
-        .FirstOrDefault(t => t.Id == id);
-        if (ticket == null)
-        {
-            return NotFound();
-        }
-        _context.Tickets.Remove(ticket);
-        _context.SaveChanges();
-        return Ok(ticket);
-    }
-
-
-
     [HttpPost]
     [Route("createticketwithseatid")]
     public IActionResult CreateTicketWithSeatId(int seatId, [FromBody] TicketDTO ticketDTO)
