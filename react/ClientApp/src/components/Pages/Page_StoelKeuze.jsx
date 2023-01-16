@@ -25,23 +25,44 @@ function Page_StoelKeuze() {
 
   {/*selectedSeats zijn de stoelen die de gebruiker kiest om te kopen*/}
   const [selectedSeats, setSeat] = useState([]);
-  const toggleSeat = (seatNumber) => {
-    
-    {
-      /*dit checkt of het nummer van de stoel al geselecteerd is
-        als dit niet zo is wordt de stoel toegevoegd aan de lijst*/
-    }
-    if (!selectedSeats.includes(seatNumber)) {
-      setSeat((oldArray) => [...oldArray, seatNumber]);
+
+  const toggleSeat = (seatId) => { 
+    {/*dit checkt of het nummer van de stoel al geselecteerd is als dit niet zo is wordt de stoel toegevoegd aan de lijst*/}
+    if (!selectedSeats.includes(seatId)) {
+      setSeat((oldArray) => [...oldArray, seatId]);
+      addTicket(seatId);
     } else {
-      {
-        /*als dit wel zo is wordt de stoel uit de lijst gehaald*/
-      }
-      setSeat(selectedSeats.filter((item) => item !== seatNumber));
-      fetch("https://localhost:7293/api/Ticket/deleteticket?id=" + 6, {
+      {/*als dit wel zo is wordt de stoel uit de lijst gehaald*/}
+      setSeat(selectedSeats.filter((item) => item !== seatId));
+      deleteTicket(seatId);
+    }
+  };
+
+  const addTicket = (seatId) => {
+    fetch('https://localhost:7293/api/Ticket/createticketwithseatid?seatid=' + seatId,{
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({seatId: seatId, performanceId: 1})
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error ${response.status} : ${response.statusText}`);
+            }
+            return response.json();
+          })
+          .catch(error => {
+            console.log("An error occurred:", error);
+          });
+        }
+
+  const deleteTicket = (seatId) => {
+    fetch("https://localhost:7293/api/Ticket/deleteticketwithseatid?seatid=" + seatId, {
       method: "DELETE",
       headers: {
-        Accept: "application/json",
+        "Accept": "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify(),
@@ -56,7 +77,6 @@ function Page_StoelKeuze() {
         console.log("An error occurred:", error);
       });
     }
-  };
 
   {
     /*showPopUp wordt gebruikt om de popup te tonen
@@ -127,6 +147,11 @@ function Page_StoelKeuze() {
               seatId={1}
               toggleSeat={toggleSeat}
               isHighlighted={selectedSeats.includes(1)}
+            />
+            <SeatButton
+              seatId={2}
+              toggleSeat={toggleSeat}
+              isHighlighted={selectedSeats.includes(2)}
             />
           </tbody>
         </div>

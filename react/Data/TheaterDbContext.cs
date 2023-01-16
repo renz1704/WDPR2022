@@ -24,4 +24,6 @@ public class TheaterDbContext : IdentityDbContext
     public DbSet<Employee> Employees { get; set; }
     public DbSet<Visitor> Visitors { get; set; }
 
+
+
 }
