@@ -55,12 +55,41 @@ public class TicketController : ControllerBase
     // maak een ticket aan en is available op false
     [HttpPost]
     [Route("createticket")]
-    public async Task<ActionResult<Ticket>> createTicket([FromBody] TicketDTO t)
+    public async Task<ActionResult<Ticket>> createTicket([FromBody] Ticket ticket)
     {
-        var tickets = new Ticket { Seat = _context.Seats.Where(s=> s.Id == t.SeatId).First(), Performance = _context.Performances.Where(p=> p.Id == t.PerformanceId).First(), isAvailable = true }; 
-        await _context.Tickets.AddAsync(tickets);
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        // Get seat met de seatid
+        var seat = await _context.Seats.FindAsync(ticket.SeatId);
+
+        // seat bestaat niet
+        if (seat == null)
+        {
+            return BadRequest("Invalid seat ID " + ticket.SeatId);
+        }
+
+        // voeg seat toe aan de nieuwe ticket
+        ticket.SeatId = seat.Id;
+
+        // get performance met de perfomance id
+        var performance = await _context.Performances.FindAsync(ticket.PerformanceId);
+
+        // perfomormance bestaat niet
+        if (performance == null)
+        {
+            return BadRequest("Invalid performance ID");
+        }
+
+        // voeg performance toe aan de nieuwe ticket
+        ticket.PerformanceId = performance.Id;
+
+        _context.Tickets.Add(ticket);
         _context.SaveChanges();
-        return tickets;
+
+        return CreatedAtAction("GetTicket", new { id = ticket.Id }, ticket);
     }
 
 
