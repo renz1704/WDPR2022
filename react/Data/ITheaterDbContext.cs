@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
 
 public interface ITheaterDbContext
 {
@@ -19,7 +18,5 @@ public interface ITheaterDbContext
     DbSet<Visitor> Visitors { get; set; }
 
     int SaveChanges();
-    //Task SaveChangesAsync();
-
     void Update<T>(T entity) where T : class;
 }
