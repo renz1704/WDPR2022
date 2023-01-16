@@ -45,6 +45,17 @@ namespace react.Controllers
             var claims = new List<Claim>();
             claims.Add(new Claim("id", visitor.Id.ToString()));
             claims.Add(new Claim ("email", _user.Email));
+            
+            if(visitor.Name != null)
+            {
+                claims.Add(new Claim ("firstname", visitor.Name));
+            }
+
+            if(visitor.LastName != null)
+            {
+                claims.Add(new Claim("lastname", visitor.LastName));
+            }
+            
 
             var roles = await _userManager.GetRolesAsync(_user);
             foreach (var role in roles)
@@ -93,14 +104,33 @@ namespace react.Controllers
             return user.Id;
         }
 
+        [HttpPut]
+        [Route("/updateAccount")]
+        public async Task<ActionResult<Visitor>> UpdateUser (VisitorDTO visitor)
+        {
+            Visitor v = await _context.Visitors.FindAsync(visitor.Id);
 
+            if(v != null)
+            {
+                v.Name = visitor.Firstname;
+                v.LastName = visitor.Lastname;
+                Console.WriteLine("Naam gewijzigd");
 
-        //     [HttpGet]
-        // public async Task<string> GetCurrentUserId()
-        // {
-        // 	ApplicationUser usr = await GetCurrentUserAsync();
-        // 	return usr?.Id;
-        // }
+            if(visitor.Email != null)
+            {
+                v.IdentityUser.Email = visitor.Email;
+                v.IdentityUser.UserName = visitor.Email;       
+                Console.WriteLine("Email gewijzigd");
+            }
+            }
+            else{
+                return NotFound();
+            }
+
+            await _context.SaveChangesAsync();
+            Console.WriteLine("Doorgevoerd naar Db");
+            return v;
+        }
     }
 
     public class LoginDTO
@@ -113,5 +143,14 @@ namespace react.Controllers
     {
         public string Email { get; set; }
         public string Password { get; set; }
+    }
+
+    public class VisitorDTO
+    {
+        public int Id {get;set;}
+        public string? Email {get;set;}
+        public string? Firstname {get;set;}
+        public string? Lastname{get;set;}
+        
     }
 }

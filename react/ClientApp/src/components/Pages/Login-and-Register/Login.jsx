@@ -16,6 +16,16 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     UserService.login(email, password)
+    if(UserService.getUser() != null)
+    {
+      console.log("hello")
+      navigate("/")
+    }
+    else
+    {
+      console.log("Fout gemaakt in login")
+    }
+    
     
     };
    

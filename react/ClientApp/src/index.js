@@ -33,6 +33,8 @@ import RegisterPage from './components/Pages/Login-and-Register/Register';
 
 import GroepManagement from './components/Pages/Page_GroepManagement';
 import Page_UploadSchedule from './components/Pages/Page_UploadSchedule';
+import Page_AccountGegevens from './components/Pages/BezoekersPortaal/Page_AccountGegevens';
+
 
 
 const rootElement = document.getElementById('root');
@@ -77,6 +79,8 @@ root.render(
         <Route path='/inloggen' element={<LoginPage/>}/>
         <Route path='/registreren' element={<RegisterPage/>}/>
         <Route path='/programmeringUploaden' element= {<Page_UploadSchedule></Page_UploadSchedule>}/>
+        <Route path='/accountgegevensWijzigen' element= {<Page_AccountGegevens></Page_AccountGegevens>}/>
+    
 
       </Routes>
 

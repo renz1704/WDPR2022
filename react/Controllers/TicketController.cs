@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 
 public class TicketController : Controller
 {
@@ -82,5 +82,33 @@ public class TicketController : Controller
         _context.Tickets.Remove(ticket);
         _context.SaveChanges();
         return Ok(ticket);
+    }
+
+    [HttpPost]
+    [Route("/transferTicket")]
+    public async Task<ActionResult<Ticket>> TransferTicket (TicketTransferDTO transfer) {
+
+        Visitor owner = await _context.Visitors.FindAsync(transfer.emailOwner);
+
+        Visitor reveiver = await _context.Visitors.FindAsync(transfer.emailReceiver);
+
+        if(!(owner == null || reveiver == null))
+        {
+            Ticket oldTicket = await _context.Tickets.FindAsync(transfer.ticketId);
+            if(oldTicket != null)
+            {
+                Ticket ticket = new Ticket {Seat = oldTicket.Seat, Performance = oldTicket.Performance, isTransfered=true, Reservation = oldTicket.Reservation};
+                
+            }
+            
+        }
+
+    }
+
+
+    public class TicketTransferDTO{
+        public string emailOwner {get;set;}
+        public string emailReceiver {get;set;}
+        public int ticketId {get;set;}
     }
 }

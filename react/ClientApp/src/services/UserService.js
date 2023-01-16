@@ -23,18 +23,27 @@ class UserService {
     }
     
     login (email, password) {
- 
-    }
+        axios.post(API_URL + "login", {
+            email: email,
+            password: password
+        }).then (res => {
+            if(res.data.token)
+            {
+                sessionStorage.setItem("user", res.data.token)   
+            }
+        })
+};
+
 
     logout() {
-        localStorage.removeItem("user")
+        sessionStorage.removeItem("user")
     }
 
     getUser() {
-        const user = jwt(localStorage.getItem("user"))
-        console.log(user.email) 
-        jwt("user")
+        return jwt(sessionStorage.getItem("user"))
+        
     }
+
 }
 
 export default new UserService();
