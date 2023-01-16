@@ -21,7 +21,7 @@ function Page_Betaling(){
         const data = new URLSearchParams();
 
         // setTotalPrice(1);
-        data.append('amount', totalPrice);
+        // data.append('amount', totalPrice);
         data.append('reference', 1);
         data.append('url', 'https://localhost:7293/api/payment/paymentsucces');
     

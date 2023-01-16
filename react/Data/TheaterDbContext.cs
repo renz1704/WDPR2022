@@ -26,4 +26,6 @@ class TheaterDbContext : DbContext, ITheaterDbContext
     public virtual DbSet<Employee> Employees { get; set; }
     public virtual DbSet<Visitor> Visitors { get; set; }
 
+
+
 }

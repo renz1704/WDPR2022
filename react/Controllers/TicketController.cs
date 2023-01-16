@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 
 
@@ -52,35 +53,53 @@ public class TicketController : ControllerBase
         return Ok(ticket);
     }
 
-    // maak een ticket aan en is available op false
+
     [HttpPost]
-    [Route("createticket")]
-    public async Task<ActionResult<Ticket>> createTicket([FromBody] TicketDTO t)
+    [Route("createticketwithseatid")]
+    public IActionResult CreateTicketWithSeatId(int seatId, [FromBody] TicketDTO ticketDTO)
     {
-        var tickets = new Ticket { Seat = _context.Seats.Where(s=> s.Id == t.SeatId).First(), Performance = _context.Performances.Where(p=> p.Id == t.PerformanceId).First(), isAvailable = true }; 
-        await _context.Tickets.AddAsync(tickets);
+        var seat = _context.Seats.SingleOrDefault(s => s.Id == seatId);
+        if (seat == null)
+        {
+            return NotFound();
+        }
+
+        var ticket = new Ticket
+        {
+            Seat = _context.Seats.Where(s => s.Id == ticketDTO.SeatId).First(),
+            Performance = _context.Performances.Where(p => p.Id == ticketDTO.PerformanceId).First(),
+            isAvailable = true
+        };
+
+        _context.Tickets.Add(ticket);
         _context.SaveChanges();
-        return tickets;
+        return CreatedAtAction("GetTicketById", new { id = ticket.Id }, ticket);
     }
 
-
-    // verwijder een ticket
     [HttpDelete]
-    [Route("deleteticket")]
-    public IActionResult DeleteTicket(int id)
+    [Route("deleteticketwithseatid")]
+    public IActionResult DeleteTicketWithSeatId(int seatId)
     {
-        var ticket = _context.Tickets
-        .FirstOrDefault(t => t.Id == id);
+        var seat = _context.Seats.SingleOrDefault(s => s.Id == seatId);
+        if (seat == null)
+        {
+            return NotFound();
+        }
+
+        var ticket = _context.Tickets.Where(t => t.Seat.Id == seatId).First();
+
         if (ticket == null)
         {
             return NotFound();
         }
+
         _context.Tickets.Remove(ticket);
         _context.SaveChanges();
-        return Ok(ticket);
+        return NoContent();
     }
 
-    public class TicketDTO{
+    public class TicketDTO
+    {
         public int Id { get; set; }
         public int SeatId { get; set; }
         public int PerformanceId { get; set; }
