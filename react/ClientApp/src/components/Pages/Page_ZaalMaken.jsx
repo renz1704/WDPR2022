@@ -73,7 +73,7 @@ function Page_ZaalMaken(){
 
             {/*loopt door de stoelen die bij de huidige rij hoort en voegt deze toe aan de lijst met seats*/}
             for (let j = 0; j < seatsPerRow[i]; j++) {
-                let seat = { seatNumber: `${i+1}-${j+1}`, isDisabled: checkIfSeatIsDisabled(i,j)};
+                let seat = { SeatNumber: `${j+1}`,RowNumber: `${i+1}`, IsDisabled: checkIfSeatIsDisabled(i,j)};
                 row.seats.push(seat);
             }
             

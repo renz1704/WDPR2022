@@ -163,3 +163,4 @@ C:\Users\Gebruiker\RiderProjects\WDPR2022\Tests_API\obj\Debug\net7.0\refint\Test
 C:\Users\Gebruiker\RiderProjects\WDPR2022\Tests_API\obj\Debug\net7.0\Tests_API.pdb
 C:\Users\Gebruiker\RiderProjects\WDPR2022\Tests_API\obj\Debug\net7.0\Tests_API.genruntimeconfig.cache
 C:\Users\Gebruiker\RiderProjects\WDPR2022\Tests_API\obj\Debug\net7.0\ref\Tests_API.dll
+C:\Users\Gebruiker\RiderProjects\WDPR2022\Tests_API\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.InMemory.dll

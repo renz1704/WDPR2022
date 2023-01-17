@@ -9,11 +9,13 @@ using Microsoft.AspNetCore.Identity;
 public class DonationController : ControllerBase
 {
 
+
     private readonly UserManager<IdentityUser> _userManager;
-    TheaterDbContext _context;
     private string emailUser;
 
-    public DonationController(TheaterDbContext context, UserManager<IdentityUser> userManager)
+    ITheaterDbContext _context;
+
+    public DonationController(ITheaterDbContext context, UserManager<IdentityUser> userManager)
     {
         _context = context;
         _userManager = userManager;
@@ -77,7 +79,7 @@ public class DonationController : ControllerBase
 
         
         visitor.Donations.Add(new Donation(visitor.Id, donationListenerModel.amount));
-        await _context.SaveChangesAsync();
+        _context.SaveChanges();
 
 
         Console.WriteLine(donationListenerModel.email + donationListenerModel.amount + donationListenerModel.naam);
