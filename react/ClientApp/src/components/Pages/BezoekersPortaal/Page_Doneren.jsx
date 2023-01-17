@@ -14,6 +14,7 @@ function Page_Doneren() {
     const [tekst, setTekst] = useState();
 
     const [hideAfterToken, setHideAfterToken] = useState(false);
+
     const navigate = useNavigate();
 
 
@@ -42,14 +43,16 @@ function Page_Doneren() {
 
     }
 
-
-
     useEffect(() => {
         if (UserService.getUser().donationToken == null) {
             setHideAfterToken(false);
+
         } else {
+            // setToken(UserService.getUser().donationToken);
             setHideAfterToken(true);
+
         }
+        
     }, []);
 
     return (
@@ -60,8 +63,6 @@ function Page_Doneren() {
                 Vanaf 1000 euro aan donaties krijgt u toegang tot ons "Begunstigersportaal".
                 <p>
                     Hier kunt u voorstellingen zien en "pre orderen" nog voordat ze uitkomen.
-
-                    Vult u alstublieft uw email-adres in om in het donatieportaal te komen:
                 </p>
                 <div>
                     <form className="permissionForm" onSubmit={(e) => e.preventDefault()}>
@@ -75,12 +76,12 @@ function Page_Doneren() {
                         <input
                             required="Tekst is verplicht."
                             type="tekst"
-                            onChange={(e) => setHoeveelheid(e.target.value)}
+                            onChange={(e) => setTekst(e.target.value)}
                         ></input>
                         <button
                             type="onSubmit"
                             disabled={hoeveelheid && tekst == ""}
-                            className="permission"
+                            className="doneerButton"
                             id="button"
                             onClick={donatieDoen}
                         >
@@ -93,7 +94,7 @@ function Page_Doneren() {
                 <div className={`AfterToken ${hideAfterToken ? "hide-AfterToken" : ""}`}>
                     <hr></hr>
                     <p>
-                        De donaties worden gedaan via het bekende platform "IkDoneer". U zal hiervoor eerst toestemming moeten geven met de onderstaande link:
+                        De donaties worden gedaan via het bekende platform "IkDoneer". U zult hiervoor eerst toestemming moeten geven met de onderstaande link:
                     </p>
                     <div>
                         Wilt u Theater Laak toegang geven tot uw donaties bij IkDoneer? Wij kunnen u bij het juiste bedrag dan toegang geven tot ons begunstigersportaal.

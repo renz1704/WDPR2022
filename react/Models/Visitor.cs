@@ -3,6 +3,9 @@
 
 public class Visitor
 {
+    public Visitor(){
+        Donations = new List<Donation>();
+    }
     public int Id { get; set; }
     public string? Name { get; set; }
     public string? LastName { get; set; }
