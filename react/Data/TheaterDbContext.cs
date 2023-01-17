@@ -1,8 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-public class TheaterDbContext : IdentityDbContext
+class TheaterDbContext : IdentityDbContext, ITheaterDbContext
 {
     public TheaterDbContext(DbContextOptions<TheaterDbContext> options) : base(options) { }
 
@@ -25,7 +26,11 @@ public class TheaterDbContext : IdentityDbContext
     public virtual DbSet<Actor> Actors { get; set; }
     public virtual DbSet<Employee> Employees { get; set; }
     public virtual DbSet<Visitor> Visitors { get; set; }
-
-
+    
+    
+    public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+    {
+        return base.SaveChangesAsync(cancellationToken);
+    }
 
 }
