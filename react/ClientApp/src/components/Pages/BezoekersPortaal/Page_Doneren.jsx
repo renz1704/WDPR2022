@@ -3,13 +3,19 @@ import BezoekersPortaalHeader from '../../BezoekersPortaalHeader';
 import "../../../styles/donerenStyle.css";
 import "../../../styles/generalStyle.css";
 import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
 
 function Page_Doneren() {
 
     const [email, setEmail] = useState("");
     const [token, setToken] = useState("");
+
+    const [hoeveelheid, setHoeveelheid] = useState();
+    const [tekst, setTekst] = useState();
+
     const [hideAfterEmail, setHideAfterEmail] = useState(true);
     const [hideAfterToken, setHideAfterToken] = useState(false);
+    const navigate = useNavigate();
 
     const donerenKnop = () => {
 
@@ -36,6 +42,7 @@ function Page_Doneren() {
         } catch (error) {
             console.error(error);
         }
+        (navigate("/gedoneerd"))
         // const response = fetch('https://ikdoneer.azurewebsites.net/api/donatie', {
         //     method: 'POST',
         //     //body: Hier komt de jwt token via de bearer.
@@ -53,7 +60,7 @@ function Page_Doneren() {
     //     }
     // }
     const getDonationToken = async (email) => {
-        
+
     }
     const checkDonationToken = async (email) => {
         const response = await fetch('https://localhost:7293/api/Donation/tokenExists?emailuser=' + email, {
@@ -114,7 +121,7 @@ function Page_Doneren() {
                 
 
                 <form className="permissionForm" onSubmit={(e) => e.preventDefault()}>
-                    <label>Vul hier uw email-adres in: </label>
+                    <label id="label">Vul hier uw email-adres in: </label>
                     <input
                         required="Email is verplicht."
                         type="email"
@@ -131,9 +138,33 @@ function Page_Doneren() {
                     </button>
                 </form>
                 <div className={`AfterEmail ${hideAfterEmail ? "hide-AfterEmail" : ""}`}>
-            
-                    <button id="button">Doneren</button>
+                    <div>
+                    <form className="permissionForm" onSubmit={(e) => e.preventDefault()}>
+                    <label id="label">Bedrag: </label>
+                    <input
+                        required="Hoeveelheid is verplicht."
+                        type="hoeveelheid"
+                        onChange={(e) => setHoeveelheid(e.target.value)}
+                    ></input>
+                    <label id="label">Tekst:  </label>
+                    <input
+                        required="Tekst is verplicht."
+                        type="tekst"
+                        onChange={(e) => setHoeveelheid(e.target.value)}
+                    ></input>
+                    <button
+                        type="onSubmit"
+                        disabled={hoeveelheid && tekst == ""}
+                        className="permission"
+                        id="button"
+                        onClick={donatieDoen}
+                    >
+                        Doneer aan Theater Laak!
+                    </button>
+                </form>
 
+                    
+                    </div>
                     <div className={`AfterToken ${hideAfterToken ? "hide-AfterToken" : ""}`}>
                         <hr></hr>
                         <p>

@@ -10,7 +10,8 @@ public class DonationController : ControllerBase
 
 
     ITheaterDbContext _context;
-    string emailUser;
+    private readonly object _lock = new object();
+    private string emailUser;
 
     public DonationController(ITheaterDbContext context)
         {
@@ -34,7 +35,10 @@ public class DonationController : ControllerBase
     public async Task<IActionResult> userEmail(string emailuser)
     {
         Console.WriteLine("hier is ie er niet " + emailUser);
+        lock(_lock)
+    {
         emailUser = emailuser;
+    }
         Console.WriteLine(emailUser);
         return Ok();
     }
@@ -43,20 +47,23 @@ public class DonationController : ControllerBase
     [Route("tokenExists")]
     public async Task<ActionResult<Boolean>> tokenExists(string emailuser)
     {
-          if (string.IsNullOrEmpty(emailUser))
+        lock(_lock)
+        {
+            emailUser = emailuser;
+        }
+        if (string.IsNullOrEmpty(emailUser))
             return BadRequest(new { message = "emailUser is null or empty" });
-        emailUser = emailuser;
         Console.WriteLine(emailUser);
         var user = _context.Visitors.FirstOrDefault(x => x.IdentityUser.UserName == emailUser);
-         if (user == null)
+        if (user == null)
             return BadRequest(new { message = "Er is geen gebruiker gevonden met dit emailadres!" });
         if (user.DonationToken != null)
         {
             return true;
         }
-
         return false;
     }
+
 
     [HttpGet]
     [Route("getToken")]
@@ -73,20 +80,29 @@ public class DonationController : ControllerBase
 
     [HttpPost]
     [Route("addtokenuser")]
-    public async Task<IActionResult> addTokenUser([FromBody] String token)
+    public async Task<IActionResult> addTokenUser([FromForm] String token)
     {
         if (string.IsNullOrEmpty(emailUser))
             return BadRequest(new { message = "emailUser is null or empty" });
-
+         lock(_lock){
         var user = _context.Visitors.FirstOrDefault(x => x.IdentityUser.UserName == emailUser);
         if (user == null)
             return BadRequest(new { message = "Er is geen gebruiker gevonden met dit emailadres!" });
 
+<<<<<<< Updated upstream
         user.DonationToken = token;
 
         Console.WriteLine(token);
 
         Console.WriteLine("De token van de user " + user.Name + " = " + user.DonationToken);
+=======
+        user.donationToken = token;
+        Console.WriteLine(token);
+
+        Console.WriteLine("De token van de user " + user.Name + " = " + user.donationToken);
+      }
+
+>>>>>>> Stashed changes
 
         return Ok(new { message = "Gelukt, u kunt dit venster nu sluiten." });
     }
