@@ -1,11 +1,12 @@
 ﻿public class Performance
 {
-    private readonly ITheaterDbContext _context;
+    private readonly TheaterDbContext _context;
 
-    public Performance(int showId, int roomId)
+    public Performance(int showId, int roomId, TheaterDbContext context)
     {
         RoomId = roomId;
         ShowId = showId;
+        _context = context;
     }
 
     public int Id { get; set; }

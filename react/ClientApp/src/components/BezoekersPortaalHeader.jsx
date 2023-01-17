@@ -79,8 +79,10 @@ function ResponsiveAppBar() {
             >
               <div className="flex-container-vertical" id='menu'>
               <Button size='large' variant="text"><Link  className='nav' to="/">Startpagina</Link></Button>
-              <Button size='large' variant="text"><Link  className='nav' to="/gegevens">Gegevens</Link></Button>
-              <Button size='large' variant="text"><Link  className='nav' to="/tickets">Tickets</Link></Button>
+              <Button size='large' variant="text"><Link  className='nav' to="/bezoekersportaal">Mijn Theater Laak</Link></Button>
+              <Button size='large' variant="text"><Link  className='nav' to="/gegevens">Gegevens Wijzigen</Link></Button>
+              <Button size='large' variant="text"><Link  className='nav' to="/tickets">Orders bekijken</Link></Button>
+              <Button size='large' variant="text"><Link  className='nav' to="/tickets">Tickets overzetten</Link></Button>
               <Button size='large' variant="text"><Link  className='nav' to="/doneren">Doneren</Link></Button>
               </div>
             </Menu>

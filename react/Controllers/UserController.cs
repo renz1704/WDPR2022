@@ -19,40 +19,52 @@ namespace react.Controllers
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly TheaterDbContext _context;
 
-        public UserController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public UserController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, TheaterDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _context = context;
         }
-        // [HttpPost]
-        // [Route("login")]
-        // public async Task<IActionResult> Login([FromBody] LoginDTO model)
-        // {
-        //     var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
-
-        //     if (result.Succeeded)
-        //     {
-        //         return Ok();
-        //     }
-
-        //     return Unauthorized();
-        // }
 
         [HttpPost]
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] LoginDTO model){
-                var _user = await _userManager.FindByNameAsync(model.Email);
-    if (_user != null)
-        if (await _userManager.CheckPasswordAsync(_user, model.Password))
-        {
-            var secret = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("awef98awef978haweof8g7aw789efhh789awef8h9awh89efh89awe98f89uawef9j8aw89hefawef"));
+            
+                var _user = await _userManager.FindByEmailAsync(model.Email);
+                if (_user == null) return Unauthorized();
 
+                var visitor = await _context.Visitors.Where(v => v.IdentityUser.Id == _user.Id).FirstOrDefaultAsync();
+
+
+        if (_user != null && visitor != null)
+            if (await _userManager.CheckPasswordAsync(_user, model.Password))
+            {
+            var secret = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("awef98awef978haweof8g7aw789efhh789awef8h9awh89efh89awe98f89uawef9j8aw89hefawef"));
             var signingCredentials = new SigningCredentials(secret, SecurityAlgorithms.HmacSha256);
-            var claims = new List<Claim> { new Claim(ClaimTypes.Name, _user.Email) };
+            
+            var claims = new List<Claim>();
+            claims.Add(new Claim("id", visitor.Id.ToString()));
+            claims.Add(new Claim ("email", _user.Email));
+            
+            if(visitor.Name != null)
+            {
+                claims.Add(new Claim ("firstname", visitor.Name));
+            }
+
+            if(visitor.LastName != null)
+            {
+                claims.Add(new Claim("lastname", visitor.LastName));
+            }
+            
+            if(visitor.DonationToken != null){
+                claims.Add(new Claim("donationToken", visitor.DonationToken));
+            }
             var roles = await _userManager.GetRolesAsync(_user);
             foreach (var role in roles)
                 claims.Add(new Claim(ClaimTypes.Role, role));
+
             var tokenOptions = new JwtSecurityToken
             (
                 issuer: "https://localhost:7293",
@@ -63,9 +75,9 @@ namespace react.Controllers
             );
             return Ok(new { Token = new JwtSecurityTokenHandler().WriteToken(tokenOptions) });
         }
-
-    return Unauthorized();
+            return Unauthorized();
         }
+
         [HttpPost]
         [Route("registreer")]
         public async Task<ActionResult> Registreer([FromBody] RegisterDTO model)
@@ -74,33 +86,65 @@ namespace react.Controllers
 
             var resultaat = await _userManager.CreateAsync(user, model.Password);
 
-            return !resultaat.Succeeded ? new BadRequestObjectResult(resultaat) : StatusCode(201);
+            await _context.Visitors.AddAsync( new Visitor{IdentityUser = user});
+            await _context.SaveChangesAsync();
 
+            return !resultaat.Succeeded ? new BadRequestObjectResult(resultaat) : StatusCode(201);
         }
 
         [HttpGet]
-        [Route("getUser/{id}")]
-        public async Task<ActionResult<string>> GetUserId(String id)
+        [Route("userExists/{email}")]
+        public async Task<ActionResult<String>> userExists(String email)
         {
+
+            var newuser = new IdentityUser { UserName = "hallo@hallo.nl", Email = "hallo@hallo.nl" };
+
+            var resultaat = await _userManager.CreateAsync(newuser, "Hallo123!");
+            var addToVisitor = new Visitor();
+            addToVisitor.IdentityUser = newuser;
+
+            _context.Visitors.Add(addToVisitor);
+            _context.SaveChanges();
+
+            var user = _context.Visitors.Any(x => x.IdentityUser.Email == email);
+            Console.WriteLine(user);
             // Check if the user exists in the database
-            var user = await _userManager.Users.SingleOrDefaultAsync(x => x.Id == id);
-            if (user == null)
+            if (user == false)
             {
                 return NotFound();
             }
 
-            // Return the user ID
-            return user.Id;
+            // Return the email
+            return email;
         }
 
+        [HttpPut]
+        [Route("/updateAccount")]
+        public async Task<ActionResult<Visitor>> UpdateUser (VisitorDTO visitor)
+        {
+            Visitor v = await _context.Visitors.FindAsync(visitor.Id);
 
+            if(v != null)
+            {
+                v.Name = visitor.Firstname;
+                v.LastName = visitor.Lastname;
+                Console.WriteLine("Naam gewijzigd");
 
-        //     [HttpGet]
-        // public async Task<string> GetCurrentUserId()
-        // {
-        // 	ApplicationUser usr = await GetCurrentUserAsync();
-        // 	return usr?.Id;
-        // }
+            if(visitor.Email != null)
+            {
+                v.IdentityUser.Email = visitor.Email;
+                v.IdentityUser.UserName = visitor.Email;       
+                Console.WriteLine("Email gewijzigd");
+            }
+            }
+            else{
+                return NotFound();
+            }
+
+            await _context.SaveChangesAsync();
+            Console.WriteLine("Doorgevoerd naar Db");
+            return v;
+        }
     }
 
     public class LoginDTO
@@ -113,6 +157,14 @@ namespace react.Controllers
     {
         public string Email { get; set; }
         public string Password { get; set; }
-        public string donationToken{get; set;}
+    }
+
+    public class VisitorDTO
+    {
+        public int Id {get;set;}
+        public string? Email {get;set;}
+        public string? Firstname {get;set;}
+        public string? Lastname{get;set;}
+        
     }
 }

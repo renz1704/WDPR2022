@@ -1,12 +1,14 @@
-import React from 'react';
-import BezoekersPortaalHeader from '../../BezoekersPortaalHeader';
-import { useEffect, useState } from 'react';
-import axios from "axios"
+import axios from "axios";
+import { useEffect } from "react";
 import UserService from '../../../services/UserService';
-function Page_Gegevens() {
-    const [email, SetEmail] = useState();
-    const [firstname, SetFirstname] = useState();
-    const [lastname, SetLastname] = useState();
+
+
+
+const Page_AccountGegevens = () => {
+
+    const [email, SetEmail] = useEffect();
+    const [firstname, SetFirstname] = useEffect();
+    const [lastname, SetLastname] = useEffect();
     
 
     useEffect( () => {
@@ -15,7 +17,7 @@ function Page_Gegevens() {
 
     const handleSubmit = () => {
         
-        axios.put("https://localhost:7293/updateAccount", 
+        axios.post("https://localhost:7293/updateAccount", 
         {
             id : UserService.getUser().id,
             email : email,
@@ -27,11 +29,11 @@ function Page_Gegevens() {
     
     return(
         <>
-<BezoekersPortaalHeader></BezoekersPortaalHeader>
+
 
 <form className="updateAccountForm" onSubmit={handleSubmit}>
       
-      <h1>Gegevens wijzigen</h1>
+      <h>Gegevens wijzigen</h>
       
       <p>Email</p>
       <input
@@ -69,6 +71,6 @@ function Page_Gegevens() {
         
         </>
     )
-
 }
-export default Page_Gegevens
+
+export default Page_AccountGegevens;

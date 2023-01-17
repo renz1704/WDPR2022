@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 public class PaymentController : ControllerBase
 {
 
-    ITheaterDbContext _context;
+    TheaterDbContext _context;
 
-    public PaymentController(ITheaterDbContext context)
+    public PaymentController(TheaterDbContext context)
         {
             _context = context;
         }

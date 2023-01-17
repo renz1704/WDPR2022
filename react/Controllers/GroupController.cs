@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 public class GroupController : ControllerBase
 {
 
-    ITheaterDbContext _context;
+    TheaterDbContext _context;
 
-    public GroupController(ITheaterDbContext groupContext)
+    public GroupController(TheaterDbContext groupContext)
     {
         _context = groupContext;
     }

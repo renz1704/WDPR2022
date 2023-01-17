@@ -1,27 +1,110 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import BezoekersPortaalHeader from '../../BezoekersPortaalHeader';
+import "../../../styles/donerenStyle.css";
+import "../../../styles/generalStyle.css";
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import UserService from '../../../services/UserService';
 
 function Page_Doneren() {
+
+    const [token, setToken] = useState("");
+
+    const [hoeveelheid, setHoeveelheid] = useState();
+    const [tekst, setTekst] = useState();
+
+    const [hideAfterToken, setHideAfterToken] = useState(false);
+    const navigate = useNavigate();
+
+
+    const config = {
+        headers: { Authorization: `Bearer ${token}` }
+    };
+
+    const bodyParameters = {
+        key: "value"
+    };
+
+
+    //Deze methode doet de donatie aan ikdoneer en heeft de JWT token van de gebruiker in de bearer.
+    const donatieDoen = async () => {
+        try {
+            await axios.post(
+                'https://ikdoneer.azurewebsites.net/api/donatie',
+                bodyParameters,
+                config
+            ).then(console.log).catch(console.log);
+            
+        } catch (error) {
+            console.error(error);
+        }
+        (navigate("/gedoneerd"))
+
+    }
+
+
+
+    useEffect(() => {
+        if (UserService.getUser().donationToken == null) {
+            setHideAfterToken(false);
+        } else {
+            setHideAfterToken(true);
+        }
+    }, []);
 
     return (
         <>
             <BezoekersPortaalHeader />
-            <div>
+            <div class="everything">
                 Wilt u Theater Laak steunen door ons te doneren?
-                Vanaf 1000 euro aan donaties krijgt u toegang tot ons "Begunstigersportaal". 
+                Vanaf 1000 euro aan donaties krijgt u toegang tot ons "Begunstigersportaal".
                 <p>
-                Hier kunt u voorstellingen zien en "pre orderen" nog voordat ze uitkomen.
+                    Hier kunt u voorstellingen zien en "pre orderen" nog voordat ze uitkomen.
+
+                    Vult u alstublieft uw email-adres in om in het donatieportaal te komen:
                 </p>
-                <p>
-                    De donaties worden gedaan via het bekende platform "IkDoneer".
-                </p>
-                <button>Doneren</button>
+                <div>
+                    <form className="permissionForm" onSubmit={(e) => e.preventDefault()}>
+                        <label id="label">Bedrag: </label>
+                        <input
+                            required="Hoeveelheid is verplicht."
+                            type="hoeveelheid"
+                            onChange={(e) => setHoeveelheid(e.target.value)}
+                        ></input>
+                        <label id="label">Tekst:  </label>
+                        <input
+                            required="Tekst is verplicht."
+                            type="tekst"
+                            onChange={(e) => setHoeveelheid(e.target.value)}
+                        ></input>
+                        <button
+                            type="onSubmit"
+                            disabled={hoeveelheid && tekst == ""}
+                            className="permission"
+                            id="button"
+                            onClick={donatieDoen}
+                        >
+                            Doneer aan Theater Laak!
+                        </button>
+                    </form>
+
+
+                </div>
+                <div className={`AfterToken ${hideAfterToken ? "hide-AfterToken" : ""}`}>
+                    <hr></hr>
+                    <p>
+                        De donaties worden gedaan via het bekende platform "IkDoneer". U zal hiervoor eerst toestemming moeten geven met de onderstaande link:
+                    </p>
+                    <div>
+                        Wilt u Theater Laak toegang geven tot uw donaties bij IkDoneer? Wij kunnen u bij het juiste bedrag dan toegang geven tot ons begunstigersportaal.
+                    </div>
+
+                    <a target="_blank" href="https://ikdoneer.azurewebsites.net/Toegang?url=https://localhost:7293/api/Donation/addtokenuser">Druk hier om toestemming te verlenen.</a>
+                </div>
             </div>
-            <div>
-                Wilt u Theater Laak toegang geven tot uw donaties bij IkDoneer? Wij kunnen u bij het juiste bedrag dan toegang geven tot ons begunstigersportaal.
-            </div>
-            <a target="_blank" href="https://ikdoneer.azurewebsites.net//Toegang?url=https://localhost:44419/api/donation/addTokenUser%3A%2F%2F%2F">Druk hier om toestemming te verlenen.</a>
         </>
+
+
     )
 
 }

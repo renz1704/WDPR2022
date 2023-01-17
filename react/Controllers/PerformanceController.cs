@@ -5,24 +5,41 @@ using Microsoft.EntityFrameworkCore;
 [Route("api/[controller]")]
 public class PerformanceController : ControllerBase
 {
-    ITheaterDbContext _context;
+    TheaterDbContext _context;
 
-    public PerformanceController(ITheaterDbContext context){
+    public PerformanceController(TheaterDbContext context){
         _context = context;
     }
 
 
-    [HttpGet]
-    [Route("performances")]
-    public async Task<ActionResult<List<Performance>>> GetAllAsync() {
-        return await Task.Run( () => {return _context.Performances.Include(p => p.Show).Include(p => p.Show.Genres).ToList();});
+    // [HttpGet]
+    // [Route("performances")]
+    // public async Task<ActionResult<List<Performance>>> GetAllAsync() {
+    //     return await Task.Run( () => {return _context.Performances.Include(p => p.Show).Include(p => p.Show.Genres).ToList();});
+    // }
+
+    [HttpPost]
+    [Route("AddPerformances")]
+    public async Task<ActionResult<List<Performance>>> AddPerformances (List<PerformanceDTO> performances) {
+        
+        List<Performance> per = new List<Performance>();
+        foreach (var p in performances)
+        {
+            Performance performance = new Performance (p.showId, p.roomId, _context);
+            per.Add(performance);
+            await _context.Performances.AddAsync(performance);
+            await _context.SaveChangesAsync();
+        }
+        
+        return per;
+        
     }
 
     [HttpPost]
     [Route("createperformance")]
     public async Task<ActionResult<Performance>> CreatePerformanceAsync(PerformanceDTO performance)
     {
-        Performance p = new Performance(performance.showId, performance.roomId);
+        Performance p = new Performance(performance.showId, performance.roomId, _context);
         p.StartTime = performance.StartTime;
         p.EndTime = performance.EndTime;
         await _context.Performances.AddAsync(p);

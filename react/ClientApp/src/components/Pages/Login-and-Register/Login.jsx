@@ -4,6 +4,10 @@ import { Link , useNavigate} from "react-router-dom";
 import Header from "../../Header";
 import axios from "axios";
 import ReCAPTCHA from 'react-google-recaptcha'
+import AuthenticationService from "../../../services/AuthenticationService";
+import { Button } from "@mui/material";
+import jwt from 'jwt-decode'
+import UserService from "../../../services/UserService";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -13,6 +17,20 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    UserService.login(email, password)
+    if(UserService.getUser() != null)
+    {
+      console.log("hello")
+      navigate("/")
+    }
+    else
+    {
+      console.log("Fout gemaakt in login")
+    }
+    
+    
+    
+   
     if(!isVerified){
       alert("Druk alstublieft op 'Ik ben geen robot'. Mocht u de reCAPTCHA niet kunnen zien, herlaad dan de pagina.") 
     }else{
@@ -33,6 +51,7 @@ const Login = () => {
      });
     }
    }
+   
 
    const handleRecaptcha = (value) => {
     setIsVerified(value !== null);
@@ -74,6 +93,10 @@ const Login = () => {
         </Link>
       </p>
     </form>
+
+    <p>Uitloggen</p>
+    <p></p>
+    <Button onClick={UserService.logout}>Uitloggen</Button>
     </div>
     </div>
   );

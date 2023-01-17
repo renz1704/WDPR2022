@@ -19,3 +19,16 @@
 
 }
 
+#button{
+    margin-top: 20px;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    background-color: #1a73e8;
+    color:white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+

@@ -1,5 +1,6 @@
 ﻿import Header from '../Header';
 import {Routes, Route, useNavigate} from 'react-router-dom';
+import "../../styles/generalStyle.css";
 
 
 function Page_AdminPortaal(){
@@ -11,7 +12,8 @@ function Page_AdminPortaal(){
         <>
             <Header/>
             <body>
-            <button onClick={() => {navigate('/zaalbeheer')}}>Zaalbeheer</button>
+            <button id="button" onClick={() => {navigate('/zaalbeheer')}}>Zaalbeheer</button>
+            <button id="button" onClick={() => {navigate('/donatieBeheer')}}>DonatieBeheer</button>
             </body>
         </>
     )
