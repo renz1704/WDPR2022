@@ -21,7 +21,7 @@ public class ShowController
     {
 
         await _context.Shows.AddAsync(show);
-        await _context.SaveChangesAsync();
+        _context.SaveChanges();
         return show;
     }
 
@@ -33,7 +33,7 @@ public class ShowController
         Group group = await _context.Groups.FindAsync(groupId);
         Show show = await _context.Shows.FindAsync(showId);
         show.Groups.Add(group);
-        await _context.SaveChangesAsync();
+        _context.SaveChanges();
         return show;
     }
 

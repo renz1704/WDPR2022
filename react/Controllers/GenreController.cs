@@ -35,7 +35,7 @@ namespace react.Controllers
         public async Task<ActionResult<Genre>> Create (Genre genre)
         {
             await _context.Genres.AddAsync(genre);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
             return genre;
         }
 

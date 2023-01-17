@@ -43,6 +43,7 @@ function ResponsiveAppBar() {
   };
 
   return (
+    
     <AppBar position="static" sx={{backgroundColor: 'white'}}>
       <Container maxWidth="x2">
         <Toolbar disableGutters >
@@ -82,7 +83,7 @@ function ResponsiveAppBar() {
               <Button size='large' variant="text"><Link  className='nav' to="/voorstellingen">Voorstellingen</Link></Button>
               <Button size='large' variant="text"><Link  className='nav' to="/toegankelijkheid">Toegankelijkheid</Link></Button>
               <Button size='large' variant="text"><Link  className='nav' to="/contactgegevens">Contactgegevens</Link></Button>
-              <Button size='large' variant="text"><Link  className='nav' to="/bezoekersportaal">Mijn Theater Laak</Link></Button>
+              {/* <Button size='large' variant="text"><Link  className='nav' to="/bezoekersportaal">Mijn Theater Laak</Link></Button> */}
               </div>
             </Menu>
           </Box>
@@ -110,8 +111,7 @@ function ResponsiveAppBar() {
             sx={{
               display: {xs:'flex', lg: 'none' }    ,
               width: '35%',  
-              // zet hem in het midden zonder absolute positioning
-              transform: 'translateX(100%)',
+              transform: 'translateX(110%)',    
 
             }}
           >
@@ -160,7 +160,7 @@ function ResponsiveAppBar() {
               <li><a><Button variant="text"><Link to="/voorstellingen">Voorstellingen</Link></Button></a></li>
               <li><a><Button variant="text"><Link to="/toegankelijkheid">Toegankelijkheid</Link></Button></a></li>
               <li><a><Button variant="text"><Link to="/contactgegevens">Contactgegevens</Link></Button></a></li>
-              <li><a><Button variant="text"><Link to="/bezoekersportaal">Mijn Theater Laak</Link></Button></a></li>
+              {/* <li><a><Button variant="text"><Link to="/bezoekersportaal">Mijn Theater Laak</Link></Button></a></li> */}
           </Box>
             <Box sx={{ display: {xs: 'none', lg: 'flex'} }}>
   

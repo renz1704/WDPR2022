@@ -18,7 +18,7 @@ public class GroupController : ControllerBase
     public async Task<ActionResult<Group>> createGroup([FromBody] Group g)
     {
         await _context.Groups.AddAsync(g);
-        await _context.SaveChangesAsync();
+        _context.SaveChanges();
         return g;
     }
 
@@ -35,7 +35,7 @@ public class GroupController : ControllerBase
     public async Task<ActionResult<Actor>> createArtist([FromBody] Actor a)
     {
         await _context.Actors.AddAsync(a);
-        await _context.SaveChangesAsync();
+        _context.SaveChanges();
         Console.WriteLine(a.Name + " " + a.LastName + ": is created ");
         return a;
     }
@@ -58,6 +58,6 @@ public class GroupController : ControllerBase
     {
         Group g = await findGroup(groupId);
         g.Actors.Add(await findArtist(artistId));
-        await _context.SaveChangesAsync();
+        _context.SaveChanges();
     }
 }

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="eaf177ba-b666-4d1f-a160-da35910dadf1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../react/Data/IIdentityDbContext.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react/Data/ITheaterDbContext.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react/Migrations/20230115135001_2.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Tests_API.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tests_API.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests_API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Tests_API.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UnitTest1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/Page_StoelKeuze.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/Page_StoelKeuze.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/ClientApp/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react/ClientApp/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/DonationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/DonationController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/GenreController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/GenreController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/GroupController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/GroupController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/PaymentController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/PaymentController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/PerformanceController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/PerformanceController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/RoomController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/RoomController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/RowController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/RowController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/SeatController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/SeatController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/ShowController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/ShowController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/TicketController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/TicketController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Data/TheaterDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Data/TheaterDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230112092705_214.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230112092705_214.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/TheaterDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Migrations/20230115135001_2.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Models/Performance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Models/Performance.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../react/package.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2KK2bpDQbuYpGmS0gHfNFt1fOmV" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager" selected="30af68de-3fe3-4744-928e-005937b63bc2" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="eaf177ba-b666-4d1f-a160-da35910dadf1" name="Changes" comment="" />
+      <created>1673709027568</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1673709027568</updated>
+      <workItem from="1673709033403" duration="64000" />
+      <workItem from="1673709187458" duration="2050000" />
+      <workItem from="1673723123240" duration="121000" />
+      <workItem from="1673724428040" duration="3350000" />
+      <workItem from="1673789875963" duration="3171000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>
