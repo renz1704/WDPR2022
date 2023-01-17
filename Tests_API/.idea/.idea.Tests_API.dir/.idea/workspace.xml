@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="eaf177ba-b666-4d1f-a160-da35910dadf1" name="Changes" comment="genrecontroller tests">
+    <list default="true" id="eaf177ba-b666-4d1f-a160-da35910dadf1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Tests/DonationControllerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.InMemory.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Tests_API.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tests_API.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Folder.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Folder.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GenrecontrollerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/GenrecontrollerTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GroupControllerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/GroupControllerTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RoomcontrollerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/RoomcontrollerTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests_API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Tests_API.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Tests_API.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Tests_API.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +67,8 @@
       <workItem from="1673789875963" duration="3171000" />
       <workItem from="1673826554485" duration="3577000" />
       <workItem from="1673880596737" duration="6629000" />
-      <workItem from="1673897639822" duration="3365000" />
+      <workItem from="1673897639822" duration="4668000" />
+      <workItem from="1673953863747" duration="1679000" />
     </task>
     <task id="LOCAL-00001" summary="genrecontroller tests">
       <created>1673899417330</created>
@@ -64,7 +77,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673899417330</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="structuur aangepast">
+      <created>1673901071411</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1673901071411</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -87,7 +107,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="genrecontroller tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="genrecontroller tests" />
+    <MESSAGE value="structuur aangepast" />
+    <option name="LAST_COMMIT_MESSAGE" value="structuur aangepast" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

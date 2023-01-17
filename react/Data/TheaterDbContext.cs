@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-class TheaterDbContext : DbContext, ITheaterDbContext
+class TheaterDbContext : IdentityDbContext, ITheaterDbContext
 {
     public TheaterDbContext(DbContextOptions<TheaterDbContext> options) : base(options) { }
 

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "rtW6jXmlhNDnvDUXQ9A81qhpqNxIwbX2H2KREQ1kHiNDNc0Bcg0sXUglyoQjTY8YMeb8oWIlIek+jiYleLpy9g==",
+  "dgSpecHash": "+rQb8ylGqK6hOlShk20ccLoNDtAAF9gkDSiUIyU9jD1fEfrapsu9WboL9vHPGV9QZ2v/RreoEGvUHOQvaJdnUA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Gebruiker\\RiderProjects\\WDPR2022\\Tests_API\\Tests_API.csproj",
   "expectedPackageFiles": [
@@ -78,6 +78,7 @@
     "C:\\Users\\Gebruiker\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.2\\microsoft.entityframeworkcore.7.0.2.nupkg.sha512",
     "C:\\Users\\Gebruiker\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.2\\microsoft.entityframeworkcore.abstractions.7.0.2.nupkg.sha512",
     "C:\\Users\\Gebruiker\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.2\\microsoft.entityframeworkcore.analyzers.7.0.2.nupkg.sha512",
+    "C:\\Users\\Gebruiker\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\7.0.2\\microsoft.entityframeworkcore.inmemory.7.0.2.nupkg.sha512",
     "C:\\Users\\Gebruiker\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\7.0.2\\microsoft.entityframeworkcore.relational.7.0.2.nupkg.sha512",
     "C:\\Users\\Gebruiker\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite\\7.0.2\\microsoft.entityframeworkcore.sqlite.7.0.2.nupkg.sha512",
     "C:\\Users\\Gebruiker\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite.core\\7.0.2\\microsoft.entityframeworkcore.sqlite.core.7.0.2.nupkg.sha512",
