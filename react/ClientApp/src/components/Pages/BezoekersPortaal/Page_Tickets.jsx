@@ -7,7 +7,6 @@ import Tickets from './Orders';
 import Orders from './Orders';
 
 function Page_Tickets() {
-<<<<<<< Updated upstream
 
     const [orders, setOrders] = useState([]);
 
@@ -18,8 +17,6 @@ function Page_Tickets() {
             console.log(res.data)
         })
     }, [])
-=======
->>>>>>> Stashed changes
 
     return (
         

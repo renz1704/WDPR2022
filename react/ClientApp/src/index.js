@@ -83,16 +83,11 @@ root.render(
         <Route path='/gedoneerd' element={<Page_Gedoneerd />} />
 
         {<Route path='/begunstigersportaal' element={<Page_Begunstigersportaal />} /> /*dit moet nog weggehaald/geautoriseerd worden, het begunstigersportaal moet alleen voor donateurs zijn*/}
-<<<<<<< Updated upstream
         <Route path='/inloggen' element={<LoginPage/>}/>
         <Route path='/registreren' element={<RegisterPage/>}/>
         <Route path='/programmeringUploaden' element= {<Page_UploadSchedule></Page_UploadSchedule>}/>
         <Route path='/accountgegevensWijzigen' element= {<Page_AccountGegevens></Page_AccountGegevens>}/>
     
-=======
-        <Route path='/inloggen' element={<LoginPage />} />
-        <Route path='/registreren' element={<RegisterPage />} />
->>>>>>> Stashed changes
 
       </Routes>
 

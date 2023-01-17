@@ -5,8 +5,8 @@ using Microsoft.EntityFrameworkCore;
 [Route("api/[controller]")]
 public class RowController : Controller
 {
-    private readonly ITheaterDbContext _context;
-    public RowController(ITheaterDbContext context)
+    private readonly TheaterDbContext _context;
+    public RowController(TheaterDbContext context)
     {
         _context = context;
     }

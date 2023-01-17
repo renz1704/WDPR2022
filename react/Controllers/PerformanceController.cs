@@ -12,11 +12,11 @@ public class PerformanceController : ControllerBase
     }
 
 
-    [HttpGet]
-    [Route("performances")]
-    public async Task<ActionResult<List<Performance>>> GetAllAsync() {
-        return await Task.Run( () => {return _context.Performances.Include(p => p.Show).Include(p => p.Show.Genres).ToList();});
-    }
+    // [HttpGet]
+    // [Route("performances")]
+    // public async Task<ActionResult<List<Performance>>> GetAllAsync() {
+    //     return await Task.Run( () => {return _context.Performances.Include(p => p.Show).Include(p => p.Show.Genres).ToList();});
+    // }
 
     [HttpPost]
     [Route("AddPerformances")]
@@ -25,7 +25,7 @@ public class PerformanceController : ControllerBase
         List<Performance> per = new List<Performance>();
         foreach (var p in performances)
         {
-            Performance performance = new Performance (p.showId, p.roomId);
+            Performance performance = new Performance (p.showId, p.roomId, _context);
             per.Add(performance);
             await _context.Performances.AddAsync(performance);
             await _context.SaveChangesAsync();
@@ -39,7 +39,7 @@ public class PerformanceController : ControllerBase
     [Route("createperformance")]
     public async Task<ActionResult<Performance>> CreatePerformanceAsync(PerformanceDTO performance)
     {
-        Performance p = new Performance(performance.showId, performance.roomId);
+        Performance p = new Performance(performance.showId, performance.roomId, _context);
         p.StartTime = performance.StartTime;
         p.EndTime = performance.EndTime;
         await _context.Performances.AddAsync(p);

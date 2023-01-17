@@ -19,13 +19,9 @@ namespace react.Controllers
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
-<<<<<<< Updated upstream
         private readonly TheaterDbContext _context;
-=======
-        ITheaterDbContext _context;
->>>>>>> Stashed changes
 
-        public UserController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, ITheaterDbContext context)
+        public UserController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, TheaterDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -35,8 +31,10 @@ namespace react.Controllers
         [HttpPost]
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] LoginDTO model){
-                var _user = await _userManager.FindByNameAsync(model.Email);
-                
+            
+                var _user = await _userManager.FindByEmailAsync(model.Email);
+                if (_user == null) return Unauthorized();
+
                 var visitor = await _context.Visitors.Where(v => v.IdentityUser.Id == _user.Id).FirstOrDefaultAsync();
 
 
@@ -60,7 +58,9 @@ namespace react.Controllers
                 claims.Add(new Claim("lastname", visitor.LastName));
             }
             
-
+            if(visitor.DonationToken != null){
+                claims.Add(new Claim("donationToken", visitor.DonationToken));
+            }
             var roles = await _userManager.GetRolesAsync(_user);
             foreach (var role in roles)
                 claims.Add(new Claim(ClaimTypes.Role, role));

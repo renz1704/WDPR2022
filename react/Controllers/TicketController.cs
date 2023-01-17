@@ -9,9 +9,9 @@ using Microsoft.EntityFrameworkCore;
 
 public class TicketController : ControllerBase
 {
-    ITheaterDbContext _context;
+    TheaterDbContext _context;
 
-    public TicketController(ITheaterDbContext context)
+    public TicketController(TheaterDbContext context)
     {
         _context = context;
     }

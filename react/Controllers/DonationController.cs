@@ -9,11 +9,11 @@ public class DonationController : ControllerBase
 {
 
 
-    ITheaterDbContext _context;
+    TheaterDbContext _context;
     private readonly object _lock = new object();
     private string emailUser;
 
-    public DonationController(ITheaterDbContext context)
+    public DonationController(TheaterDbContext context)
         {
             _context = context;
     }
@@ -42,21 +42,10 @@ public class DonationController : ControllerBase
         Console.WriteLine(emailUser);
         return Ok();
     }
-
-    [HttpPost]
-    [Route("tokenExists")]
-    public async Task<ActionResult<Boolean>> tokenExists(string emailuser)
-    {
-        lock(_lock)
-        {
-            emailUser = emailuser;
-        }
-        if (string.IsNullOrEmpty(emailUser))
-            return BadRequest(new { message = "emailUser is null or empty" });
-        Console.WriteLine(emailUser);
-        var user = _context.Visitors.FirstOrDefault(x => x.IdentityUser.UserName == emailUser);
+    private Boolean tokenExists(string email){
+          var user = _context.Visitors.FirstOrDefault(x => x.IdentityUser.UserName == email);
         if (user == null)
-            return BadRequest(new { message = "Er is geen gebruiker gevonden met dit emailadres!" });
+            return false;
         if (user.DonationToken != null)
         {
             return true;
@@ -89,22 +78,15 @@ public class DonationController : ControllerBase
         if (user == null)
             return BadRequest(new { message = "Er is geen gebruiker gevonden met dit emailadres!" });
 
-<<<<<<< Updated upstream
         user.DonationToken = token;
 
         Console.WriteLine(token);
 
         Console.WriteLine("De token van de user " + user.Name + " = " + user.DonationToken);
-=======
-        user.donationToken = token;
-        Console.WriteLine(token);
-
-        Console.WriteLine("De token van de user " + user.Name + " = " + user.donationToken);
-      }
-
->>>>>>> Stashed changes
 
         return Ok(new { message = "Gelukt, u kunt dit venster nu sluiten." });
+    }
+    
     }
 
     [HttpPost]

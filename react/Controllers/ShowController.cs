@@ -7,10 +7,10 @@ using System.Text.RegularExpressions;
 [Route("api/[controller]")]
 public class ShowController
 {
-    private readonly ITheaterDbContext _context;
+    private readonly TheaterDbContext _context;
 
 
-    public ShowController(ITheaterDbContext context)
+    public ShowController(TheaterDbContext context)
     {
         _context = context;
     }

@@ -9,9 +9,9 @@ namespace react.Controllers
     [ApiController]
     public class GenreController : ControllerBase
     {
-        private readonly ITheaterDbContext _context;
+        private readonly TheaterDbContext _context;
 
-        public GenreController(ITheaterDbContext context)
+        public GenreController(TheaterDbContext context)
         {
             _context = context;
         }

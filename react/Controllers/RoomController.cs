@@ -7,8 +7,8 @@ using Microsoft.EntityFrameworkCore;
 [Route("api/[controller]")]
 public class RoomController : Controller
 {
-    private readonly ITheaterDbContext _context;
-    public RoomController(ITheaterDbContext context)
+    private readonly TheaterDbContext _context;
+    public RoomController(TheaterDbContext context)
     {
         _context = context;
     }
