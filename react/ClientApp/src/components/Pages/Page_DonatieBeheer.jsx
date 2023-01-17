@@ -71,14 +71,15 @@ function Page_DonatieBeheer() {
       try {
         const result = await axios.get("https://ikdoneer.azurewebsites.net/api/goededoelen/1", {
           headers: {
-           
              Authorization: `Bearer ${token}`
           }
         });
-        setApiData(result.data);
+        setApiData(result.data)
+        console.log(result.data)
       } catch (error) {
         setError(error);
       }
+      
       setIsLoading(false);
     };
     fetchData();
@@ -86,9 +87,17 @@ function Page_DonatieBeheer() {
 
   return (
     <>
+      
       <h4>DonatieBeheer</h4>
       <p>Ons goede doel: </p>
       <hr></hr>
+
+      {Object.entries(apiData).map(([key, value]) => (
+          <div key={key}>
+            <p>{key}: {value}</p>
+          </div>
+      ))}
+      
       {isLoading ? (
         <div>Loading...</div>
       ) : error ? (
