@@ -5,20 +5,68 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eaf177ba-b666-4d1f-a160-da35910dadf1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Tests/DonationControllerTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.InMemory.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UnitTest1.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/BezoekersPortaal/Orders.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/BezoekersPortaal/Page_AccountGegevens.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/BezoekersPortaal/Page_Gedoneerd.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/Page_DonatieBeheer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/Page_UploadSchedule.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react/ClientApp/src/services/AuthenticationHeader.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react/ClientApp/src/services/AuthenticationService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react/ClientApp/src/services/UserService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react/ClientApp/src/styles/donerenStyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react/Controllers/OrderController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react/Migrations/20230117074604_3.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShowManager/Rooms.db" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Tests_API.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tests_API.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Folder.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Folder.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests_API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Tests_API.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RoomcontrollerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RoomcontrollerTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Tests_API.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Tests_API.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/ClientApp/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../react/ClientApp/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/ClientApp/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../react/ClientApp/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/ClientApp/src/components/BezoekersPortaalHeader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../react/ClientApp/src/components/BezoekersPortaalHeader.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/ClientApp/src/components/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../react/ClientApp/src/components/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/BezoekersPortaal/Page_BezoekersPortaal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/BezoekersPortaal/Page_BezoekersPortaal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/BezoekersPortaal/Page_DonatieGekoppeld.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/BezoekersPortaal/Page_Doneren.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/BezoekersPortaal/Page_Doneren.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/BezoekersPortaal/Page_Gegevens.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/BezoekersPortaal/Page_Gegevens.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/BezoekersPortaal/Page_Tickets.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/BezoekersPortaal/Page_Tickets.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/Login-and-Register/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/Login-and-Register/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/Login-and-Register/Register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/Login-and-Register/Register.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/Page_AdminPortaal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/Page_AdminPortaal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/Page_Betaling.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/Page_Betaling.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/Page_Startpagina.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/Page_Startpagina.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/Page_StoelKeuze.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/Page_StoelKeuze.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/ClientApp/src/components/SeatButton.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../react/ClientApp/src/components/SeatButton.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/ClientApp/src/components/ShowOrder.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../react/ClientApp/src/components/ShowOrder.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/ClientApp/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react/ClientApp/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/ClientApp/src/styles/generalStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/../react/ClientApp/src/styles/generalStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/DonationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/DonationController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/GenreController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/GenreController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/GroupController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/GroupController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/PaymentController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/PaymentController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/PerformanceController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/PerformanceController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/RoomController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/RoomController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/RowController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/RowController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/SeatController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/SeatController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/ShowController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/ShowController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/TicketController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/TicketController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/UserController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Data/IIdentityDbContext.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Data/ITheaterDbContext.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230116140504_1.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Migrations/20230117074604_3.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230116140504_1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Migrations/20230117074107_1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230116142815_2.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Migrations/20230117074107_1.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230116142815_2.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/TheaterDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Migrations/TheaterDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Models/Donation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Models/Donation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Models/Performance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Models/Performance.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Models/Reservation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Models/Reservation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Models/Seat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Models/Seat.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Models/Ticket.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Models/Ticket.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Models/Visitor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Models/Visitor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../react/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +99,6 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="30af68de-3fe3-4744-928e-005937b63bc2" />
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
