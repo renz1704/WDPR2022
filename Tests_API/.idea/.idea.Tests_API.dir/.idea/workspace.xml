@@ -8,16 +8,9 @@
       <change afterPath="$PROJECT_DIR$/../react/Data/ITheaterDbContext.cs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../react/Migrations/20230117124913_2.cs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../react/Migrations/20230117125942_3.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Tests_API.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tests_API.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Folder.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Folder.DotSettings.user" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UnitTest1.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/net7.0/Tests_API.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net7.0/Tests_API.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/net7.0/Tests_API.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net7.0/Tests_API.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net7.0/ref/Tests_API.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net7.0/ref/Tests_API.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net7.0/refint/Tests_API.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net7.0/refint/Tests_API.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/obj/rider.project.restore.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/Page_ZaalMaken.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/Page_ZaalMaken.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../react/Controllers/DonationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/DonationController.cs" afterDir="false" />
@@ -48,6 +41,13 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="tests" />
+      </map>
+    </option>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/79fbf5ff554b611622a4207ff363d1c026ccac52f8ef8f6318a1cc5ab7e4/ObjectResult.cs" root0="SKIP_HIGHLIGHTING" />
@@ -132,7 +132,8 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="genrecontroller tests" />
     <MESSAGE value="structuur aangepast" />
-    <option name="LAST_COMMIT_MESSAGE" value="structuur aangepast" />
+    <MESSAGE value="row test" />
+    <option name="LAST_COMMIT_MESSAGE" value="row test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
