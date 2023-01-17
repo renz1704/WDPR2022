@@ -2,24 +2,16 @@
 
 #nullable disable
 
-namespace react.Data.Migrations
+namespace react.Migrations
 {
     /// <inheritdoc />
-    public partial class _1000 : Migration
+    public partial class _3 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
-                name: "Name",
-                table: "Visitors",
-                type: "TEXT",
-                nullable: true,
-                oldClrType: typeof(string),
-                oldType: "TEXT");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "LastName",
+                name: "DonationToken",
                 table: "Visitors",
                 type: "TEXT",
                 nullable: true,
@@ -31,17 +23,7 @@ namespace react.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
-                name: "Name",
-                table: "Visitors",
-                type: "TEXT",
-                nullable: false,
-                defaultValue: "",
-                oldClrType: typeof(string),
-                oldType: "TEXT",
-                oldNullable: true);
-
-            migrationBuilder.AlterColumn<string>(
-                name: "LastName",
+                name: "DonationToken",
                 table: "Visitors",
                 type: "TEXT",
                 nullable: false,

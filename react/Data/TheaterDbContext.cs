@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-public class TheaterDbContext : DbContext, ITheaterDbContext
+public class TheaterDbContext : IdentityDbContext
 {
     public TheaterDbContext(DbContextOptions<TheaterDbContext> options) : base(options) { }
 

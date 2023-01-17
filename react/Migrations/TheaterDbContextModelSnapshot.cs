@@ -2,7 +2,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,14 +9,12 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace react.Migrations
 {
     [DbContext(typeof(TheaterDbContext))]
-    [Migration("20230116095722_303")]
-    partial class _303
+    partial class TheaterDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "7.0.1");
+            modelBuilder.HasAnnotation("ProductVersion", "7.0.2");
 
             modelBuilder.Entity("Actor", b =>
                 {
@@ -59,6 +56,25 @@ namespace react.Migrations
                     b.HasIndex("GroupsId");
 
                     b.ToTable("ActorGroup");
+                });
+
+            modelBuilder.Entity("Donation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("VisitorId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<double>("amount")
+                        .HasColumnType("REAL");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("VisitorId");
+
+                    b.ToTable("Donations");
                 });
 
             modelBuilder.Entity("Employee", b =>
@@ -357,20 +373,12 @@ namespace react.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<bool>("succes")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
                     b.ToTable("Payment");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Payment");
-
-                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Performance", b =>
@@ -392,10 +400,6 @@ namespace react.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("RoomId");
-
-                    b.HasIndex("ShowId");
 
                     b.ToTable("Performances");
                 });
@@ -427,7 +431,7 @@ namespace react.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("RoomNumber")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -464,12 +468,11 @@ namespace react.Migrations
                     b.Property<bool>("IsDisabled")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("RowId")
+                    b.Property<int>("RowId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("SeatName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("SeatNumber")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -521,15 +524,23 @@ namespace react.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("REAL");
 
+                    b.Property<int>("ReservationId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("SeatId")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("isAvailable")
                         .HasColumnType("INTEGER");
 
+                    b.Property<bool>("isTransfered")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
 
                     b.HasIndex("PerformanceId");
+
+                    b.HasIndex("ReservationId");
 
                     b.HasIndex("SeatId");
 
@@ -542,16 +553,17 @@ namespace react.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("DonationToken")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("IdentityUserId")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -559,22 +571,6 @@ namespace react.Migrations
                     b.HasIndex("IdentityUserId");
 
                     b.ToTable("Visitors");
-                });
-
-            modelBuilder.Entity("react.Models.Donation", b =>
-                {
-                    b.HasBaseType("Payment");
-
-                    b.Property<string>("DonationMessage")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("VisitorId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasIndex("VisitorId");
-
-                    b.HasDiscriminator().HasValue("Donation");
                 });
 
             modelBuilder.Entity("Actor", b =>
@@ -597,6 +593,15 @@ namespace react.Migrations
                     b.HasOne("Group", null)
                         .WithMany()
                         .HasForeignKey("GroupsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Donation", b =>
+                {
+                    b.HasOne("Visitor", null)
+                        .WithMany("Donations")
+                        .HasForeignKey("VisitorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -691,25 +696,6 @@ namespace react.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Performance", b =>
-                {
-                    b.HasOne("Room", "Room")
-                        .WithMany()
-                        .HasForeignKey("RoomId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Show", "Show")
-                        .WithMany()
-                        .HasForeignKey("ShowId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Room");
-
-                    b.Navigation("Show");
-                });
-
             modelBuilder.Entity("Reservation", b =>
                 {
                     b.HasOne("Payment", "Payment")
@@ -738,9 +724,13 @@ namespace react.Migrations
 
             modelBuilder.Entity("Seat", b =>
                 {
-                    b.HasOne("Row", null)
+                    b.HasOne("Row", "Row")
                         .WithMany("Seats")
-                        .HasForeignKey("RowId");
+                        .HasForeignKey("RowId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Row");
                 });
 
             modelBuilder.Entity("Ticket", b =>
@@ -751,6 +741,12 @@ namespace react.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Reservation", "Reservation")
+                        .WithMany("Tickets")
+                        .HasForeignKey("ReservationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Seat", "Seat")
                         .WithMany()
                         .HasForeignKey("SeatId")
@@ -758,6 +754,8 @@ namespace react.Migrations
                         .IsRequired();
 
                     b.Navigation("Performance");
+
+                    b.Navigation("Reservation");
 
                     b.Navigation("Seat");
                 });
@@ -773,15 +771,9 @@ namespace react.Migrations
                     b.Navigation("IdentityUser");
                 });
 
-            modelBuilder.Entity("react.Models.Donation", b =>
+            modelBuilder.Entity("Reservation", b =>
                 {
-                    b.HasOne("Visitor", "Visitor")
-                        .WithMany()
-                        .HasForeignKey("VisitorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Visitor");
+                    b.Navigation("Tickets");
                 });
 
             modelBuilder.Entity("Room", b =>
@@ -792,6 +784,11 @@ namespace react.Migrations
             modelBuilder.Entity("Row", b =>
                 {
                     b.Navigation("Seats");
+                });
+
+            modelBuilder.Entity("Visitor", b =>
+                {
+                    b.Navigation("Donations");
                 });
 #pragma warning restore 612, 618
         }

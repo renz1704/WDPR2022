@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 [Route("api/[controller]")]
 public class PerformanceController : ControllerBase
 {
-    ITheaterDbContext _context;
+    TheaterDbContext _context;
 
-    public PerformanceController(ITheaterDbContext context){
+    public PerformanceController(TheaterDbContext context){
         _context = context;
     }
 
@@ -25,7 +25,7 @@ public class PerformanceController : ControllerBase
         List<Performance> per = new List<Performance>();
         foreach (var p in performances)
         {
-            Performance performance = new Performance (p.showId, p.roomId, _context);
+            Performance performance = new Performance (p.showId, p.roomId);
             per.Add(performance);
             await _context.Performances.AddAsync(performance);
             await _context.SaveChangesAsync();
