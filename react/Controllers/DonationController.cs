@@ -9,11 +9,11 @@ public class DonationController : ControllerBase
 {
 
 
-    TheaterDbContext _context;
+    ITheaterDbContext _context;
     private readonly object _lock = new object();
     private string emailUser;
 
-    public DonationController(TheaterDbContext context)
+    public DonationController(ITheaterDbContext context)
         {
             _context = context;
     }

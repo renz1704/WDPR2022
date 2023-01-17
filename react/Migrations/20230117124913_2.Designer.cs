@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace react.Migrations
 {
     [DbContext(typeof(TheaterDbContext))]
-    [Migration("20230117074604_3")]
-    partial class _3
+    [Migration("20230117124913_2")]
+    partial class _2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -404,6 +404,10 @@ namespace react.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("RoomId");
+
+                    b.HasIndex("ShowId");
+
                     b.ToTable("Performances");
                 });
 
@@ -474,8 +478,9 @@ namespace react.Migrations
                     b.Property<int>("RowId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("SeatNumber")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("SeatName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -697,6 +702,25 @@ namespace react.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Performance", b =>
+                {
+                    b.HasOne("Room", "Room")
+                        .WithMany()
+                        .HasForeignKey("RoomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Show", "Show")
+                        .WithMany()
+                        .HasForeignKey("ShowId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Room");
+
+                    b.Navigation("Show");
                 });
 
             modelBuilder.Entity("Reservation", b =>

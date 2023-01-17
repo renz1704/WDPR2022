@@ -95,22 +95,6 @@ namespace react.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Performances",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    ShowId = table.Column<int>(type: "INTEGER", nullable: false),
-                    RoomId = table.Column<int>(type: "INTEGER", nullable: false),
-                    StartTime = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    EndTime = table.Column<DateTime>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Performances", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Rooms",
                 columns: table => new
                 {
@@ -294,8 +278,8 @@ namespace react.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: true),
                     LastName = table.Column<string>(type: "TEXT", nullable: true),
-                    IdentityUserId = table.Column<string>(type: "TEXT", nullable: false),
-                    DonationToken = table.Column<string>(type: "TEXT", nullable: false)
+                    DonationToken = table.Column<string>(type: "TEXT", nullable: true),
+                    IdentityUserId = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -370,6 +354,34 @@ namespace react.Migrations
                     table.ForeignKey(
                         name: "FK_GroupShow_Shows_ShowsId",
                         column: x => x.ShowsId,
+                        principalTable: "Shows",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Performances",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    StartTime = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    EndTime = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    ShowId = table.Column<int>(type: "INTEGER", nullable: false),
+                    RoomId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Performances", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Performances_Rooms_RoomId",
+                        column: x => x.RoomId,
+                        principalTable: "Rooms",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Performances_Shows_ShowId",
+                        column: x => x.ShowId,
                         principalTable: "Shows",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -570,6 +582,16 @@ namespace react.Migrations
                 column: "ShowsId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Performances_RoomId",
+                table: "Performances",
+                column: "RoomId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Performances_ShowId",
+                table: "Performances",
+                column: "ShowId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Reservations_PaymentId",
                 table: "Reservations",
                 column: "PaymentId");
@@ -659,9 +681,6 @@ namespace react.Migrations
                 name: "Groups");
 
             migrationBuilder.DropTable(
-                name: "Shows");
-
-            migrationBuilder.DropTable(
                 name: "Performances");
 
             migrationBuilder.DropTable(
@@ -669,6 +688,9 @@ namespace react.Migrations
 
             migrationBuilder.DropTable(
                 name: "Seats");
+
+            migrationBuilder.DropTable(
+                name: "Shows");
 
             migrationBuilder.DropTable(
                 name: "Payment");

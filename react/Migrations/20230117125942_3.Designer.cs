@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace react.Migrations
 {
     [DbContext(typeof(TheaterDbContext))]
-    [Migration("20230117074107_1")]
-    partial class _1
+    [Migration("20230117125942_3")]
+    partial class _3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -404,6 +404,10 @@ namespace react.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("RoomId");
+
+                    b.HasIndex("ShowId");
+
                     b.ToTable("Performances");
                 });
 
@@ -471,7 +475,10 @@ namespace react.Migrations
                     b.Property<bool>("IsDisabled")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("RowId")
+                    b.Property<int?>("RowId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("RowNumber")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("SeatNumber")
@@ -557,7 +564,6 @@ namespace react.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("DonationToken")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("IdentityUserId")
@@ -700,6 +706,25 @@ namespace react.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Performance", b =>
+                {
+                    b.HasOne("Room", "Room")
+                        .WithMany()
+                        .HasForeignKey("RoomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Show", "Show")
+                        .WithMany()
+                        .HasForeignKey("ShowId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Room");
+
+                    b.Navigation("Show");
+                });
+
             modelBuilder.Entity("Reservation", b =>
                 {
                     b.HasOne("Payment", "Payment")
@@ -728,13 +753,9 @@ namespace react.Migrations
 
             modelBuilder.Entity("Seat", b =>
                 {
-                    b.HasOne("Row", "Row")
+                    b.HasOne("Row", null)
                         .WithMany("Seats")
-                        .HasForeignKey("RowId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Row");
+                        .HasForeignKey("RowId");
                 });
 
             modelBuilder.Entity("Ticket", b =>

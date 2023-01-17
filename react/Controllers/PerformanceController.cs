@@ -28,7 +28,7 @@ public class PerformanceController : ControllerBase
             Performance performance = new Performance (p.showId, p.roomId, _context);
             per.Add(performance);
             await _context.Performances.AddAsync(performance);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
         
         return per;

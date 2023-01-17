@@ -19,9 +19,9 @@ namespace react.Controllers
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly TheaterDbContext _context;
+        private readonly ITheaterDbContext _context;
 
-        public UserController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, TheaterDbContext context)
+        public UserController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, ITheaterDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -87,7 +87,7 @@ namespace react.Controllers
             var resultaat = await _userManager.CreateAsync(user, model.Password);
 
             await _context.Visitors.AddAsync( new Visitor{IdentityUser = user});
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
 
             return !resultaat.Succeeded ? new BadRequestObjectResult(resultaat) : StatusCode(201);
         }
@@ -141,7 +141,7 @@ namespace react.Controllers
                 return NotFound();
             }
 
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
             Console.WriteLine("Doorgevoerd naar Db");
             return v;
         }
