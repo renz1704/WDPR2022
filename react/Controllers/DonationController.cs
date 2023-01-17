@@ -15,7 +15,7 @@ public class DonationController : ControllerBase
 
     ITheaterDbContext _context;
 
-    public DonationController(ITheaterDbContext context, UserManager<IdentityUser> userManager)
+    public DonationController(TheaterDbContext context, UserManager<IdentityUser> userManager)
     {
         _context = context;
         _userManager = userManager;
