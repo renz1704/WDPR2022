@@ -2,20 +2,21 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 [Route("api/[controller]")]
 [ApiController]
 public class DonationController : ControllerBase
 {
 
-
+    private readonly UserManager<IdentityUser> _userManager;
     TheaterDbContext _context;
-    private readonly object _lock = new object();
     private string emailUser;
 
-    public DonationController(TheaterDbContext context)
-        {
-            _context = context;
+    public DonationController(TheaterDbContext context, UserManager<IdentityUser> userManager)
+    {
+        _context = context;
+        _userManager = userManager;
     }
 
     [HttpGet]
@@ -30,20 +31,10 @@ public class DonationController : ControllerBase
         return true;
     }
 
-    [HttpPost]
-    [Route("userEmail")]
-    public async Task<IActionResult> userEmail(string emailuser)
+
+    private Boolean tokenExists(string email)
     {
-        Console.WriteLine("hier is ie er niet " + emailUser);
-        lock(_lock)
-    {
-        emailUser = emailuser;
-    }
-        Console.WriteLine(emailUser);
-        return Ok();
-    }
-    private Boolean tokenExists(string email){
-          var user = _context.Visitors.FirstOrDefault(x => x.IdentityUser.UserName == email);
+        var user = _context.Visitors.FirstOrDefault(x => x.IdentityUser.UserName == email);
         if (user == null)
             return false;
         if (user.DonationToken != null)
@@ -54,26 +45,14 @@ public class DonationController : ControllerBase
     }
 
 
-    [HttpGet]
-    [Route("getToken")]
-    public async Task<ActionResult<String>> getToken(){
-        
-        if (string.IsNullOrEmpty(emailUser))
-            return BadRequest(new { message = "emailUser is null or empty" });
-             var user = _context.Visitors.FirstOrDefault(x => x.IdentityUser.UserName == emailUser);
-          if (user == null)
-            return BadRequest(new { message = "Er is geen gebruiker gevonden met dit emailadres!" });
-        
-        return user.DonationToken;
-    }
-
     [HttpPost]
     [Route("addtokenuser")]
     public async Task<IActionResult> addTokenUser([FromForm] String token)
     {
+
         if (string.IsNullOrEmpty(emailUser))
             return BadRequest(new { message = "emailUser is null or empty" });
-         lock(_lock){
+
         var user = _context.Visitors.FirstOrDefault(x => x.IdentityUser.UserName == emailUser);
         if (user == null)
             return BadRequest(new { message = "Er is geen gebruiker gevonden met dit emailadres!" });
@@ -86,17 +65,25 @@ public class DonationController : ControllerBase
 
         return Ok(new { message = "Gelukt, u kunt dit venster nu sluiten." });
     }
-    
-    }
 
     [HttpPost]
     [Route("DonatieListener")]
     public async Task<ActionResult<donationListener>> DonatieListener([FromBody] donationListener donationListenerModel)
     {
+        var _user = await _userManager.FindByEmailAsync(donationListenerModel.email);
+        if (_user == null) return Unauthorized();
+
+        var visitor = await _context.Visitors.Where(v => v.IdentityUser.Id == _user.Id).FirstOrDefaultAsync();
+
+        
+        visitor.Donations.Add(new Donation(visitor.Id, donationListenerModel.amount));
+        await _context.SaveChangesAsync();
+
 
         Console.WriteLine(donationListenerModel.email + donationListenerModel.amount + donationListenerModel.naam);
 
         return donationListenerModel;
+
     }
 
 }
