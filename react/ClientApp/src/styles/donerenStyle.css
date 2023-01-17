@@ -26,3 +26,8 @@
     cursor: pointer;
     padding: 5px 10px;
 }
+
+#label{
+    margin-left: 10px;
+    margin-right: 10px;
+}

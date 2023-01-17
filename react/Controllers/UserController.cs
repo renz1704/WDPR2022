@@ -19,9 +19,13 @@ namespace react.Controllers
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
+<<<<<<< Updated upstream
         private readonly TheaterDbContext _context;
+=======
+        ITheaterDbContext _context;
+>>>>>>> Stashed changes
 
-        public UserController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, TheaterDbContext context)
+        public UserController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, ITheaterDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
