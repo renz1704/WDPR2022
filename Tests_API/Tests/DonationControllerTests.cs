@@ -19,6 +19,6 @@ public class DonationControllerTests
             .Options;
 
         _context = new TheaterDbContext(options);
-        _controller = new DonationController(_context);
+        //_controller = new DonationController(_context);
     }
 }

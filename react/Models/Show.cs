@@ -12,7 +12,7 @@ public class Show
     public string ImageUrl { get; set; }
     public string WebsiteUrl { get; set; }
     public string Price { get; set; }
-    public virtual List<Genre> Genres { get; private set; }
-    public virtual List<Group> Groups { get; private set; }
+    public virtual List<Genre> Genres { get; set; }
+    public virtual List<Group> Groups { get; set; }
 
 }

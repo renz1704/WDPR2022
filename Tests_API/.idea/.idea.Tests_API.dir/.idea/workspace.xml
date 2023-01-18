@@ -5,37 +5,192 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eaf177ba-b666-4d1f-a160-da35910dadf1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../react/Data/ITheaterDbContext.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react/Migrations/20230117124913_2.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react/Migrations/20230117125942_3.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/RowControllerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/SeatControllerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/ShowControllerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Castle.Core.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.AspNetCore.Cryptography.Internal.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.AspNetCore.JsonPatch.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.AspNetCore.Mvc.Razor.Extensions.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.AspNetCore.Razor.Language.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.AspNetCore.Server.Kestrel.Https.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.CodeAnalysis.CSharp.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.CodeAnalysis.Razor.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.CodeAnalysis.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.Data.Sqlite.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.InMemory.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Relational.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Sqlite.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.Extensions.Caching.Memory.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.Extensions.DependencyInjection.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.Extensions.DependencyModel.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.Extensions.Identity.Core.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.Extensions.Identity.Stores.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.IdentityModel.Abstractions.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.IdentityModel.Logging.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.IdentityModel.Protocols.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.IdentityModel.Tokens.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.OpenApi.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.TestPlatform.CommunicationUtilities.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.TestPlatform.CoreUtilities.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.TestPlatform.CrossPlatEngine.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.TestPlatform.PlatformAbstractions.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.TestPlatform.Utilities.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.VisualStudio.CodeCoverage.Shim.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.VisualStudio.TestPlatform.Common.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Moq.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/NUnit3.TestAdapter.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/NUnit3.TestAdapter.pdb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Newtonsoft.Json.Bson.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Newtonsoft.Json.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/NuGet.Frameworks.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/SQLitePCLRaw.batteries_v2.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/SQLitePCLRaw.core.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/SQLitePCLRaw.provider.e_sqlite3.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Swashbuckle.AspNetCore.Swagger.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/System.IdentityModel.Tokens.Jwt.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/System.Security.Permissions.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Tests_API.deps.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Tests_API.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Tests_API.pdb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Tests_API.runtimeconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/cs/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/cs/Microsoft.TestPlatform.CoreUtilities.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/cs/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/cs/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/cs/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/de/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/de/Microsoft.TestPlatform.CoreUtilities.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/de/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/de/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/de/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/es/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/es/Microsoft.TestPlatform.CoreUtilities.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/es/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/es/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/es/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/fr/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/fr/Microsoft.TestPlatform.CoreUtilities.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/fr/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/fr/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/fr/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/it/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/it/Microsoft.TestPlatform.CoreUtilities.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/it/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/it/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/it/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/ja/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/ja/Microsoft.TestPlatform.CoreUtilities.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/ja/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/ja/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/ja/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/ko/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/ko/Microsoft.TestPlatform.CoreUtilities.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/ko/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/ko/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/ko/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/nunit.engine.api.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/nunit.engine.core.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/nunit.engine.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/nunit.framework.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/pl/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/pl/Microsoft.TestPlatform.CoreUtilities.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/pl/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/pl/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/pl/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/pt-BR/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/pt-BR/Microsoft.TestPlatform.CoreUtilities.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/pt-BR/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/pt-BR/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/pt-BR/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/ru/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/ru/Microsoft.TestPlatform.CoreUtilities.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/ru/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/ru/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/ru/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/runtimes/alpine-arm/native/libe_sqlite3.so" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/runtimes/alpine-arm64/native/libe_sqlite3.so" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/runtimes/alpine-x64/native/libe_sqlite3.so" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/runtimes/browser-wasm/nativeassets/net6.0/e_sqlite3.a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/runtimes/linux-arm/native/libe_sqlite3.so" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/runtimes/linux-arm64/native/libe_sqlite3.so" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/runtimes/linux-armel/native/libe_sqlite3.so" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/runtimes/linux-mips64/native/libe_sqlite3.so" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/runtimes/linux-musl-arm/native/libe_sqlite3.so" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/runtimes/linux-musl-arm64/native/libe_sqlite3.so" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/runtimes/linux-musl-x64/native/libe_sqlite3.so" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/runtimes/linux-s390x/native/libe_sqlite3.so" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/runtimes/linux-x64/native/libe_sqlite3.so" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/runtimes/linux-x86/native/libe_sqlite3.so" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/runtimes/maccatalyst-arm64/native/libe_sqlite3.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/runtimes/maccatalyst-x64/native/libe_sqlite3.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/runtimes/osx-arm64/native/libe_sqlite3.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/runtimes/osx-x64/native/libe_sqlite3.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/runtimes/win-arm/native/e_sqlite3.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/runtimes/win-arm64/native/e_sqlite3.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/runtimes/win-x64/native/e_sqlite3.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/runtimes/win-x86/native/e_sqlite3.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/testcentric.engine.metadata.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/testhost.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/testhost.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/tr/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/tr/Microsoft.TestPlatform.CoreUtilities.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/tr/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/tr/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/tr/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/xunit.abstractions.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/xunit.assert.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/xunit.core.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/xunit.execution.dotnet.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/zh-Hans/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/zh-Hans/Microsoft.TestPlatform.CoreUtilities.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/zh-Hans/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/zh-Hans/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/zh-Hans/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/zh-Hant/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/zh-Hant/Microsoft.TestPlatform.CoreUtilities.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/zh-Hant/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/zh-Hant/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Debug/net6.0/zh-Hant/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/obj/Debug/net6.0/Tests_API.AssemblyInfo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/obj/Debug/net6.0/Tests_API.AssemblyInfoInputs.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/obj/Debug/net6.0/Tests_API.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/obj/Debug/net6.0/Tests_API.GlobalUsings.g.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/obj/Debug/net6.0/Tests_API.assets.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/obj/Debug/net6.0/Tests_API.csproj.AssemblyReference.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/obj/Debug/net6.0/Tests_API.csproj.CopyComplete" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/obj/Debug/net6.0/Tests_API.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/obj/Debug/net6.0/Tests_API.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/obj/Debug/net6.0/Tests_API.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/obj/Debug/net6.0/Tests_API.genruntimeconfig.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/obj/Debug/net6.0/Tests_API.pdb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/obj/Debug/net6.0/ref/Tests_API.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/obj/Debug/net6.0/refint/Tests_API.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Tests_API.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tests_API.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Folder.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Folder.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UnitTest1.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net7.0/Tests_API.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/DonationControllerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/DonationControllerTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/GenrecontrollerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/GenrecontrollerTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Tests_API.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Tests_API.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Tests_API.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Tests_API.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.packagespec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/Page_ZaalMaken.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/Page_ZaalMaken.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react/Controllers/DonationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/DonationController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react/Controllers/GenreController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/GenreController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react/Controllers/GroupController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/GroupController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react/Controllers/OrderController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/OrderController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react/Controllers/PaymentController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/PaymentController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react/Controllers/PerformanceController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/PerformanceController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react/Controllers/RoomController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/RoomController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react/Controllers/RowController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/RowController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react/Controllers/SeatController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/SeatController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react/Controllers/ShowController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/ShowController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react/Controllers/TicketController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/TicketController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/UserController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react/Data/TheaterDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Data/TheaterDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230116193259_3.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Migrations/20230117124913_2.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230116193259_3.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230117074107_1.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Migrations/20230117124047_1.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230117074107_1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Migrations/20230117124047_1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230117074604_3.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Migrations/20230117125942_3.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230117074604_3.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react/Migrations/TheaterDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Migrations/TheaterDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react/Models/Performance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Models/Performance.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react/Models/Seat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Models/Seat.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Models/Show.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Models/Show.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +229,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="e1a475cb-ff2e-4fec-8c32-c0f6f2d1ac46" />
+  <component name="RunManager" selected="893cac6f-632b-4b3a-bdf4-387c332ad5e1" />
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -93,6 +248,7 @@
       <workItem from="1673897639822" duration="4668000" />
       <workItem from="1673953863747" duration="1679000" />
       <workItem from="1673958083382" duration="918000" />
+      <workItem from="1673995907914" duration="2118000" />
     </task>
     <task id="LOCAL-00001" summary="genrecontroller tests">
       <created>1673899417330</created>
