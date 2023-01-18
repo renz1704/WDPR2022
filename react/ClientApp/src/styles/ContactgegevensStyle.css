@@ -15,4 +15,7 @@
 
 .full {
     background-color: black;
+    background-size: cover;
+    min-height: 900px;
 }
+

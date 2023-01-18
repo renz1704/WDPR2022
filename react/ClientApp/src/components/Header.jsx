@@ -26,6 +26,7 @@ function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElNav2, setAnchorElNav2] = React.useState(null);
   const [hideAfterLogin, setHideAfterLogin] = React.useState(true);
+  const [isLoggedin, setIsLoggedin] = React.useState(false);
 
 
   React.useEffect(() => {
@@ -191,9 +192,14 @@ function ResponsiveAppBar() {
             </div>
           </Box>
           <Box sx={{ display: { xs: 'none', lg: 'flex' }, marginRight:{lg: '50px'} }}>
+             
+          <div className={`AfterLogin ${hideAfterLogin ? "hide-AfterLogin" : ""}`}>
+            <li className="User"><Button onClick={UserService.logout}>Uitloggen</Button></li>
+          </div>
 
             <li className="User"><Button variant='outlined' disableElevation><Link to="/inloggen">Inloggen</Link></Button></li>
             <li className="User"><Button variant='contained' disableElevation><Link to="/registreren">Registreren</Link></Button></li>
+            
 
           </Box>
 
