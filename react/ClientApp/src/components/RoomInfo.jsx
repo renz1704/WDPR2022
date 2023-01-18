@@ -1,10 +1,10 @@
-﻿import React, { useState, useEffect }  from 'react';
+﻿import React, { useState, useEffect } from 'react';
 
-function RoomInfo(props){
-    
+function RoomInfo(props) {
+
     const deleteRoom = () => {
         let url = 'http://localhost:5001/api/Room/delete/' + props.id
-        fetch(url,{
+        fetch(url, {
             method: 'DELETE',
         })
             .then(response => {
@@ -18,9 +18,9 @@ function RoomInfo(props){
                 console.log(error);
             });
     }
-    
+
     const [name, setName] = useState("Laden")
-    useEffect(()=>{
+    useEffect(() => {
         let url = 'http://localhost:5001/api/Room/name/' + props.id
         fetch(url)
             .then(response => response.text())
@@ -31,14 +31,14 @@ function RoomInfo(props){
                 console.log(error)
             });
     }, []);
-    
-    return(
+
+    return (
         <div className="flex-container-horizontal">
-        <div style={{margin:"15%"}}>
-            Zaal {props.id} 
-            <br/>Naam: {name}
-        </div>
-        <button onClick={() => (deleteRoom())}>Verwijder</button>
+            <div style={{ margin: "15%" }}>
+                Zaal {props.id}
+                <br />Naam: {name}
+            </div>
+            <button onClick={() => (deleteRoom())}>Verwijder</button>
         </div>
     )
 }

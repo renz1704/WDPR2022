@@ -14,6 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import UserService from '../services/UserService';
 
 import Logo from '../pictures/logo.png';
 
@@ -24,6 +25,24 @@ import "../styles/headerStyle.css";
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElNav2, setAnchorElNav2] = React.useState(null);
+  const [hideAfterLogin, setHideAfterLogin] = React.useState(true);
+
+
+  React.useEffect(() => {
+    try {
+      if (UserService.getUser().email == null) {
+        setHideAfterLogin(true);
+      }
+      else {
+        setHideAfterLogin(false);
+      }
+    }
+    catch (error) {
+      setHideAfterLogin(true);
+    }
+
+  }, []);
+
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -42,14 +61,16 @@ function ResponsiveAppBar() {
     setAnchorElNav2(null);
   };
 
+
+
   return (
-    
-    <AppBar position="static" sx={{backgroundColor: 'white'}}>
+
+    <AppBar position="static" sx={{ backgroundColor: 'white' }}>
       <Container maxWidth="x2">
         <Toolbar disableGutters >
-         
 
-          <Box sx={{borderRadius:10, display: { xs: 'flex', lg: 'none' }, ":hover": {bgcolor: 'lightblue'} }}>
+
+          <Box sx={{ borderRadius: 10, display: { xs: 'flex', lg: 'none' }, ":hover": { bgcolor: 'lightblue' } }}>
             <IconButton
               size="small"
               aria-controls="menu-appbar"
@@ -74,16 +95,20 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElNav2)}
               onClose={handleCloseNavMenu2}
               sx={{
-                display: { xs: 'flex', lg: 'none', },textDecoration: 'none' }
+                display: { xs: 'flex', lg: 'none', }, textDecoration: 'none'
+              }
               }
               color="black"
             >
               <div className="flex-container-vertical" id='menu'>
-              <Button size='large' variant="text"><Link  className='nav' to="/">Startpagina</Link></Button>
-              <Button size='large' variant="text"><Link  className='nav' to="/voorstellingen">Voorstellingen</Link></Button>
-              <Button size='large' variant="text"><Link  className='nav' to="/toegankelijkheid">Toegankelijkheid</Link></Button>
-              <Button size='large' variant="text"><Link  className='nav' to="/contactgegevens">Contactgegevens</Link></Button>
-              {/* <Button size='large' variant="text"><Link  className='nav' to="/bezoekersportaal">Mijn Theater Laak</Link></Button> */}
+                <Button size='large' variant="text"><Link className='nav' to="/">Startpagina</Link></Button>
+                <Button size='large' variant="text"><Link className='nav' to="/voorstellingen">Voorstellingen</Link></Button>
+                <Button size='large' variant="text"><Link className='nav' to="/toegankelijkheid">Toegankelijkheid</Link></Button>
+
+                <Button size='large' variant="text"><Link className='nav' to="/contactgegevens">Contactgegevens</Link></Button>
+                <div className={`AfterLogin ${hideAfterLogin ? "hide-AfterLogin" : ""}`}>
+                  <Button size='large' variant="text"><Link className='nav' to="/bezoekersportaal">Bezoekersportaal</Link></Button>
+                </div>
               </div>
             </Menu>
           </Box>
@@ -98,7 +123,7 @@ function ResponsiveAppBar() {
               display: { xs: 'none', lg: 'flex' },
             }}
           >
-             <img className='logo' src={Logo} alt="Theater Laak" />
+            <img className='logo' src={Logo} alt="Theater Laak" />
           </Typography>
 
 
@@ -109,16 +134,16 @@ function ResponsiveAppBar() {
             href=""
             size="small"
             sx={{
-              display: {xs:'flex', lg: 'none' }    ,
-              width: '35%',  
-              transform: 'translateX(110%)',    
+              display: { xs: 'flex', lg: 'none' },
+              width: '35%',
+              transform: 'translateX(110%)',
 
             }}
           >
-              <img src={Logo} alt="Theater Laak" />
+            <img src={Logo} alt="Theater Laak" />
           </Typography>
 
-          <Box sx={{borderRadius: 10, display: { xs: 'flex', lg: 'none' }, ":hover": {bgcolor: 'lightblue'}, position: 'absolute', right: 0}}>
+          <Box sx={{ borderRadius: 10, display: { xs: 'flex', lg: 'none' }, ":hover": { bgcolor: 'lightblue' }, position: 'absolute', right: 0 }}>
             <IconButton
               size="small"
               aria-controls="menu-appbar"
@@ -143,7 +168,8 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'flex', lg: 'none', },textDecoration: 'none' }
+                display: { xs: 'flex', lg: 'none', }, textDecoration: 'none'
+              }
               }
             >
               <div className="flex-container-vertical" id='menu'>
@@ -152,25 +178,27 @@ function ResponsiveAppBar() {
               </div>
             </Menu>
           </Box>
-         
 
-          <Box sx={{flexGrow: 1, display: { xs: 'none', lg: 'flex' } }}>
-       
-               <li><a><Button variant="text"><Link to="/">Startpagina</Link></Button></a></li>
-              <li><a><Button variant="text"><Link to="/voorstellingen">Voorstellingen</Link></Button></a></li>
-              <li><a><Button variant="text"><Link to="/toegankelijkheid">Toegankelijkheid</Link></Button></a></li>
-              <li><a><Button variant="text"><Link to="/contactgegevens">Contactgegevens</Link></Button></a></li>
-              {/* <li><a><Button variant="text"><Link to="/bezoekersportaal">Mijn Theater Laak</Link></Button></a></li> */}
+
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', lg: 'flex' } }}>
+
+            <li><a><Button variant="text"><Link to="/">Startpagina</Link></Button></a></li>
+            <li><a><Button variant="text"><Link to="/voorstellingen">Voorstellingen</Link></Button></a></li>
+            <li><a><Button variant="text"><Link to="/toegankelijkheid">Toegankelijkheid</Link></Button></a></li>
+            <li><a><Button variant="text"><Link to="/contactgegevens">Contactgegevens</Link></Button></a></li>
+            <div className={`AfterLogin ${hideAfterLogin ? "hide-AfterLogin" : ""}`}>
+              <li><a><Button variant="text"><Link to="/bezoekersportaal">Bezoekersportaal</Link></Button></a></li>
+            </div>
           </Box>
-            <Box sx={{ display: {xs: 'none', lg: 'flex'} }}>
-  
+          <Box sx={{ display: { xs: 'none', lg: 'flex' } }}>
+
             <li className="User"><Button variant='outlined' disableElevation><Link to="/inloggen">Inloggen</Link></Button></li>
             <li className="User"><Button variant='contained' disableElevation><Link to="/registreren">Registreren</Link></Button></li>
 
-            </Box>
+          </Box>
 
 
-        {/* ALS GEBRUIKER IS INGELOGD DIT LATEN ZIEN ---------------------------------------------------------------------------------------------------------------------------------------- */}
+          {/* ALS GEBRUIKER IS INGELOGD DIT LATEN ZIEN ---------------------------------------------------------------------------------------------------------------------------------------- */}
 
           {/* <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Instellingen openen">

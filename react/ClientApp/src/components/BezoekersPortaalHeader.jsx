@@ -43,12 +43,12 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static" sx={{backgroundColor: 'white'}}>
+    <AppBar position="static" sx={{ backgroundColor: 'white' }}>
       <Container maxWidth="x2">
         <Toolbar disableGutters >
-         
 
-          <Box sx={{borderRadius:10, display: { xs: 'flex', lg: 'none' }, ":hover": {bgcolor: 'lightblue'} }}>
+
+          <Box sx={{ borderRadius: 10, display: { xs: 'flex', lg: 'none' }, ":hover": { bgcolor: 'lightblue' } }}>
             <IconButton
               size="small"
               aria-controls="menu-appbar"
@@ -73,17 +73,18 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElNav2)}
               onClose={handleCloseNavMenu2}
               sx={{
-                display: { xs: 'flex', lg: 'none', },textDecoration: 'none' }
+                display: { xs: 'flex', lg: 'none', }, textDecoration: 'none'
+              }
               }
               color="black"
             >
               <div className="flex-container-vertical" id='menu'>
-              <Button size='large' variant="text"><Link  className='nav' to="/">Startpagina</Link></Button>
-              <Button size='large' variant="text"><Link  className='nav' to="/bezoekersportaal">Mijn Theater Laak</Link></Button>
-              <Button size='large' variant="text"><Link  className='nav' to="/gegevens">Gegevens Wijzigen</Link></Button>
-              <Button size='large' variant="text"><Link  className='nav' to="/tickets">Orders bekijken</Link></Button>
-              <Button size='large' variant="text"><Link  className='nav' to="/tickets">Tickets overzetten</Link></Button>
-              <Button size='large' variant="text"><Link  className='nav' to="/doneren">Doneren</Link></Button>
+                <Button size='large' variant="text"><Link className='nav' to="/">Startpagina</Link></Button>
+                <Button size='large' variant="text"><Link className='nav' to="/bezoekersportaal">Mijn Theater Laak</Link></Button>
+                <Button size='large' variant="text"><Link className='nav' to="/gegevens">Gegevens Wijzigen</Link></Button>
+                <Button size='large' variant="text"><Link className='nav' to="/tickets">Orders bekijken</Link></Button>
+                <Button size='large' variant="text"><Link className='nav' to="/tickets">Tickets overzetten</Link></Button>
+                <Button size='large' variant="text"><Link className='nav' to="/doneren">Doneren</Link></Button>
               </div>
             </Menu>
           </Box>
@@ -98,7 +99,7 @@ function ResponsiveAppBar() {
               display: { xs: 'none', lg: 'flex' },
             }}
           >
-             <img className='logo' src={Logo} alt="Theater Laak" />
+            <img className='logo' src={Logo} alt="Theater Laak" />
           </Typography>
 
 
@@ -109,17 +110,17 @@ function ResponsiveAppBar() {
             href=""
             size="small"
             sx={{
-              display: {xs:'flex', lg: 'none' }    ,
-              width: '35%',  
+              display: { xs: 'flex', lg: 'none' },
+              width: '35%',
               // zet hem in het midden zonder absolute positioning
               transform: 'translateX(100%)',
 
             }}
           >
-              <img src={Logo} alt="Theater Laak" />
+            <img src={Logo} alt="Theater Laak" />
           </Typography>
 
-          <Box sx={{borderRadius: 10, display: { xs: 'flex', lg: 'none' }, ":hover": {bgcolor: 'lightblue'}, position: 'absolute', right: 0}}>
+          <Box sx={{ borderRadius: 10, display: { xs: 'flex', lg: 'none' }, ":hover": { bgcolor: 'lightblue' }, position: 'absolute', right: 0 }}>
             <IconButton
               size="small"
               aria-controls="menu-appbar"
@@ -130,19 +131,19 @@ function ResponsiveAppBar() {
               <AccountCircleIcon />
             </IconButton>
           </Box>
-         
 
-          <Box sx={{flexGrow: 1, display: { xs: 'none', lg: 'flex' } }}>
-       
-               <li><a><Button variant="text"><Link to="/">Startpagina</Link></Button></a></li>
-              <li><a><Button variant="text"><Link to="/gegevens">Gegevens</Link></Button></a></li>
-              <li><a><Button variant="text"><Link to="/tickets">Tickets</Link></Button></a></li>
-              <li><a><Button variant="text"><Link to="/doneren">Doneren</Link></Button></a></li>
-              
+
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', lg: 'flex' } }}>
+
+            <li><a><Button variant="text"><Link to="/">Startpagina</Link></Button></a></li>
+            <li><a><Button variant="text"><Link to="/gegevens">Gegevens</Link></Button></a></li>
+            <li><a><Button variant="text"><Link to="/tickets">Tickets</Link></Button></a></li>
+            <li><a><Button variant="text"><Link to="/doneren">Doneren</Link></Button></a></li>
+
           </Box>
 
 
-        {/* ALS GEBRUIKER IS INGELOGD DIT LATEN ZIEN ---------------------------------------------------------------------------------------------------------------------------------------- */}
+          {/* ALS GEBRUIKER IS INGELOGD DIT LATEN ZIEN ---------------------------------------------------------------------------------------------------------------------------------------- */}
 
           {/* <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Instellingen openen">

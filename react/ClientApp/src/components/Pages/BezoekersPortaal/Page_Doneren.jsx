@@ -35,7 +35,7 @@ function Page_Doneren() {
                 bodyParameters,
                 config
             ).then(console.log).catch(console.log);
-            
+
         } catch (error) {
             console.error(error);
         }
@@ -52,7 +52,7 @@ function Page_Doneren() {
             setHideAfterToken(true);
 
         }
-        
+
     }, []);
 
     return (

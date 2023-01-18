@@ -1,6 +1,6 @@
-﻿import React, {useState, useEffect} from 'react';
+﻿import React, { useState, useEffect } from 'react';
 
-function ShowOrder(props){
+function ShowOrder(props) {
     const price = 15
     const [totalPrice, setTotalPrice] = useState(0)
 
@@ -51,11 +51,21 @@ function ShowOrder(props){
                     {props.canEdit &&(<td>
                         <button onClick={() => props.toggleSeat(seatName)}>X</button>
                     </td>)}
+
                 </tr>
-            ))} 
-        </tbody>
+                {props.seats.map((seatName, cellIndex) => (
+                    <tr key={cellIndex}>
+                        <td>Stoel: {seatName}</td>
+                        <td></td>
+                        <td>{price}</td>
+                        {props.canEdit && (<td>
+                            <button onClick={() => props.toggleSeat(seatName)}>X</button>
+                        </td>)}
+                    </tr>
+                ))}
+            </tbody>
         </div>
     )
-} 
+}
 
 export default ShowOrder;
