@@ -10,20 +10,20 @@ function Page_Tickets() {
 
     const [orders, setOrders] = useState([]);
 
-    useEffect( () => {
+    useEffect(() => {
         axios.get(`https://localhost:7293/api/Order/getReservations?email=${UserService.getUser().email}`)
-        .then(res => {
-            setOrders(res.data)
-            console.log(res.data)
-        })
+            .then(res => {
+                setOrders(res.data)
+                console.log(res.data)
+            })
     }, [])
 
     return (
-        
+
         <>
-        <BezoekersPortaalHeader></BezoekersPortaalHeader>
-        <h1>Ordergeschiedenis</h1>
-        <Orders orders={orders}></Orders>
+            <BezoekersPortaalHeader></BezoekersPortaalHeader>
+            <h1>Ordergeschiedenis</h1>
+            <Orders orders={orders}></Orders>
         </>
     )
 

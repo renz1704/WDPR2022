@@ -1,6 +1,6 @@
-﻿import React, {useState, useEffect} from 'react';
+﻿import React, { useState, useEffect } from 'react';
 
-function ShowOrder(props){
+function ShowOrder(props) {
     const price = 15
     const [totalPrice, setTotalPrice] = useState(0)
 
@@ -10,29 +10,29 @@ function ShowOrder(props){
     useEffect(() => {
         setTotalPrice(props.seats.length * price)
     }, [props.seats.length])
-    
-    return(
-        <div style={{margin:"1%"}}>
-        <tbody>
-            <tr style={{backgroundColor:"black", color:"white"}}>
-                <td>show naam</td>
-                <td>Datum/tijd</td>
-                <td>{totalPrice}</td>
-                {props.canEdit && (<td></td>)}
-            </tr>
-            {props.seats.map((seatName, cellIndex) => (
-                <tr key={cellIndex}>
-                    <td>Stoel: {seatName}</td>
-                    <td></td>
-                    <td>{price}</td>
-                    {props.canEdit &&(<td>
-                        <button onClick={() => props.toggleSeat(seatName)}>X</button>
-                    </td>)}
+
+    return (
+        <div style={{ margin: "1%" }}>
+            <tbody>
+                <tr style={{ backgroundColor: "black", color: "white" }}>
+                    <td>show naam</td>
+                    <td>Datum/tijd</td>
+                    <td>{totalPrice}</td>
+                    {props.canEdit && (<td></td>)}
                 </tr>
-            ))} 
-        </tbody>
+                {props.seats.map((seatName, cellIndex) => (
+                    <tr key={cellIndex}>
+                        <td>Stoel: {seatName}</td>
+                        <td></td>
+                        <td>{price}</td>
+                        {props.canEdit && (<td>
+                            <button onClick={() => props.toggleSeat(seatName)}>X</button>
+                        </td>)}
+                    </tr>
+                ))}
+            </tbody>
         </div>
     )
-} 
+}
 
 export default ShowOrder;

@@ -7,23 +7,21 @@ import PopUp from "../PopUp";
 
 
 
-function Page_StoelKeuze(){
+function Page_StoelKeuze() {
 
-    {/*seats is een lijst van stoelen per rij*/}
-    const [seats, setSeats] = useState([]);
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    const [seatNumber, setSeatNumber] = useState([]); 
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    {/*ipv room/1 moet hier bijv props.room worden gebruikt*/}
-    useEffect(() => {
-        fetch('https://localhost:7293/api/Room/2')
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                const Seats = data.rows.map(row => row.seats.map(seat => seat.id));
-                setSeats(Seats);
-            });
-    }, []);
+  {/*seats is een lijst van stoelen per rij*/ }
+  const [seats, setSeats] = useState([]);
+  const [seatNumber, setSeatNumber] = useState([]);
+  {/*ipv room/1 moet hier bijv props.room worden gebruikt*/ }
+  useEffect(() => {
+    fetch('https://localhost:7293/api/Room/2')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        const Seats = data.rows.map(row => row.seats.map(seat => seat.id));
+        setSeats(Seats);
+      });
+  }, []);
 
   {
     /*selectedSeats zijn de stoelen die de gebruiker kiest om te kopen*/
@@ -49,7 +47,7 @@ function Page_StoelKeuze(){
   const addTicket = (seatId) => {
     fetch(
       "https://localhost:7293/api/Ticket/createticketwithseatid?seatid=" +
-        seatId,
+      seatId,
       {
         method: "POST",
         headers: {
@@ -73,7 +71,7 @@ function Page_StoelKeuze(){
   const deleteTicket = (seatId) => {
     fetch(
       "https://localhost:7293/api/Ticket/deleteticketwithseatid?seatid=" +
-        seatId,
+      seatId,
       {
         method: "DELETE",
         headers: {

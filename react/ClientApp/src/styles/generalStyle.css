@@ -4,6 +4,13 @@
     --light_color: white;
 }
 
+.everything{
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 .flex-container-horizontal {
     margin-left: 100px;
     margin-right: 100px;

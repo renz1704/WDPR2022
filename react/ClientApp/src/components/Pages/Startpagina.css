@@ -1,16 +1,16 @@
 /* import url */
 
 
-body *{ 
-    margin:0;
-    padding:0;
+body * {
+    margin: 0;
+    padding: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 
-.banner{
+.banner {
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url('../../pictures/banner.png');
+        url('../../pictures/banner.png');
     background-size: cover;
     background-position: center;
     height: 650px;
@@ -21,7 +21,7 @@ body *{
     flex-direction: column;
 }
 
-.banner h1{
+.banner h1 {
     font-size: 50px;
     color: white;
     text-align: center;
@@ -29,10 +29,10 @@ body *{
     margin: 50px;
 }
 
-h2{
+h2 {
     font-weight: bold;
 }
-  
+
 
 .filter-content {
     padding-top: 30px;
@@ -43,73 +43,72 @@ h2{
     border-color: 20px solid red;
 }
 
-.filter-content-title{
+.filter-content-title {
     font-size: 30px;
 }
 
 
-.filter-content-filters{
+.filter-content-filters {
     margin-top: 35px;
     display: flex;
     flex-wrap: wrap;
     gap: 3rem;
 }
 
-.show-content-top{
-    margin-left:100px;
-    margin-right:100px;
+.show-content-top {
+    margin-left: 100px;
+    margin-right: 100px;
 }
 
-.show-content{
-    margin-left:100px;
-    margin-right:100px;
+.show-content {
+    margin-left: 100px;
+    margin-right: 100px;
     margin-top: 30px;
 }
 
-.show-content-top{
+.show-content-top {
     margin-bottom: 50px;
 }
 
-.show-content-image{
+.show-content-image {
     min-width: 300px;
 }
 
-.show-content-rows{
+.show-content-rows {
     display: flex;
     align-items: center;
-    gap:2rem;
-    height:200px;
-    width:100%;
-    
+    gap: 2rem;
+    height: 200px;
+    width: 100%;
+
 }
 
-.show-content-date-time{
+.show-content-date-time {
     text-align: right;
 
     font-weight: bold;
 }
 
-.show-content-show-info h2{
+.show-content-show-info h2 {
 
     font-weight: bold;
 }
 
-.show-content-show-info-bold{
+.show-content-show-info-bold {
     font-weight: bold;
 }
 
-.show-content-image{
+.show-content-image {
     width: 400px;
     height: 200px;
     background-color: rgb(207, 255, 207);
 }
 
-.show-content-show-info
-{
-    min-width:600px;
+.show-content-show-info {
+    min-width: 600px;
 }
 
 
-.button-tickets-kopen{
+.button-tickets-kopen {
     size: 100px;
 }

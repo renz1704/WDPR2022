@@ -1,9 +1,9 @@
-﻿import React, {useEffect, useState} from "react";
+﻿import React, { useEffect, useState } from "react";
 import ButtonCounter from "./ButtonCounter";
 
-function RowMaker(props){
+function RowMaker(props) {
     const [seatCount, setSeatCount] = useState(10);
-    
+
     const [disabledSeats, setDisabledSeats] = useState([])
     const toggleSeat = (seatNumber) => {
 
@@ -21,40 +21,41 @@ function RowMaker(props){
     useEffect(() => {
         props.changeDisabledSeatsPerRow(props.id, disabledSeats);
     }, [disabledSeats])
-    
+
     useEffect(() => {
         props.changeSeatsPerRow(props.id, seatCount)
-        }
-        ,[seatCount])  
-    
+    }
+        , [seatCount])
+
     const decrementSeat = () => {
         if (seatCount > 0)
-            setSeatCount(seatCount-1)}
-    
-    const incrementSeat = () => {
-        setSeatCount(seatCount+1)}
+            setSeatCount(seatCount - 1)
+    }
 
-    
-    
+    const incrementSeat = () => {
+        setSeatCount(seatCount + 1)
+    }
+
+
+
     const seatsComponents = [];
-    for (let i = 1; i < seatCount+1; i++) {
+    for (let i = 1; i < seatCount + 1; i++) {
         let color = "black"
-        if (disabledSeats.includes(i))
-        {color = "blue"}
-        
+        if (disabledSeats.includes(i)) { color = "blue" }
+
         seatsComponents.push(
             <tr key={i}>
-                <td><button style={{borderColor: color}} onClick={()=> toggleSeat(i) }>{i}</button></td>
+                <td><button style={{ borderColor: color }} onClick={() => toggleSeat(i)}>{i}</button></td>
             </tr>
         );
     }
-    
-    return(
+
+    return (
         <div className="flex-container-horizontal">
-            <ButtonCounter 
-                value={seatCount} 
-                increment={incrementSeat} 
-                decrement={decrementSeat}/>
+            <ButtonCounter
+                value={seatCount}
+                increment={incrementSeat}
+                decrement={decrementSeat} />
             {seatsComponents}
             <div>{disabledSeats}</div>
         </div>
