@@ -8,4 +8,6 @@ public class Room
     public int Id { get; set; }
     public string Name { get; set; }
     public virtual List<Row> Rows { get; private set; }
+    
+    
 }

@@ -112,6 +112,7 @@ public class GenreControllerTests
         // Assert
         var okResult = result;
         Assert.NotNull(okResult);
-        Assert.IsType<OkObjectResult>(okResult);
+        Assert.IsType<ActionResult<Genre>>(okResult);
+
     }
 }

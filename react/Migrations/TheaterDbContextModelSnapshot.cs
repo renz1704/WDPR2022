@@ -305,6 +305,23 @@ namespace react.Migrations
                     b.ToTable("AspNetUserClaims", (string)null);
                 });
 
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.ToTable("IdentityUserLogin<int>");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
@@ -746,14 +763,16 @@ namespace react.Migrations
                 {
                     b.HasOne("Room", null)
                         .WithMany("Rows")
-                        .HasForeignKey("RoomId");
+                        .HasForeignKey("RoomId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Seat", b =>
                 {
                     b.HasOne("Row", null)
                         .WithMany("Seats")
-                        .HasForeignKey("RowId");
+                        .HasForeignKey("RowId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Ticket", b =>
