@@ -33,7 +33,7 @@ const Register = () => {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ email: email, password: password, name: name, lastName: lastName, donatedAmount: 0 })
+          body: JSON.stringify({ email: email, password: password, donatedAmount: 0 })
         })
         .then((res) => {
           if (res.status !== 201) {
