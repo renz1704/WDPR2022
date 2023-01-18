@@ -190,7 +190,7 @@ function ResponsiveAppBar() {
               <li><a><Button variant="text"><Link to="/bezoekersportaal">Bezoekersportaal</Link></Button></a></li>
             </div>
           </Box>
-          <Box sx={{ display: { xs: 'none', lg: 'flex' } }}>
+          <Box sx={{ display: { xs: 'none', lg: 'flex' }, marginRight:{lg: '50px'} }}>
 
             <li className="User"><Button variant='outlined' disableElevation><Link to="/inloggen">Inloggen</Link></Button></li>
             <li className="User"><Button variant='contained' disableElevation><Link to="/registreren">Registreren</Link></Button></li>
