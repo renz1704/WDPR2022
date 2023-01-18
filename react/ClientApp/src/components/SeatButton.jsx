@@ -26,7 +26,6 @@ function SeatButton(props) {
 
     const buttonClick = () => {
         props.toggleSeat(props.seatId)
-        console.log(seatData.isDisabled)
     }
 
     {/*past de kleur van de stoelknop aan*/ }

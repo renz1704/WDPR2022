@@ -54,21 +54,35 @@ public class TicketController : ControllerBase
     }
 
 
+    // [HttpPost]
+    // [Route("createticketwithseatid")]
+    // public IActionResult CreateTicketWithSeatId(int seatId, [FromBody] TicketDTO ticketDTO)
+    // {
+    //     var seat = _context.Seats.SingleOrDefault(s => s.Id == seatId);
+    //     var ticket = new Ticket
+    //     {
+    //         Seat = _context.Seats.Where(s => s.Id == ticketDTO.SeatId).First(),
+    //         Performance = _context.Performances.Where(p => p.Id == ticketDTO.PerformanceId).First(),
+    //         isAvailable = false
+    //     };
+
+    //     _context.Tickets.Add(ticket);
+    //     _context.SaveChanges();
+    //     return CreatedAtAction("getTicketById", new { id = ticket.Id }, ticket);
+    // }
+
     [HttpPost]
     [Route("createticketwithseatid")]
-    public IActionResult CreateTicketWithSeatId([FromBody] TicketDTO ticketDTO)
-    {
-
+    public IActionResult CreateTicketWithSeatId(int seatId, [FromBody] TicketDTO ticketDTO){
         var ticket = new Ticket
         {
             Seat = _context.Seats.Where(s => s.Id == ticketDTO.SeatId).First(),
             Performance = _context.Performances.Where(p => p.Id == ticketDTO.PerformanceId).First(),
             isAvailable = false
         };
-
         _context.Tickets.Add(ticket);
         _context.SaveChanges();
-        return CreatedAtAction("getTicketById", new { id = ticket.Id }, ticket);
+        return Ok(ticket);
     }
 
     // [HttpPost]
