@@ -25,7 +25,7 @@ function ShowOrder(props) {
                 return response.json();
             }));
             setSeatData(data);
-            console.log(seatData)
+            console.log(seatData);
         }
         fetchData();
     }, [props.seats]);
@@ -51,18 +51,9 @@ function ShowOrder(props) {
                     {props.canEdit &&(<td>
                         <button onClick={() => props.toggleSeat(seatName)}>X</button>
                     </td>)}
-
                 </tr>
-                {props.seats.map((seatName, cellIndex) => (
-                    <tr key={cellIndex}>
-                        <td>Stoel: {seatName}</td>
-                        <td></td>
-                        <td>{price}</td>
-                        {props.canEdit && (<td>
-                            <button onClick={() => props.toggleSeat(seatName)}>X</button>
-                        </td>)}
-                    </tr>
                 ))}
+                
             </tbody>
         </div>
     )
