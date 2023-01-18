@@ -2,15 +2,135 @@
     margin: 0%;
     height: 220px;
     width: auto;
+    border-radius: 20px;
 }
 
 .bannerLink {
-    margin: 5%;
-    margin-top: 0px;
-    width: 90%;
+    margin: 2%;
+    margin-top: 10px;
     text-decoration: none;
+    width: 1000px;
+    margin-right: 300px;
 }
 
 .bannerButton{
-    border-color: var(--middle_color);
+    width: 1000px;
+    border-radius: 20px;
+}
+
+.right{
+    margin-right: 100px;
+}
+
+/* for small screen */
+@media only screen and (max-width: 1100px) {
+    .bannerImg {
+        margin: 0%;
+        height: 220px;
+        width: auto;
+        border-radius: 20px;
+    }
+
+    .bannerLink {
+        margin: 2%;
+        margin-top: 10px;
+        text-decoration: none;
+        width: 700px;
+        margin-right: 300px;
+    }
+
+    .bannerButton{
+        width: 700px;
+        border-radius: 20px;
+    }
+
+    .right{
+        margin-right: 100px;
+    }
+}
+
+@media only screen and (max-width: 833px) {
+    .bannerImg {
+        margin: 0%;
+        height: 220px;
+        width: auto;
+        border-radius: 20px;
+    }
+
+    .bannerLink {
+        margin: 2%;
+        margin-top: 10px;
+        text-decoration: none;
+        width: 500px;
+        margin-right: 300px;
+    }
+
+    .bannerButton{
+        width: 600px;
+        border-radius: 20px;
+    }
+
+    .right{
+        margin-right: 0px;
+    }
+}
+
+@media only screen and (max-width: 653px) {
+    .bannerImg {
+        margin: 0%;
+        height: 110px;
+        width: auto;
+        border-radius: 20px;
+    }
+
+    .bannerLink {
+        margin: 2%;
+        margin-top: 10px;
+        text-decoration: none;
+        width: 400px;
+        margin-right: 300px;
+    }
+
+    .bannerButton{
+        min-width: 200px;
+        max-width: 480px;
+        border-radius: 20px;
+    }
+
+    .right{
+        margin-right: 0px;
+    }
+}
+
+@media only screen and (max-width: 516px) {
+    .bannerImg {
+        margin: 0%;
+        height: 80px;
+        width: auto;
+        border-radius: 20px;
+    }
+
+    .bannerLink {
+        margin: 2%;
+        margin-top: 10px;
+        text-decoration: none;
+        width: 240px;
+        margin-right: 300px;
+    }
+
+    .bannerButton{
+        min-width: 200px;
+        max-width: 310px;
+        border-radius: 20px;
+    }
+
+    .left{
+        margin-right: 0px;
+        font-size: .7rem;
+    }
+
+    .right{
+        margin-right: 0px;
+        font-size: .7rem;
+    }
 }
