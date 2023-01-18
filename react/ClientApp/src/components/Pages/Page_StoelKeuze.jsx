@@ -28,20 +28,20 @@ function Page_StoelKeuze(){
   {
     /*selectedSeats zijn de stoelen die de gebruiker kiest om te kopen*/
   }
-  const [selectedSeats, setSeat] = useState([]);
+  const [selectedSeats, setSelectedSeat] = useState([]);
 
   const toggleSeat = (seatId) => {
     {
       /*dit checkt of het nummer van de stoel al geselecteerd is als dit niet zo is wordt de stoel toegevoegd aan de lijst*/
     }
     if (!selectedSeats.includes(seatId)) {
-      setSeat((oldArray) => [...oldArray, seatId]);
+        setSelectedSeat((oldArray) => [...oldArray, seatId]);
       addTicket(seatId);
     } else {
       {
         /*als dit wel zo is wordt de stoel uit de lijst gehaald*/
       }
-      setSeat(selectedSeats.filter((item) => item !== seatId));
+        setSelectedSeat(selectedSeats.filter((item) => item !== seatId));
       deleteTicket(seatId);
     }
   };
