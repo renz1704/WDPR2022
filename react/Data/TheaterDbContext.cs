@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
+
+
 
 public class TheaterDbContext : IdentityDbContext, ITheaterDbContext
 {
@@ -32,5 +33,25 @@ public class TheaterDbContext : IdentityDbContext, ITheaterDbContext
     {
         return base.SaveChangesAsync(cancellationToken);
     }
+    
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        modelBuilder.Entity<IdentityUserLogin<int>>().HasNoKey();
+
+        
+        modelBuilder.Entity<Room>()
+            .HasMany(r => r.Rows)
+            .WithOne()
+            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<Row>()
+            .HasMany(r => r.Seats)
+            .WithOne()
+            .OnDelete(DeleteBehavior.Cascade);  
+    }
+
+
+
 
 }

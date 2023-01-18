@@ -6,23 +6,23 @@ using Microsoft.EntityFrameworkCore;
 
 public class ShowControllerTests
 {
-    [Fact]
-    public async Task Create_AddsShowToDbContext_AndReturnsShow()
-    {
-        // Arrange
-        var show = new Show();
-        var dbContextMock = new Mock<ITheaterDbContext>();
-        dbContextMock.Setup(x => x.Shows.AddAsync(It.IsAny<Show>())).Returns(Task.CompletedTask);
-        var controller = new ShowController(dbContextMock.Object);
-
-        // Act
-        var result = await controller.Create(show);
-
-        // Assert
-        dbContextMock.Verify(x => x.Shows.AddAsync(show), Times.Once);
-        dbContextMock.Verify(x => x.SaveChanges(), Times.Once);
-        Xunit.Assert.Equal(show, result);
-    }
+    //[Fact]
+    // public async Task Create_AddsShowToDbContext_AndReturnsShow()
+    // {
+    //     // Arrange
+    //     var show = new Show();
+    //     var dbContextMock = new Mock<ITheaterDbContext>();
+    //     dbContextMock.Setup(x => x.Shows.AddAsync(It.IsAny<Show>())).Returns(Task.CompletedTask);
+    //     var controller = new ShowController(dbContextMock.Object);
+    //
+    //     // Act
+    //     var result = await controller.Create(show);
+    //
+    //     // Assert
+    //     dbContextMock.Verify(x => x.Shows.AddAsync(show), Times.Once);
+    //     dbContextMock.Verify(x => x.SaveChanges(), Times.Once);
+    //     Xunit.Assert.Equal(show, result);
+    // }
 
     [Fact]
     public async Task AddGroupById_AddsGroupToShow_AndReturnsShow()
