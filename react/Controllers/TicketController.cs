@@ -56,25 +56,38 @@ public class TicketController : ControllerBase
 
     [HttpPost]
     [Route("createticketwithseatid")]
-    public IActionResult CreateTicketWithSeatId(int seatId, [FromBody] TicketDTO ticketDTO)
+    public IActionResult CreateTicketWithSeatId([FromBody] TicketDTO ticketDTO)
     {
-        var seat = _context.Seats.SingleOrDefault(s => s.Id == seatId);
-        if (seat == null)
-        {
-            return NotFound();
-        }
 
         var ticket = new Ticket
         {
             Seat = _context.Seats.Where(s => s.Id == ticketDTO.SeatId).First(),
             Performance = _context.Performances.Where(p => p.Id == ticketDTO.PerformanceId).First(),
-            isAvailable = true
+            isAvailable = false
         };
 
         _context.Tickets.Add(ticket);
         _context.SaveChanges();
-        return CreatedAtAction("GetTicketById", new { id = ticket.Id }, ticket);
+        return CreatedAtAction("getTicketById", new { id = ticket.Id }, ticket);
     }
+
+    // [HttpPost]
+    // [Route("createticketwithseatid")]
+    // public IActionResult CreateTicketWithSeatId(int seatId, [FromBody] Ticket ticket)
+    // {
+    //     var seat = _context.Seats.SingleOrDefault(s => s.Id == seatId);
+    //     if (seat == null)
+    //     {
+    //         return NotFound();
+    //     }
+
+    //     ticket.Seat = _context.Seats.Where(s => s.Id == seatId).First();
+    //     ticket.isAvailable = false;
+
+    //     _context.Tickets.Add(ticket);
+    //     _context.SaveChanges();
+    //     return CreatedAtAction("getTicketById", new { id = ticket.Id }, ticket);
+    // }
 
     [HttpDelete]
     [Route("deleteticketwithseatid")]
@@ -105,32 +118,33 @@ public class TicketController : ControllerBase
         public int PerformanceId { get; set; }
     }
 
-/*
-    [HttpPost]
-    [Route("/transferTicket")]
-    public async Task<ActionResult<Ticket>> TransferTicket (TicketTransferDTO transfer) {
+    /*
+        [HttpPost]
+        [Route("/transferTicket")]
+        public async Task<ActionResult<Ticket>> TransferTicket (TicketTransferDTO transfer) {
 
-        Visitor owner = await _context.Visitors.FindAsync(transfer.emailOwner);
+            Visitor owner = await _context.Visitors.FindAsync(transfer.emailOwner);
 
-        Visitor reveiver = await _context.Visitors.FindAsync(transfer.emailReceiver);
+            Visitor reveiver = await _context.Visitors.FindAsync(transfer.emailReceiver);
 
-        if(!(owner == null || reveiver == null))
-        {
-            Ticket oldTicket = await _context.Tickets.FindAsync(transfer.ticketId);
-            if(oldTicket != null)
+            if(!(owner == null || reveiver == null))
             {
-                Ticket ticket = new Ticket {Seat = oldTicket.Seat, Performance = oldTicket.Performance, isTransfered=true, Reservation = oldTicket.Reservation};
-                
+                Ticket oldTicket = await _context.Tickets.FindAsync(transfer.ticketId);
+                if(oldTicket != null)
+                {
+                    Ticket ticket = new Ticket {Seat = oldTicket.Seat, Performance = oldTicket.Performance, isTransfered=true, Reservation = oldTicket.Reservation};
+
+                }
+
             }
-            
+
         }
 
-    }
-
-*/
-    public class TicketTransferDTO{
-        public string emailOwner {get;set;}
-        public string emailReceiver {get;set;}
-        public int ticketId {get;set;}
+    */
+    public class TicketTransferDTO
+    {
+        public string emailOwner { get; set; }
+        public string emailReceiver { get; set; }
+        public int ticketId { get; set; }
     }
 }

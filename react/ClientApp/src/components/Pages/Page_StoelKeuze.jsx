@@ -16,7 +16,7 @@ function Page_StoelKeuze(){
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     {/*ipv room/1 moet hier bijv props.room worden gebruikt*/}
     useEffect(() => {
-        fetch('https://localhost:7293/api/Room/3')
+        fetch('https://localhost:7293/api/Room/2')
             .then(response => response.json())
             .then(data => {
                 console.log(data)
@@ -150,6 +150,7 @@ function Page_StoelKeuze(){
                     >
                       <SeatButton
                         seatId={seatId}
+                        seatName={seatNumber}
                         toggleSeat={toggleSeat}
                         isHighlighted={selectedSeats.includes(seatId)}
                       />
@@ -158,16 +159,6 @@ function Page_StoelKeuze(){
                 </td>
               </tr>
             ))}
-            <SeatButton
-              seatId={1}
-              toggleSeat={toggleSeat}
-              isHighlighted={selectedSeats.includes(1)}
-            />
-            <SeatButton
-              seatId={2}
-              toggleSeat={toggleSeat}
-              isHighlighted={selectedSeats.includes(2)}
-            />
           </tbody>
         </div>
 

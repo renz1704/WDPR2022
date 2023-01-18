@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace react.Migrations
 {
     [DbContext(typeof(TheaterDbContext))]
-    partial class TheaterDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230118101359_40")]
+    partial class _40
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.2");
@@ -478,9 +481,8 @@ namespace react.Migrations
                     b.Property<int>("RowNumber")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("SeatNumber")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("SeatNumber")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
