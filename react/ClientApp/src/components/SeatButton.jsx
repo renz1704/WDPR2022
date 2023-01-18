@@ -10,7 +10,7 @@ function SeatButton(props){
             .then(response => response.json())
             .then(data => {
                 setSeatData(data);
-                setSeatName(data.seatName)
+                setSeatName(data.seatNumber)
                 if (data.isDisabled === true){
                     setBorder_color("blue")}
             })
@@ -41,8 +41,6 @@ function SeatButton(props){
             setColor([colorAvailable, colorSelected])
         }
 
-
-        
     }
    
     return(
