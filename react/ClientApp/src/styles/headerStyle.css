@@ -3,6 +3,9 @@ header {
     color: white;
 
 }
+.hide-AfterLogin {
+    display: none;
+}
 
 li a {
     display: flex;

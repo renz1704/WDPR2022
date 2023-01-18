@@ -18,48 +18,48 @@ function Page_VoorstellingInfo() {
     ];
 
 
-    {/*dit maakt de header van de tabel even lang als de inhoud */}
+    {/*dit maakt de header van de tabel even lang als de inhoud */ }
     const emptyTableHeaders = [];
-    for (let i = 0; i < tableArray.length-1; i++) {
+    for (let i = 0; i < tableArray.length - 1; i++) {
         emptyTableHeaders.push(<th></th>);
     }
-    
 
 
-return (
-    <>
-        <Header/>
-    <body style={{ margin: "1%" }}>
-        <h1>{showName}</h1>
-        <p>{showDescription}</p>
 
-        <p>Klik op een tijdstip om je stoelen te kiezen</p>
-        <table style={{ borderCollapse: 'collapse', width: '100%' }}>
-            <thead>
-                <tr className='topRow'>
-                    <th>Datum</th>
-                    <th>Tijd</th>
-                    {emptyTableHeaders}
-                </tr>
-            </thead>
+    return (
+        <>
+            <Header />
+            <body style={{ margin: "1%" }}>
+                <h1>{showName}</h1>
+                <p>{showDescription}</p>
 
-            <tbody>
-                {/*maakt een rij voor het aantal waardes (de lengte) in tableArray */}
-                {tableArray.map((row, rowIndex) => (
-                    <tr key={rowIndex}>
+                <p>Klik op een tijdstip om je stoelen te kiezen</p>
+                <table style={{ borderCollapse: 'collapse', width: '100%' }}>
+                    <thead>
+                        <tr className='topRow'>
+                            <th>Datum</th>
+                            <th>Tijd</th>
+                            {emptyTableHeaders}
+                        </tr>
+                    </thead>
 
-                        {/*TODO datums worden ook knoppen */}
-                        {/*vult de rij met cellen met daarin de waardes van de arrays in dateArrays */}
-                        {row.map((cell, cellIndex) => (
-                            <td key={cellIndex}><Link className="timeButton" to="/stoelKeuze">{cell}</Link></td>
+                    <tbody>
+                        {/*maakt een rij voor het aantal waardes (de lengte) in tableArray */}
+                        {tableArray.map((row, rowIndex) => (
+                            <tr key={rowIndex}>
+
+                                {/*TODO datums worden ook knoppen */}
+                                {/*vult de rij met cellen met daarin de waardes van de arrays in dateArrays */}
+                                {row.map((cell, cellIndex) => (
+                                    <td key={cellIndex}><Link className="timeButton" to="/stoelKeuze">{cell}</Link></td>
+                                ))}
+
+                            </tr>
                         ))}
-
-                    </tr>
-                ))}
-            </tbody>
-        </table>
-    </body>
-    </>
-)
+                    </tbody>
+                </table>
+            </body>
+        </>
+    )
 }
 export default Page_VoorstellingInfo;

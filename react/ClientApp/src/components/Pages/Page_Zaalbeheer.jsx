@@ -1,9 +1,9 @@
-﻿import React, { useState, useEffect }  from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import RoomInfo from "../RoomInfo";
-import {Routes, Route, useNavigate} from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
 
-function Page_Zaalbeheer(){
+function Page_Zaalbeheer() {
     const navigate = useNavigate();
     const [rooms, setRooms] = useState([])
 
@@ -15,28 +15,28 @@ function Page_Zaalbeheer(){
                 console.log(rooms)
             });
     }, []);
-    
+
     const removeRoom = (roomId) => {
-        setRooms(rooms.filter(item => item!== roomId));
+        setRooms(rooms.filter(item => item !== roomId));
     }
-    
-    return(
-        
+
+    return (
+
         <div className="flex-container-horizontal">
-            
+
             <div className="flex-container-vertical">
                 {rooms.map(i => (
-                    <RoomInfo id={i} removeRoom={removeRoom}/>
+                    <RoomInfo id={i} removeRoom={removeRoom} />
                 ))}
             </div>
 
             <div className="flex-container-vertical">
-            <div><button onClick={()=>{navigate('/zaalmaken')}}>Nieuwe zaal maken</button></div>
-            <div>overzicht</div>
+                <div><button id="button" onClick={() => { navigate('/zaalmaken') }}>Nieuwe zaal maken</button></div>
+                <div>overzicht</div>
             </div>
-        
+
         </div>
-        )
+    )
 }
 
 export default Page_Zaalbeheer

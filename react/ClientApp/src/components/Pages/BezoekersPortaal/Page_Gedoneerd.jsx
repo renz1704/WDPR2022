@@ -7,9 +7,9 @@ function Page_Gedoneerd() {
     return (
         <>
             <BezoekersPortaalHeader />
-            <div class= "everything">
+            <div class="everything">
                 <h2>
-                Wij van Theater Laak bedanken u van harte voor de donatie!
+                    Wij van Theater Laak bedanken u van harte voor de donatie!
                 </h2>
             </div>
         </>
