@@ -7,14 +7,14 @@ import picture from "../../pictures/TheaterContactPagina.jpg"
 function Page_ContactGegevens() {
 
     return (
-        <>
+        <div className='f'>
             <Header />
             <div className="full">
 
                 <div className="picture">
                     <img className="image" src={picture} alt="" />
                 </div>
-                <div class="flex-container-vertical">
+                <div class="mt-50">
                     <div class="text">
                         <h2>Contactgegevens</h2>
                         <p>
@@ -34,7 +34,7 @@ function Page_ContactGegevens() {
                 </div>
             </div>
 
-        </>
+        </div>
     )
 
 }
