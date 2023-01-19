@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace react.Migrations
 {
     [DbContext(typeof(TheaterDbContext))]
-    [Migration("20230119163214_1")]
+    [Migration("20230119195203_1")]
     partial class _1
     {
         /// <inheritdoc />
