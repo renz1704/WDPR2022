@@ -53,6 +53,16 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     gap: 3rem;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.filter-content-filters .filter{
+    width: 330px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .show-content-top {
@@ -112,3 +122,97 @@ h2 {
 .button-tickets-kopen {
     size: 100px;
 }
+
+
+@media screen and (max-width: 1400px) {
+    .banner {
+        height: 400px;
+    }
+
+    .banner h1 {
+        font-size: 30px;
+    }
+
+    .filter-content {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .filter-content-filters {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .filter-content-filters .filter{
+        min-width: 80%;
+        align-items: center;
+        margin: 0 auto;
+    }
+
+    .show-content {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .show-content-rows {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .show-content-image {
+        width: 100%;
+        height: 200px;
+    }
+
+    .show-content-show-info {
+        min-width: 100%;
+    }
+
+    #combo-box-demo{
+        width: 400px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .banner {
+        height: 400px;
+    }
+
+    .banner h1 {
+        font-size: 30px;
+    }
+
+    .filter-content {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .filter-content-filters {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .show-content {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .show-content-rows {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .show-content-image {
+        width: 100%;
+        height: 200px;
+    }
+
+    .show-content-show-info {
+        min-width: 100%;
+    }
+
+    #combo-box-demo{
+        width: 100px;
+    }
+}
+    

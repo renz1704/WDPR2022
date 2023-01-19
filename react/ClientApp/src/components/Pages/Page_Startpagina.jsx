@@ -63,14 +63,13 @@ function Page_Startpagina() {
                         id="combo-box-demo"
                         options={genres}
                         onChange={(event, newValue) => SetGenre(newValue)}
-
-                        sx={{ width: 300 }}
+                        className='filter'
                         renderInput={(params) => <TextField {...params} label="Genre" />}
                     />
 
 
-                    <Button variant="outlined" onClick={filterPerformances}>Zoeken</Button>
-                    <Button variant="contained" onClick={fetchPerformances}>Reset</Button>
+                    <Button className='filter' variant="outlined" onClick={filterPerformances}>Zoeken</Button>
+                    <Button className='filter' variant="contained" onClick={fetchPerformances}>Reset</Button>
                 </div>
             </div>
             <div className='show-content-top'>
