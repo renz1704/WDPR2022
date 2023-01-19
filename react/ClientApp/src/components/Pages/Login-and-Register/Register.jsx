@@ -49,7 +49,7 @@ const Register = () => {
   const handleRecaptcha = (value) => {
     setIsVerified(value !== null);
 
-    navigate("/inloggen")
+    
   };
 
   const handleChange = (value) => {

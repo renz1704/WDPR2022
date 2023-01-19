@@ -78,7 +78,7 @@ const Login = () => {
         className="input-password"
         onChange={(event) => setPassword(event.target.value)}
       ></input>
-     <ReCAPTCHA sitekey="6Ldmv-0jAAAAAOzZUjuueonJNyxg4RBpDiNgpbVO" onChange={handleRecaptcha} />
+     <ReCAPTCHA className="recap" sitekey="6Ldmv-0jAAAAAOzZUjuueonJNyxg4RBpDiNgpbVO" onChange={handleRecaptcha} />
       <button
         type="onSubmit"
         disabled={email == "" || password == ""}

@@ -7,7 +7,7 @@ function ProductBanner(props) {
 
     { {/*TODO deze gegevens moeten worden gefetched aan de hand van props.id */ } }
 
-    let showName = "naam van show";
+    let showName = "naam van show";       
     let category = "de categorie";
     let beginDate = "22-22-22";
     let endDate = "00-00-00";
@@ -16,17 +16,17 @@ function ProductBanner(props) {
     { {/*TODO de link moet worden aangepast */ } }
     return (
         <Link to="/voorstellingInfo" className='bannerLink'>
-            <button className='flex-container-horizontal bannerButton' style={{ width: "100%" }} >
+            <button className='flex-container-horizontal bannerButton'  >
                 <div>
                     <img src={Image} className="bannerImg" alt="Foto van de voorstelling" />
                 </div>
 
-                <div className='flex-container-vertical'>
+                <div className='flex-container-vertical left'>
                     <div>{showName}</div>
                     <div>{category}</div>
                 </div>
 
-                <div className='flex-container-vertical'>
+                <div className='flex-container-vertical right'>
                     <div>{beginDate} - {endDate}</div>
                     <div>€{price}</div>
                 </div>
