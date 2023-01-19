@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 public class TicketController : ControllerBase
 {
     ITheaterDbContext _context;
+    private readonly UserManager<IdentityUser> _userManager;
 
     public TicketController(ITheaterDbContext context)
     {
@@ -73,7 +75,8 @@ public class TicketController : ControllerBase
 
     [HttpPost]
     [Route("createticketwithseatid")]
-    public IActionResult CreateTicketWithSeatId(int seatId, [FromBody] TicketDTO ticketDTO){
+    public IActionResult CreateTicketWithSeatId(int seatId, [FromBody] TicketDTO ticketDTO)
+    {
         var ticket = new Ticket
         {
             Seat = _context.Seats.Where(s => s.Id == ticketDTO.SeatId).First(),
@@ -125,6 +128,26 @@ public class TicketController : ControllerBase
         return NoContent();
     }
 
+    [HttpPost]
+    [Route("transferTicket")]
+    public IActionResult transferTicket([FromBody] TicketTransferDTO TicketTransferDTO)
+    {
+        var oldOwner = _userManager.FindByIdAsync(TicketTransferDTO.visitorIdOwner);
+        var receiverIdentityUser = _userManager.FindByIdAsync(TicketTransferDTO.visitorIdReceiver);
+        var receiverVisitor = _context.Visitors.FirstOrDefaultAsync(x => x.IdentityUser.Id == TicketTransferDTO.visitorIdReceiver).Result;
+        var oldTicket = _context.Tickets.FirstOrDefault(t => t.Id == TicketTransferDTO.ticketId);
+
+
+        var newTicket = new TransferedTicket(oldTicket, receiverVisitor);
+    
+        // oldTicket.setIsTransferred = true;
+        //Dit nog toevoegen^
+
+        _context.SaveChanges();
+        return Ok();
+    }
+
+
     public class TicketDTO
     {
         public int Id { get; set; }
@@ -132,33 +155,10 @@ public class TicketController : ControllerBase
         public int PerformanceId { get; set; }
     }
 
-    /*
-        [HttpPost]
-        [Route("/transferTicket")]
-        public async Task<ActionResult<Ticket>> TransferTicket (TicketTransferDTO transfer) {
-
-            Visitor owner = await _context.Visitors.FindAsync(transfer.emailOwner);
-
-            Visitor reveiver = await _context.Visitors.FindAsync(transfer.emailReceiver);
-
-            if(!(owner == null || reveiver == null))
-            {
-                Ticket oldTicket = await _context.Tickets.FindAsync(transfer.ticketId);
-                if(oldTicket != null)
-                {
-                    Ticket ticket = new Ticket {Seat = oldTicket.Seat, Performance = oldTicket.Performance, isTransfered=true, Reservation = oldTicket.Reservation};
-
-                }
-
-            }
-
-        }
-
-    */
     public class TicketTransferDTO
     {
-        public string emailOwner { get; set; }
-        public string emailReceiver { get; set; }
+        public string visitorIdOwner { get; set; }
+        public string visitorIdReceiver { get; set; }
         public int ticketId { get; set; }
     }
 }

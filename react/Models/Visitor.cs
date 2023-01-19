@@ -11,6 +11,7 @@ public class Visitor
     public string? LastName { get; set; }
     public string? DonationToken {get; set;}
     public IdentityUser IdentityUser { get; set; }
+    public List<TransferedTicket> transferedTickets {get; set;}
     public List<Donation> Donations {get; set;}
 
 }

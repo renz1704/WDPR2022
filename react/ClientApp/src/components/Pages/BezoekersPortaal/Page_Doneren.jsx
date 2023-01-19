@@ -48,7 +48,6 @@ function Page_Doneren() {
             setHideAfterToken(false);
 
         } else {
-            // setToken(UserService.getUser().donationToken);
             setHideAfterToken(true);
 
         }
@@ -65,7 +64,7 @@ function Page_Doneren() {
                     Hier kunt u voorstellingen zien en "pre orderen" nog voordat ze uitkomen.
                 </p>
                 <div>
-                    <form className="permissionForm" onSubmit={(e) => e.preventDefault()}>
+                    <form className="donateForm" onSubmit={(e) => e.preventDefault()}>
                         <label id="label">Bedrag: </label>
                         <input
                             required="Hoeveelheid is verplicht."

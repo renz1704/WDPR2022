@@ -24,6 +24,7 @@ public class TheaterDbContext : IdentityDbContext, ITheaterDbContext
     public virtual DbSet<Seat> Seats { get; set; }
     public virtual DbSet<Show> Shows { get; set; }
     public virtual DbSet<Ticket> Tickets { get; set; }
+    public virtual DbSet<TransferedTicket> TransferedTickets { get; set; }
     public virtual DbSet<Actor> Actors { get; set; }
     public virtual DbSet<Employee> Employees { get; set; }
     public virtual DbSet<Visitor> Visitors { get; set; }

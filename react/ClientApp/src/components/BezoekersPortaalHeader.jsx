@@ -136,6 +136,7 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', lg: 'flex' } }}>
 
             <li><a><Button variant="text"><Link to="/">Startpagina</Link></Button></a></li>
+            <li><a><Button variant="text"><Link to="/bezoekersportaal">Startpagina bezoekersportaal</Link></Button></a></li>
             <li><a><Button variant="text"><Link to="/gegevens">Gegevens</Link></Button></a></li>
             <li><a><Button variant="text"><Link to="/tickets">Tickets</Link></Button></a></li>
             <li><a><Button variant="text"><Link to="/doneren">Doneren</Link></Button></a></li>

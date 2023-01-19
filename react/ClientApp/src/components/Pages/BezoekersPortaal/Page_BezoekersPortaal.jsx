@@ -4,9 +4,11 @@ import UserService from '../../../services/UserService';
 import { useState, useEffect } from 'react';
 
 import { getListSubheaderUtilityClass } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Page_BezoekersPortaal(props) {
+
+    const navigate = useNavigate();
 
     const [user, setUser] = useState(UserService.getUser());
 
@@ -34,6 +36,8 @@ function Page_BezoekersPortaal(props) {
                 </h1>
 
                 <ul>
+                    <li>Klant nummer: {UserService.getUser().id}</li>
+                    <br></br>
                     <li>Email: {UserService.getUser().email}</li>
                     <br></br>
                     <li>Naam: {UserService.getUser().firstname}</li>
@@ -43,10 +47,12 @@ function Page_BezoekersPortaal(props) {
 
 
                 <br></br>
-                <p>Klik <Link to={'/tickets'}> hier </Link>om Uw order geschiedenis te bekijken</p><br></br>
-                <p>Klik <Link to={'/accountgegevensWijzigen'}> hier </Link> om Uw accountgegevens te bijwerken</p><br></br>
-                <p>Klik <Link to={''}> hier</Link> om geld te doneren</p>
-                <p><Link to={'/orders'}>klik</Link> hello</p>
+                <label>Klik hier om uw order geschiedenis te bekijken:</label>
+                <button id="button" onClick={() => { navigate('/tickets') }}>Ordergeschiedenis</button>
+                <label>Klik hier om uw accountgegevens te wijzigen:</label>
+                <button id="button" onClick={() => { navigate('/gegevens') }}>Gegevens wijzigen</button>
+                <label>Klik hier om Theater Laak te steunen d.m.v. een donatie:</label>
+                <button id="button" onClick={() => { navigate('/doneren') }}>Doneren</button>
             </div>
         </div>
     )
