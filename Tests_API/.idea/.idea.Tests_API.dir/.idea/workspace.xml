@@ -5,9 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eaf177ba-b666-4d1f-a160-da35910dadf1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../react/Migrations/20230118115445_4.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react/Migrations/20230118115445_4.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Tests_API.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tests_API.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/Page_Betaling.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/Page_Betaling.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/Page_StoelKeuze.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../react/ClientApp/src/components/Pages/Page_StoelKeuze.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Controllers/TicketController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/TicketController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230117124047_1.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230117124047_1.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230117124913_2.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230117124913_2.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230117125942_3.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230117125942_3.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230117175126_60.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230117175126_60.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230118101359_40.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230118101359_40.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230118102052_41.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230118102052_41.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230118102555_42.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230118102555_42.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230118110046_43.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230118110046_43.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230118110339_44.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230118110339_44.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230118115445_4.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/20230118115445_4.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Migrations/TheaterDbContextModelSnapshot.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/Models/Ticket.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Models/Ticket.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +92,7 @@
       <workItem from="1673995907914" duration="2118000" />
       <workItem from="1674041205621" duration="775000" />
       <workItem from="1674042644636" duration="493000" />
+      <workItem from="1674071144899" duration="2306000" />
     </task>
     <task id="LOCAL-00001" summary="genrecontroller tests">
       <created>1673899417330</created>

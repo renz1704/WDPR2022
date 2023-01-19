@@ -4,6 +4,7 @@ import Header from "../Header";
 import SeatButton from "../SeatButton";
 import { useNavigate } from "react-router-dom";
 import PopUp from "../PopUp";
+import axios from 'axios';
 
 
 
@@ -14,7 +15,7 @@ function Page_StoelKeuze() {
   const [seatNumber, setSeatNumber] = useState([]);
   {/*ipv room/1 moet hier bijv props.room worden gebruikt*/ }
   useEffect(() => {
-    fetch('https://localhost:7293/api/Room/2')
+    fetch('https://localhost:7293/api/Room/3')
       .then(response => response.json())
       .then(data => {
         console.log(data)
@@ -45,27 +46,30 @@ function Page_StoelKeuze() {
   };
 
   const addTicket = (seatId) => {
-    fetch(
-      "https://localhost:7293/api/Ticket/createticketwithseatid?seatid=" +
-      seatId,
-      {
-        method: "POST",
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ seatId: seatId, performanceId: 1 }),
-      }
-    )
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Error ${response.status} : ${response.statusText}`);
-        }
-        return response.json();
-      })
-      .catch((error) => {
-        console.log("An error occurred:", error);
-      });
+    const ticketDto = {
+      SeatId: seatId,
+      PerformanceId: 1,
+      Price: 20.0,
+      isTransfered: false
+    };
+//ReservationId: 1,
+//     axios.post('http://localhost:7293/api/Ticket/createticket', { ticket: ticketDto })
+//         .then(() => {
+//           console.log('Ticket created successfully!');
+//         })
+//         .catch((error) => {
+//           console.error(error);
+//         });
+    fetch("http://localhost:5001/api/Ticket/createticket", {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(ticketDto)
+    })
+        .then(response => response.json())
+        .then(response => console.log(response))
   };
 
   const deleteTicket = (seatId) => {
