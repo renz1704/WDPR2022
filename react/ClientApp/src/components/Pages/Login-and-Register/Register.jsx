@@ -44,6 +44,11 @@ const Register = () => {
           }
         })
     }
+
+    if(!charactersValidated || !lowerValidated || !upperValidated || !specialValidated)
+    {
+      alert("Uw wachtwoord voldoet niet aan de eisen. Zorg ervoor dat uw wachtwoord minimaal 7 karakters lang is, een hoofdletter, een kleine letter en een speciaal karakter bevat.")
+    }
   };
 
   const handleRecaptcha = (value) => {
@@ -80,6 +85,7 @@ const Register = () => {
       setCharactersValidated(true);
     } else {
       setCharactersValidated(false);
+   
     }
   }
 
