@@ -549,7 +549,7 @@ namespace react.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("REAL");
 
-                    b.Property<int>("ReservationId")
+                    b.Property<int?>("ReservationId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("SeatId")
@@ -570,6 +570,38 @@ namespace react.Migrations
                     b.HasIndex("SeatId");
 
                     b.ToTable("Tickets");
+                });
+
+            modelBuilder.Entity("TransferedTicket", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("PerformanceId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("REAL");
+
+                    b.Property<int>("SeatId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("TicketId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("VisitorId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PerformanceId");
+
+                    b.HasIndex("SeatId");
+
+                    b.HasIndex("VisitorId");
+
+                    b.ToTable("TransferedTickets");
                 });
 
             modelBuilder.Entity("Visitor", b =>
@@ -783,11 +815,9 @@ namespace react.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Reservation", "Reservation")
+                    b.HasOne("Reservation", null)
                         .WithMany("Tickets")
-                        .HasForeignKey("ReservationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ReservationId");
 
                     b.HasOne("Seat", "Seat")
                         .WithMany()
@@ -797,9 +827,34 @@ namespace react.Migrations
 
                     b.Navigation("Performance");
 
-                    b.Navigation("Reservation");
+                    b.Navigation("Seat");
+                });
+
+            modelBuilder.Entity("TransferedTicket", b =>
+                {
+                    b.HasOne("Performance", "Performance")
+                        .WithMany()
+                        .HasForeignKey("PerformanceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Seat", "Seat")
+                        .WithMany()
+                        .HasForeignKey("SeatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Visitor", "Visitor")
+                        .WithMany("transferedTickets")
+                        .HasForeignKey("VisitorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Performance");
 
                     b.Navigation("Seat");
+
+                    b.Navigation("Visitor");
                 });
 
             modelBuilder.Entity("Visitor", b =>
@@ -831,6 +886,8 @@ namespace react.Migrations
             modelBuilder.Entity("Visitor", b =>
                 {
                     b.Navigation("Donations");
+
+                    b.Navigation("transferedTickets");
                 });
 #pragma warning restore 612, 618
         }

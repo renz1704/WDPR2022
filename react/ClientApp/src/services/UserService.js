@@ -31,6 +31,10 @@ class UserService {
             {
                 sessionStorage.setItem("user", res.data.token)   
             }
+            else
+            {
+                alert("Ingevoerde gegevens zijn onjuist")
+            }
         })
 };
 
@@ -41,7 +45,6 @@ class UserService {
 
     getUser() {
         return jwt(sessionStorage.getItem("user"))
-        
     }
 
 }

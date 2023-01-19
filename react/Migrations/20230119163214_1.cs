@@ -80,6 +80,19 @@ namespace react.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "IdentityUserLogin<int>",
+                columns: table => new
+                {
+                    LoginProvider = table.Column<string>(type: "TEXT", nullable: true),
+                    ProviderKey = table.Column<string>(type: "TEXT", nullable: true),
+                    ProviderDisplayName = table.Column<string>(type: "TEXT", nullable: true),
+                    UserId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Payment",
                 columns: table => new
                 {
@@ -308,7 +321,8 @@ namespace react.Migrations
                         name: "FK_Rows_Rooms_RoomId",
                         column: x => x.RoomId,
                         principalTable: "Rooms",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -463,9 +477,10 @@ namespace react.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    SeatNumber = table.Column<int>(type: "INTEGER", nullable: false),
-                    RowId = table.Column<int>(type: "INTEGER", nullable: false),
-                    IsDisabled = table.Column<bool>(type: "INTEGER", nullable: false)
+                    SeatNumber = table.Column<string>(type: "TEXT", nullable: false),
+                    RowNumber = table.Column<int>(type: "INTEGER", nullable: false),
+                    IsDisabled = table.Column<bool>(type: "INTEGER", nullable: false),
+                    RowId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -488,8 +503,8 @@ namespace react.Migrations
                     Price = table.Column<double>(type: "REAL", nullable: false),
                     SeatId = table.Column<int>(type: "INTEGER", nullable: false),
                     PerformanceId = table.Column<int>(type: "INTEGER", nullable: false),
-                    ReservationId = table.Column<int>(type: "INTEGER", nullable: false),
-                    isTransfered = table.Column<bool>(type: "INTEGER", nullable: false)
+                    isTransfered = table.Column<bool>(type: "INTEGER", nullable: false),
+                    ReservationId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -504,12 +519,46 @@ namespace react.Migrations
                         name: "FK_Tickets_Reservations_ReservationId",
                         column: x => x.ReservationId,
                         principalTable: "Reservations",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Tickets_Seats_SeatId",
                         column: x => x.SeatId,
                         principalTable: "Seats",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TransferedTickets",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    TicketId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Price = table.Column<double>(type: "REAL", nullable: false),
+                    SeatId = table.Column<int>(type: "INTEGER", nullable: false),
+                    PerformanceId = table.Column<int>(type: "INTEGER", nullable: false),
+                    VisitorId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TransferedTickets", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TransferedTickets_Performances_PerformanceId",
+                        column: x => x.PerformanceId,
+                        principalTable: "Performances",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_TransferedTickets_Seats_SeatId",
+                        column: x => x.SeatId,
+                        principalTable: "Seats",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_TransferedTickets_Visitors_VisitorId",
+                        column: x => x.VisitorId,
+                        principalTable: "Visitors",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -627,6 +676,21 @@ namespace react.Migrations
                 column: "SeatId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_TransferedTickets_PerformanceId",
+                table: "TransferedTickets",
+                column: "PerformanceId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TransferedTickets_SeatId",
+                table: "TransferedTickets",
+                column: "SeatId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TransferedTickets_VisitorId",
+                table: "TransferedTickets",
+                column: "VisitorId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Visitors_IdentityUserId",
                 table: "Visitors",
                 column: "IdentityUserId");
@@ -666,7 +730,13 @@ namespace react.Migrations
                 name: "GroupShow");
 
             migrationBuilder.DropTable(
+                name: "IdentityUserLogin<int>");
+
+            migrationBuilder.DropTable(
                 name: "Tickets");
+
+            migrationBuilder.DropTable(
+                name: "TransferedTickets");
 
             migrationBuilder.DropTable(
                 name: "Actors");
@@ -681,22 +751,22 @@ namespace react.Migrations
                 name: "Groups");
 
             migrationBuilder.DropTable(
-                name: "Performances");
-
-            migrationBuilder.DropTable(
                 name: "Reservations");
 
             migrationBuilder.DropTable(
-                name: "Seats");
+                name: "Performances");
 
             migrationBuilder.DropTable(
-                name: "Shows");
+                name: "Seats");
 
             migrationBuilder.DropTable(
                 name: "Payment");
 
             migrationBuilder.DropTable(
                 name: "Visitors");
+
+            migrationBuilder.DropTable(
+                name: "Shows");
 
             migrationBuilder.DropTable(
                 name: "Rows");

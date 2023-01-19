@@ -17,38 +17,19 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    UserService.login(email, password)
-    if(UserService.getUser() != null)
+
+
+    if(isVerified)
     {
-      console.log("hello")
-      navigate("/")
+      UserService.login(email, password)
+      if(UserService.getUser() != null)
+      {
+        navigate("/")
+      }
     }
     else
     {
-      console.log("Fout gemaakt in login")
-    }
-    
-    
-    
-   
-    if(!isVerified){
-      alert("Druk alstublieft op 'Ik ben geen robot'. Mocht u de reCAPTCHA niet kunnen zien, herlaad dan de pagina.") 
-    }else{
-     const loginPayload = {
-       email: email,
-       password: password
-     }
-     return axios.post('https://localhost:7293/api/User/login', { email, password })
-     .then(res => {
-      if(res.status !== 200)
-      {
-        localStorage.setItem('token', res.data.token);
-        axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.token}`;    
-       }
-       else{
-           navigate("/");
-       }
-     });
+      alert("Druk alstublieft op 'Ik ben geen robot'. Mocht u de reCAPTCHA niet kunnen zien, herlaad dan de pagina.")
     }
    }
    
@@ -93,10 +74,6 @@ const Login = () => {
         </Link>
       </p>
     </form>
-
-    <p>Uitloggen</p>
-    <p></p>
-    <Button onClick={UserService.logout}>Uitloggen</Button>
     </div>
     </div>
   );
