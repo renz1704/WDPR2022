@@ -9,6 +9,6 @@
     public double Price { get; set; }
     public  Seat Seat { get; set; }
     public  Performance Performance { get; set; }
-    public  Reservation Reservation { get; set; }
-    public Boolean isTransfered {get;set;}
+    //public  Reservation Reservation { get; set; }
+    public Boolean isTransfered {get; set;}
 }
