@@ -1,7 +1,7 @@
 ﻿import React, { useState, useEffect } from "react";
 import PopUp from "../PopUp";
 import { Routes, Route, useNavigate } from 'react-router-dom';
-
+import axios from "axios";
 
 
 function Page_Betaling() {
@@ -19,9 +19,10 @@ function Page_Betaling() {
 
 
       const data = new URLSearchParams();
-
-      data.append('reference', 1);
+      data.append('amount', "10")
+      data.append('reference', "1");
       data.append('url', 'https://localhost:7293/api/payment/paymentsucces');
+
 
       const response = await fetch('https://fakepay.azurewebsites.net/', {
         method: 'POST',
@@ -30,8 +31,10 @@ function Page_Betaling() {
           'Content-Type': 'application/x-www-form-urlencoded'
         }
       });
+
       const html = await response.text();
       setHtml(html);
+      
     }
 
     payButtonClickedCheck().catch(console.error)

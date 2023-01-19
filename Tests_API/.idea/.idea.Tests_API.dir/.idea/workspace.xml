@@ -8,6 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Tests_API.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tests_API.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/DonationControllerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/DonationControllerTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../react/Controllers/DonationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../react/Controllers/DonationController.cs" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +67,7 @@
       <workItem from="1673995907914" duration="2118000" />
       <workItem from="1674041205621" duration="775000" />
       <workItem from="1674042644636" duration="493000" />
+      <workItem from="1674071144899" duration="2306000" />
     </task>
     <task id="LOCAL-00001" summary="genrecontroller tests">
       <created>1673899417330</created>

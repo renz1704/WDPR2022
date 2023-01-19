@@ -55,56 +55,31 @@ public class TicketController : ControllerBase
         return Ok(ticket);
     }
 
-
-    // [HttpPost]
-    // [Route("createticketwithseatid")]
-    // public IActionResult CreateTicketWithSeatId(int seatId, [FromBody] TicketDTO ticketDTO)
-    // {
-    //     var seat = _context.Seats.SingleOrDefault(s => s.Id == seatId);
-    //     var ticket = new Ticket
-    //     {
-    //         Seat = _context.Seats.Where(s => s.Id == ticketDTO.SeatId).First(),
-    //         Performance = _context.Performances.Where(p => p.Id == ticketDTO.PerformanceId).First(),
-    //         isAvailable = false
-    //     };
-
-    //     _context.Tickets.Add(ticket);
-    //     _context.SaveChanges();
-    //     return CreatedAtAction("getTicketById", new { id = ticket.Id }, ticket);
-    // }
-
     [HttpPost]
-    [Route("createticketwithseatid")]
-    public IActionResult CreateTicketWithSeatId(int seatId, [FromBody] TicketDTO ticketDTO)
+    [Route("createticket")]
+    public IActionResult CreateTicket([FromBody] TicketDTO ticketDto)
     {
+        Console.WriteLine(ticketDto);
+        var performance = _context.Performances.FirstOrDefault(p => p.Id == ticketDto.PerformanceId);
+        var seat = _context.Seats.FirstOrDefault(s => s.Id == ticketDto.SeatId);
+        //var reservation = _context.Reservations.FirstOrDefault(r => r.Id == ticketDto.ReservationId);
+
+
         var ticket = new Ticket
         {
-            Seat = _context.Seats.Where(s => s.Id == ticketDTO.SeatId).First(),
-            Performance = _context.Performances.Where(p => p.Id == ticketDTO.PerformanceId).First(),
-            isAvailable = false
+            Id = ticketDto.Id,
+            Price = ticketDto.Price,
+            Seat = seat,
+            Performance = performance,
+            //Reservation = reservation,
+            isTransfered = false
         };
+
         _context.Tickets.Add(ticket);
         _context.SaveChanges();
+
         return Ok(ticket);
     }
-
-    // [HttpPost]
-    // [Route("createticketwithseatid")]
-    // public IActionResult CreateTicketWithSeatId(int seatId, [FromBody] Ticket ticket)
-    // {
-    //     var seat = _context.Seats.SingleOrDefault(s => s.Id == seatId);
-    //     if (seat == null)
-    //     {
-    //         return NotFound();
-    //     }
-
-    //     ticket.Seat = _context.Seats.Where(s => s.Id == seatId).First();
-    //     ticket.isAvailable = false;
-
-    //     _context.Tickets.Add(ticket);
-    //     _context.SaveChanges();
-    //     return CreatedAtAction("getTicketById", new { id = ticket.Id }, ticket);
-    // }
 
     [HttpDelete]
     [Route("deleteticketwithseatid")]
@@ -153,6 +128,10 @@ public class TicketController : ControllerBase
         public int Id { get; set; }
         public int SeatId { get; set; }
         public int PerformanceId { get; set; }
+        //public int ReservationId { get; set; }
+        public double Price { get; set; }
+        public Boolean isTransfered {get;set;}
+        
     }
 
     public class TicketTransferDTO

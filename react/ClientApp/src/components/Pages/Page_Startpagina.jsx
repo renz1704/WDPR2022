@@ -49,12 +49,12 @@ function Page_Startpagina() {
         <>
             <Header />
             <div className='banner'>
-                <h1>Welkom bij het Theater Laak</h1>
+                <h1 aria-label="Title theater">Welkom bij het Theater Laak</h1>
             </div>
 
             <div className='filter-content'>
                 <div className='filter-content-title'>
-                    <h2 >Ik ben op zoek naar</h2>
+                    <h2 aria-label="Zoek">Ik ben op zoek naar</h2>
                 </div>
 
                 <div className='filter-content-filters'>
@@ -64,49 +64,49 @@ function Page_Startpagina() {
                         options={genres}
                         onChange={(event, newValue) => SetGenre(newValue)}
                         className='filter'
-                        renderInput={(params) => <TextField {...params} label="Genre" />}
+                        aria-label="Genre filter"
+                        renderInput={(params) => <TextField {...params} label="Genre" aria-label="Genre input"/>}
                     />
 
 
-                    <Button className='filter' variant="outlined" onClick={filterPerformances}>Zoeken</Button>
-                    <Button className='filter' variant="contained" onClick={fetchPerformances}>Reset</Button>
+                    <Button className='filter' variant="outlined" onClick={filterPerformances} aria-label="Zoek voorstelling knop">Zoeken</Button>
+                    <Button className='filter' variant="contained" onClick={fetchPerformances} aria-label="Reset Filter knop">Reset</Button>
                 </div>
             </div>
             <div className='show-content-top'>
-                <h1>Voorstellingen</h1>
-                <p>Bekijk hier het complete aanbod aan theatervoorstellingen van het theater Laak</p>
+                <h1 aria-label='Voorstellingen'>Voorstellingen</h1>
+                <p aria-label='Voorstellings beschrijving'>Bekijk hier het complete aanbod aan theatervoorstellingen van het theater Laak</p>
             </div>
 
 
             {
                 performances.map(performance => {
                     return (
-                        <div className='show-content' key={performance.id}>
+                        <div aria-label='Voorstellingen:' className='show-content' key={performance.id}>
 
 
                             <div className='show-content-rows'>
-                                <div className='show-content-image'>
+                                <div aria-label='Afbeelding van voorstelling' className='show-content-image'>
 
                                 </div>
 
-                                <div className='show-content-date-time'>
+                                <div  aria-label='Datum en tijd' className='show-content-date-time'>
                                     <p>Aanvang: <br></br></p>
-                                    <p>{performance.startTime}</p>
-                                    <p>Zaal: {performance.room.roomNumber}</p>
+                                    <p aria-label='Starttijd'>{performance.startTime}</p>
+                                    <p aria-label='Zaal nummer'>Zaal: {performance.room.roomNumber}</p>
 
 
                                 </div>
 
                                 <div className='show-content-show-info'>
-                                    <h2>{performance.show.name}</h2>
-                                    <p>{performance.show.description} </p>
-                                    <p>Genre moet hier komen te staan</p>
-                                    <p className='show-content-show-info-bold'>€{performance.show.price}</p>
+                                    <h2 aria-label='Naam'>{performance.show.name}</h2>
+                                    <p aria-label='Beschrijving'>{performance.show.description} </p>
+                                    <p aria-label='Genre'>Genre moet hier komen te staan</p>
+                                    <p aria-label='Prijs' className='show-content-show-info-bold'>€{performance.show.price}</p>
                                 </div>
 
-                                <Button variant="contained" className='button-tickets-kopen'>Tickets kopen</Button>
+                                <Button variant="contained" className='button-tickets-kopen' aria-label='Ticket kopen knop'>Tickets kopen</Button>
                             </div>
-
                         </div>
                     )
                 })
@@ -117,8 +117,8 @@ function Page_Startpagina() {
 
                 <div >
 
-                    <h1>Over het Theater Laak</h1>
-                    <p>
+                    <h1 aria-label='Over Theater'>Over het Theater Laak</h1>
+                    <p aria-label='Beschrijving'>
                         Het theater is heel cool
                         amet justo donec enim diam vulputate ut pharetra
                         sit amet aliquam id diam maecenas ultricies mi eget
@@ -130,7 +130,7 @@ function Page_Startpagina() {
                 </div>
 
                 <div >
-                    <img src={Seats} alt="" />
+                    <img aria-label='Afbeelding theater' src={Seats} alt="" />
                 </div>
             </div>
         </>)
