@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Gebruiker\\RiderProjects\\WDPR2022\\Tests_API\\Tests_API.csproj": {}
+    "C:\\Users\\renz1\\Documents\\GitHub\\WDPR2022\\Tests_API\\Tests_API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Gebruiker\\RiderProjects\\WDPR2022\\Tests_API\\Tests_API.csproj": {
+    "C:\\Users\\renz1\\Documents\\GitHub\\WDPR2022\\Tests_API\\Tests_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Gebruiker\\RiderProjects\\WDPR2022\\Tests_API\\Tests_API.csproj",
+        "projectUniqueName": "C:\\Users\\renz1\\Documents\\GitHub\\WDPR2022\\Tests_API\\Tests_API.csproj",
         "projectName": "Tests_API",
-        "projectPath": "C:\\Users\\Gebruiker\\RiderProjects\\WDPR2022\\Tests_API\\Tests_API.csproj",
-        "packagesPath": "C:\\Users\\Gebruiker\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Gebruiker\\RiderProjects\\WDPR2022\\Tests_API\\obj\\",
+        "projectPath": "C:\\Users\\renz1\\Documents\\GitHub\\WDPR2022\\Tests_API\\Tests_API.csproj",
+        "packagesPath": "C:\\Users\\renz1\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\renz1\\Documents\\GitHub\\WDPR2022\\Tests_API\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Gebruiker\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\renz1\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -132,26 +126,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.12, 6.0.12]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.12, 6.0.12]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.12, 6.0.12]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

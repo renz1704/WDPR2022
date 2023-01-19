@@ -9,9 +9,7 @@ using Microsoft.AspNetCore.Identity;
 public class DonationController : ControllerBase
 {
 
-
     private readonly UserManager<IdentityUser> _userManager;
-    private string emailUser;
 
     ITheaterDbContext _context;
 
@@ -21,35 +19,9 @@ public class DonationController : ControllerBase
         _userManager = userManager;
     }
 
-    [HttpGet]
-    [Route("userEmailExists")]
-    public async Task<ActionResult<Boolean>> userEmailExists()
-    {
-        if (emailUser == null)
-        {
-            return false;
-        }
-        Console.WriteLine(emailUser);
-        return true;
-    }
-
-
-    private Boolean tokenExists(string email)
-    {
-        var user = _context.Visitors.FirstOrDefault(x => x.IdentityUser.UserName == email);
-        if (user == null)
-            return false;
-        if (user.DonationToken != null)
-        {
-            return true;
-        }
-        return false;
-    }
-
-
     [HttpPost]
     [Route("addtokenuser")]
-    public async Task<IActionResult> addTokenUser([FromForm] String token)
+    public async Task<IActionResult> addTokenUser([FromForm] String token, String emailUser)
     {
 
         if (string.IsNullOrEmpty(emailUser))
@@ -72,6 +44,7 @@ public class DonationController : ControllerBase
     [Route("DonatieListener")]
     public async Task<ActionResult<donationListener>> DonatieListener([FromBody] donationListener donationListenerModel)
     {
+
         var _user = await _userManager.FindByEmailAsync(donationListenerModel.email);
         if (_user == null) return Unauthorized();
 
