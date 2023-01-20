@@ -7,13 +7,7 @@ import { useEffect } from 'react';
 
 function Page_AdminPortaal() {
     const navigate = useNavigate();
-
-
-    useEffect(() => {
-
-    }, [])
-
-
+    
     return (
         <>
 
@@ -21,6 +15,7 @@ function Page_AdminPortaal() {
             <body>
                 <button id="button" onClick={() => { navigate('/zaalbeheer') }}>Zaalbeheer</button>
                 <button id="button" onClick={() => { navigate('/donatieBeheer') }}>DonatieBeheer</button>
+                <button id="button" onClick={() => { navigate('/gastlijsten') }}>Gastlijsten</button>
                 <button id="button" onClick={() => { navigate('/programmeringuploaden') }}>Programmering uploaden</button>
                 <button id="button" onClick={() => { navigate('/groepen') }}>Groepmanagement</button>
             </body>

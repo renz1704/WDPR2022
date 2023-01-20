@@ -11,7 +11,32 @@ public class PerformanceController : ControllerBase
         _context = context;
     }
 
+    [HttpGet]
+    [Route("performances")]
+    public async Task<ActionResult<List<Performance>>> GetAllAsync() {
+        var performances = await _context.Performances
+            .Include(p => p.Show)
+            .Include(p => p.Room)
+            .Select(p => new {
+                Id = p.Id,
+                StartTime = p.StartTime,
+                EndTime = p.EndTime,
+                ShowName = p.Show.Name,
+                RoomNumber = p.Room.Name
+            })
+            .ToListAsync();
+        return Ok(performances);
+    }
 
+    [HttpGet]
+    [Route("visitorslist/{performanceId}")]
+    public async Task<ActionResult<List<Visitor>>> GetVisitorsByPerformance(int performanceId) {
+        var visitors = await _context.Reservations
+            .Where(r => r.Tickets.Any(t => t.Performance.Id == performanceId))
+            .Select(r => r.Visitor)
+            .ToListAsync();
+        return Ok(visitors);
+    }
     // [HttpGet]
     // [Route("performances")]
     // public async Task<ActionResult<List<Performance>>> GetAllAsync() {
