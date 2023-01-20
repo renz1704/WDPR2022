@@ -27,7 +27,7 @@ export const InstagramIcon = () => {
 
 export const YoutubeIcon = () => {
     return (
-            <a target="_blank" href="https://www.youtube.com/laaktheater">
+            <a target="_blank" href="https://www.youtube.com/watch?v=xYhYPln42dg">
             <Icon icon={youtubePlay} size={40}/>
             </a>
     )
