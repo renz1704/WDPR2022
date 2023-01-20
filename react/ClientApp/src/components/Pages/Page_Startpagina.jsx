@@ -3,6 +3,7 @@ import Seats from '../../pictures/seats.png';
 import Header from '../Header';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
+import Footer from '../Footer';
 
 import Banner from '../../pictures/banner.png'
 
@@ -133,7 +134,9 @@ function Page_Startpagina() {
                     <img aria-label='Afbeelding theater' src={Seats} alt="" />
                 </div>
             </div>
-        </>)
+            <Footer/>
+        </>
+        )
 }
 
 export default Page_Startpagina;

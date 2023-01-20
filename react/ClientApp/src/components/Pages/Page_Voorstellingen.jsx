@@ -2,6 +2,7 @@ import React from 'react';
 import DropdownMenu from '../DropdownMenu';
 import ProductBanner from '../ProductBanner';
 import Header from '../Header';
+import Footer from '../Footer';
 
 function Page_Voorstellingen() {
 
@@ -30,9 +31,11 @@ function Page_Voorstellingen() {
 
             </div>
 
-
+            <Footer/>
         </body>
+        
     )
+    
 }
 
 export default Page_Voorstellingen;
