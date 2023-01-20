@@ -24,7 +24,7 @@ namespace react.Controllers
             try
             {
                 var message = new MimeMessage();
-                message.From.Add(new MailboxAddress("Sender Name", "theaterlaak3@gmail.com"));
+                message.From.Add(new MailboxAddress("Theater Laak", "theaterlaak3@gmail.com"));
                 message.To.Add(new MailboxAddress(toName, toEmail));
                 message.Subject = subject;
                 message.Body = new TextPart("plain")
