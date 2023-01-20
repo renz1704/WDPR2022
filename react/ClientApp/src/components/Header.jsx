@@ -55,9 +55,12 @@ function ResponsiveAppBar() {
   };
 
   const handleLogout = () => {
-    UserService.logout();
-    window.location.reload();
+    if (window.confirm("Weet je zeker dat je wilt uitloggen?")) {
+      UserService.logout();
+      window.location.reload();
+    }
   };
+  
 
   return (
     <AppBar position="static" sx={{ backgroundColor: "white" }}>
@@ -203,7 +206,7 @@ function ResponsiveAppBar() {
             >
                {UserService.isLoggedIn() ? (
               <li className="User">
-                <Button onClick={handleLogout()}>Uitloggen</Button>
+                <Button variant='contained' className="logout" onClick={handleLogout}>Uitloggen</Button>
               </li>
             ) : (
               <>
@@ -273,7 +276,8 @@ function ResponsiveAppBar() {
           >
             {UserService.isLoggedIn() ? (
               <li className="User">
-                <Button onClick={handleLogout()}>Uitloggen</Button>
+                   {/* are you sure you want to logout? */}
+                <Button className="logout" variant='contained' onClick={handleLogout}>Uitloggen</Button>
               </li>
             ) : (
               <>
