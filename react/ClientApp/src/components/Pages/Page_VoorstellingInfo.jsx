@@ -2,6 +2,7 @@ import React from 'react';
 import "../../styles/tableStyle.css";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Header from "../Header";
+import Footer from "../Footer";
 
 function Page_VoorstellingInfo() {
 
@@ -59,6 +60,7 @@ function Page_VoorstellingInfo() {
                     </tbody>
                 </table>
             </body>
+            <Footer/>
         </>
     )
 }

@@ -1,6 +1,7 @@
 ﻿import React, { useState, useEffect } from "react";
 import ShowOrder from "../ShowOrder";
 import Header from "../Header";
+import Footer from '../Footer';
 import SeatButton from "../SeatButton";
 import { useNavigate } from "react-router-dom";
 import PopUp from "../PopUp";
@@ -188,6 +189,7 @@ function Page_StoelKeuze() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
