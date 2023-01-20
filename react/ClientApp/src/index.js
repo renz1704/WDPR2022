@@ -37,8 +37,7 @@ import RegisterPage from './components/Pages/Login-and-Register/Register';
 import GroepManagement from './components/Pages/Page_GroepManagement';
 import Page_UploadSchedule from './components/Pages/Page_UploadSchedule';
 import Page_AccountGegevens from './components/Pages/BezoekersPortaal/Page_AccountGegevens';
-import Page_Gastlijsten from './components/Pages/Page_Gastlijsten';
-
+import Page_Gastlijsten from "./components/Pages/Page_Gastlijsten";
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);

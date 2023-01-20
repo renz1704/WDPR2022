@@ -94,9 +94,7 @@ function Page_Startpagina() {
                                 <div  aria-label='Datum en tijd' className='show-content-date-time'>
                                     <p>Aanvang: <br></br></p>
                                     <p aria-label='Starttijd'>{performance.startTime}</p>
-                                    <p aria-label='Zaal nummer'>Zaal: {performance.room.roomNumber}</p>
-
-
+                                    <p aria-label='Zaal nummer'>Zaal: {performance.room.name}</p>
                                 </div>
 
                                 <div className='show-content-show-info'>
