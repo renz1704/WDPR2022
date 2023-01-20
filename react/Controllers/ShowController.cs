@@ -50,10 +50,17 @@ public class ShowController
     }
 
     [HttpGet]
-    [Route("getshows")]
-    public async Task<ActionResult<Show>> getShows(int id)
+    [Route("getshow")]
+    public async Task<ActionResult<Show>> getShow(int id)
     {
         return await _context.Shows.Include(s => s.Groups).Include(s => s.Genres).FirstOrDefaultAsync(s => s.Id == id);
+    }
+
+    [HttpGet]
+    [Route("getShows")]
+    public async Task<ActionResult<List<Show>>> getShows () 
+    {
+        return await _context.Shows.ToListAsync();
     }
 
 
