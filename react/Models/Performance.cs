@@ -7,9 +7,9 @@
     }
 
     public int Id { get; set; }
+    public double Price {get;set;}
     public DateTime StartTime { get; set; }
     public DateTime EndTime { get; set; }
-
     public virtual Show Show { get; private set; }
     public virtual Room Room { get; private set; }
 }
