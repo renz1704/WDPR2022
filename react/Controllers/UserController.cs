@@ -47,20 +47,13 @@ namespace react.Controllers
             var claims = new List<Claim>();
             claims.Add(new Claim("id", visitor.Id.ToString()));
             claims.Add(new Claim ("email", _user.Email));
-            
-            if(visitor.Name != null)
-            {
-                claims.Add(new Claim ("firstname", visitor.Name));
-            }
-
-            if(visitor.LastName != null)
-            {
-                claims.Add(new Claim("lastname", visitor.LastName));
-            }
+            claims.Add(new Claim ("firstname", visitor.Name));
+            claims.Add(new Claim("lastname", visitor.LastName));
             
             if(visitor.DonationToken != null){
                 claims.Add(new Claim("donationToken", visitor.DonationToken));
             }
+
             var roles = await _userManager.GetRolesAsync(_user);
             foreach (var role in roles)
                 claims.Add(new Claim(ClaimTypes.Role, role));
@@ -86,7 +79,7 @@ namespace react.Controllers
 
             var resultaat = await _userManager.CreateAsync(user, model.Password);
 
-            await _context.Visitors.AddAsync( new Visitor{IdentityUser = user});
+            await _context.Visitors.AddAsync( new Visitor{IdentityUser = user, Name = model.Name, LastName = model.Lastname});
 
             _context.SaveChanges();
 
@@ -158,6 +151,8 @@ namespace react.Controllers
     {
         public string Email { get; set; }
         public string Password { get; set; }
+        public string Name {get;set;}
+        public string Lastname {get;set;}
     }
 
     public class VisitorDTO
