@@ -1,0 +1,8 @@
+/*This file is meant for the Page_MeerInfo only*/
+
+.more-info-content{
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

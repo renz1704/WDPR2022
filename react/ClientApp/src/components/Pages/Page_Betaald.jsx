@@ -1,5 +1,5 @@
-﻿import React, { useState } from "react";
-import Header from "../Header";
+﻿import React, { useEffect, useState } from "react";
+import ResponsiveAppBar from "../BezoekersPortaalHeader";
 import ShowOrder from "../ShowOrder";
 
 function Page_Betaald() {
@@ -8,10 +8,12 @@ function Page_Betaald() {
         setSeat(selectedSeats.filter(item => item !== seatNumber));
     }
 
+    
+
 
     return (
         <>
-            <Header />
+            <ResponsiveAppBar />
             <div className="flex-container-horizontal">
                 <div className="flex-container-vertical">
                     <ShowOrder seats={selectedSeats} toggleSeat={removeSeat} canEdit={false} />
