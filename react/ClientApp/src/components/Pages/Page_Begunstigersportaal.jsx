@@ -1,5 +1,6 @@
 import React from 'react';
 import BegunstigersHeader from '../BegunstigersPortaalHeader';
+import Footer from '../Footer';
 import ProductBanner from '../ProductBanner';
 
 
@@ -19,6 +20,7 @@ function Page_Begunstigersportaal() {
                 })}
 
             </div>
+            <Footer/>
         </div>
     )
 }

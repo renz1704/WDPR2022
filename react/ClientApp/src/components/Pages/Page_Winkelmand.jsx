@@ -1,5 +1,6 @@
 ﻿import React, { useState } from "react";
 import Header from "../Header";
+import Footer from "../Footer";
 import ShowOrder from "../ShowOrder";
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
@@ -48,6 +49,7 @@ function Page_Winkelmand() {
                     <button id="button" target="_blank" onClick={payButtonClicked}>Naar betalen</button>
                 </div>
             </div>
+            <Footer/>
         </>
     )
 }

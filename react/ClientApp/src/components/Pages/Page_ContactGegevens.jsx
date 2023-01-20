@@ -33,7 +33,6 @@ function Page_ContactGegevens() {
                     </div>
                 </div>
             </div>
-
         </div>
     )
 
