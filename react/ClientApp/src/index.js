@@ -37,7 +37,7 @@ import RegisterPage from './components/Pages/Login-and-Register/Register';
 import GroepManagement from './components/Pages/Page_GroepManagement';
 import Page_UploadSchedule from './components/Pages/Page_UploadSchedule';
 import Page_AccountGegevens from './components/Pages/BezoekersPortaal/Page_AccountGegevens';
-
+import Page_Gastlijsten from "./components/Pages/Page_Gastlijsten";
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
@@ -68,6 +68,7 @@ root.render(
         <Route path='/admin' element={<Page_AdminPortaal />} />
         <Route path='/zaalbeheer' element={<Page_Zaalbeheer />} />
         <Route path='/donatieBeheer' element={<Page_DonatieBeheer />} />
+        <Route path='/gastlijsten' element={<Page_Gastlijsten />} />
 
         <Route path='/groepen' element={<GroepManagement />} />
 

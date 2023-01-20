@@ -10,8 +10,10 @@ import ReCAPTCHA from 'react-google-recaptcha'
 
 import UserService from '../../../services/UserService'
 const Register = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [name, setName] = useState();
+  const [lastname, setLastname] = useState();
   const navigate = useNavigate();
 
   const [lowerValidated, setLowerValidated] = useState(false);
@@ -33,7 +35,7 @@ const Register = () => {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ email: email, password: password, donatedAmount: 0 })
+          body: JSON.stringify({ email: email, password: password, name: name, lastname: lastname })
         })
         .then((res) => {
           if (res.status !== 201) {
@@ -108,8 +110,25 @@ const Register = () => {
             className="input-password"
             // hier moet je de handleChange functie aanroepen met de setpassword
             onChange={(event) => { setPassword(event.target.value); handleChange(event.target.value) }}
-          >
-          </input>
+          ></input>
+
+<p>Naam</p>
+<input
+            required
+            type="name"
+            className="name"
+            onChange={(event) => { setName(event.target.value);  }}
+          ></input>
+
+<p>Achternaam</p>
+<input
+            required
+            type="lastname"
+            className="name"
+            onChange={(event) => { setLastname(event.target.value); }}
+          ></input>
+
+          
           <main className="tracker-box">
             <div className={upperValidated ? 'validated' : 'not-validated'}>
               {upperValidated ? (
