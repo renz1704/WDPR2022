@@ -1,5 +1,9 @@
 {
   "dependencies": {
-    "react-google-recaptcha": "^2.1.0"
+    "jspdf": "^2.5.1",
+    "jspdf-autotable": "^3.5.28",
+    "react-google-recaptcha": "^2.1.0",
+    "react-pdf": "^6.2.2",
+    "react-pdf-js": "^5.1.0"
   }
 }

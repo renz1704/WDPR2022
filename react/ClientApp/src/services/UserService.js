@@ -47,6 +47,10 @@ class UserService {
         return jwt(sessionStorage.getItem("user"))
     }
 
+    isLoggedIn() {
+        return sessionStorage.getItem("user") !== null
+    }
+
 }
 
 export default new UserService();
