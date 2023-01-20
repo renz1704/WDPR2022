@@ -1,12 +1,13 @@
 import React from 'react';
 import Header from '../Header';
+import Footer from '../Footer';
 
 function Page_Toegankelijkheid() {
 
     return (
         <>
             <Header />
-            <div>
+            <div style={{marginTop:'400px'}}>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam convallis tortor eget lorem efficitur pulvinar.
                     Pellentesque feugiat erat id justo varius viverra a sit amet augue. In quis pharetra erat, ac rhoncus est. Curabitur pharetra sapien arcu,
@@ -14,6 +15,7 @@ function Page_Toegankelijkheid() {
                     mattis et tellus ac, luctus facilisis est.
                 </p>
             </div>
+            <Footer />
         </>
     )
 
