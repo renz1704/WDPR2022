@@ -111,12 +111,14 @@ public class TicketController : ControllerBase
         var receiverIdentityUser = _userManager.FindByIdAsync(TicketTransferDTO.visitorIdReceiver);
         var receiverVisitor = _context.Visitors.FirstOrDefaultAsync(x => x.IdentityUser.Id == TicketTransferDTO.visitorIdReceiver).Result;
         var oldTicket = _context.Tickets.FirstOrDefault(t => t.Id == TicketTransferDTO.ticketId);
+        
+
 
 
         var newTicket = new TransferedTicket(oldTicket, receiverVisitor);
     
         // oldTicket.setIsTransferred = true;
-        //Dit nog toevoegen^
+        //Dit nog toevoegen
 
         _context.SaveChanges();
         return Ok();

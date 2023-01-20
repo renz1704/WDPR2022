@@ -1,0 +1,42 @@
+.title-shows
+{
+    margin-top: 50px;
+    margin-bottom:50px;
+    text-align: center;
+}
+
+.title-shows h1 {
+    font-weight: bolder;
+}
+
+.show-content{
+    
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap:8rem;
+}
+
+.show-content-show{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    
+}
+
+.show-content-show-image{
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.show-contet-show-name
+{
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+}
