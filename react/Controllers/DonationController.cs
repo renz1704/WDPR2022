@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using System.IdentityModel.Tokens.Jwt;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -19,10 +20,24 @@ public class DonationController : ControllerBase
         _userManager = userManager;
     }
 
+
+    private String getEmailFromToken(string tokenUser)
+    {
+
+        var tokenHandler = new JwtSecurityTokenHandler();
+        var jwtToken = tokenHandler.ReadJwtToken(tokenUser);
+        var emailUser = jwtToken.Claims.FirstOrDefault(c => c.Type == "email")?.Value;
+
+        return emailUser;
+
+    }
+
     [HttpPost]
     [Route("addtokenuser")]
-    public async Task<IActionResult> addTokenUser([FromForm] String token, String emailUser)
+    public async Task<IActionResult> addTokenUser([FromQuery] string tokenUser, [FromForm] string token)
     {
+
+        string emailUser = getEmailFromToken(tokenUser);
 
         if (string.IsNullOrEmpty(emailUser))
             return BadRequest(new { message = "emailUser is null or empty" });
@@ -32,13 +47,29 @@ public class DonationController : ControllerBase
             return BadRequest(new { message = "Er is geen gebruiker gevonden met dit emailadres!" });
 
         user.DonationToken = token;
-
+        _context.SaveChanges();
         Console.WriteLine(token);
 
         Console.WriteLine("De token van de user " + user.Name + " = " + user.DonationToken);
 
         return Ok(new { message = "Gelukt, u kunt dit venster nu sluiten." });
+
     }
+
+    [HttpGet]
+    [Route("getDonationTokenUser")]
+    public async Task <ActionResult<String>> getDonationTokenUser([FromQuery] string email)
+    {
+
+        var _user = await _userManager.FindByEmailAsync(email);
+        var visitor = await _context.Visitors.Where(v => v.IdentityUser.Id == _user.Id).FirstOrDefaultAsync();
+
+        string donationToken = (visitor.DonationToken);
+
+        return donationToken;
+        // return new TokenDTO{token = visitor.DonationToken};
+    }
+
 
     [HttpPost]
     [Route("DonatieListener")]
@@ -50,7 +81,7 @@ public class DonationController : ControllerBase
 
         var visitor = await _context.Visitors.Where(v => v.IdentityUser.Id == _user.Id).FirstOrDefaultAsync();
 
-        
+
         visitor.Donations.Add(new Donation(visitor.Id, donationListenerModel.amount));
         _context.SaveChanges();
 
@@ -61,6 +92,10 @@ public class DonationController : ControllerBase
 
     }
 
+}
+
+public class TokenDTO {
+    public string token {get;set;}
 }
 
 public class donationTokenModel
