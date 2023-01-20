@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using react.Controllers;
+
 
 var builder = WebApplication.CreateBuilder(args);
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
@@ -31,6 +33,9 @@ builder.Services.AddSwaggerGen();
 
 
 // Add services to the container.
+
+
+
 
 
 builder.Services.AddAuthentication(opt =>
