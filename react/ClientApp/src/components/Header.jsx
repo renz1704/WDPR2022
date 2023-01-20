@@ -203,7 +203,7 @@ function ResponsiveAppBar() {
             >
                {UserService.isLoggedIn() ? (
               <li className="User">
-                <Button onClick={handleLogout}>Uitloggen</Button>
+                <Button className="logout" onClick={handleLogout}>Uitloggen</Button>
               </li>
             ) : (
               <>

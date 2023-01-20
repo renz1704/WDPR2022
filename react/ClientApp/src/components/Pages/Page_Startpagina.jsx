@@ -80,7 +80,7 @@ function Page_Startpagina() {
             </div>
 
 
-            {
+            {/* {
                 performances.map(performance => {
                     return (
                         <div aria-label='Voorstellingen:' className='show-content' key={performance.id}>
@@ -109,7 +109,7 @@ function Page_Startpagina() {
                         </div>
                     )
                 })
-            }
+            } */}
             <hr></hr>
 
             <div className="flex-container-horizontal">
