@@ -48,7 +48,8 @@ function TwoFA(props){
     
     return(
         <>
-            <button 
+            <button
+                type="button"
                 style={{fontSize:"80%", margin:"10px"}}
                 onClick={sendEmail}
             >Verstuur 2FA code naar email</button>

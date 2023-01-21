@@ -27,41 +27,43 @@ const Register = () => {
 
   const [isVerified, setIsVerified] = useState(false);
   const [_2FAverifiedState, set_2FAverifiedState] = useState()
-  
-  const processRegistration = (e) => {
 
+  const processRegistration = (e) => {
     e.preventDefault();
-    if (!isVerified) {
-        alert("Druk alstublieft op 'Ik ben geen robot'. Mocht u de reCAPTCHA niet kunnen zien, herlaad dan de pagina.")
-    } else if (_2FAverifiedState === "incorrect") {
-      alert("De 2FA code is onjuist, vraag een nieuwe code op.")
-      console.log(_2FAverifiedState)
-    } else {
-      
+    let _2FA = _2FAenabled;
+    if (_2FAverifiedState === "correct") {
       set2FAenabled(true)
-      
-      fetch('https://localhost:7293/api/User/registreer', 
+      _2FA = true;
+    }
+    if (!isVerified) {
+      alert("Druk alstublieft op 'Ik ben geen robot'. Mocht u de reCAPTCHA niet kunnen zien, herlaad dan de pagina.")
+    }
+    else if (_2FAverifiedState === "incorrect") {
+      alert("De 2FA code is onjuist, vraag een nieuwe code op.")
+
+    } else {
+      fetch('https://localhost:7293/api/User/registreer',
           {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ 
-            email: email, 
-            password: password, 
-            name: name, 
-            lastname: lastname,
-            _2FA: _2FAenabled})
-        })
-        .then((res) => {
-          if (res.status !== 201) {
-            console.log(res)
-          }
-          else {
-            navigate("/inloggen");
-          }
-        })
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              email: email,
+              password: password,
+              name: name,
+              lastname: lastname,
+              _2FA: _2FA})
+          })
+          .then((res) => {
+            if (res.status !== 201) {
+              console.log(res)
+            }
+            else {
+              navigate("/inloggen");
+            }
+          })
     }
 
     if(!charactersValidated || !lowerValidated || !upperValidated || !specialValidated)
@@ -69,6 +71,7 @@ const Register = () => {
       alert("Uw wachtwoord voldoet niet aan de eisen. Zorg ervoor dat uw wachtwoord minimaal 7 karakters lang is, een hoofdletter, een kleine letter en een speciaal karakter bevat.")
     }
   };
+
 
   const handleRecaptcha = (value) => {
     setIsVerified(value !== null);
@@ -185,7 +188,7 @@ const Register = () => {
           </main>
 
           <p>Vraag een code op en vul hem</p>
-          <p> hieronder in om 2FA aan te zetten.</p>
+          <p>hieronder in om 2FA aan te zetten.</p>
           <p>Laat het veld leeg als u geen gebruik wilt maken van 2FA.</p>
           <TwoFA email={email} set_2FAverifiedState={set_2FAverifiedState}/>
           
