@@ -30,11 +30,10 @@ namespace react.Controllers
 
         [HttpPost]
         [Route("login")]
-        public async Task<IActionResult> Login([FromBody] LoginDTO model)
-        {
-
-            var _user = await _userManager.FindByEmailAsync(model.Email);
-            if (_user == null) return Unauthorized();
+        public async Task<ActionResult> Login([FromBody] LoginDTO model){
+            
+                var _user = await _userManager.FindByEmailAsync(model.Email);
+                if (_user == null) return Unauthorized();
 
             var visitor = await _context.Visitors.Where(v => v.IdentityUser.Id == _user.Id).FirstOrDefaultAsync();
 
@@ -75,7 +74,7 @@ namespace react.Controllers
 
         [HttpPost]
         [Route("registreer")]
-        public async Task<ActionResult> Registreer([FromBody] RegisterDTO model)
+        public async Task<ActionResult> Register([FromBody] RegisterDTO model)
         {
             var user = new IdentityUser { UserName = model.Email, Email = model.Email };
 
@@ -88,31 +87,6 @@ namespace react.Controllers
             return !resultaat.Succeeded ? new BadRequestObjectResult(resultaat) : StatusCode(201);
         }
 
-        [HttpGet]
-        [Route("userExists/{email}")]
-        public async Task<ActionResult<String>> userExists(String email)
-        {
-
-            var newuser = new IdentityUser { UserName = "hallo@hallo.nl", Email = "hallo@hallo.nl" };
-
-            var resultaat = await _userManager.CreateAsync(newuser, "Hallo123!");
-            var addToVisitor = new Visitor();
-            addToVisitor.IdentityUser = newuser;
-
-            _context.Visitors.Add(addToVisitor);
-            _context.SaveChanges();
-
-            var user = _context.Visitors.Any(x => x.IdentityUser.Email == email);
-            Console.WriteLine(user);
-            // Check if the user exists in the database
-            if (user == false)
-            {
-                return NotFound();
-            }
-
-            // Return the email
-            return email;
-        }
 
         [HttpPut]
         [Route("/updateAccount")]
