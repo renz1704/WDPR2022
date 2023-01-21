@@ -16,10 +16,12 @@ const Register = () => {
   const [lastname, setLastname] = useState();
   const navigate = useNavigate();
 
+  //Voor de passwordcheck:
   const [lowerValidated, setLowerValidated] = useState(false);
   const [upperValidated, setUpperValidated] = useState(false);
   const [specialValidated, setSpecialValidated] = useState(false);
   const [charactersValidated, setCharactersValidated] = useState(false);
+
   const [isVerified, setIsVerified] = useState(false);
 
   const processRegistration = (e) => {

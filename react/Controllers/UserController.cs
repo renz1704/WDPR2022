@@ -30,44 +30,46 @@ namespace react.Controllers
 
         [HttpPost]
         [Route("login")]
-        public async Task<IActionResult> Login([FromBody] LoginDTO model){
-            
-                var _user = await _userManager.FindByEmailAsync(model.Email);
-                if (_user == null) return Unauthorized();
+        public async Task<IActionResult> Login([FromBody] LoginDTO model)
+        {
 
-                var visitor = await _context.Visitors.Where(v => v.IdentityUser.Id == _user.Id).FirstOrDefaultAsync();
+            var _user = await _userManager.FindByEmailAsync(model.Email);
+            if (_user == null) return Unauthorized();
+
+            var visitor = await _context.Visitors.Where(v => v.IdentityUser.Id == _user.Id).FirstOrDefaultAsync();
 
 
-        if (_user != null && visitor != null)
-            if (await _userManager.CheckPasswordAsync(_user, model.Password))
-            {
-            var secret = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("awef98awef978haweof8g7aw789efhh789awef8h9awh89efh89awe98f89uawef9j8aw89hefawef"));
-            var signingCredentials = new SigningCredentials(secret, SecurityAlgorithms.HmacSha256);
-            
-            var claims = new List<Claim>();
-            claims.Add(new Claim("id", visitor.Id.ToString()));
-            claims.Add(new Claim ("email", _user.Email));
-            claims.Add(new Claim ("firstname", visitor.Name));
-            claims.Add(new Claim("lastname", visitor.LastName));
-            
-            if(visitor.DonationToken != null){
-                claims.Add(new Claim("donationToken", visitor.DonationToken));
-            }
+            if (_user != null && visitor != null)
+                if (await _userManager.CheckPasswordAsync(_user, model.Password))
+                {
+                    var secret = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("awef98awef978haweof8g7aw789efhh789awef8h9awh89efh89awe98f89uawef9j8aw89hefawef"));
+                    var signingCredentials = new SigningCredentials(secret, SecurityAlgorithms.HmacSha256);
 
-            var roles = await _userManager.GetRolesAsync(_user);
-            foreach (var role in roles)
-                claims.Add(new Claim(ClaimTypes.Role, role));
+                    var claims = new List<Claim>();
+                    claims.Add(new Claim("id", visitor.Id.ToString()));
+                    claims.Add(new Claim("email", _user.Email));
+                    claims.Add(new Claim("firstname", visitor.Name));
+                    claims.Add(new Claim("lastname", visitor.LastName));
 
-            var tokenOptions = new JwtSecurityToken
-            (
-                issuer: "https://localhost:7293",
-                audience: "https://localhost:7293",
-                claims: claims,
-                expires: DateTime.Now.AddMinutes(10),
-                signingCredentials: signingCredentials
-            );
-            return Ok(new { Token = new JwtSecurityTokenHandler().WriteToken(tokenOptions) });
-        }
+                    if (visitor.DonationToken != null)
+                    {
+                        claims.Add(new Claim("donationToken", visitor.DonationToken));
+                    }
+
+                    var roles = await _userManager.GetRolesAsync(_user);
+                    foreach (var role in roles)
+                        claims.Add(new Claim(ClaimTypes.Role, role));
+
+                    var tokenOptions = new JwtSecurityToken
+                    (
+                        issuer: "https://localhost:7293",
+                        audience: "https://localhost:7293",
+                        claims: claims,
+                        expires: DateTime.Now.AddMinutes(10),
+                        signingCredentials: signingCredentials
+                    );
+                    return Ok(new { Token = new JwtSecurityTokenHandler().WriteToken(tokenOptions) });
+                }
             return Unauthorized();
         }
 
@@ -79,7 +81,7 @@ namespace react.Controllers
 
             var resultaat = await _userManager.CreateAsync(user, model.Password);
 
-            await _context.Visitors.AddAsync( new Visitor{IdentityUser = user, Name = model.Name, LastName = model.Lastname});
+            await _context.Visitors.AddAsync(new Visitor { IdentityUser = user, Name = model.Name, LastName = model.Lastname });
 
             _context.SaveChanges();
 
@@ -114,24 +116,25 @@ namespace react.Controllers
 
         [HttpPut]
         [Route("/updateAccount")]
-        public async Task<ActionResult<Visitor>> UpdateUser (VisitorDTO visitor)
+        public async Task<ActionResult<Visitor>> UpdateUser(VisitorDTO visitor)
         {
             Visitor v = await _context.Visitors.FindAsync(visitor.Id);
 
-            if(v != null)
+            if (v != null)
             {
                 v.Name = visitor.Firstname;
                 v.LastName = visitor.Lastname;
                 Console.WriteLine("Naam gewijzigd");
 
-            if(visitor.Email != null)
+                if (visitor.Email != null)
+                {
+                    v.IdentityUser.Email = visitor.Email;
+                    v.IdentityUser.UserName = visitor.Email;
+                    Console.WriteLine("Email gewijzigd");
+                }
+            }
+            else
             {
-                v.IdentityUser.Email = visitor.Email;
-                v.IdentityUser.UserName = visitor.Email;       
-                Console.WriteLine("Email gewijzigd");
-            }
-            }
-            else{
                 return NotFound();
             }
 
@@ -139,7 +142,32 @@ namespace react.Controllers
             Console.WriteLine("Doorgevoerd naar Db");
             return v;
         }
+
+        [HttpPost]
+        [Route("/passwordchange")]
+        public async Task<IActionResult> changePassword(string email, string currentPassword,string newPassword)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null)
+            {
+                // gebruiker niet gevonden
+                return NotFound();
+            }
+            var result = await _userManager.ChangePasswordAsync(user, currentPassword, newPassword);
+            if (result.Succeeded)
+            {
+                // wachtwoord gewijzigd
+                return Ok();
+            }
+            else
+            {
+                // wachtwoord wijzigen mislukt
+                return BadRequest();
+            }
+        }
+
     }
+
 
     public class LoginDTO
     {
@@ -151,16 +179,17 @@ namespace react.Controllers
     {
         public string Email { get; set; }
         public string Password { get; set; }
-        public string Name {get;set;}
-        public string Lastname {get;set;}
+        public string Name { get; set; }
+        public string Lastname { get; set; }
     }
 
     public class VisitorDTO
     {
-        public int Id {get;set;}
-        public string? Email {get;set;}
-        public string? Firstname {get;set;}
-        public string? Lastname{get;set;}
-        
+        public int Id { get; set; }
+        public string? Email { get; set; }
+        public string? Firstname { get; set; }
+        public string? Lastname { get; set; }
+
     }
+
 }
