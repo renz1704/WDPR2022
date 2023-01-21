@@ -17,34 +17,36 @@ const Login = () => {
     const [isVerified, setIsVerified] = useState(false);
     const [_2FAverifiedState, set_2FAverifiedState] = useState()
     const navigate = useNavigate();
+    let has2FA;
+
 
     const getHas2FA = async () => {
         if (!email) {
             return;
         }
         const response = await fetch(`/api/User/has2FA/${email}`);
-        const data = await response.json();
-        console.log("data: " + data)
-        return data;
+        if (response.ok) {
+            has2FA = await response.json();
+        } else {
+            console.error(`Error ${response.status}: ${response.statusText}`);
+        }
     };
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
+        await getHas2FA()
         
-        let has2FA = getHas2FA()
-
-        if (has2FA) {
+        console.log("has2fa" + has2FA)
+        
+        if (has2FA === true) {
             if (_2FAverifiedState !== "correct") {
                 alert("2FA code is fout.")
                 return
             }
-            
         }
 
-        console.log("has2fa" + has2FA)
-        
         if (isVerified) {
             UserService.login(email, password)
             if (UserService.getUser() != null) {
@@ -54,6 +56,7 @@ const Login = () => {
             alert("Druk alstublieft op 'Ik ben geen robot'. Mocht u de reCAPTCHA niet kunnen zien, herlaad dan de pagina.")
         }
     }
+
 
 
 

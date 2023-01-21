@@ -150,7 +150,7 @@ namespace react.Controllers
 
         [HttpGet]
         [Route("has2FA/{email}")]
-        public async Task<ActionResult<bool>> Has2FA(string email)
+        public async Task<IActionResult> Has2FA(string email)
         {
             var user = await _userManager.FindByEmailAsync(email);
             if (user == null) return NotFound();
@@ -158,8 +158,9 @@ namespace react.Controllers
             var visitor = await _context.Visitors.Where(v => v.IdentityUser.Id == user.Id).FirstOrDefaultAsync();
             if (visitor == null) return NotFound();
 
-            return visitor._2FA;
+            return Ok(visitor._2FA);
         }
+        
     }
 
 
