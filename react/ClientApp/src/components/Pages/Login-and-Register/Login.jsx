@@ -24,7 +24,13 @@ const Login = () => {
         if (!email) {
             return;
         }
-        const response = await fetch(`/api/User/has2FA/${email}`);
+        const headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        };
+
+        const response = await fetch('https://localhost:7293/api/User/has2FA/'+encodeURIComponent(email), {headers});
+
         if (response.ok) {
             has2FA = await response.json();
         } else {
@@ -38,7 +44,7 @@ const Login = () => {
 
         await getHas2FA()
         
-        console.log("has2fa" + has2FA)
+        console.log("has2fa " + has2FA)
         
         if (has2FA === true) {
             if (_2FAverifiedState !== "correct") {
