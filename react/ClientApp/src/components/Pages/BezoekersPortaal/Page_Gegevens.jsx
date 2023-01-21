@@ -10,7 +10,9 @@ function Page_Gegevens() {
   const [email, SetEmail] = useState();
   const [firstname, SetFirstname] = useState();
   const [lastname, SetLastname] = useState();
-  const [oldPassword, setOldPassword] = useState();
+  const [_2FA, set_2FA] = useState();
+
+    const [oldPassword, setOldPassword] = useState();
   const [newPassword, setNewPassword] = useState();
 
   //Voor de passwordcheck:
@@ -31,7 +33,8 @@ function Page_Gegevens() {
         id: UserService.getUser().id,
         email: email,
         firstname: firstname,
-        lastname: lastname
+        lastname: lastname,
+        _2FA: _2FA
       }).then(res => console.log(res.data));
     alert("Gegevens gewijzigd, als u opnieuw inlogd is de verandering in werking getreden.");
   }
@@ -61,9 +64,6 @@ function Page_Gegevens() {
         console.log(error);
     }
 };
-
-
-
 
   const handleChange = (value) => {
     const lower = new RegExp('(?=.*[a-z])');
@@ -101,7 +101,7 @@ function Page_Gegevens() {
     <>
       <BezoekersPortaalHeader></BezoekersPortaalHeader>
 
-      <form className="updateAccountForm" onSubmit={handleSubmit}>
+      <form className="updateAccountForm" onSubmit={handleSubmit} style={{margin:"2%"}}>
         <h1>Gegevens wijzigen</h1>
 
         <p>Email</p>
@@ -124,6 +124,12 @@ function Page_Gegevens() {
           onChange={(event) => SetLastname(event.target.value)}
         ></input>
 
+          <p>2FA {_2FA}</p>
+          <input
+              type="checkbox"
+              onChange={(event) => set_2FA(event.target.checked)}
+          ></input>
+
         <button
           type="onSubmit"
           className="btn-submit"
@@ -135,7 +141,7 @@ function Page_Gegevens() {
 
       <hr></hr>
 
-      <form className="updatePasswordForm" onSubmit={handlePassword}>
+      <form className="updatePasswordForm" onSubmit={handlePassword} style={{margin:"2%"}}>
         <h4>Wachtwoord wijzigen</h4>
 
         <p>Oude wachtwoord</p>

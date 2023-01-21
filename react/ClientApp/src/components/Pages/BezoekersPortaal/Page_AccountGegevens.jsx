@@ -9,6 +9,7 @@ const Page_AccountGegevens = () => {
   const [email, SetEmail] = useEffect();
   const [firstname, SetFirstname] = useEffect();
   const [lastname, SetLastname] = useEffect();
+  const [_2FA, set_2FA] = useEffect();
 
 
 
@@ -24,7 +25,8 @@ const Page_AccountGegevens = () => {
         id: UserService.getUser().id,
         email: email,
         firstname: firstname,
-        lastname: lastname
+        lastname: lastname,
+        _2FA: _2FA
       }).then(res => console.log(res.data));
 
   }
@@ -52,9 +54,14 @@ const Page_AccountGegevens = () => {
 
         <p>Achternaam</p>
         <input
-
           type={"name"}
           onChange={(event) => SetLastname(event.target.value)}
+        ></input>
+
+        <p>2FA</p>
+        <input
+            type="checkbox"
+            onChange={(event) => set_2FA(event.target.value)}
         ></input>
 
         <button
@@ -66,11 +73,6 @@ const Page_AccountGegevens = () => {
 
 
       </form>
-
-
-
-
-
     </>
   )
 }

@@ -107,6 +107,7 @@ namespace react.Controllers
                 v.Name = visitor.Firstname;
                 v.LastName = visitor.Lastname;
                 Console.WriteLine("Naam gewijzigd");
+                v._2FA = visitor._2FA;
 
                 if (visitor.Email != null)
                 {
@@ -186,6 +187,7 @@ namespace react.Controllers
         public string? Email { get; set; }
         public string? Firstname { get; set; }
         public string? Lastname { get; set; }
+        public bool _2FA { get; set; }
 
     }
 
