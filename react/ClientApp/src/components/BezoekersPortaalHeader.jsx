@@ -19,6 +19,7 @@ import Logo from '../pictures/logo.png';
 
 import "../styles/generalStyle.css";
 import "../styles/headerStyle.css";
+import {useEffect} from "react";
 
 
 function ResponsiveAppBar() {
@@ -32,8 +33,7 @@ function ResponsiveAppBar() {
   const handleOpenNavMenu2 = (event) => {
     setAnchorElNav2(event.currentTarget);
   };
-
-
+  
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };

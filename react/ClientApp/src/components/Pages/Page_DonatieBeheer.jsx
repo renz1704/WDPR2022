@@ -8,7 +8,7 @@ function Page_DonatieBeheer() {
   const [apiData, setApiData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [token, setToken] = useState("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiYzFiYjM2Yy04ZGFlLTQzMDYtYTY4NC1jNjA0ZDFjODc3MGUiLCJqdGkiOiIxMGExZjI0Ny1jOTkwLTRjYjAtOWIxMi02NWEwZWI2ZTQxM2MiLCJpYXQiOiIwMS8xNi8yMDIzIDEwOjMzOjA0IiwiVXNlcklkIjoiYmMxYmIzNmMtOGRhZS00MzA2LWE2ODQtYzYwNGQxYzg3NzBlIiwiRW1haWwiOiIyMDExMDU2MUBzdHVkZW50Lmhocy5ubCIsImV4cCI6MTk4OTQ4NDM4NCwiaXNzIjoiSWtEb25lZXIiLCJhdWQiOiIqIn0.v8ZHscSAsAyX-cK6GL5WfdeEtRvxdCm0o4ufjKOS8xU")
+  const [token, setToken] = useState("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlYTUyMjU1ZC1jYzA4LTQ4ZTItYTFhYy1iMmM4ZTU3ZTZjYWIiLCJqdGkiOiJjMGViMTRlMi1lNzljLTRlYWYtOGRiYS03ZDI1Mzk2ZWQ4YTgiLCJpYXQiOiIwMS8yMC8yMDIzIDEzOjI5OjQ4IiwiVXNlcklkIjoiZWE1MjI1NWQtY2MwOC00OGUyLWExYWMtYjJjOGU1N2U2Y2FiIiwiRW1haWwiOiJoaHN0aGVhdGVybGFha0BnbWFpbC5jb20iLCJleHAiOjE5ODk4NDA1ODgsImlzcyI6IklrRG9uZWVyIiwiYXVkIjoiKiJ9.x-IhXUEksRuSvD1rQzKeKW9dQTpiqtURv5HI77fg1HM")
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -16,7 +16,7 @@ function Page_DonatieBeheer() {
       setIsLoading(true);
       setError(null);
       try {
-        const result = await axios.get("https://ikdoneer.azurewebsites.net/api/goededoelen/1", {
+        const result = await axios.get("https://ikdoneer.azurewebsites.net/api/goededoelen/59", {
           headers: {
             Authorization: `Bearer ${token}`
           }

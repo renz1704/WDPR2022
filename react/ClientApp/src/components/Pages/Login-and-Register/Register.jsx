@@ -19,10 +19,12 @@ const Register = () => {
   const [_2FAenabled, set2FAenabled] = useState(false)
   const navigate = useNavigate();
 
+  //Voor de passwordcheck:
   const [lowerValidated, setLowerValidated] = useState(false);
   const [upperValidated, setUpperValidated] = useState(false);
   const [specialValidated, setSpecialValidated] = useState(false);
   const [charactersValidated, setCharactersValidated] = useState(false);
+
   const [isVerified, setIsVerified] = useState(false);
   const [_2FAverifiedState, set_2FAverifiedState] = useState()
   
