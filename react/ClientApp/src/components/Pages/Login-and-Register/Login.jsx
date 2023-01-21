@@ -20,7 +20,7 @@ const Login = () => {
 
 
     if(isVerified)
-    {
+      {
       UserService.login(email, password)
       if(UserService.getUser() != null)
       {

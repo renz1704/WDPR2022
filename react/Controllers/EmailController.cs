@@ -19,17 +19,17 @@ namespace react.Controllers
     public class EmailController : ControllerBase
     {
         [HttpPost]
-        public async Task<IActionResult> SendEmail(String toEmail, String toName, String text, String subject)
+        public async Task<IActionResult> SendEmail([FromBody] EmailData emailData)
         {
             try
             {
                 var message = new MimeMessage();
                 message.From.Add(new MailboxAddress("Theater Laak", "theaterlaak3@gmail.com"));
-                message.To.Add(new MailboxAddress(toName, toEmail));
-                message.Subject = subject;
+                message.To.Add(new MailboxAddress(emailData.toName, emailData.toEmail));
+                message.Subject = emailData.subject;
                 message.Body = new TextPart("plain")
                 {
-                    Text = text
+                    Text = emailData.text
                 };
 
                 using (var client = new SmtpClient())
@@ -48,40 +48,11 @@ namespace react.Controllers
             }
         }
     }
-
+    
+    public class EmailData {
+        public String toEmail { get; set; }
+        public String toName { get; set; }
+        public String text { get; set; }
+        public String subject { get; set; }
+    }
 }
-
-/*public IActionResult SendEmail(string recipient, string subject, string message)
-        {
-            try
-            {
-                // Create a new MailMessage object
-                MailMessage mail = new MailMessage();
-                mail.To.Add(recipient);
-                mail.Subject = subject;
-                mail.Body = message;
-                mail.IsBodyHtml = true;
-
-                // Set the sender's email address and password
-                string senderEmail = "theaterlaak3@gmail.com";
-                string senderPassword = "GoedGeheimWachtwoord1!";
-                mail.From = new MailAddress(senderEmail);
-
-                // Create a new SmtpClient object and set the server and port
-                SmtpClient smtp = new SmtpClient();
-                smtp.Host = "smtp.gmail.com";
-                smtp.Port = 587;
-                smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential(senderEmail, senderPassword);
-                smtp.EnableSsl = true;
-
-                // Send the email
-                smtp.Send(mail);
-
-                return Ok("Email sent successfully.");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest("Error sending email: " + ex.Message);
-            }
-        }*/

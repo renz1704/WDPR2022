@@ -79,7 +79,13 @@ namespace react.Controllers
 
             var resultaat = await _userManager.CreateAsync(user, model.Password);
 
-            await _context.Visitors.AddAsync( new Visitor{IdentityUser = user, Name = model.Name, LastName = model.Lastname});
+            await _context.Visitors.AddAsync( new Visitor
+            {
+                IdentityUser = user, 
+                Name = model.Name, 
+                LastName = model.Lastname,
+                _2FA = model._2FA
+            });
 
             _context.SaveChanges();
 
@@ -153,6 +159,7 @@ namespace react.Controllers
         public string Password { get; set; }
         public string Name {get;set;}
         public string Lastname {get;set;}
+        public bool _2FA { get; set; }
     }
 
     public class VisitorDTO

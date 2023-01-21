@@ -9,11 +9,14 @@ import { Icon } from 'react-icons-kit'
 import ReCAPTCHA from 'react-google-recaptcha'
 
 import UserService from '../../../services/UserService'
+import TwoFA from "./TwoFA";
+
 const Register = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [name, setName] = useState();
   const [lastname, setLastname] = useState();
+  const [_2FAenabled, set2FAenabled] = useState(false)
   const navigate = useNavigate();
 
   const [lowerValidated, setLowerValidated] = useState(false);
@@ -21,21 +24,34 @@ const Register = () => {
   const [specialValidated, setSpecialValidated] = useState(false);
   const [charactersValidated, setCharactersValidated] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
-
+  const [_2FAverified, set2FAisVerified] = useState(false)
+  const [_2FAfilledIn, set2FAfilledIn] = useState(false)
+  
   const processRegistration = (e) => {
 
     e.preventDefault();
     if (!isVerified) {
-      alert("Druk alstublieft op 'Ik ben geen robot'. Mocht u de reCAPTCHA niet kunnen zien, herlaad dan de pagina.")
+        alert("Druk alstublieft op 'Ik ben geen robot'. Mocht u de reCAPTCHA niet kunnen zien, herlaad dan de pagina.")
+    }else if (!_2FAverified && _2FAfilledIn){
+        alert("De 2FA code is onjuist, vraag een nieuwe code op.")
     } else {
-      fetch('https://localhost:7293/api/User/registreer',
+      
+        if (_2FAverified && _2FAfilledIn)
+            {set2FAenabled(true)}
+        
+        fetch('https://localhost:7293/api/User/registreer',
         {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ email: email, password: password, name: name, lastname: lastname })
+          body: JSON.stringify({ 
+            email: email, 
+            password: password, 
+            name: name, 
+            lastname: lastname,
+            _2FA: _2FAenabled})
         })
         .then((res) => {
           if (res.status !== 201) {
@@ -55,8 +71,6 @@ const Register = () => {
 
   const handleRecaptcha = (value) => {
     setIsVerified(value !== null);
-
-    
   };
 
   const handleChange = (value) => {
@@ -168,8 +182,13 @@ const Register = () => {
               )} U moet minimaal 7 karakters gebruiken</div>
             <ReCAPTCHA sitekey="6Ldmv-0jAAAAAOzZUjuueonJNyxg4RBpDiNgpbVO" onChange={handleRecaptcha} />
           </main>
+
+          <p>Vraag een code op en vul hem</p>
+          <p> hieronder in om 2FA aan te zetten.</p>
+          <p>Laat het veld leeg als u geen gebruik wilt maken van 2FA.</p>
+          <TwoFA email={email} set2FAisVerified={set2FAisVerified} set2FAfilledIn={set2FAfilledIn}/>
+          
           <button
-            type="onSubmit"
             disabled={email == "" || password == ""}
             className="login-btn-submit"
           >
