@@ -24,23 +24,22 @@ const Register = () => {
   const [specialValidated, setSpecialValidated] = useState(false);
   const [charactersValidated, setCharactersValidated] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
-  const [_2FAverified, set2FAisVerified] = useState(false)
-  const [_2FAfilledIn, set2FAfilledIn] = useState(false)
+  const [_2FAverifiedState, set_2FAverifiedState] = useState()
   
   const processRegistration = (e) => {
 
     e.preventDefault();
     if (!isVerified) {
         alert("Druk alstublieft op 'Ik ben geen robot'. Mocht u de reCAPTCHA niet kunnen zien, herlaad dan de pagina.")
-    }else if (!_2FAverified && _2FAfilledIn){
-        alert("De 2FA code is onjuist, vraag een nieuwe code op.")
+    } else if (_2FAverifiedState === "incorrect") {
+      alert("De 2FA code is onjuist, vraag een nieuwe code op.")
+      console.log(_2FAverifiedState)
     } else {
       
-        if (_2FAverified && _2FAfilledIn)
-            {set2FAenabled(true)}
-        
-        fetch('https://localhost:7293/api/User/registreer',
-        {
+      set2FAenabled(true)
+      
+      fetch('https://localhost:7293/api/User/registreer', 
+          {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
@@ -125,22 +124,22 @@ const Register = () => {
             // hier moet je de handleChange functie aanroepen met de setpassword
             onChange={(event) => { setPassword(event.target.value); handleChange(event.target.value) }}
           ></input>
-
-<p>Naam</p>
-<input
+            
+            <p>Naam</p>
+            <input
             required
             type="name"
             className="name"
             onChange={(event) => { setName(event.target.value);  }}
-          ></input>
+            ></input>
 
-<p>Achternaam</p>
-<input
+            <p>Achternaam</p>
+            <input
             required
             type="lastname"
             className="name"
             onChange={(event) => { setLastname(event.target.value); }}
-          ></input>
+            ></input>
 
           
           <main className="tracker-box">
@@ -186,7 +185,7 @@ const Register = () => {
           <p>Vraag een code op en vul hem</p>
           <p> hieronder in om 2FA aan te zetten.</p>
           <p>Laat het veld leeg als u geen gebruik wilt maken van 2FA.</p>
-          <TwoFA email={email} set2FAisVerified={set2FAisVerified} set2FAfilledIn={set2FAfilledIn}/>
+          <TwoFA email={email} set_2FAverifiedState={set_2FAverifiedState}/>
           
           <button
             disabled={email == "" || password == ""}

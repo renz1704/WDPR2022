@@ -1,8 +1,12 @@
-﻿import React from "react";
+﻿import React, {useEffect, useState} from "react";
 
 function TwoFA(props){
 
-    const randomNum = Math.floor(Math.random() * 1000000) + 1;
+    const [randomNumber, setRandomNumber] = useState()
+    
+    useEffect(()=>{
+        setRandomNumber(Math.floor(Math.random() * 1000000) + 1)
+    }, [])
 
     const sendEmail = async () => {
         if (!props.email)
@@ -10,7 +14,7 @@ function TwoFA(props){
         const data = {
             toEmail: props.email,
             toName: "",
-            text: "Bedankt voor het gebruiken van 2FA.\nUw 2FA code is: - " + randomNum + " - \nDeel deze code met niemand!",
+            text: "Bedankt voor het gebruiken van 2FA.\nUw 2FA code is: - " + randomNumber + " - \nDeel deze code met niemand!",
             subject: "2FA code voor Theater Laak"
         }
         
@@ -24,15 +28,22 @@ function TwoFA(props){
     }
     
     const check2FAcode = (event) => {
-        if (event.target.value != "")
-            {props.set2FAfilledIn(false)}
-        else 
-            {props.set2FAfilledIn(true)}
-        
-        if (event.target.value == randomNum)
-            {props.set2FAisVerified(true)}
+        if (event.target.value === "")
+        {
+            props.set_2FAverifiedState("empty")
+            console.log("empty")
+        }
+        else if (event.target.value === randomNumber.toString())
+        {
+            props.set_2FAverifiedState("correct")
+            console.log("correct")
+        }
         else
-            {props.set2FAisVerified(false)}
+        {
+            props.set_2FAverifiedState("incorrect")
+            console.log("incorrect")
+            
+        }
     }
     
     return(
