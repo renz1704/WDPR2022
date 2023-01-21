@@ -44,8 +44,6 @@ function Page_Doneren() {
                 configGetToken
             );
             setToken(response.data);
-            console.log("line 86" + token + " andere token " + response.data);
-
 
          await fetch("https://ikdoneer.azurewebsites.net/api/donatie", {
                 method: 'POST',
