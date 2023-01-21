@@ -14,13 +14,13 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [isVerified, setIsVerified] = useState(false);
   const navigate = useNavigate();
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
 
 
     if(isVerified)
-    {
+      {
       UserService.login(email, password)
       if(UserService.getUser() != null)
       {
@@ -37,8 +37,10 @@ const Login = () => {
    const handleRecaptcha = (value) => {
     setIsVerified(value !== null);
   };
+  
 
-  return (
+
+    return (
     <div>
       <Header/>
       <div className="bg">
