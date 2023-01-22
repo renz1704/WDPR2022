@@ -434,7 +434,7 @@ namespace react.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("PaymentId")
+                    b.Property<int?>("PaymentId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("VisitorId")
@@ -780,9 +780,7 @@ namespace react.Migrations
                 {
                     b.HasOne("Payment", "Payment")
                         .WithMany()
-                        .HasForeignKey("PaymentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PaymentId");
 
                     b.HasOne("Visitor", "Visitor")
                         .WithMany()
