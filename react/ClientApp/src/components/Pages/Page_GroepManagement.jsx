@@ -5,81 +5,93 @@ import axios from "axios";
 import Groep from "../Groep";
 import '../../styles/Groep.css'
 
+import Image from '../../pictures/groep.jpg'
+
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import PopUpGroepToevoegenAanShow from "../PopUpGroepToevoegenAanShow";
+import PopUpActeurToevoegenAanShow from "../PopUpActeurToevoegenAanShow";
 
 
 const GroepManagement = () => {
 
     const [groups, setGroups] = useState([]);
+    
 
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    const [triggerShow, setTriggerShow] = useState();
+    const [triggerActor, setTriggerActor] = useState();
+    const [group, setGroup] = useState();
+    
 
-    const style = {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: 400,
-        bgcolor: 'background.paper',
-        border: '2px solid #000',
-        boxShadow: 24,
-        p: 4,
-      };
+    
     
     useEffect( () => {
         axios.get('https://localhost:7293/api/Group/getGroups')
         .then(res => setGroups(res.data))
     },[])
 
+    const deleteGroup = (id) => {
+        axios.delete(`https://localhost:7293/api/Group/deleteGroup?id=${id}`)
+        window.location.reload(false);
+    }
+
+    const addToShow = (id) => {
+        
+        axios.post(`https://localhost:7293/api/Group/addToShow`, {
+            "groupId": id,
+            "showId": 1
+        
+        })
+    }
+
     return (
         <div>
 
-<Button onClick={handleOpen}>Open modal</Button>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
-        </Box>
-      </Modal>
             <h1>Groepmanagement</h1>
-
-            <h1>Lijst met groepen</h1>
-
+            
             <table class="styled-table">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Naam</th>
-            <th>Beschrijving</th>
-            <th>Link naar website</th>
-            <th>Afbeelding</th>
-            <th>Acties</th>
-        </tr>
-    </thead>
-    <tbody>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Naam</th>
+                        <th>Beschrijving</th>
+                        <th>Link naar website</th>
+                        <th>Afbeelding</th>
+                        <th>Acties</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
 
-        {groups.map( group => {
-            return(
-                <Groep group={group}></Groep>
-            )
-        })}
-        
-    </tbody>
-</table>
+                    {groups.map( group => {
+                        return(
+                            <tr>
+                            <td>{group.id}</td>
+                            <td> {group.name}</td>
+                            <td> {group.description}</td>
+                            <th> <a href={group.websiteUrl}>{group.websiteUrl}</a></th>
+                            <th> <img src= {Image}></img></th>
+                            <th> 
+                            <Button variant='contained' onClick={() => {setTriggerShow(true); setGroup(group)}}>Toevoegen aan show</Button> 
+                            <Button variant='contained' onClick={() => {setTriggerActor(true); setGroup(group)}}>Acteur toevoegen</Button>
+                            <Button variant='contained' sx={{backgroundColor:'red'}} onClick={ () => {deleteGroup(group.id)}}>Verwijderen</Button>
+                            </th>
+                            
+                    </tr>
+                        )  
+                    })}
+
+
+                    
+                </tbody>
+            </table>
+
+            <PopUpGroepToevoegenAanShow trigger={triggerShow} setTrigger={setTriggerShow} group={group}></PopUpGroepToevoegenAanShow>
+            <PopUpActeurToevoegenAanShow trigger={triggerActor} setTrigger={setTriggerActor} group={group}></PopUpActeurToevoegenAanShow>
+
+            
 
         </div>
     )
