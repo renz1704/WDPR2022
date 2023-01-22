@@ -61,6 +61,28 @@ public class ReservationController : ControllerBase
 
         return reservations;
     }
+    
+    [HttpDelete]
+    [Route("removereservation/{reservationId}")]
+    public async Task<IActionResult> RemoveReservationAsync(int reservationId)
+    {
+        var reservation = await _context.Reservations
+            .Include(r => r.Tickets)
+            .SingleOrDefaultAsync(r => r.Id == reservationId);
+
+        if (reservation == null)
+        {
+            return NotFound("The provided reservation ID is invalid.");
+        }
+
+        _context.Reservations.Remove(reservation);
+        _context.Tickets.RemoveRange(reservation.Tickets);
+        await _context.SaveChangesAsync();
+
+        return NoContent();
+    }
+
+
 
 
 }
