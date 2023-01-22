@@ -16,7 +16,7 @@ public class TheaterDbContext : IdentityDbContext, ITheaterDbContext
     public virtual DbSet<Donation> Donations { get; set; }
     public virtual DbSet<Genre> Genres { get; set; }
     public virtual DbSet<Group> Groups { get; set; }
-    public virtual DbSet<Payment> Payment { get; set; }
+    public virtual DbSet<Payment> Payments { get; set; }
     public virtual DbSet<Performance> Performances { get; set; }
     public virtual DbSet<Reservation> Reservations { get; set; }
     public virtual DbSet<Room> Rooms { get; set; }

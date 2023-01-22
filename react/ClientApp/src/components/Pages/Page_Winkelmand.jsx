@@ -7,29 +7,27 @@ import UserService from "../../services/UserService";
 
 
 function Page_Winkelmand() {
-    const [totalPrice, setTotalPrice] = useState("1");
     const [amount, setAmount] = useState("1");
 
     const navigate = useNavigate()
     const payButtonClicked = async () => {
-        const totalPrice = 100;
-        setTotalPrice(totalPrice);
-        const data = new URLSearchParams();
-        data.append('amount', { totalPrice })
-        data.append('succes', true)
-        fetch('https://localhost:7293/api/payment/createpayment',
-            {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-
-                },
-                body: JSON.stringify({ amount: amount, succes: false })
-            })
-            .then((res) => {
-                navigate("/betaling");
-            });
+        navigate("/betaling");
+        // const data = new URLSearchParams();
+        // data.append('amount', { totalPrice })
+        // data.append('succes', true)
+        // fetch('https://localhost:7293/api/payment/createpayment',
+        //     {
+        //         method: 'POST',
+        //         headers: {
+        //             'Accept': 'application/json',
+        //             'Content-Type': 'application/json'
+        //
+        //         },
+        //         body: JSON.stringify({ amount: amount, succes: false })
+        //     })
+        //     .then((res) => {
+        //         navigate("/betaling");
+        //     });
     }
 
 
@@ -51,31 +49,68 @@ function Page_Winkelmand() {
         fetchData();
     }, [UserService.getUser().id]);
     ///
+
+    const deleteReservation = async (reservationId) => {
+        try {
+            const url = "https://localhost:7293/api/Reservation/removereservation/" + reservationId;
+            await fetch(url, {
+                method: 'DELETE',
+            });
+            const updatedReservations = reservations.filter(reservation => reservation.id !== reservationId);
+            setReservations(updatedReservations);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const totalPrice = reservations.reduce((acc, reservation) => {
+        const ticketCount = reservation.tickets.length;
+        let discount = 0;
+        if (ticketCount >= 10) {
+            discount = 0.4;
+        } else if (ticketCount >= 5) {
+            discount = 0.2;
+        }
+        
+        return acc + reservation.tickets.reduce((acc, ticket) => {
+            return acc + ticket.price;
+        }, 0) * (1 - discount);
+        
+    }, 0);
+
     return (
         <>
             <Header />
             <div className="flex-container-horizontal">
                 <div>
                     {reservations && reservations.map((reservation) => (
-                        <tbody key={reservation.id}>
-                            <tr>Performance: {reservation.tickets[0].performance.show.name}</tr>
-                            <tr>Date: {reservation.tickets[0].performance.startTime}</tr>
-                            <tr>
-                                {reservation.tickets.map((ticket) => (
-                                    <td key={ticket.id}>
-                                        <p>Ticket ID: {ticket.id}</p>
-                                    </td>
-                                ))}
-                            </tr>
+                        <tbody style={{border:"solid 1px red", margin:"5%" }} key={reservation.id}>
+                        <tr>Performance: {reservation.tickets[0].performance.show.name}</tr>
+                        <tr>Date: {reservation.tickets[0].performance.startTime}</tr>
+                        <tr>
+                            {reservation.tickets.map((ticket) => (
+                                <td key={ticket.id}>
+                                    <p>Ticket ID: {ticket.id}</p>
+                                </td>
+                            ))}
+                            <button onClick={()=>deleteReservation(reservation.id)}>Verwijder</button>
+                        </tr>
+                        <tr>
+                            Totaal: €{reservation.tickets.reduce((total, ticket) => total + ticket.price, 0)}
+                        </tr>
+                        <br></br>
                         </tbody>
+
                     ))}
                 </div>
+
+                <div className="flex-container-vertical">
+                    <p>Totaalprijs alle shows: €{totalPrice}</p>
+                    <button id="button" target="_blank" onClick={payButtonClicked}>Naar betalen</button>
+                </div>
+                
             </div>
             
-            <div className="flex-container-vertical">
-                <p>{totalPrice}</p>
-                <button id="button" target="_blank" onClick={payButtonClicked}>Naar betalen</button>
-            </div>
             <Footer/>
         </>
     )
