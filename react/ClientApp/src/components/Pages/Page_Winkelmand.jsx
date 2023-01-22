@@ -11,23 +11,23 @@ function Page_Winkelmand() {
 
     const navigate = useNavigate()
     const payButtonClicked = async () => {
-        const totalPrice = 100;
-        const data = new URLSearchParams();
-        data.append('amount', { totalPrice })
-        data.append('succes', true)
-        fetch('https://localhost:7293/api/payment/createpayment',
-            {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-
-                },
-                body: JSON.stringify({ amount: amount, succes: false })
-            })
-            .then((res) => {
-                navigate("/betaling");
-            });
+        navigate("/betaling");
+        // const data = new URLSearchParams();
+        // data.append('amount', { totalPrice })
+        // data.append('succes', true)
+        // fetch('https://localhost:7293/api/payment/createpayment',
+        //     {
+        //         method: 'POST',
+        //         headers: {
+        //             'Accept': 'application/json',
+        //             'Content-Type': 'application/json'
+        //
+        //         },
+        //         body: JSON.stringify({ amount: amount, succes: false })
+        //     })
+        //     .then((res) => {
+        //         navigate("/betaling");
+        //     });
     }
 
 

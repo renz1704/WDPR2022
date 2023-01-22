@@ -2,6 +2,7 @@
 import PopUp from "../PopUp";
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import axios from "axios";
+import UserService from "../../services/UserService";
 
 
 function Page_Betaling() {
@@ -44,12 +45,71 @@ function Page_Betaling() {
     navigate('/betaald')
   }
 
+  const [reservations, setReservations] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const url = 'https://localhost:7293/api/Reservation/getreservations/' + UserService.getUser().id;
+        const response = await fetch(url);
+        const data = await response.json();
+        setReservations(data);
+        console.log(data)
+      } catch (error) {
+        console.error("Error fetching reservations:", error);
+      }
+    }
+    fetchData();
+  }, [UserService.getUser().id]);
+
+  const makePayment = async () => {
+    const payment = {
+      Amount: totalPrice,
+      Date: new Date(),
+      Succes: true,
+    };
+    
+    try {
+      const response = await fetch('https://localhost:7293/api/payment/createpayment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payment)
+      });
+      const data = await response.json();
+      console.log(data);
+
+      for(const reservation of reservations){
+        await addPaymentToReservation(data.Id, reservation.Id);
+      }
+      
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const addPaymentToReservation = async (paymentId, reservationId) => {
+    try {
+      const response = await fetch(`https://localhost:7293/api/Reservation/addpaymenttoreservation/${paymentId}/${reservationId}`, {
+        method: 'POST'
+      });
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+
   return (
     <>
       <div dangerouslySetInnerHTML={{ __html: html }} />
       <p>
         <button id="button" onClick={cancelRoute}>Terug naar winkelmand</button>
-
+      </p>
+      <p>
+        <button onClick={makePayment}>Betaal zonder api van school</button>
       </p>
     </>
   )

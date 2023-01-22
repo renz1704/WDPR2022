@@ -82,6 +82,31 @@ public class ReservationController : ControllerBase
         return NoContent();
     }
 
+    [HttpPut]
+    [Route("addpaymenttoreservation/{reservationId}/{paymentId}")]
+    public async Task<IActionResult> AddPaymentToReservationAsync(int reservationId, int paymentId)
+    {
+        var reservation = await _context.Reservations
+            .Include(r => r.Payment)
+            .SingleOrDefaultAsync(r => r.Id == reservationId);
+
+        if (reservation == null)
+        {
+            return NotFound("The provided reservation ID is invalid.");
+        }
+
+        var payment = await _context.Payments.FindAsync(paymentId);
+
+        if (payment == null)
+        {
+            return NotFound("The provided payment ID is invalid.");
+        }
+
+        reservation.Payment = payment;
+        await _context.SaveChangesAsync();
+
+        return NoContent();
+    }
 
 
 
