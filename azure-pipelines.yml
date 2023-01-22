@@ -26,6 +26,7 @@ steps:
     npm run build
     popd
   displayName: 'npm install and build'
+  workingDirectory: '$(Build.SourcesDirectory)/WDPR2022'
 
 - task: ArchiveFiles@2
   inputs:
