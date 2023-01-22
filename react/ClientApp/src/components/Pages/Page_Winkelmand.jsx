@@ -64,7 +64,6 @@ function Page_Winkelmand() {
                                 {reservation.tickets.map((ticket) => (
                                     <td key={ticket.id}>
                                         <p>Ticket ID: {ticket.id}</p>
-                                        <p>Seat ID: {ticket.SeatNumber}</p>
                                     </td>
                                 ))}
                             </tr>

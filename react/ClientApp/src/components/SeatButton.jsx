@@ -23,9 +23,20 @@ function SeatButton(props) {
     useEffect(() => {
         toggleColor()
     }, [props.toggleSeat])
-
-    const buttonClick = () => {
-        props.toggleSeat(props.seatId)
+    
+    const [owned, setOwned] = useState(false)
+    
+    const buttonClick = async () => {
+        if (await fetchSeatAvailability() === true)
+            {
+                setOwned(true)
+                props.toggleSeat(props.seatId)
+            }
+        else if (owned)
+        {
+            props.toggleSeat(props.seatId)
+            setOwned(false)
+        }
     }
 
     {/*past de kleur van de stoelknop aan*/ }
@@ -43,13 +54,36 @@ function SeatButton(props) {
 
     }
 
+    const [seatAvailability, setSeatAvailability] = useState(false);
+
+    const fetchSeatAvailability = async () => {
+        try {
+            const url = "https://localhost:7293/api/Seat/checkseatavailability?seatId=" + props.seatId + "&performanceId=" + props.performanceId;
+            const response = await fetch(url);
+            const data = await response.json();
+            setSeatAvailability(data);
+            return data
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    useEffect(() => {
+        if (props.seatId && props.performanceId) {
+            fetchSeatAvailability();
+        }
+    }, [props.seatId, props.performanceId, seatAvailability]);
+
+
+
     return (
         <button
-            style={{ backgroundColor: color[0], color: color[1], borderColor: border_color }}
-            onClick={() => buttonClick()}>
+            style={{ backgroundColor: seatAvailability ? color[0] : "red", color: color[1], borderColor: border_color }}
+            onClick={seatAvailability ? () => buttonClick() : null}>
             {seatName}
         </button>
     )
+
 }
 
 export default SeatButton;

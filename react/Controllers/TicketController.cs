@@ -104,10 +104,6 @@ public class TicketController : ControllerBase
     [Route("transferTicket")]
     public IActionResult transferTicket([FromBody] TicketTransferDTO TicketTransferDTO)
     {
-        Console.WriteLine(TicketTransferDTO.visitorIdReceiver);
-        Console.WriteLine(TicketTransferDTO.visitorIdOwner);
-        Console.WriteLine(TicketTransferDTO.ticketId);
-
         var receiverIdentityUser = _userManager.FindByIdAsync(TicketTransferDTO.visitorIdReceiver);
         var receiverVisitor = _context.Visitors.FirstOrDefaultAsync(x => x.IdentityUser.Id == TicketTransferDTO.visitorIdReceiver).Result;
         var oldTicket = _context.Tickets.FirstOrDefault(t => t.Id == TicketTransferDTO.ticketId);

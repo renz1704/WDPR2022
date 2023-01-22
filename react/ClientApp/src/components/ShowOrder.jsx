@@ -47,7 +47,7 @@ function ShowOrder(props) {
 
             {seatData && seatData.map((seat, cellIndex) => (
                 <tr key={cellIndex}>
-                    <td>Stoel: {seat.seatNumber} <br></br>Rang: {}</td>
+                    <td>Stoel: {seat.seatNumber} <br></br>Rang: {seat.rowNumber}</td>
                     <td></td>
                     {props.canEdit && (<td>
                         <button onClick={() => props.toggleSeat(seat.id)}>X</button>
