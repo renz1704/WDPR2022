@@ -3,24 +3,16 @@ import ShowOrder from "../ShowOrder";
 import Header from "../Header";
 import Footer from '../Footer';
 import SeatButton from "../SeatButton";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import PopUp from "../PopUp";
 import UserService from "../../services/UserService";
 
 
 function Page_StoelKeuze() {
+  
+  const location = useLocation();
+  const performance = location.state.performance;
 
-
-  const [performance, setPerformance] = useState()
-
-  async function getPerformance(id) {
-    try {
-      const response = await fetch(`https://localhost:7293/api/Performance/performance/${id}`);
-      return await response.json();
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  }
   
   {/*seats is een lijst van stoelen per rij*/ }
   const [seats, setSeats] = useState([]);
@@ -28,8 +20,6 @@ function Page_StoelKeuze() {
   {/*ipv room/1 moet hier bijv props.room worden gebruikt*/ }
   useEffect(() => {
     async function fetchData() {
-      setPerformance(await getPerformance(1));
-      
       fetch(`https://localhost:7293/api/Room/${performance.room.id}`)
           .then(response => response.json())
           .then(data => {
@@ -39,7 +29,6 @@ function Page_StoelKeuze() {
     }
     fetchData();
   }, [performance]);
-
 
   {
     /*selectedSeats zijn de stoelen die de gebruiker kiest om te kopen*/
