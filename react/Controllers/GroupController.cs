@@ -13,6 +13,14 @@ public class GroupController : ControllerBase
         _context = groupContext;
     }
 
+
+    [HttpGet]
+    [Route("getGroups")]
+    public async Task<ActionResult<List<Group>>> GetAll ()
+    {
+        return _context.Groups.ToList();
+    }
+    
     [HttpPost]
     [Route("creategroup")]
     public async Task<ActionResult<Group>> createGroup([FromBody] Group g)

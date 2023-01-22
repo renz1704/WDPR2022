@@ -39,8 +39,9 @@ const Page_ActeurManagement = () => {
         <input onChange={(e) => setStagename(e.target.value)}></input>
         <br></br>
         
-
-        <Button variant="contained" onClick={addActor}> Acteur toevoegen</Button>
+<br></br>
+        <Button variant="contained" onClick={addActor}> Acteur Aanmaken</Button>
+        
 
         <h1>Lijst met acteurs: </h1>
         <div className="content-all-actors">
