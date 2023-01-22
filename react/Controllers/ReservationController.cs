@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 public class ReservationController : ControllerBase
 {
 
-    ITheaterDbContext _context;
+    private readonly TheaterDbContext _context;
 
-    public ReservationController(ITheaterDbContext context)
+    public ReservationController(TheaterDbContext context)
     {
         _context = context;
     }

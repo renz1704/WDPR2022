@@ -6,6 +6,7 @@ import SeatButton from "../SeatButton";
 import {useLocation, useNavigate} from "react-router-dom";
 import PopUp from "../PopUp";
 import UserService from "../../services/UserService";
+import axios from "axios";
 
 
 function Page_StoelKeuze() {
@@ -28,7 +29,7 @@ function Page_StoelKeuze() {
           });
     }
     fetchData();
-  }, [performance]);
+  }, []);
 
   {
     /*selectedSeats zijn de stoelen die de gebruiker kiest om te kopen*/
@@ -102,17 +103,8 @@ function Page_StoelKeuze() {
 
   const createReservation = async () => {
     try {
-      const response = await fetch('https://localhost:7293/api/Reservation/createreservation', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-type': 'application/json'
-        },
-        body: JSON.stringify({
-          userId: UserService.getUser().id, 
-          ticketIds: ticketsIds
-        })
-      });
+
+      const response = axios.post(`https://localhost:7293/api/Reservation/createreservation?userId=${UserService.getUser().id} `, ticketsIds)
       return await response.json();
     } catch (error) {
       console.error('Error:', error);
