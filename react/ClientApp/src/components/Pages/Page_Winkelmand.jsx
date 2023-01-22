@@ -43,6 +43,7 @@ function Page_Winkelmand() {
                 const response = await fetch(url);
                 const data = await response.json();
                 setReservations(data);
+                console.log(data)
             } catch (error) {
                 console.error("Error fetching reservations:", error);
             }
@@ -56,26 +57,25 @@ function Page_Winkelmand() {
             <div className="flex-container-horizontal">
                 <div>
                     {reservations && reservations.map((reservation) => (
-                        <div key={reservation.id}>
-                            <p>Performance: {}</p>
-                            <p>Date: {}</p>
-                            <div>
+                        <tbody key={reservation.id}>
+                            <tr>Performance: {reservation.tickets[0].performance.show.name}</tr>
+                            <tr>Date: {reservation.tickets[0].performance.startTime}</tr>
+                            <tr>
                                 {reservation.tickets.map((ticket) => (
-                                    <div key={ticket.id}>
+                                    <td key={ticket.id}>
                                         <p>Ticket ID: {ticket.id}</p>
-                                        <p>Seat ID: {ticket.seatId}</p>
-                                    </div>
+                                        <p>Seat ID: {ticket.SeatNumber}</p>
+                                    </td>
                                 ))}
-                            </div>
-                        </div>
+                            </tr>
+                        </tbody>
                     ))}
                 </div>
-
-
             </div>
-                <div className="flex-container-vertical">
-                    <p>{totalPrice}</p>
-                    <button id="button" target="_blank" onClick={payButtonClicked}>Naar betalen</button>
+            
+            <div className="flex-container-vertical">
+                <p>{totalPrice}</p>
+                <button id="button" target="_blank" onClick={payButtonClicked}>Naar betalen</button>
             </div>
             <Footer/>
         </>

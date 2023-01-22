@@ -50,8 +50,14 @@ public class ReservationController : ControllerBase
         var reservations = await _context.Reservations
             .Include(r => r.Visitor)
             .Include(r => r.Tickets)
+            .ThenInclude(t => t.Performance)
             .Where(r => r.Visitor.Id == userId && r.Payment == null)
             .ToListAsync();
+
+
+
+
+
 
         if (reservations == null)
         {
