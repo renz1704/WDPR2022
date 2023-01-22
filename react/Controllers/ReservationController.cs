@@ -42,5 +42,24 @@ public class ReservationController : ControllerBase
 
         return reservation;
     }
+    
+    [HttpGet]
+    [Route("getreservations/{userId}")]
+    public async Task<ActionResult<List<Reservation>>> GetReservationsWithoutPaymentIdAsync(int userId)
+    {
+        var reservations = await _context.Reservations
+            .Include(r => r.Visitor)
+            .Include(r => r.Tickets)
+            .Where(r => r.Visitor.Id == userId && r.Payment == null)
+            .ToListAsync();
+
+        if (reservations == null)
+        {
+            return NotFound("No reservations found for the provided user ID.");
+        }
+
+        return reservations;
+    }
+
 
 }
