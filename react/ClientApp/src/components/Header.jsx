@@ -102,6 +102,7 @@ function ResponsiveAppBar() {
               }}
               color="black"
             >
+              {/* Header met hamburgermenu */}
               <div className="flex-container-vertical" id="menu">
                 <Button size="large" variant="text">
                   <Link className="nav" to="/">
@@ -109,18 +110,18 @@ function ResponsiveAppBar() {
                   </Link>
                 </Button>
                 <Button size="large" variant="text">
-                  <Link className="nav" to="/voorstellingen">
+                  <Link className="nav" id="voorstellingen" to="/voorstellingen">
                     Voorstellingen
                   </Link>
                 </Button>
                 <Button size="large" variant="text">
-                  <Link className="nav" to="/toegankelijkheid">
+                  <Link className="nav" id="toegankelijkheid" to="/toegankelijkheid">
                     Toegankelijkheid
                   </Link>
                 </Button>
 
                 <Button size="large" variant="text">
-                  <Link className="nav" to="/contactgegevens">
+                  <Link className="nav" id="contactgegevens" to="/contactgegevens">
                     Contactgegevens
                   </Link>
                 </Button>
@@ -224,7 +225,8 @@ function ResponsiveAppBar() {
             )}
             </Menu>
           </Box>
-
+              
+              {/* Uitgeklapte header */}
           <Box sx={{ flexGrow: 1, display: { xs: "none", lg: "flex" } }}>
             <li>
               <a>
@@ -236,21 +238,21 @@ function ResponsiveAppBar() {
             <li>
               <a>
                 <Button variant="text">
-                  <Link to="/voorstellingen">Voorstellingen</Link>
+                  <Link id="voorstellingen" to="/voorstellingen">Voorstellingen</Link>
                 </Button>
               </a>
             </li>
             <li>
               <a>
                 <Button variant="text">
-                  <Link to="/toegankelijkheid">Toegankelijkheid</Link>
+                  <Link id="toegankelijkheid" to="/toegankelijkheid">Toegankelijkheid</Link>
                 </Button>
               </a>
             </li>
             <li>
               <a>
                 <Button variant="text">
-                  <Link to="/contactgegevens">Contactgegevens</Link>
+                  <Link id="contactgegevens" to="/contactgegevens">Contactgegevens</Link>
                 </Button>
               </a>
             </li>
@@ -282,12 +284,12 @@ function ResponsiveAppBar() {
               <>
                 <li className="User">
                   <Button variant="outlined" disableElevation>
-                    <Link to="/inloggen">Inloggen</Link>
+                    <Link id="inloggen" to="/inloggen">Inloggen</Link>
                   </Button>
                 </li>
                 <li className="User">
                   <Button variant="contained" disableElevation>
-                    <Link to="/registreren">Registreren</Link>
+                    <Link id="registreren" to="/registreren">Registreren</Link>
                   </Button>
                 </li>
               </>

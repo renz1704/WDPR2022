@@ -119,6 +119,7 @@ const Register = () => {
           <input
             required="Email is verplicht."
             type="email"
+            id="email-input"
             onChange={(e) => setEmail(e.target.value)}
           ></input>
           <p>Wachtwoord</p>
@@ -126,6 +127,7 @@ const Register = () => {
             required
             type="password"
             className="input-password"
+            id="password-input"
             // hier moet je de handleChange functie aanroepen met de setpassword
             onChange={(event) => { setPassword(event.target.value); handleChange(event.target.value) }}
           ></input>
@@ -142,7 +144,7 @@ const Register = () => {
             <input
             required
             type="lastname"
-            className="name"
+            className="lastname"
             onChange={(event) => { setLastname(event.target.value); }}
             ></input>
 
@@ -195,6 +197,7 @@ const Register = () => {
           <button
             disabled={email == "" || password == ""}
             className="login-btn-submit"
+            id="login-button"
           >
             Registreren
           </button>

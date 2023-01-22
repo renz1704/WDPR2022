@@ -11,7 +11,7 @@ import { Icon } from 'react-icons-kit'
 
 export const FacebookIcon = () => {
     return (
-            <a target="_blank" href="https://www.facebook.com/laaktheater">
+            <a target="_blank" id="facebook" href="https://www.facebook.com/laaktheater">
             <Icon icon={facebookSquare} size={40}/>
             </a>
     )

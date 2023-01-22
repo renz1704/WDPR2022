@@ -83,6 +83,7 @@ const Login = () => {
                         required
                         type="name"
                         className="input-name"
+                        id="email-input"
                         onChange={(event) => setEmail(event.target.value)}
                     ></input>
                     <p>Wachtwoord</p>
@@ -90,9 +91,10 @@ const Login = () => {
                         required
                         type="password"
                         className="input-password"
+                        id="password-input"
                         onChange={(event) => setPassword(event.target.value)}
                     ></input>
-                    <ReCAPTCHA className="recap" sitekey="6Ldmv-0jAAAAAOzZUjuueonJNyxg4RBpDiNgpbVO"
+                    <ReCAPTCHA className="recap" id="recaptcha-checkbox" sitekey="6Ldmv-0jAAAAAOzZUjuueonJNyxg4RBpDiNgpbVO"
                                onChange={handleRecaptcha}/>
 
                     <TwoFA email={email} set_2FAverifiedState={set_2FAverifiedState}/>
@@ -101,6 +103,7 @@ const Login = () => {
                         type="onSubmit"
                         disabled={email == "" || password == ""}
                         className="login-btn-submit"
+                        id= "login-button"
                     >
                         Inloggen
                     </button>

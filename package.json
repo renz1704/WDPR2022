@@ -5,5 +5,8 @@
     "react-google-recaptcha": "^2.1.0",
     "react-pdf": "^6.2.2",
     "react-pdf-js": "^5.1.0"
+  },
+  "devDependencies": {
+    "cypress": "^12.3.0"
   }
 }
