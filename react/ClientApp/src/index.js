@@ -40,6 +40,7 @@ import Page_AccountGegevens from './components/Pages/BezoekersPortaal/Page_Accou
 import Page_Gastlijsten from "./components/Pages/Page_Gastlijsten";
 import Page_MeerInfo from './components/Pages/Page_MeerInfo'
 import Page_CalendarBooking from './components/Pages/Page_CalendarBooking';
+import Page_ActeurManagement from './components/Pages/Page_ActeurManagement';
 
 
 const rootElement = document.getElementById('root');
@@ -74,6 +75,7 @@ root.render(
         <Route path='/zaalbeheer' element={<Page_Zaalbeheer />} />
         <Route path='/donatieBeheer' element={<Page_DonatieBeheer />} />
         <Route path='/gastlijsten' element={<Page_Gastlijsten />} />
+        <Route path='/acteurmanagement' element ={<Page_ActeurManagement></Page_ActeurManagement>}/>
 
         <Route path='/groepen' element={<GroepManagement />} />
 
