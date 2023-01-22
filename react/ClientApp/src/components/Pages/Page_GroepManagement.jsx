@@ -23,7 +23,7 @@ const GroepManagement = () => {
     const [triggerShow, setTriggerShow] = useState();
     const [triggerActor, setTriggerActor] = useState();
     const [group, setGroup] = useState();
-    
+    const navigate = useNavigate();
 
     
     
@@ -92,7 +92,7 @@ const GroepManagement = () => {
             <PopUpActeurToevoegenAanShow trigger={triggerActor} setTrigger={setTriggerActor} group={group}></PopUpActeurToevoegenAanShow>
 
             
-
+            <button id="button" onClick={() => { navigate('/admin') }}>Terug naar adminportaal</button>
         </div>
     )
 }

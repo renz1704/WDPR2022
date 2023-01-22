@@ -1,9 +1,11 @@
 ﻿import React, { useState, useEffect } from 'react';
 import PerformanceGastLijst from "../PerformanceGastLijst";
+import { useNavigate } from 'react-router-dom';
 
 function Page_Gastlijsten() {
 
     const [performances, setPerformances] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch('http://localhost:5001/api/Performance/performances')
@@ -30,7 +32,9 @@ function Page_Gastlijsten() {
                     />
                 ))}
             </ul>
+            <button id="button" onClick={() => { navigate('/admin') }}>Terug naar adminportaal</button>
         </div>
+        
     );
 }
 

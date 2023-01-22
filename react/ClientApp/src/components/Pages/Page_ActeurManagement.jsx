@@ -2,6 +2,7 @@ import { Button } from "@mui/material"
 import ResponsiveAppBar from "../BezoekersPortaalHeader";
 import Acteur from "../Acteur";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Page_ActeurManagement = () => {
@@ -9,6 +10,7 @@ const Page_ActeurManagement = () => {
     const [name, setName] = useState();
     const[lastName, setLastname] = useState();
     const[stagename, setStagename] = useState();
+    const navigate = useNavigate();
 
     const [actors, setActors] = useState([]);
     useEffect(() => {
@@ -41,7 +43,7 @@ const Page_ActeurManagement = () => {
         
 <br></br>
         <Button variant="contained" onClick={addActor}> Acteur Aanmaken</Button>
-        
+        <button id="button" onClick={() => { navigate('/admin') }}>Terug naar adminportaal</button>
 
         <h1>Lijst met acteurs: </h1>
         <div className="content-all-actors">
