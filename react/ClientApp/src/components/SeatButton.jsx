@@ -27,12 +27,10 @@ function SeatButton(props) {
     const [owned, setOwned] = useState(false)
     
     const buttonClick = async () => {
-        console.log("own: " + owned)
         if (await fetchSeatAvailability() === true)
             {
                 setOwned(true)
                 props.toggleSeat(props.seatId)
-                console.log("available")
             }
         else if (owned)
         {

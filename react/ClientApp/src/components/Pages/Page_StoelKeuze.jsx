@@ -174,8 +174,9 @@ function Page_StoelKeuze() {
         <h1 style={{ marginBottom: "2%" }}>
           Kies uw stoel(en) om een bestelling te plaatsen.
         </h1>
+        <p>Herlaad de pagina om te zien of er stoelen zijn vrijgekomen.</p>
 
-        <div>podiumfoto</div>
+        <tbody><tr><td>-Podium-</td></tr></tbody>
         {/*seatbuttons worden per row aangemaakt ze krijgen mee:
                  seatnumber = nummer van de stoel
                  toggleseat = een methode om de stoel in/uit de lijst selectedSeats te zetten
