@@ -89,7 +89,6 @@ public class ReservationController : ControllerBase
         var reservation = await _context.Reservations
             .Include(r => r.Payment)
             .SingleOrDefaultAsync(r => r.Id == reservationId);
-
         if (reservation == null)
         {
             return NotFound("The provided reservation ID is invalid.");
@@ -105,7 +104,7 @@ public class ReservationController : ControllerBase
         reservation.Payment = payment;
         await _context.SaveChangesAsync();
 
-        return NoContent();
+        return Ok();
     }
 
 
