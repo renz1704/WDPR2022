@@ -59,7 +59,7 @@ function Page_Betaling() {
         let price = 0;
         data.map(reservation => {
           reservation.tickets.map(ticket => {
-            price += parseInt(ticket.Price);
+            price += ticket.price;
           });
         });
         
@@ -93,7 +93,7 @@ function Page_Betaling() {
 
       for(const reservation of reservations){
         console.log(reservation)
-        await addPaymentToReservation(data.Id, reservation.Id);
+        await addPaymentToReservation(data.id, reservation.id);
       }
       
     } catch (error) {
@@ -103,7 +103,8 @@ function Page_Betaling() {
 
   const addPaymentToReservation = async (paymentId, reservationId) => {
     try {
-      const response = await fetch(`https://localhost:7293/api/Reservation/addpaymenttoreservation/${paymentId}/${reservationId}`, {
+      const url = "https://localhost:7293/api/Reservation/addpaymenttoreservation/" + reservationId + "/" + paymentId
+      const response = await fetch(url, {
         method: 'POST'
       });
       const data = await response.json();
