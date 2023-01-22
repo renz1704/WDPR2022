@@ -10,7 +10,7 @@ function ShowOrder(props) {
     }
     useEffect(() => {
         if (props.seats && props.performance) {
-            setTotalPrice(props.seats.length * props.performance.price);
+            setTotalPrice(Math.round(props.seats.length * props.performance.price));
         }
     }, [props.seats, props.performance]);
 

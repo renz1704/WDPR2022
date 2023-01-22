@@ -5,7 +5,7 @@ public interface ITheaterDbContext
     DbSet<Donation> Donations { get; set; }
     DbSet<Genre> Genres { get; set; }
     DbSet<Group> Groups { get; set; }
-    DbSet<Payment> Payment { get; set; }
+    DbSet<Payment> Payments { get; set; }
     DbSet<Performance> Performances { get; set; }
     DbSet<Reservation> Reservations { get; set; }
     DbSet<Room> Rooms { get; set; }
