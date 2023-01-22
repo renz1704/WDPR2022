@@ -96,7 +96,7 @@ function Page_Winkelmand() {
                             <button onClick={()=>deleteReservation(reservation.id)}>Verwijder</button>
                         </tr>
                         <tr>
-                            Totaal: €{reservation.tickets.reduce((total, ticket) => total + ticket.price, 0)}
+                            Totaal: €{Math.round(reservation.tickets.reduce((total, ticket) => total + ticket.price, 0))}
                         </tr>
                         <br></br>
                         </tbody>
@@ -105,7 +105,7 @@ function Page_Winkelmand() {
                 </div>
 
                 <div className="flex-container-vertical">
-                    <p>Totaalprijs alle shows: €{totalPrice}</p>
+                    <p>Totaalprijs alle shows: €{Math.round(totalPrice)}</p>
                     <button id="button" target="_blank" onClick={payButtonClicked}>Naar betalen</button>
                 </div>
                 
