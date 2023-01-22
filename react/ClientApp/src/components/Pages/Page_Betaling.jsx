@@ -93,7 +93,7 @@ function Page_Betaling() {
 
       for(const reservation of reservations){
         console.log(reservation)
-        await addPaymentToReservation(data.id, reservation.id);
+        await addPaymentToReservation(reservation.id, data.id);
       }
       
     } catch (error) {
@@ -101,13 +101,13 @@ function Page_Betaling() {
     }
   }
 
-  const addPaymentToReservation = async (paymentId, reservationId) => {
+  const addPaymentToReservation = async (reservationId, paymentId) => {
     try {
       const url = "https://localhost:7293/api/Reservation/addpaymenttoreservation/" + reservationId + "/" + paymentId
       const response = await fetch(url, {
         method: 'POST'
       });
-      const data = await response.json();
+      const data = await response;
       console.log(data);
     } catch (error) {
       console.error(error);
