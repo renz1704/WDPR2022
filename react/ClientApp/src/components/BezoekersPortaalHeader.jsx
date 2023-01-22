@@ -13,6 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import UserService from "../services/UserService";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 import Logo from '../pictures/logo.png';
@@ -40,6 +41,13 @@ function ResponsiveAppBar() {
 
   const handleCloseNavMenu2 = () => {
     setAnchorElNav2(null);
+  };
+
+  const handleLogout = () => {
+    if (window.confirm("Weet je zeker dat je wilt uitloggen?")) {
+      UserService.logout();
+      window.location.reload();
+    }
   };
 
   return (
@@ -85,7 +93,7 @@ function ResponsiveAppBar() {
                 <Button size='large' variant="text"><Link className='nav' to="/tickets">Orders bekijken</Link></Button>
                 <Button size='large' variant="text"><Link className='nav' to="/tickets">Tickets overzetten</Link></Button>
                 <Button size='large' variant="text"><Link className='nav' to="/doneren">Doneren</Link></Button>
-              </div>
+                </div>
             </Menu>
           </Box>
 
@@ -128,8 +136,12 @@ function ResponsiveAppBar() {
               onClick={handleOpenNavMenu}
               color="black"
             >
-              <AccountCircleIcon />
             </IconButton>
+            {UserService.isLoggedIn() ? (
+              <li className="User">
+                <Button className="logout" variant='contained' onClick={handleLogout}>Uitloggen</Button>
+              </li>
+            ) : ("")}
           </Box>
 
 
@@ -140,7 +152,11 @@ function ResponsiveAppBar() {
             <li><a><Button variant="text"><Link to="/gegevens">Gegevens</Link></Button></a></li>
             <li><a><Button variant="text"><Link to="/tickets">Tickets</Link></Button></a></li>
             <li><a><Button variant="text"><Link to="/doneren">Doneren</Link></Button></a></li>
-
+            {UserService.isLoggedIn() ? (
+              <li className="User">
+                <Button className="logout beg" variant='contained' onClick={handleLogout}>Uitloggen</Button>
+              </li>
+            ) : ("")}
           </Box>
 
 
