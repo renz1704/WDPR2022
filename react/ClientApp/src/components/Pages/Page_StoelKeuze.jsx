@@ -129,11 +129,15 @@ function Page_StoelKeuze() {
     if (selectedSeats.length < 1) {
       setpopUpMessage("Kies minstens 1 stoel om een bestelling te plaatsen.");
       setShowPopUp(true);
+    
     } else if (selectedSeats.length > 25) {
-      setpopUpMessage(
-          "Het is niet toegestaan om meer dan 25 stoelen te kiezen."
-      );
+      setpopUpMessage("Het is niet toegestaan om meer dan 25 stoelen te kiezen.");
       setShowPopUp(true);
+    
+    } else if (UserService.getUser() === null) {
+      setpopUpMessage("Log in om een bestelling te plaatsen.");
+      setShowPopUp(true);
+    
     } else {
       await createReservation()
           .then(response => {
@@ -200,6 +204,7 @@ function Page_StoelKeuze() {
             />
           </div>
           <div>
+            <p>Zorg ervoor dat u ingelogd bent voordat u besteld.</p>
             <button
               style={{
                 width: "300px",
