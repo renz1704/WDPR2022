@@ -21,14 +21,27 @@ const GroepManagement = () => {
 
             <h1>Lijst met groepen</h1>
 
-            <div className="group-list-content">
-            {groups.map (group => {
-            return (
+            <table class="styled-table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Naam</th>
+            <th>Beschrijving</th>
+            <th>Link naar website</th>
+            <th>Afbeelding</th>
+            <th>Acties</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {groups.map( group => {
+            return(
                 <Groep group={group}></Groep>
             )
         })}
-
-            </div>
+        
+    </tbody>
+</table>
 
         </div>
     )
