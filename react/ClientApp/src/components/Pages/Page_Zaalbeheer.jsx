@@ -35,6 +35,8 @@ function Page_Zaalbeheer() {
                 <div>overzicht</div>
             </div>
 
+            <button id="button" onClick={() => { navigate('/admin') }}>Terug naar adminportaal</button>
+
         </div>
     )
 }

@@ -58,7 +58,7 @@ public class DonationController : ControllerBase
 
     [HttpGet]
     [Route("getDonationTokenUser")]
-    public async Task <ActionResult<String>> getDonationTokenUser([FromQuery] string email)
+    public async Task<ActionResult<String>> getDonationTokenUser([FromQuery] string email)
     {
 
         var _user = await _userManager.FindByEmailAsync(email);
@@ -67,7 +67,6 @@ public class DonationController : ControllerBase
         string donationToken = (visitor.DonationToken);
 
         return donationToken;
-        // return new TokenDTO{token = visitor.DonationToken};
     }
 
 
@@ -76,17 +75,17 @@ public class DonationController : ControllerBase
     public async Task<ActionResult<donationListener>> DonatieListener([FromBody] donationListener donationListenerModel)
     {
 
-        var _user = await _userManager.FindByEmailAsync(donationListenerModel.email);
+        var _user = await _userManager.FindByEmailAsync(donationListenerModel.Email);
         if (_user == null) return Unauthorized();
 
         var visitor = await _context.Visitors.Where(v => v.IdentityUser.Id == _user.Id).FirstOrDefaultAsync();
 
 
-        visitor.Donations.Add(new Donation(visitor.Id, donationListenerModel.amount));
+        visitor.Donations.Add(new Donation(visitor.Id, donationListenerModel.Hoeveelheid));
         _context.SaveChanges();
 
 
-        Console.WriteLine(donationListenerModel.email + donationListenerModel.amount + donationListenerModel.naam);
+        Console.WriteLine(donationListenerModel.Email + donationListenerModel.Hoeveelheid + donationListenerModel.Naam);
 
         return donationListenerModel;
 
@@ -94,8 +93,9 @@ public class DonationController : ControllerBase
 
 }
 
-public class TokenDTO {
-    public string token {get;set;}
+public class TokenDTO
+{
+    public string token { get; set; }
 }
 
 public class donationTokenModel
@@ -106,7 +106,7 @@ public class donationTokenModel
 
 public class donationListener
 {
-    public String email { get; set; }
-    public Double amount { get; set; }
-    public String naam { get; set; }
+    public String Email { get; set; }
+    public Double Hoeveelheid { get; set; }
+    public String Naam { get; set; }
 }
