@@ -7,7 +7,7 @@ import UserService from "../../services/UserService";
 
 function Page_Betaling() {
 
-  const [totalPrice, setTotalPrice] = useState('');
+  const [totalPrice, setTotalPrice] = useState();
   const [html, setHtml] = useState('');
   const navigate = useNavigate();
 
@@ -55,6 +55,17 @@ function Page_Betaling() {
         const data = await response.json();
         setReservations(data);
         console.log(data)
+        
+        let price = 0;
+        data.map(reservation => {
+          reservation.tickets.map(ticket => {
+            price += parseInt(ticket.Price);
+          });
+        });
+        
+        console.log(price)
+        setTotalPrice((price).toFixed(2));
+
       } catch (error) {
         console.error("Error fetching reservations:", error);
       }
@@ -70,7 +81,7 @@ function Page_Betaling() {
     };
     
     try {
-      const response = await fetch('https://localhost:7293/api/payment/createpayment', {
+      const response = await fetch('https://localhost:7293/api/Payment/createpayment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -81,6 +92,7 @@ function Page_Betaling() {
       console.log(data);
 
       for(const reservation of reservations){
+        console.log(reservation)
         await addPaymentToReservation(data.Id, reservation.Id);
       }
       
@@ -108,6 +120,7 @@ function Page_Betaling() {
       <p>
         <button id="button" onClick={cancelRoute}>Terug naar winkelmand</button>
       </p>
+      {"Totaal: " + totalPrice}
       <p>
         <button onClick={makePayment}>Betaal zonder api van school</button>
       </p>

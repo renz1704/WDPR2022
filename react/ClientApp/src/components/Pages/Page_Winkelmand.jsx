@@ -64,9 +64,18 @@ function Page_Winkelmand() {
     };
 
     const totalPrice = reservations.reduce((acc, reservation) => {
+        const ticketCount = reservation.tickets.length;
+        let discount = 0;
+        if (ticketCount >= 10) {
+            discount = 0.4;
+        } else if (ticketCount >= 5) {
+            discount = 0.2;
+        }
+        
         return acc + reservation.tickets.reduce((acc, ticket) => {
             return acc + ticket.price;
-        }, 0);
+        }, 0) * (1 - discount);
+        
     }, 0);
 
     return (
