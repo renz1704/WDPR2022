@@ -18,6 +18,7 @@ function Page_AdminPortaal() {
                 <button id="button" onClick={() => { navigate('/gastlijsten') }}>Gastlijsten</button>
                 <button id="button" onClick={() => { navigate('/programmeringuploaden') }}>Programmering uploaden</button>
                 <button id="button" onClick={() => { navigate('/groepen') }}>Groepmanagement</button>
+                <button id="button" onClick={() => { navigate('/acteurmanagement') }}>Acteurmanagement</button>
             </body>
 
         </>

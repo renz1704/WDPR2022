@@ -77,6 +77,20 @@ public class PerformanceController : ControllerBase
     public async Task<ActionResult<List<Performance>>> getPerformancesFilteredGenre(string genre){
         return _context.Performances.Where(p => p.Show.Genres.Any(g => g.GenreName == genre)).Include(p => p.Show).Include(p => p.Show.Genres).ToList();
     }
+    
+    [HttpGet]
+    [Route("performance/{id}")]
+    public async Task<ActionResult<Performance>> GetPerformanceById(int id) {
+        var performance = await _context.Performances
+            .Include(p => p.Show)
+            .Include(p => p.Room)
+            .FirstOrDefaultAsync(p => p.Id == id);
+        if (performance == null) {
+            return NotFound();
+        }
+        return Ok(performance);
+    }
+
 
 
 

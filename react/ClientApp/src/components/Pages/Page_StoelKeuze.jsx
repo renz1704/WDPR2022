@@ -1,35 +1,42 @@
-﻿import React, { useState, useEffect } from "react";
+﻿import React, {useEffect, useState} from "react";
 import ShowOrder from "../ShowOrder";
 import Header from "../Header";
 import Footer from '../Footer';
 import SeatButton from "../SeatButton";
-import { useNavigate } from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import PopUp from "../PopUp";
-import axios from 'axios';
-
+import UserService from "../../services/UserService";
+import axios from "axios";
 
 
 function Page_StoelKeuze() {
+  
+  const location = useLocation();
+  const performance = location.state.performance;
 
+  
   {/*seats is een lijst van stoelen per rij*/ }
   const [seats, setSeats] = useState([]);
   const [seatNumber, setSeatNumber] = useState([]);
   {/*ipv room/1 moet hier bijv props.room worden gebruikt*/ }
   useEffect(() => {
-    fetch('https://localhost:7293/api/Room/3')
-      .then(response => response.json())
-      .then(data => {
-        console.log(data)
-        const Seats = data.rows.map(row => row.seats.map(seat => seat.id));
-        setSeats(Seats);
-      });
+    async function fetchData() {
+      fetch(`https://localhost:7293/api/Room/${performance.room.id}`)
+          .then(response => response.json())
+          .then(data => {
+            const Seats = data.rows.map(row => row.seats.map(seat => seat.id));
+            setSeats(Seats);
+          });
+    }
+    fetchData();
   }, []);
 
   {
     /*selectedSeats zijn de stoelen die de gebruiker kiest om te kopen*/
   }
   const [selectedSeats, setSelectedSeat] = useState([]);
-
+  const [ticketsIds, setTicketsIds] = useState([]);
+  
   const toggleSeat = (seatId) => {
     {
       /*dit checkt of het nummer van de stoel al geselecteerd is als dit niet zo is wordt de stoel toegevoegd aan de lijst*/
@@ -49,18 +56,11 @@ function Page_StoelKeuze() {
   const addTicket = (seatId) => {
     const ticketDto = {
       SeatId: seatId,
-      PerformanceId: 1,
-      Price: 20.0,
+      PerformanceId: performance.id,
+      Price: performance.price,
       isTransfered: false
     };
-//ReservationId: 1,
-//     axios.post('http://localhost:7293/api/Ticket/createticket', { ticket: ticketDto })
-//         .then(() => {
-//           console.log('Ticket created successfully!');
-//         })
-//         .catch((error) => {
-//           console.error(error);
-//         });
+
     fetch("http://localhost:5001/api/Ticket/createticket", {
       method: 'POST',
       headers: {
@@ -70,32 +70,47 @@ function Page_StoelKeuze() {
       body: JSON.stringify(ticketDto)
     })
         .then(response => response.json())
-        .then(response => console.log(response))
+        .then(response => setTicketsIds(prevIds => [...prevIds, response.id]))
   };
 
   const deleteTicket = (seatId) => {
     fetch(
-      "https://localhost:7293/api/Ticket/deleteticketwithseatid?seatid=" +
-      seatId,
-      {
-        method: "DELETE",
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(),
-      }
-    )
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Error ${response.status} : ${response.statusText}`);
+        "https://localhost:7293/api/Ticket/deleteticketwithseatid?seatid=" +
+        seatId,
+        {
+          method: "DELETE",
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(),
         }
-        return response.json();
-      })
-      .catch((error) => {
-        console.log("An error occurred:", error);
-      });
+    )
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`Error ${response.status} : ${response.statusText}`);
+          }
+          const newTicketsIds = ticketsIds.filter(id => id !== response.id);
+          setTicketsIds(newTicketsIds);
+          return response.json();
+        })
+        .catch((error) => {
+          console.log("An error occurred:", error);
+        });
   };
+
+
+
+  const createReservation = async () => {
+    try {
+
+      const response = axios.post(`https://localhost:7293/api/Reservation/createreservation?userId=${UserService.getUser().id} `, ticketsIds)
+      return await response.json();
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+
 
   {
     /*showPopUp wordt gebruikt om de popup te tonen
@@ -110,16 +125,21 @@ function Page_StoelKeuze() {
   }
   const navigate = useNavigate();
 
-  const onNextButtonClick = () => {
+  const onNextButtonClick = async () => {
     if (selectedSeats.length < 1) {
       setpopUpMessage("Kies minstens 1 stoel om een bestelling te plaatsen.");
       setShowPopUp(true);
     } else if (selectedSeats.length > 25) {
       setpopUpMessage(
-        "Het is niet toegestaan om meer dan 25 stoelen te kiezen."
+          "Het is niet toegestaan om meer dan 25 stoelen te kiezen."
       );
       setShowPopUp(true);
     } else {
+      await createReservation()
+          .then(response => {
+            console.log(ticketsIds)
+            console.log(response);
+          });
       navigate("/winkelmand");
     }
   }
@@ -135,8 +155,9 @@ function Page_StoelKeuze() {
         <h1 style={{ marginBottom: "2%" }}>
           Kies uw stoel(en) om een bestelling te plaatsen.
         </h1>
+        <p>Herlaad de pagina om te zien of er stoelen zijn vrijgekomen.</p>
 
-        <div>podiumfoto</div>
+        <tbody><tr><td>-Podium-</td></tr></tbody>
         {/*seatbuttons worden per row aangemaakt ze krijgen mee:
                  seatnumber = nummer van de stoel
                  toggleseat = een methode om de stoel in/uit de lijst selectedSeats te zetten
@@ -156,6 +177,7 @@ function Page_StoelKeuze() {
                         seatName={seatNumber}
                         toggleSeat={toggleSeat}
                         isHighlighted={selectedSeats.includes(seatId)}
+                        performanceId={performance.id}
                       />
                     </td>
                   ))}
@@ -174,6 +196,7 @@ function Page_StoelKeuze() {
               toggleSeat={toggleSeat}
               seats={selectedSeats}
               canEdit={true}
+              performance={performance}
             />
           </div>
           <div>

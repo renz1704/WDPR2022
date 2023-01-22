@@ -35,4 +35,21 @@ public class SeatController : Controller
         _context.SaveChanges();
         return CreatedAtAction("Get", new { id = seat.Id }, seat);
     }
+    
+    [HttpGet]
+    [Route("checkseatavailability")]
+    public async Task<IActionResult> CheckSeatAvailability(int seatId, int performanceId)
+    {
+        var existingTicket = await _context.Tickets
+            .FirstOrDefaultAsync(t => t.Seat.Id == seatId && t.Performance.Id == performanceId);
+
+
+        if (existingTicket != null)
+        {
+            return Ok(false);
+        }
+
+        return Ok(true);
+    }
+
 }

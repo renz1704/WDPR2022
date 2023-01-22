@@ -63,6 +63,14 @@ public class ShowController
         return await _context.Shows.ToListAsync();
     }
 
+    [HttpGet]
+    [Route("getPerformances")]
+    public async Task<ActionResult<List<Performance>>> getPerformancesById(int id)
+    {
+        return await _context.Performances.Where(p => p.Show.Id == id).ToListAsync();
+
+    }
+
 
 
 }
