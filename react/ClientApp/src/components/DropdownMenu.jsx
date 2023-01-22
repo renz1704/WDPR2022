@@ -6,18 +6,18 @@ function DropdownMenu(props) {
     const toggleMenu = () => setIsOpen((value) => !value);
 
     const [optionPicked, setOptionPicked] = useState(props.options[0])
-    
+
     const onOptionClicked = (item) => {
         setOptionPicked(item)
         toggleMenu()
         props.optionClicked(item)
     }
-    
+
     return (
         <div>
             <button onClick={toggleMenu}>{props.type}: {optionPicked}</button>
             {isOpen && (
-                <ul style={{position:"absolute", display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center"}}>
+                <ul style={{ position: "absolute", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
                     {/*dit maakt een item aan in de dropdown 
                     voor elk item in options (een lijst van de parent)*/}
                     {props.options.map((item, index) => {

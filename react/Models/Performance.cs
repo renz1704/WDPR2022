@@ -1,33 +1,15 @@
 ﻿public class Performance
 {
-    private readonly TheaterDbContext _context;
-
     public Performance(int showId, int roomId, TheaterDbContext context)
     {
-        RoomId = roomId;
-        ShowId = showId;
-        _context = context;
+        Room = context.Rooms.Find(roomId);
+        Show = context.Shows.Find(showId);
     }
 
     public int Id { get; set; }
-    public int ShowId { get; private set; }
-    public int RoomId { get; private set; }
+    public double Price {get;set;}
     public DateTime StartTime { get; set; }
     public DateTime EndTime { get; set; }
-
-    public virtual Show Show 
-    {
-        get
-        {
-            return _context.Shows.Find(ShowId);
-        }
-    }
-
-    public virtual Room Room 
-    {
-        get
-        {
-            return _context.Rooms.Find(RoomId);
-        }
-    }
+    public virtual Show Show { get; private set; }
+    public virtual Room Room { get; private set; }
 }

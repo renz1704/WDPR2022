@@ -1,81 +1,98 @@
+import { useEffect } from "react";
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+import Groep from "../Groep";
+import '../../styles/Groep.css'
+
+import Image from '../../pictures/groep.jpg'
+
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import PopUpGroepToevoegenAanShow from "../PopUpGroepToevoegenAanShow";
+import PopUpActeurToevoegenAanShow from "../PopUpActeurToevoegenAanShow";
+
 
 const GroepManagement = () => {
 
-    const [name, setName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const[groupName, setGroupName] = useState("");
-    const[artistId, setArtistId] = useState();
-    const [groupId, setGroupId] = useState();
+    const [groups, setGroups] = useState([]);
+    
 
-    const createArtist = () => {
-        fetch('https://localhost:7293/api/group/createartist', {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-    body: JSON.stringify({FirstName: name, LastName: lastName})
-    })
-    .then(response => response.json())
-    .then(response => console.log(JSON.stringify(response)))
+    const [triggerShow, setTriggerShow] = useState();
+    const [triggerActor, setTriggerActor] = useState();
+    const [group, setGroup] = useState();
+    
+
+    
+    
+    useEffect( () => {
+        axios.get('https://localhost:7293/api/Group/getGroups')
+        .then(res => setGroups(res.data))
+    },[])
+
+    const deleteGroup = (id) => {
+        axios.delete(`https://localhost:7293/api/Group/deleteGroup?id=${id}`)
+        window.location.reload(false);
     }
 
-    const createGroup = () => {
-        fetch('https://localhost:7293/api/group/creategroup',
-        {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-type' : 'application/json'
-
-            },
-            body: JSON.stringify({Name: groupName})
+    const addToShow = (id) => {
+        
+        axios.post(`https://localhost:7293/api/Group/addToShow`, {
+            "groupId": id,
+            "showId": 1
+        
         })
-        .then(response => response.json())
-        .then(response => console.log(JSON.stringify(response)))
-    }
-
-    const assignGroup = () => {
-        fetch(`https://localhost:7293/api/group/addtogroup?artistId=${artistId}&groupId=${groupId}
-        `,
-        {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-type' : 'application/json'
-
-            }
-        })        .then(response => response.json())
-        .then(response => console.log(JSON.stringify(response)))
     }
 
     return (
         <div>
-            <h1>Create An Artist</h1>
-            <p>name</p>
-            <input onChange={(e) => setName(e.target.value)}></input>
-            <p>last name</p>
-            <input onChange={(e) => setLastName(e.target.value)}></input>
-            <button onClick={createArtist}>Create User</button>
-            <br>
-            </br>
-            <br>
-            </br>
-            <h1>Create a new group</h1>
-            <p>Groupname</p>
-            <input onChange={(e) => setGroupName(e.target.value)}></input>
-            <button onClick={createGroup}>Create group</button>
-            <br>
-            </br>
-            <br>
-            </br>
-            <h1>Assign group to artist</h1>
-            <p>User Id</p>
-            <input onChange={(e) => setArtistId(e.target.value)}></input>
-            <p>Group Id</p>
-            <input onChange={(e) => setGroupId(e.target.value)}></input>
-            <button onClick={assignGroup}>Assign group</button>
+
+            <h1>Groepmanagement</h1>
+            
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Naam</th>
+                        <th>Beschrijving</th>
+                        <th>Link naar website</th>
+                        <th>Afbeelding</th>
+                        <th>Acties</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+
+                    {groups.map( group => {
+                        return(
+                            <tr>
+                            <td>{group.id}</td>
+                            <td> {group.name}</td>
+                            <td> {group.description}</td>
+                            <th> <a href={group.websiteUrl}>{group.websiteUrl}</a></th>
+                            <th> <img src= {Image}></img></th>
+                            <th> 
+                            <Button variant='contained' onClick={() => {setTriggerShow(true); setGroup(group)}}>Toevoegen aan show</Button> 
+                            <Button variant='contained' onClick={() => {setTriggerActor(true); setGroup(group)}}>Acteur toevoegen</Button>
+                            <Button variant='contained' sx={{backgroundColor:'red'}} onClick={ () => {deleteGroup(group.id)}}>Verwijderen</Button>
+                            </th>
+                            
+                    </tr>
+                        )  
+                    })}
+
+
+                    
+                </tbody>
+            </table>
+
+            <PopUpGroepToevoegenAanShow trigger={triggerShow} setTrigger={setTriggerShow} group={group}></PopUpGroepToevoegenAanShow>
+            <PopUpActeurToevoegenAanShow trigger={triggerActor} setTrigger={setTriggerActor} group={group}></PopUpActeurToevoegenAanShow>
+
+            
+
         </div>
     )
 }

@@ -37,6 +37,10 @@ import RegisterPage from './components/Pages/Login-and-Register/Register';
 import GroepManagement from './components/Pages/Page_GroepManagement';
 import Page_UploadSchedule from './components/Pages/Page_UploadSchedule';
 import Page_AccountGegevens from './components/Pages/BezoekersPortaal/Page_AccountGegevens';
+import Page_Gastlijsten from "./components/Pages/Page_Gastlijsten";
+import Page_MeerInfo from './components/Pages/Page_MeerInfo'
+import Page_CalendarBooking from './components/Pages/Page_CalendarBooking';
+import Page_ActeurManagement from './components/Pages/Page_ActeurManagement';
 
 
 const rootElement = document.getElementById('root');
@@ -58,6 +62,8 @@ root.render(
         <Route path='/voorstellingen' element={<Page_Voorstellingen />} />
         <Route path='/voorstellingInfo' element={<Page_VoorstellingInfo />} />
         <Route path='/stoelKeuze' element={<Page_StoelKeuze />} />
+        <Route path='/meerinfo' element={<Page_MeerInfo></Page_MeerInfo>}/>
+        <Route path='/showcalendar' element={<Page_CalendarBooking></Page_CalendarBooking>}/>
 
         <Route path='/winkelmand' element={<Page_Winkelmand />} />
         <Route path='/betaling' element={<Page_Betaling />} />
@@ -68,6 +74,8 @@ root.render(
         <Route path='/admin' element={<Page_AdminPortaal />} />
         <Route path='/zaalbeheer' element={<Page_Zaalbeheer />} />
         <Route path='/donatieBeheer' element={<Page_DonatieBeheer />} />
+        <Route path='/gastlijsten' element={<Page_Gastlijsten />} />
+        <Route path='/acteurmanagement' element ={<Page_ActeurManagement></Page_ActeurManagement>}/>
 
         <Route path='/groepen' element={<GroepManagement />} />
 

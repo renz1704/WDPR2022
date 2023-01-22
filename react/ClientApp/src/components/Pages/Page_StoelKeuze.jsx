@@ -1,98 +1,116 @@
-﻿import React, { useState, useEffect } from "react";
+﻿import React, {useEffect, useState} from "react";
 import ShowOrder from "../ShowOrder";
 import Header from "../Header";
+import Footer from '../Footer';
 import SeatButton from "../SeatButton";
-import { useNavigate } from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import PopUp from "../PopUp";
+import UserService from "../../services/UserService";
+import axios from "axios";
 
 
+function Page_StoelKeuze() {
+  
+  const location = useLocation();
+  const performance = location.state.performance;
 
-function Page_StoelKeuze(){
-
-    {/*seats is een lijst van stoelen per rij*/}
-    const [seats, setSeats] = useState([]);
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    const [seatNumber, setSeatNumber] = useState([]); 
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    {/*ipv room/1 moet hier bijv props.room worden gebruikt*/}
-    useEffect(() => {
-        fetch('https://localhost:7293/api/Room/3')
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                const Seats = data.rows.map(row => row.seats.map(seat => seat.id));
-                setSeats(Seats);
-            });
-    }, []);
+  
+  {/*seats is een lijst van stoelen per rij*/ }
+  const [seats, setSeats] = useState([]);
+  const [seatNumber, setSeatNumber] = useState([]);
+  {/*ipv room/1 moet hier bijv props.room worden gebruikt*/ }
+  useEffect(() => {
+    async function fetchData() {
+      fetch(`https://localhost:7293/api/Room/${performance.room.id}`)
+          .then(response => response.json())
+          .then(data => {
+            const Seats = data.rows.map(row => row.seats.map(seat => seat.id));
+            setSeats(Seats);
+          });
+    }
+    fetchData();
+  }, []);
 
   {
     /*selectedSeats zijn de stoelen die de gebruiker kiest om te kopen*/
   }
-  const [selectedSeats, setSeat] = useState([]);
-
+  const [selectedSeats, setSelectedSeat] = useState([]);
+  const [ticketsIds, setTicketsIds] = useState([]);
+  
   const toggleSeat = (seatId) => {
     {
       /*dit checkt of het nummer van de stoel al geselecteerd is als dit niet zo is wordt de stoel toegevoegd aan de lijst*/
     }
     if (!selectedSeats.includes(seatId)) {
-      setSeat((oldArray) => [...oldArray, seatId]);
+        setSelectedSeat((oldArray) => [...oldArray, seatId]);
       addTicket(seatId);
     } else {
       {
         /*als dit wel zo is wordt de stoel uit de lijst gehaald*/
       }
-      setSeat(selectedSeats.filter((item) => item !== seatId));
+        setSelectedSeat(selectedSeats.filter((item) => item !== seatId));
       deleteTicket(seatId);
     }
   };
 
   const addTicket = (seatId) => {
-    fetch(
-      "https://localhost:7293/api/Ticket/createticketwithseatid?seatid=" +
-        seatId,
-      {
-        method: "POST",
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ seatId: seatId, performanceId: 1 }),
-      }
-    )
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Error ${response.status} : ${response.statusText}`);
-        }
-        return response.json();
-      })
-      .catch((error) => {
-        console.log("An error occurred:", error);
-      });
+    const ticketDto = {
+      SeatId: seatId,
+      PerformanceId: performance.id,
+      Price: performance.price,
+      isTransfered: false
+    };
+
+    fetch("http://localhost:5001/api/Ticket/createticket", {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(ticketDto)
+    })
+        .then(response => response.json())
+        .then(response => setTicketsIds(prevIds => [...prevIds, response.id]))
   };
 
   const deleteTicket = (seatId) => {
     fetch(
-      "https://localhost:7293/api/Ticket/deleteticketwithseatid?seatid=" +
+        "https://localhost:7293/api/Ticket/deleteticketwithseatid?seatid=" +
         seatId,
-      {
-        method: "DELETE",
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(),
-      }
-    )
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Error ${response.status} : ${response.statusText}`);
+        {
+          method: "DELETE",
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(),
         }
-        return response.json();
-      })
-      .catch((error) => {
-        console.log("An error occurred:", error);
-      });
+    )
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`Error ${response.status} : ${response.statusText}`);
+          }
+          const newTicketsIds = ticketsIds.filter(id => id !== response.id);
+          setTicketsIds(newTicketsIds);
+          return response.json();
+        })
+        .catch((error) => {
+          console.log("An error occurred:", error);
+        });
   };
+
+
+
+  const createReservation = async () => {
+    try {
+
+      const response = axios.post(`https://localhost:7293/api/Reservation/createreservation?userId=${UserService.getUser().id} `, ticketsIds)
+      return await response.json();
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+
 
   {
     /*showPopUp wordt gebruikt om de popup te tonen
@@ -107,16 +125,21 @@ function Page_StoelKeuze(){
   }
   const navigate = useNavigate();
 
-  const onNextButtonClick = () => {
+  const onNextButtonClick = async () => {
     if (selectedSeats.length < 1) {
       setpopUpMessage("Kies minstens 1 stoel om een bestelling te plaatsen.");
       setShowPopUp(true);
     } else if (selectedSeats.length > 25) {
       setpopUpMessage(
-        "Het is niet toegestaan om meer dan 25 stoelen te kiezen."
+          "Het is niet toegestaan om meer dan 25 stoelen te kiezen."
       );
       setShowPopUp(true);
     } else {
+      await createReservation()
+          .then(response => {
+            console.log(ticketsIds)
+            console.log(response);
+          });
       navigate("/winkelmand");
     }
   }
@@ -132,8 +155,9 @@ function Page_StoelKeuze(){
         <h1 style={{ marginBottom: "2%" }}>
           Kies uw stoel(en) om een bestelling te plaatsen.
         </h1>
+        <p>Herlaad de pagina om te zien of er stoelen zijn vrijgekomen.</p>
 
-        <div>podiumfoto</div>
+        <tbody><tr><td>-Podium-</td></tr></tbody>
         {/*seatbuttons worden per row aangemaakt ze krijgen mee:
                  seatnumber = nummer van de stoel
                  toggleseat = een methode om de stoel in/uit de lijst selectedSeats te zetten
@@ -150,24 +174,16 @@ function Page_StoelKeuze(){
                     >
                       <SeatButton
                         seatId={seatId}
+                        seatName={seatNumber}
                         toggleSeat={toggleSeat}
                         isHighlighted={selectedSeats.includes(seatId)}
+                        performanceId={performance.id}
                       />
                     </td>
                   ))}
                 </td>
               </tr>
             ))}
-            <SeatButton
-              seatId={1}
-              toggleSeat={toggleSeat}
-              isHighlighted={selectedSeats.includes(1)}
-            />
-            <SeatButton
-              seatId={2}
-              toggleSeat={toggleSeat}
-              isHighlighted={selectedSeats.includes(2)}
-            />
           </tbody>
         </div>
 
@@ -180,6 +196,7 @@ function Page_StoelKeuze(){
               toggleSeat={toggleSeat}
               seats={selectedSeats}
               canEdit={true}
+              performance={performance}
             />
           </div>
           <div>
@@ -195,6 +212,7 @@ function Page_StoelKeuze(){
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

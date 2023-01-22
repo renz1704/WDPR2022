@@ -1,19 +1,22 @@
 import React from 'react';
 import Header from '../Header';
+import Footer from '../Footer';
 
 function Page_Toegankelijkheid() {
 
     return (
         <>
             <Header />
-            <div>
+            <div style={{marginTop:'100px'}}>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam convallis tortor eget lorem efficitur pulvinar.
-                    Pellentesque feugiat erat id justo varius viverra a sit amet augue. In quis pharetra erat, ac rhoncus est. Curabitur pharetra sapien arcu,
-                    vitae pharetra elit sollicitudin mollis. Maecenas justo erat, vehicula id aliquam id, vehicula eget nibh. Curabitur eu elementum lacus. Morbi ex tellus,
-                    mattis et tellus ac, luctus facilisis est.
+                    Toegankelijkheid is een belangrijk aspect bij het ontwerpen van een website. Dit betekent dat de website toegankelijk moet zijn voor mensen met een beperking, zoals mensen met een visuele of auditieve beperking.
+
+                    Er zijn een aantal manieren waarop een theater website toegankelijk gemaakt kan worden. Ten eerste kan de website voorzien worden van alternatieven voor afbeeldingen, zoals tekstuele beschrijvingen of audio-beschrijvingen. Dit maakt de website toegankelijk voor mensen met een visuele beperking.
+
+                    Ten tweede kan de website voorzien worden van ondertiteling of gesproken tekst voor mensen met een auditieve beperking. Dit kan bijvoorbeeld gedaan worden door gebruik te maken van een screen reader, een programma dat de tekst op de website voorleest.
                 </p>
             </div>
+            <Footer />
         </>
     )
 

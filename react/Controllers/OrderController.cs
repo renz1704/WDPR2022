@@ -5,8 +5,8 @@ using Microsoft.EntityFrameworkCore;
 [Route("/api/[controller]")]
 public class OrderController : ControllerBase{
 
-    private readonly TheaterDbContext _context;
-    public OrderController(TheaterDbContext context)
+    private readonly ITheaterDbContext _context;
+    public OrderController(ITheaterDbContext context)
     {
         _context = context;
     }
@@ -15,10 +15,10 @@ public class OrderController : ControllerBase{
     [Route("getReservations")]
     public async Task<ActionResult<List<Reservation>>> GetReservations (string email)
     {
-        return await _context.Reservations.Include(r => r.Tickets).ThenInclude(t => t.Seat).ThenInclude(s => s.Row).
-        Include(r => r.Tickets).ThenInclude(t => t.Performance).
-        Include(r => r.Payment).Where(r => r.Visitor.IdentityUser.Email == email).ToListAsync();
-         
+        // return await _context.Reservations.Include(r => r.Tickets).ThenInclude(t => t.Seat).ThenInclude(s => s.Row).
+        // Include(r => r.Tickets).ThenInclude(t => t.Performance).
+        // Include(r => r.Payment).Where(r => r.Visitor.IdentityUser.Email == email).ToListAsync();
+        return new List<Reservation>();
     }
 }
 

@@ -6,12 +6,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using react.Controllers;
+
 
 var builder = WebApplication.CreateBuilder(args);
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 //New DbContext With Services
-
+builder.Services.AddScoped<ITheaterDbContext, TheaterDbContext>();
 
 builder.Services.AddDbContext<TheaterDbContext>(options => options
 .UseSqlite("Data source=Laak.db"));
@@ -31,6 +33,9 @@ builder.Services.AddSwaggerGen();
 
 
 // Add services to the container.
+
+
+
 
 
 builder.Services.AddAuthentication(opt =>

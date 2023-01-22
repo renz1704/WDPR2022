@@ -13,6 +13,14 @@ public class GroupController : ControllerBase
         _context = groupContext;
     }
 
+
+    [HttpGet]
+    [Route("getGroups")]
+    public async Task<ActionResult<List<Group>>> GetAll ()
+    {
+        return _context.Groups.ToList();
+    }
+    
     [HttpPost]
     [Route("creategroup")]
     public async Task<ActionResult<Group>> createGroup([FromBody] Group g)
@@ -20,13 +28,6 @@ public class GroupController : ControllerBase
         await _context.Groups.AddAsync(g);
         _context.SaveChanges();
         return g;
-    }
-
-    [HttpGet]
-    [Route("test")]
-    public async Task<ActionResult<Actor>> returnArtists()
-    {
-        return new Actor { Name = "Rashid", LastName = "Meda" };
     }
 
 
@@ -38,6 +39,29 @@ public class GroupController : ControllerBase
         _context.SaveChanges();
         Console.WriteLine(a.Name + " " + a.LastName + ": is created ");
         return a;
+    }
+
+    [HttpDelete]
+    [Route("deleteGroup")]
+    public async Task<ActionResult<Group>> deleteGroup (int id)
+    {
+
+        Group deletedGroup = await _context.Groups.FindAsync(id);
+
+        _context.Groups.Remove(deletedGroup);
+        await _context.SaveChangesAsync();
+        return deletedGroup;
+    }
+
+    [HttpPost]
+    [Route("addToShow")]
+    public async Task<ActionResult<Group>> addToShow (AddToGoupDTO add)
+    {
+        Show show = await _context.Shows.FindAsync(add.showId);
+        Group group = await _context.Groups.FindAsync(add.groupId);
+        show.Groups.Add(group);
+        await _context.SaveChangesAsync();
+        return group;
     }
 
 
@@ -59,5 +83,12 @@ public class GroupController : ControllerBase
         Group g = await findGroup(groupId);
         g.Actors.Add(await findArtist(artistId));
         _context.SaveChanges();
+    }
+
+
+
+    public class AddToGoupDTO{
+        public int groupId {get;set;}
+        public int showId {get;set;}
     }
 }

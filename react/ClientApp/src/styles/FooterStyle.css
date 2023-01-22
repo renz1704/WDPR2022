@@ -1,0 +1,87 @@
+.main-footer {
+    background-color: #2f60c1;
+    padding: 1rem;
+    margin-top: 2rem;
+    padding-top: 5rem;
+    color: #fff;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16rem;
+}
+
+.main-footer h3 {
+    color: rgb(255, 255, 255);
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    font-weight: bolder;
+    text-align: center;
+
+
+}
+
+.main-footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.main-footer a:hover {
+    color: #000000;
+}
+
+.main-footer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.main-footer li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .7rem;
+    margin-bottom: 1rem;
+}
+
+.main-footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.main-footer .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main-footer .col {
+    flex: 1;
+    margin-bottom: 1rem;
+}
+
+.opening {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+}
+
+.opening li {
+    margin-bottom: 1rem;
+    margin:.9rem auto;
+}
+
+.sm{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.sm a:hover{
+    color: rgb(0, 0, 0);
+}

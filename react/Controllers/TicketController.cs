@@ -1,17 +1,16 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-
-
-
 
 [ApiController]
 [Route("api/[controller]")]
 
 public class TicketController : ControllerBase
 {
-    TheaterDbContext _context;
+    ITheaterDbContext _context;
+    private readonly UserManager<IdentityUser> _userManager;
 
-    public TicketController(TheaterDbContext context)
+    public TicketController(ITheaterDbContext context)
     {
         _context = context;
     }
@@ -53,27 +52,30 @@ public class TicketController : ControllerBase
         return Ok(ticket);
     }
 
-
     [HttpPost]
-    [Route("createticketwithseatid")]
-    public IActionResult CreateTicketWithSeatId(int seatId, [FromBody] TicketDTO ticketDTO)
+    [Route("createticket")]
+    public IActionResult CreateTicket([FromBody] TicketDTO ticketDto)
     {
-        var seat = _context.Seats.SingleOrDefault(s => s.Id == seatId);
-        if (seat == null)
-        {
-            return NotFound();
-        }
+        Console.WriteLine(ticketDto);
+        var performance = _context.Performances.FirstOrDefault(p => p.Id == ticketDto.PerformanceId);
+        var seat = _context.Seats.FirstOrDefault(s => s.Id == ticketDto.SeatId);
+        //var reservation = _context.Reservations.FirstOrDefault(r => r.Id == ticketDto.ReservationId);
+
 
         var ticket = new Ticket
         {
-            Seat = _context.Seats.Where(s => s.Id == ticketDTO.SeatId).First(),
-            Performance = _context.Performances.Where(p => p.Id == ticketDTO.PerformanceId).First(),
-            isAvailable = true
+            Id = ticketDto.Id,
+            Price = ticketDto.Price,
+            Seat = seat,
+            Performance = performance,
+            //Reservation = reservation,
+            isTransfered = false
         };
 
         _context.Tickets.Add(ticket);
         _context.SaveChanges();
-        return CreatedAtAction("GetTicketById", new { id = ticket.Id }, ticket);
+
+        return Ok(ticket);
     }
 
     [HttpDelete]
@@ -98,39 +100,40 @@ public class TicketController : ControllerBase
         return NoContent();
     }
 
+    [HttpPost]
+    [Route("transferTicket")]
+    public IActionResult transferTicket([FromBody] TicketTransferDTO TicketTransferDTO)
+    {
+        var receiverIdentityUser = _userManager.FindByIdAsync(TicketTransferDTO.visitorIdReceiver);
+        var receiverVisitor = _context.Visitors.FirstOrDefaultAsync(x => x.IdentityUser.Id == TicketTransferDTO.visitorIdReceiver).Result;
+        var oldTicket = _context.Tickets.FirstOrDefault(t => t.Id == TicketTransferDTO.ticketId);
+        
+        if(receiverIdentityUser == null || receiverVisitor == null || oldTicket == null){
+            return BadRequest("Een van de opgegeven waarde is niet juist ingevuld.");
+        }
+
+        var newTicket = new TransferedTicket(oldTicket, receiverVisitor);
+
+        _context.SaveChanges();
+        return Ok();
+    }
+
+
     public class TicketDTO
     {
         public int Id { get; set; }
         public int SeatId { get; set; }
         public int PerformanceId { get; set; }
+        //public int ReservationId { get; set; }
+        public double Price { get; set; }
+        public Boolean isTransfered {get;set;}
+        
     }
 
-/*
-    [HttpPost]
-    [Route("/transferTicket")]
-    public async Task<ActionResult<Ticket>> TransferTicket (TicketTransferDTO transfer) {
-
-        Visitor owner = await _context.Visitors.FindAsync(transfer.emailOwner);
-
-        Visitor reveiver = await _context.Visitors.FindAsync(transfer.emailReceiver);
-
-        if(!(owner == null || reveiver == null))
-        {
-            Ticket oldTicket = await _context.Tickets.FindAsync(transfer.ticketId);
-            if(oldTicket != null)
-            {
-                Ticket ticket = new Ticket {Seat = oldTicket.Seat, Performance = oldTicket.Performance, isTransfered=true, Reservation = oldTicket.Reservation};
-                
-            }
-            
-        }
-
-    }
-
-*/
-    public class TicketTransferDTO{
-        public string emailOwner {get;set;}
-        public string emailReceiver {get;set;}
-        public int ticketId {get;set;}
+    public class TicketTransferDTO
+    {
+        public string visitorIdOwner { get; set; }
+        public string visitorIdReceiver { get; set; }
+        public int ticketId { get; set; }
     }
 }

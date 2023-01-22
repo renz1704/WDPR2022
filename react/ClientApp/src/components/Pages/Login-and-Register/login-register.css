@@ -99,3 +99,31 @@
 .list-icon.green{
     color: #0f0;
 }
+
+@media screen and (max-width: 514px) {
+    *{
+        font-size: .7rem;
+    }
+
+    .loginForm, .registerForm{
+        width: 320px;
+        margin-top: 100px;
+    }
+
+    .loginForm input, .registerForm input{
+        width: 250px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+
+    .validated, .not-validated{
+        font-size: 1.2rem;
+    }
+
+
+    .recap{
+        margin-top: 15px;
+        width: 300px;
+    }
+}
+    

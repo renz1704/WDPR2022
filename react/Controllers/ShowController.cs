@@ -7,10 +7,10 @@ using System.Text.RegularExpressions;
 [Route("api/[controller]")]
 public class ShowController
 {
-    private readonly TheaterDbContext _context;
+    private readonly ITheaterDbContext _context;
 
 
-    public ShowController(TheaterDbContext context)
+    public ShowController(ITheaterDbContext context)
     {
         _context = context;
     }
@@ -50,10 +50,25 @@ public class ShowController
     }
 
     [HttpGet]
-    [Route("getshows")]
-    public async Task<ActionResult<Show>> getShows(int id)
+    [Route("getshow")]
+    public async Task<ActionResult<Show>> getShow(int id)
     {
         return await _context.Shows.Include(s => s.Groups).Include(s => s.Genres).FirstOrDefaultAsync(s => s.Id == id);
+    }
+
+    [HttpGet]
+    [Route("getShows")]
+    public async Task<ActionResult<List<Show>>> getShows () 
+    {
+        return await _context.Shows.ToListAsync();
+    }
+
+    [HttpGet]
+    [Route("getPerformances")]
+    public async Task<ActionResult<List<Performance>>> getPerformancesById(int id)
+    {
+        return await _context.Performances.Where(p => p.Show.Id == id).ToListAsync();
+
     }
 
 

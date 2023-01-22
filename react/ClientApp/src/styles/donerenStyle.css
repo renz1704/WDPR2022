@@ -1,5 +1,4 @@
 .everything{
-    /* margin-top: 50px; */
     margin-top: 50px;
     display: flex;
     align-items: center;
@@ -13,6 +12,8 @@
 .hide-AfterToken {
     display: none;
 }
+
+
 
 #button{
     margin-top: 20px;
