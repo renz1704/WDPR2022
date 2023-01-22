@@ -195,6 +195,7 @@ function Page_StoelKeuze() {
                         seatName={seatNumber}
                         toggleSeat={toggleSeat}
                         isHighlighted={selectedSeats.includes(seatId)}
+                        performanceId={performance.id}
                       />
                     </td>
                   ))}

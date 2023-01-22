@@ -53,12 +53,7 @@ public class ReservationController : ControllerBase
             .ThenInclude(t => t.Performance)
             .Where(r => r.Visitor.Id == userId && r.Payment == null)
             .ToListAsync();
-
-
-
-
-
-
+        
         if (reservations == null)
         {
             return NotFound("No reservations found for the provided user ID.");
