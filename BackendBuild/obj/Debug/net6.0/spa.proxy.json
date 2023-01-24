@@ -1,0 +1,8 @@
+{
+"SpaProxyServer": {
+"ServerUrl": "",
+"LaunchCommand": "",
+"WorkingDirectory": "C:\\Users\\Remco van der Voort\\Documents\\GitHub\\WDPR2022\\BackendBuild",
+"MaxTimeoutInSeconds": "120"
+}
+}
