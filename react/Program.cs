@@ -15,8 +15,9 @@ var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 //New DbContext With Services
 builder.Services.AddScoped<ITheaterDbContext, TheaterDbContext>();
 
+// CREATE LOGIN wdpr WITH PASSWORD = 'W12345678!' GO
 builder.Services.AddDbContext<TheaterDbContext>(options => options
-.UseSqlite("Data source=Laak.db"));
+.UseSqlServer("Server=tcp:laakdbgoep6.database.windows.net,1433;Initial Catalog=laakDB;Persist Security Info=False;User ID=wdpr;Password=W12345678!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"));
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 {

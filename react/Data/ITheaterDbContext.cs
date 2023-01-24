@@ -16,6 +16,7 @@ public interface ITheaterDbContext
     DbSet<Actor> Actors { get; set; }
     DbSet<Employee> Employees { get; set; }
     DbSet<Visitor> Visitors { get; set; }
+    DbSet<Test> Tests { get; set; }
 
     int SaveChanges();
     void Update<T>(T entity) where T : class;

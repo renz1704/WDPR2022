@@ -8,7 +8,7 @@ public class TheaterDbContext : IdentityDbContext, ITheaterDbContext
 {
     public TheaterDbContext(DbContextOptions<TheaterDbContext> options) : base(options) { }
 
-	public void Update<T>(T entity) where T : class
+    public void Update<T>(T entity) where T : class
     {
         Entry(entity).State = EntityState.Modified;
     }
@@ -28,19 +28,20 @@ public class TheaterDbContext : IdentityDbContext, ITheaterDbContext
     public virtual DbSet<Actor> Actors { get; set; }
     public virtual DbSet<Employee> Employees { get; set; }
     public virtual DbSet<Visitor> Visitors { get; set; }
-    
-    
+    public virtual DbSet<Test> Tests { get; set; }
+
+
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
     {
         return base.SaveChangesAsync(cancellationToken);
     }
-    
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<IdentityUserLogin<int>>().HasNoKey();
 
-        
+
         modelBuilder.Entity<Room>()
             .HasMany(r => r.Rows)
             .WithOne()
@@ -49,10 +50,24 @@ public class TheaterDbContext : IdentityDbContext, ITheaterDbContext
         modelBuilder.Entity<Row>()
             .HasMany(r => r.Seats)
             .WithOne()
-            .OnDelete(DeleteBehavior.Cascade);  
+            .OnDelete(DeleteBehavior.Cascade);
+
+        // on delete ticket
+        modelBuilder.Entity<Ticket>()
+            .HasOne(f => f.Seat)
+            .WithOne()
+            .IsRequired(false)
+            .OnDelete(DeleteBehavior.NoAction)
+            .HasForeignKey<Ticket>(s => s.SeatId);
+
+        modelBuilder.Entity<TransferedTicket>()
+            .HasOne(f => f.Seat)
+            .WithOne()
+            .OnDelete(DeleteBehavior.NoAction)
+            .HasForeignKey<TransferedTicket>(s => s.SeatId);
     }
 
-
+   
 
 
 }
