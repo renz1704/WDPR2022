@@ -4,6 +4,7 @@ import Footer from "../Footer";
 import ShowOrder from "../ShowOrder";
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import UserService from "../../services/UserService";
+import config from "../../config.json";
 
 
 function Page_Winkelmand() {
@@ -37,7 +38,7 @@ function Page_Winkelmand() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const url = 'https://localhost:7293/api/Reservation/getreservations/' + UserService.getUser().id;
+                const url = config.ApiUrl+'/api/Reservation/getreservations/' + UserService.getUser().id;
                 const response = await fetch(url);
                 const data = await response.json();
                 setReservations(data);
@@ -52,7 +53,7 @@ function Page_Winkelmand() {
 
     const deleteReservation = async (reservationId) => {
         try {
-            const url = "https://localhost:7293/api/Reservation/removereservation/" + reservationId;
+            const url = config.ApiUrl+"/api/Reservation/removereservation/" + reservationId;
             await fetch(url, {
                 method: 'DELETE',
             });

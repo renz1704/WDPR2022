@@ -3,6 +3,7 @@ import PopUp from "../PopUp";
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import UserService from "../../services/UserService";
+import config from "../../config.json";
 
 
 function Page_Betaling() {
@@ -22,7 +23,7 @@ function Page_Betaling() {
       const data = new URLSearchParams();
       data.append('amount', "10")
       data.append('reference', "1");
-      data.append('url', 'https://localhost:7293/api/payment/paymentsucces');
+      data.append('url', config.ApiUrl+'/api/payment/paymentsucces');
 
 
       const response = await fetch('https://fakepay.azurewebsites.net/', {
@@ -50,7 +51,7 @@ function Page_Betaling() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const url = 'https://localhost:7293/api/Reservation/getreservations/' + UserService.getUser().id;
+        const url = config.ApiUrl+'/api/Reservation/getreservations/' + UserService.getUser().id;
         const response = await fetch(url);
         const data = await response.json();
         setReservations(data);
@@ -81,7 +82,7 @@ function Page_Betaling() {
     };
     
     try {
-      const response = await fetch('https://localhost:7293/api/Payment/createpayment', {
+      const response = await fetch(config.ApiUrl+'/api/Payment/createpayment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -103,7 +104,7 @@ function Page_Betaling() {
 
   const addPaymentToReservation = async (reservationId, paymentId) => {
     try {
-      const url = "https://localhost:7293/api/Reservation/addpaymenttoreservation/" + reservationId + "/" + paymentId
+      const url = config.ApiUrl+"/api/Reservation/addpaymenttoreservation/" + reservationId + "/" + paymentId
       const response = await fetch(url, {
         method: 'POST'
       });

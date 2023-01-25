@@ -51,8 +51,8 @@ builder.Services.AddAuthentication(opt =>
         ValidateAudience = true,
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
-        ValidIssuer = "https://localhost:7293",
-        ValidAudience = "https://localhost:7293",
+        ValidIssuer = "https://theaterlaak-groep-6.azurewebsites.net",
+        ValidAudience = "https://theaterlaak-groep-6.azurewebsites.net",
         IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("awef98awef978haweof8g7aw789efhh789awef8h9awh89efh89awe98f89uawef9j8aw89hefawef"))
     };
 });

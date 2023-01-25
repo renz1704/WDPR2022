@@ -1,6 +1,7 @@
 ﻿import React, { useState, useEffect } from 'react';
 import PerformanceGastLijst from "../PerformanceGastLijst";
 import { useNavigate } from 'react-router-dom';
+import config from "../../config.json";
 
 function Page_Gastlijsten() {
 
@@ -8,7 +9,7 @@ function Page_Gastlijsten() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('http://localhost:5001/api/Performance/performances')
+        fetch(config.ApiUrl+'/api/Performance/performances')
             .then(response => {
                 return response.json();
             })

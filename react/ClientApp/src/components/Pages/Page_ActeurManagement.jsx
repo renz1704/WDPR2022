@@ -4,6 +4,7 @@ import Acteur from "../Acteur";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import config from "../../config.json";
 
 const Page_ActeurManagement = () => {
 
@@ -14,13 +15,13 @@ const Page_ActeurManagement = () => {
 
     const [actors, setActors] = useState([]);
     useEffect(() => {
-        axios.get('https://localhost:7293/api/Actor/getActors')
+        axios.get(config.ApiUrl+'/api/Actor/getActors')
         .then(res => setActors(res.data));
         
     },[])
 
     const addActor = () => {
-        axios.post("https://localhost:7293/api/Actor/createActor", {
+        axios.post(config.ApiUrl+"/api/Actor/createActor", {
                 "name": name,
                 "lastname": lastName,
                 "stagename": stagename 

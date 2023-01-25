@@ -7,6 +7,7 @@ import {useLocation, useNavigate} from "react-router-dom";
 import PopUp from "../PopUp";
 import UserService from "../../services/UserService";
 import axios from "axios";
+import config from "../../config.json";
 
 
 function Page_StoelKeuze() {
@@ -21,7 +22,7 @@ function Page_StoelKeuze() {
   {/*ipv room/1 moet hier bijv props.room worden gebruikt*/ }
   useEffect(() => {
     async function fetchData() {
-      fetch(`https://localhost:7293/api/Room/${performance.room.id}`)
+      fetch(config.ApiUrl+`/api/Room/${performance.room.id}`)
           .then(response => response.json())
           .then(data => {
             const Seats = data.rows.map(row => row.seats.map(seat => seat.id));
@@ -61,7 +62,7 @@ function Page_StoelKeuze() {
       isTransfered: false
     };
 
-    fetch("http://localhost:5001/api/Ticket/createticket", {
+    fetch(config.ApiUrl+"/api/Ticket/createticket", {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -75,7 +76,7 @@ function Page_StoelKeuze() {
 
   const deleteTicket = (seatId) => {
     fetch(
-        "https://localhost:7293/api/Ticket/deleteticketwithseatid?seatid=" +
+      config.ApiUrl+"/api/Ticket/deleteticketwithseatid?seatid=" +
         seatId,
         {
           method: "DELETE",
@@ -104,7 +105,7 @@ function Page_StoelKeuze() {
   const createReservation = async () => {
     try {
 
-      const response = axios.post(`https://localhost:7293/api/Reservation/createreservation?userId=${UserService.getUser().id} `, ticketsIds)
+      const response = axios.post(config.ApiUrl+`/api/Reservation/createreservation?userId=${UserService.getUser().id} `, ticketsIds)
       return await response.json();
     } catch (error) {
       console.error('Error:', error);

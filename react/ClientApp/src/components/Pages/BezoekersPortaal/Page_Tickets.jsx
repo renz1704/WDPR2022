@@ -5,6 +5,7 @@ import UserService from '../../../services/UserService';
 import axios from 'axios';
 import Tickets from './Orders';
 import Orders from './Orders';
+import config from '../../../config.json';
 
 function Page_Tickets() {
 
@@ -14,7 +15,7 @@ function Page_Tickets() {
 
     
     useEffect(() => {
-        axios.get(`https://localhost:7293/api/Order/getReservations?email=${UserService.getUser().email}`)
+        axios.get(config.ApiUrl+`/api/Order/getReservations?email=${UserService.getUser().email}`)
             .then(res => {
                 setOrders(res.data)
                 console.log(res.data)
@@ -23,7 +24,7 @@ function Page_Tickets() {
 
     const ticketOverzetten = () => {
 
-        axios.post("https://localhost:7293/api/ticket/transferticket",
+        axios.post(config.ApiUrl+"/api/ticket/transferticket",
           {
             visitorIdOwner: UserService.getUser().id,
             visitorIdReceiver: klantNummerOntvanger,

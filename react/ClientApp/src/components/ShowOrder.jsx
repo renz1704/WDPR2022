@@ -1,4 +1,5 @@
 ﻿import React, {useState, useEffect} from 'react';
+import config from "../config.json";
 
 function ShowOrder(props) {
     const [totalPrice, setTotalPrice] = useState(0)
@@ -20,7 +21,7 @@ function ShowOrder(props) {
     useEffect(() => {
         async function fetchData() {
             const data = await Promise.all(props.seats.map(async id => {
-                const response = await fetch(`https://localhost:7293/api/Seat/${id}`);
+                const response = await fetch(config.ApiUrl+`/api/Seat/${id}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch seat data');
                 }

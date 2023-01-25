@@ -1,8 +1,9 @@
 import axios from "axios"
+import config from "../config.json"
 
 const AuthenticationService = () => {
     
-    const api_url = 'https://localhost:7293/api/user/'
+    const api_url = config.ApiUrl+'/api/user/'
     
     const login = (email, password) => {
         axios.post(api_url + 'login', {

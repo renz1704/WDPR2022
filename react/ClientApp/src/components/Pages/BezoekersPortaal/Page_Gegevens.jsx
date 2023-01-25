@@ -6,6 +6,7 @@ import UserService from '../../../services/UserService';
 import { arrows_circle_down } from 'react-icons-kit/linea/arrows_circle_down'
 import { basic_exclamation } from 'react-icons-kit/linea/basic_exclamation'
 import { Icon } from 'react-icons-kit'
+import config from "../../../config.json";
 function Page_Gegevens() {
   const [email, SetEmail] = useState();
   const [firstname, SetFirstname] = useState();
@@ -28,7 +29,7 @@ function Page_Gegevens() {
 
   const handleSubmit = () => {
 
-    axios.put("https://localhost:7293/updateAccount",
+    axios.put(config.ApiUrl+"/updateAccount",
       {
         id: UserService.getUser().id,
         email: email,
@@ -41,7 +42,7 @@ function Page_Gegevens() {
 
   const handlePassword = async () => {
     try {
-        const response = await fetch('https://localhost:7293/passwordreset', {
+        const response = await fetch(config.ApiUrl+'/passwordreset', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

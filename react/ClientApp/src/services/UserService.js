@@ -1,8 +1,8 @@
 import axios from "axios";
 import jwt from "jwt-decode";
+import config from "../config.json";
 
-
-const API_URL = "https://localhost:7293/api/User/";
+const API_URL = config.ApiUrl +"/api/User/";
 
 class UserService {
     

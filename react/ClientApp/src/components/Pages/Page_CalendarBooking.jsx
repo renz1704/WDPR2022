@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import ResponsiveAppBar from "../Header";
 import ProductBanner from "../ProductBanner";
+import config from "../../config.json";
 
 function Page_CalenderBooking() {
     const location = useLocation();
@@ -11,7 +12,7 @@ function Page_CalenderBooking() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`https://localhost:7293/api/Show/getPerformances?id=${show.id}`)
+        axios.get(config.ApiUrl+`/api/Show/getPerformances?id=${show.id}`)
         .then(res => setPerformances(res.data))
     },[])
     

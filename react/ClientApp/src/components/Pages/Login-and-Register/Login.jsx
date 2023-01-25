@@ -9,6 +9,7 @@ import {Button} from "@mui/material";
 import jwt from 'jwt-decode'
 import UserService from "../../../services/UserService";
 import TwoFA from "./TwoFA";
+import config from "../../../config.json";
 
 
 const Login = () => {
@@ -29,7 +30,7 @@ const Login = () => {
             'Content-Type': 'application/json',
         };
 
-        const response = await fetch('https://localhost:7293/api/User/has2FA/'+encodeURIComponent(email), {headers});
+        const response = await fetch(config.ApiUrl+'/api/User/has2FA/'+encodeURIComponent(email), {headers});
 
         if (response.ok) {
             has2FA = await response.json();
@@ -94,7 +95,7 @@ const Login = () => {
                         id="password-input"
                         onChange={(event) => setPassword(event.target.value)}
                     ></input>
-                    <ReCAPTCHA className="recap" id="recaptcha-checkbox" sitekey="6Ldmv-0jAAAAAOzZUjuueonJNyxg4RBpDiNgpbVO"
+                    <ReCAPTCHA className="recap" id="recaptcha-checkbox" sitekey="6LfwiiQkAAAAANKMago8SGeEpwtU2yxcZX5AF0G6"
                                onChange={handleRecaptcha}/>
 
                     <TwoFA email={email} set_2FAverifiedState={set_2FAverifiedState}/>

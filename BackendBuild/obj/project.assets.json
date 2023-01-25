@@ -10487,11 +10487,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Remco van der Voort\\Documents\\GitHub\\WDPR2022\\BackendBuild\\react.csproj",
+      "projectUniqueName": "C:\\Users\\Remco van der Voort\\Documents\\GitHub\\WDPR2022\\backendbuild\\react.csproj",
       "projectName": "react",
-      "projectPath": "C:\\Users\\Remco van der Voort\\Documents\\GitHub\\WDPR2022\\BackendBuild\\react.csproj",
+      "projectPath": "C:\\Users\\Remco van der Voort\\Documents\\GitHub\\WDPR2022\\backendbuild\\react.csproj",
       "packagesPath": "C:\\Users\\Remco van der Voort\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Remco van der Voort\\Documents\\GitHub\\WDPR2022\\BackendBuild\\obj\\",
+      "outputPath": "C:\\Users\\Remco van der Voort\\Documents\\GitHub\\WDPR2022\\backendbuild\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -461,3 +461,4 @@ C:\Users\Remco van der Voort\Documents\GitHub\WDPR2022\BackendBuild\obj\Debug\ne
 C:\Users\Remco van der Voort\Documents\GitHub\WDPR2022\BackendBuild\obj\Debug\net6.0\react.pdb
 C:\Users\Remco van der Voort\Documents\GitHub\WDPR2022\BackendBuild\obj\Debug\net6.0\react.genruntimeconfig.cache
 C:\Users\Remco van der Voort\Documents\GitHub\WDPR2022\BackendBuild\obj\Debug\net6.0\ref\react.dll
+C:\Users\Remco van der Voort\Documents\GitHub\WDPR2022\backendbuild\bin\Debug\net6.0\package.json

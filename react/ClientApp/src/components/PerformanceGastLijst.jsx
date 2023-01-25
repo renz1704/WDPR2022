@@ -1,7 +1,7 @@
 ﻿import React, { useState, useEffect } from 'react';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
-
+import config from '../config.json';
 
 function PerformanceGastLijst(props) {
     const [visitors, setVisitors] = useState([]);
@@ -9,7 +9,7 @@ function PerformanceGastLijst(props) {
     // Fetch visitors by performance
     const fetchVisitorsByPerformance = async (performanceId) => {
         try {
-            const response = await fetch(`http://localhost:5001/api/Performance/visitorslist/${performanceId}`);
+            const response = await fetch(config.ApiUrl +`api/Performance/visitorslist/${performanceId}`);
             const visitors = await response.json();
             console.log(visitors)
             return visitors;

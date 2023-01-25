@@ -1,18 +1,19 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button } from "@mui/material";
+import config from "../config.json";
 
 const PopUpActeurToevoegenAanShow = (props) => {
     
     const [actors, setActors] = useState([]);
 
     useEffect( () => {
-        axios.get(`https://localhost:7293/api/Actor/getActors`)
+        axios.get(config.ApiUrl +`/api/Actor/getActors`)
         .then(res => setActors(res.data))
     },[])
     
     const addActor = (actor, group) => {
-        axios.post(`https://localhost:7293/api/Group/addtogroup?artistId=${actor.id}&groupId=${group.id}`)
+        axios.post(config.ApiUrl+`/api/Group/addtogroup?artistId=${actor.id}&groupId=${group.id}`)
         .then(res => {
             if(res.status == 200)
             {

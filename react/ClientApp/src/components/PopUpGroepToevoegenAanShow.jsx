@@ -1,19 +1,19 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button } from "@mui/material";
-
+import config from "../config.json";
 
 const PopUpGroepToevoegenAanShow = (props) => {
 
     const [shows, setShows] = useState([]);
 
     useEffect( () => {
-        axios.get('https://localhost:7293/api/Show/getShows')
+        axios.get(config.ApiUrl+'/api/Show/getShows')
         .then(res => setShows(res.data))
     }, [])
 
     const addToShow = (show, group) => {
-        axios.post(`https://localhost:7293/api/Group/addToShow`, {
+        axios.post(config.ApiUrl+`/api/Group/addToShow`, {
             "groupId": group.id,
             "showId": show.id
         }).then(res => {

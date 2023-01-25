@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import UserService from '../../../services/UserService';
+import config from "../../../config.json";
 
 
 
@@ -20,7 +21,7 @@ const Page_AccountGegevens = () => {
 
   const handleSubmit = () => {
 
-    axios.post("https://localhost:7293/updateAccount",
+    axios.post(config.ApiUrl+"/updateAccount",
       {
         id: UserService.getUser().id,
         email: email,

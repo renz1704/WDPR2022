@@ -2,13 +2,14 @@ import { Button } from "@mui/material";
 import '../styles/Acteur.css'
 import Picture from '../pictures/ActorPicture.jpg'
 import axios from "axios";
+import config from "../config.json";
 
 const Acteur = (props) => {
 
     const actor = props.actor;
 
     const deleteActor = () => {
-        axios.delete(`https://localhost:7293/api/Actor/deleteActor?id=${actor.id}`)
+        axios.delete(config.ApiUrl + `/api/Actor/deleteActor?id=${actor.id}`)
         window.location.reload(false);
     }   
 

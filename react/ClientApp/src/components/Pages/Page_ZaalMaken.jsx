@@ -2,6 +2,7 @@
 import ButtonCounter from "../ButtonCounter";
 import RowMaker from "../RowMaker";
 import PopUp from "../PopUp";
+import config from "../../config.json";
 
 function Page_ZaalMaken() {
     const [showPopUp, setShowPopUp] = useState(false);
@@ -47,7 +48,7 @@ function Page_ZaalMaken() {
 
         let roomData = createRoomDataJson()
 
-        fetch("http://localhost:5001/api/Room/createRoom", {
+        fetch(config.ApiUrl+"/api/Room/createRoom", {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

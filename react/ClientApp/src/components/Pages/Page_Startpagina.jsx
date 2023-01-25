@@ -17,6 +17,8 @@ import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import "./Startpagina.css"
 import Show from './ShowComponents/Show';
 
+import config from "../../config.json";
+
 
 
 function Page_Startpagina() {
@@ -35,14 +37,14 @@ function Page_Startpagina() {
     }, [])
 
     const fetchShows = () => {
-        axios.get(`https://localhost:7293/api/Show/getShows`).then(res => {
+        axios.get(config.ApiUrl+`/api/Show/getShows`).then(res => {
         console.log(res.data)    
         setShows(res.data)});
     }
 
 
     const fetchGenres = () => {
-        axios.get(`https://localhost:7293/api/Genre/GetGenresString`).then(res => SetGenres(res.data));
+        axios.get(config.ApiUrl+`/api/Genre/GetGenresString`).then(res => SetGenres(res.data));
     }
 
 

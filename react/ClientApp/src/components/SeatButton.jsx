@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import config from '../config.json';
 
 function SeatButton(props) {
     const [seatData, setSeatData] = useState()
     const [seatName, setSeatName] = useState()
-    const url = "https://localhost:7293/api/Seat/" + props.seatId
+    const url = config.ApiUrl+"/api/Seat/" + props.seatId
 
     useEffect(() => {
         fetch(url)
@@ -58,7 +59,7 @@ function SeatButton(props) {
 
     const fetchSeatAvailability = async () => {
         try {
-            const url = "https://localhost:7293/api/Seat/checkseatavailability?seatId=" + props.seatId + "&performanceId=" + props.performanceId;
+            const url = config.ApiUrl+"/api/Seat/checkseatavailability?seatId=" + props.seatId + "&performanceId=" + props.performanceId;
             const response = await fetch(url);
             const data = await response.json();
             setSeatAvailability(data);

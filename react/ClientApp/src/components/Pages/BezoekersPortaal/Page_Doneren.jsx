@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import UserService from '../../../services/UserService';
 import { URLSearchParams } from 'url';
 import queryString from 'query-string';
+import config from '../../../config.json';
 
 
 
@@ -23,7 +24,7 @@ function Page_Doneren() {
     const searchParams = { tokenUser: sessionStorage.getItem("user") };
     const searchString = queryString.stringify(searchParams);
 
-    const link = `https://ikdoneer.azurewebsites.net/Toegang?url=https://localhost:7293/api/Donation/addtokenuser?${searchString}`;
+    const link = `https://ikdoneer.azurewebsites.net/Toegang?url=`+ config.ApiUrl+`/api/Donation/addtokenuser?${searchString}`;
 
     const navigate = useNavigate();
 
@@ -40,7 +41,7 @@ function Page_Doneren() {
     const donatieDoen = async () => {
         
             const response = await axios.get(
-                'https://localhost:7293/api/Donation/getDonationTokenUser',
+                config.ApiUrl+'/api/Donation/getDonationTokenUser',
                 configGetToken
             );
             setToken(response.data);

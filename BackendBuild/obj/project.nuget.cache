@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Vwj6ZiNUhxfubFT9vXyCZuxggTtU4HxbwrPnArxz3/ce1v1mTzs6CoIZusGijVO16aC/TUtgSiv35jrR9m8OvQ==",
+  "dgSpecHash": "uk9b0LPRl/pjJWKrfSVNIXUuCYDqv+TriSLTxwgIUp6OEnjctB0BmhYxkHyGKeEvArRVdfpYmD5gcOJRrZPg2w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Remco van der Voort\\Documents\\GitHub\\WDPR2022\\BackendBuild\\react.csproj",
+  "projectFilePath": "C:\\Users\\Remco van der Voort\\Documents\\GitHub\\WDPR2022\\backendbuild\\react.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Remco van der Voort\\.nuget\\packages\\automapper\\10.0.0\\automapper.10.0.0.nupkg.sha512",
     "C:\\Users\\Remco van der Voort\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",

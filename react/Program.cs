@@ -9,6 +9,7 @@ using Microsoft.IdentityModel.Tokens;
 using react.Controllers;
 
 
+
 var builder = WebApplication.CreateBuilder(args);
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
@@ -51,8 +52,8 @@ builder.Services.AddAuthentication(opt =>
         ValidateAudience = true,
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
-        ValidIssuer = "https://localhost:7293",
-        ValidAudience = "https://localhost:7293",
+        ValidIssuer = "https://merry-syrniki-cc2f10.netlify.app",
+        ValidAudience = "https://merry-syrniki-cc2f10.netlify.app",
         IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("awef98awef978haweof8g7aw789efhh789awef8h9awh89efh89awe98f89uawef9j8aw89hefawef"))
     };
 });

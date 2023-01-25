@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import PopUpGroepToevoegenAanShow from "../PopUpGroepToevoegenAanShow";
 import PopUpActeurToevoegenAanShow from "../PopUpActeurToevoegenAanShow";
+import config from "../../config.json";
 
 
 const GroepManagement = () => {
@@ -28,18 +29,18 @@ const GroepManagement = () => {
     
     
     useEffect( () => {
-        axios.get('https://localhost:7293/api/Group/getGroups')
+        axios.get(config.ApiUrl+'/api/Group/getGroups')
         .then(res => setGroups(res.data))
     },[])
 
     const deleteGroup = (id) => {
-        axios.delete(`https://localhost:7293/api/Group/deleteGroup?id=${id}`)
+        axios.delete(config.ApiUrl+`/api/Group/deleteGroup?id=${id}`)
         window.location.reload(false);
     }
 
     const addToShow = (id) => {
         
-        axios.post(`https://localhost:7293/api/Group/addToShow`, {
+        axios.post(config.ApiUrl+`/api/Group/addToShow`, {
             "groupId": id,
             "showId": 1
         

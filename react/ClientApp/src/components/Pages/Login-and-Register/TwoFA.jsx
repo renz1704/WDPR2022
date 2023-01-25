@@ -1,4 +1,5 @@
 ﻿import React, {useEffect, useState} from "react";
+import config from "../../../config.json";
 
 function TwoFA(props){
 
@@ -18,7 +19,7 @@ function TwoFA(props){
             subject: "2FA code voor Theater Laak"
         }
         
-        const response = await fetch('https://localhost:7293/api/Email', {
+        const response = await fetch(config.ApiUrl+'/api/Email', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

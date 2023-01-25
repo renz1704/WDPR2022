@@ -1,6 +1,7 @@
 ﻿import React, { useState, useEffect } from 'react';
 import RoomInfo from "../RoomInfo";
 import { Routes, Route, useNavigate } from 'react-router-dom';
+import config from "../../config.json";
 
 
 function Page_Zaalbeheer() {
@@ -8,7 +9,7 @@ function Page_Zaalbeheer() {
     const [rooms, setRooms] = useState([])
 
     useEffect(() => {
-        fetch('https://localhost:7293/api/Room')
+        fetch(config.ApiUrl+'/api/Room')
             .then(response => response.json())
             .then(data => {
                 setRooms(data);

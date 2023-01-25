@@ -10,6 +10,7 @@ import ReCAPTCHA from 'react-google-recaptcha'
 
 import UserService from '../../../services/UserService'
 import TwoFA from "./TwoFA";
+import config from "../../../config.json";
 
 const Register = () => {
   const [email, setEmail] = useState();
@@ -42,7 +43,7 @@ const Register = () => {
       alert("De 2FA code is onjuist, vraag een nieuwe code op.")
 
     } else {
-      fetch('https://localhost:7293/api/User/registreer',
+      fetch(config.ApiUrl+'/api/User/registreer',
           {
             method: 'POST',
             headers: {
@@ -186,7 +187,7 @@ const Register = () => {
                 <Icon icon={basic_exclamation} size={20} />
               </span>
               )} U moet minimaal 7 karakters gebruiken</div>
-            <ReCAPTCHA sitekey="6Ldmv-0jAAAAAOzZUjuueonJNyxg4RBpDiNgpbVO" onChange={handleRecaptcha} />
+            <ReCAPTCHA sitekey="6LfwiiQkAAAAANKMago8SGeEpwtU2yxcZX5AF0G6" onChange={handleRecaptcha} />
           </main>
 
           <p>Vraag een code op en vul hem</p>

@@ -1,9 +1,10 @@
 ﻿import React, { useState, useEffect } from 'react';
+import config from '../config.json';
 
 function RoomInfo(props) {
 
     const deleteRoom = () => {
-        let url = 'http://localhost:5001/api/Room/delete/' + props.id
+        let url = config.ApiUrl+'/api/Room/delete/' + props.id
         fetch(url, {
             method: 'DELETE',
         })
@@ -21,7 +22,7 @@ function RoomInfo(props) {
 
     const [name, setName] = useState("Laden")
     useEffect(() => {
-        let url = 'http://localhost:5001/api/Room/name/' + props.id
+        let url = config.ApiUrl+'/api/Room/name/' + props.id
         fetch(url)
             .then(response => response.text())
             .then(data => {

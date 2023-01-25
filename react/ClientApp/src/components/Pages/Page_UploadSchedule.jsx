@@ -4,6 +4,7 @@ import { useState } from 'react'
 import * as XLSX from 'xlsx'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import config from '../../config.json';
 
 function Page_UploadSchedule() {
 
@@ -51,7 +52,7 @@ function Page_UploadSchedule() {
       console.log(data);
       setExcelData(data);
 
-      axios.post("https://localhost:7293/api/Performance/AddPerformances",
+      axios.post(config.ApiUrl+"/api/Performance/AddPerformances",
         data)
     }
     else {
